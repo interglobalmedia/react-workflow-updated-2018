@@ -1,0 +1,1334 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>React Workflow</title>
+		<meta name="description" content="How to create a React workflow without create-react-app using webpack.">
+		<meta name="author" content="Maria D. Campbell">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/blood.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background="#ffc600">
+					<h1>React</h1>
+					<h2>workflows</h2>
+					<h4>Without Create-React-App</h4>
+					<p>
+						<small>Created by <a href="https://interglobalmedia.github.io/portfolio/" target="_blank">Maria D. Campbell</a> / <a href="http://twitter.com/letsbsocial1" target="_blank">@letsbsocial1</a></small>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h2>Hi There!</h2>
+					<p class="fragment">
+						I'm Maria.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h2>About Me</h2>
+					<p class="fragment">
+						I've always been <span class="fragment"><b><i>obsessed</i></b></span> with <span class="fragment"><b><i>development</i></b></span> and <span class="fragment"><b><i>construction</i></b></span> in one way or another.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h2>Background</h2>
+					<ul>
+						<li class="fragment">Fashion design and manufacture.</li>
+						<li class="fragment">Graphics/production art.</li>
+						<li class="fragment">Now Fullstack JS, with a focus on React.</li>
+					</ul>
+				</section>
+				<section data-background="#ffc600">
+					<h1>?</h1>
+					<p class="fragment">
+						So why am I here today to discuss <span class="fragment"><b>React workflows</b></span>?
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h2>Simple.</h2>
+					<p>
+						<span class="fragment">When I started learning React,</span> <span class="fragment">I was not happy with the fact</span> <span class="fragment">that virtually all React learning seemed to revolve</span> <span class="fragment">around using</span> <span class="fragment"><b><i>create-react-app</i></b></span> <span class="fragment">to create React applications.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<a href="https://github.com/facebookincubator/create-react-app"><img width="400" height="300" src="images/horse-blinders.jpg" alt="Horse blinders"></a>
+					<p class="fragment">
+						And that meant <span class="fragment"><b><i>blindly</i></b></span> accepting its extensive <span class="fragment">boiler-plate.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<img src="images/hiddenman-580x504.jpg" width="480" height="404">
+					<p>
+						<span class="fragment">Why <span class="fragment"><b><i>blindly</i></b></span>?</span> <span class="fragment">Because the workflow is <span class="fragment"><b><i>hidden</i></b></span> by default.</span> <span class="fragment">In order to see what is going on,</span> <span class="fragment">you have to eject out of <span class="fragment"><b><i>CRA</i></b>.</span></span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<a href="https://unsplash.com/photos/GVFaCidhlhQ"><img src="images/austin-neill-246598.jpg" width="600" height="350"></a>
+					<p>
+						<span class="fragment">But once you eject,</span> <span class="fragment"><b><i>THERE IS NO GOING BACK!</i></b></span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<img src="images/defyingcertainty.jpg" width="560" height="477">
+					<p class="fragment">
+						And one thing I know for sure ...
+					</p>
+				</section>
+				<section data-background="#ffc600" data-background-image="images/deep.jpg" data-background-size="100%" data-background-position="center" data-background-repeat="no-repeat" >
+					<h3>Starting Over</h3>
+					<p class="fragment" style="background: rgba(250, 235, 215, 0.6)">
+						<span class="fragment"><b><i>Sometimes</i></b></span> it's faster (and easier) to start from scratch than try to <span class="fragment"><b>manipulate</b></span> to your needs.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<p>
+						And that's where
+					</p>
+					<h1 class="fragment">webpack</h1>
+					<p class="fragment">
+						(2 and beyond) came in.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h1>?</h1>
+					<p class="fragment">
+						So why <b><i>webpack</i></b>?
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<img class="fragment" width="400" height="300" data-src="images/gulp-grunt.jpg" alt="Grunt vs Gulp">
+					<p>
+						If done from scratch, it can mean fewer workflow files and lines of code. If you come from task runners like <span class="fragment"><b><i>Gulp</i></b></span> (I do) or <span class="fragment"><b><i>Grunt</i></b></span>, you know what I'm talking about.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<a href="https://semaphoreci.com/community/tutorials/testing-common-redux-patterns-in-react-using-ava"><img width="600" height="333" data-src="images/cra.png" alt="Create-React-App"></a>
+					<p>
+						<span class="fragment">And if you are familiar with <b><i>CRA</i></b>,</span> <span class="fragment">you know how extensive its boilerplate is.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Nothing wrong with that</h3>
+					<p class="fragment">
+						 if your focus is on writing <span class="fragment"><b><i>JSX</i></b></span> and <span class="fragment"><b><i>JS</i></b></span> for the browser.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>The Problem</h3>
+					<p class="fragment">
+						with that approach is that when developers start heavily relying on tools like that, they <b><i>can</i></b> lose site of the bigger picture.
+					</p>
+					<ul>
+						<li class="fragment">
+							Of how things work.
+						</li>
+						<li class="fragment">
+							Why they work as they do.
+						</li>
+						<li class="fragment">
+							What their options are.
+						</li>
+					</ul>
+				</section>
+				<section data-background="#ffc600">
+					<img src="images/homer-internet.jpg" width="640" height="480">
+					<p>
+						Which can <b><i class="fragment">STUNT</i></b> one's growth as a developer.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h2 class="fragment">🐜</h2>
+					<p>
+						I first got the bug to create my own custom React workflows when I created my first React application using <b><i>CRA</i></b>.
+					</p>
+				</section>
+				<section data-background="#ffc600" data-background-image="images/blog_MyDebugger2.png" data-background-size="100%" data-background-position="center" data-background-repeat="no-repeat">
+					<h3>Debugging Difficulties</h3>
+					<p class="fragment" style="background: rgba(250, 235, 215, 0.6)">
+						I would get errors in my React projects which I sometimes found difficult to <b><i>debug</i></b>. They might or might not have been <b><i>CRA</i></b> related.
+					</p>
+				</section>
+				<section data-background="#ffc600" data-background-image="images/react-redux-workflow.jpg" data-background-size="cover" data-background-position="center" data-background-repeat="no-repeat">
+					<h3>Custom React Workflows</h3>
+					<p class="fragment" style="background: rgba(250, 235, 215, 0.6)">
+						So I decided to start creating my own React workflows using <b><i>webpack</i></b>.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Module Bundler</h3>
+						<pre class="fragment"><code data-trim>
+						module.exports = {};
+						</code></pre>
+					<p>
+						<b><i>webpack</i></b> is NOT a task runner. It is a <span class="fragment"><code>module bundler</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Dependency Graph</h3>
+					<p class="fragment">
+						When <b><i>webpack</i></b> processes your app, it recursively builds a <span class="fragment"><code>dependency graph</code></span> that includes every module that your app needs, and then packages all of those modules into a small number of bundles to be loaded by the browser.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>webpack basics</h3>
+					<p class="fragment">
+						To get started, you only need to understand 4 basic concepts:
+					</p>
+					<ul>
+						<li class="fragment">
+							Entry
+						</li>
+						<li class="fragment">
+							Output
+						</li>
+						<li class="fragment">
+							Loaders
+						</li>
+						<li class="fragment">
+							Plugins
+						</li>
+					</ul>
+				</section>
+				<section data-background="#ffc600">
+					<h3>entry</h3>
+						<pre class="fragment"><code data-trim>
+				module.exports = {
+				  entry: {
+					bundle: './src/index.js',
+					vendor: VENDOR_LIBS
+				  },
+				}
+						</code></pre>
+					<p class="fragment">
+						The starting point of <b><i>webpack</i></b>'s dependency graph is called the <span class="fragment"><code>entry point.</code></span> The entry point tells <b><i>webpack</i></b> where to start its <span class="fragment"><code>bundling process,</code></span> and then follows the graph of dependencies to know what to bundle.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>bundle</h3>
+						<pre class="fragment"><code data-trim>
+				module.exports = {
+				  entry: {
+					bundle: './src/index.js',
+					vendor: VENDOR_LIBS
+				  },
+				}
+						</code></pre>
+					<p class="fragment">
+						<b><i>webpack</i></b> defines entry points using the entry property in the <b><i>webpack</i></b> configuration object, <span class="fragment"><code>module.exports = {}</code>.</span> The value of the bundle property indicates to <b><i>webpack</i></b> what code needs to be bundled.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>main index.js</h3>
+						<pre class="fragment"><code data-trim>
+				import React from 'react';
+				import ReactDOM from 'react-dom';
+
+				import './style/style.css';
+				import 'font-awesome-webpack';
+
+				import Container from './components/Container';
+
+				import './images/favicon.ico';
+						</code></pre>
+					<p class="fragment">
+						 The files which need to be included in the bundled file in output have all been imported into the <b><i>main</i></b> <span class="fragment"><a href="https://github.com/interglobalmedia/react-timeline-app/blob/master/src/index.js" target="_blank"><code>index.js</code></a></span> file.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>ReactDOM.render()</h3>
+					<p class="fragment">
+						And the <b><i>main</i></b> <span class="fragment"><a href="https://github.com/interglobalmedia/react-timeline-app/blob/master/src/index.js" target="_blank"><code>App Component</code></a></span> that holds everything else related to the app is rendered there as well.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>vendor</h3>
+						<pre class="fragment"><code data-trim>
+				module.exports = {
+				  entry: {
+					bundle: './src/index.js',
+					vendor: VENDOR_LIBS
+				  },
+				}
+						</code></pre>
+					<p class="fragment">
+						You may have noticed I add a second entry point called <span class="fragment"><code>vendor</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>VENDOR_LIBS</h3>
+						<pre class="fragment"><code data-trim>
+				const VENDOR_LIBS = [
+				  'react', 'react-dom', 'prop-types'
+				];
+						</code></pre>
+					<p class="fragment">
+						Relates to <span class="fragment"><b><i>non-webpack</i></b>,</span> 3rd party plugins.
+					</p>
+				</section>
+				<section data-background="#ffc600" data-background-image="images/code-splitting.jpg" data-background-size="cover" data-background-position="center" data-background-repeat="no-repeat">
+					<h3>Code Splitting</h3>
+					<p class="fragment" style="background: rgba(250, 235, 215, 0.6)">
+						is important for <span class="fragment"><code>browser caching</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Browser Caching</h3>
+					<p class="fragment">
+						is great because it allows sites to load faster once the client has grabbed the necessary files and assets from the server the first time a user visits the page.
+					</p>
+				</section>
+				<section data-background="#ffc600" data-background-image="images/browser-caching.jpg" data-background-size="100%" data-background-position="center" data-background-repeat="no-repeat" style="background: rgba(170, 170, 170, 0.6)">
+					<h3>Clearing The Cache</h3>
+				</section>
+				<section data-background="#ffc600" data-background-image="images/buried-in-tag-manager-tags.jpg" data-background-size="cover" data-background-position="center" data-background-repeat="no-repeat">
+					<h3>Caching Headaches</h3>
+					<p class="fragment" style="background: rgba(250, 235, 215, 0.7)">
+						However, it can cause big headaches when new code has been added to files. If the name of a file remains the same when new code has been added to it, the browser thinks that nothing has changed. To the browser, same name means same content.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Output</h3>
+						<pre class="fragment"><code data-trim>
+				output: {
+				  path: path.join(__dirname, 'dist'),
+				  filename: '[name].[chunkhash].js'
+				},
+						</code></pre>
+					<p class="fragment">
+						Once you've bundled all your assets together, you need to tell <b><i>webpack</i></b> <span class="fragment"><b><i>where</i></b></span> to bundle your app. The <span class="fragment"><code>output object</code></span> tells <b><i>webpack</i></b> what to do with bundled code.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>path</h3>
+						<pre class="fragment"><code data-trim>
+				const path = require('path');
+				output: {
+				  path: path.join(__dirname, 'dist'),
+				  filename: '[name].[chunkhash].js'
+				},
+						</code></pre>
+					<p class="fragment">
+						The value of the first property, <span class="fragment"><code>path</code>,</span> is the absolute path to the dist folder, where the bundled assets end up. It has to be required in your <span class="fragment"><code>webpack.config.js</code></span> in order for you to able to use it.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>filename</h3>
+						<pre class="fragment"><code data-trim>
+				output: {
+				  path: path.join(__dirname, 'dist'),
+				  filename: '[name].[chunkhash].js'
+				},
+						</code></pre>
+					<p class="fragment">
+						The value of the second property, <span class="fragment"><code>filename</code>,</span> refers to the name(s) of output bundle(s).
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>name</h3>
+						<pre class="fragment"><code data-trim>
+				const path = require('path');
+				output: {
+				  path: path.join(__dirname, 'dist'),
+				  filename: '[name].[chunkhash].js'
+				},
+						</code></pre>
+					<p class="fragment">
+						I use the [name] property because of my <span class="fragment"><code>code splitting</code></span> resulting from two entry points. [name] takes into consideration that there can be more than one bundle file, and they may have different names.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>[chunkhash]</h3>
+						<pre class="fragment"><code data-trim>
+				const path = require('path');
+				output: {
+				  path: path.join(__dirname, 'dist'),
+				  filename: '[name].[chunkhash].js'
+				},
+						</code></pre>
+					<p class="fragment">
+						By default, [chunkhash] places a <span class="fragment"><code>new hash</code></span> each time you <span class="fragment"><code>run a new build.</code></span> This is not ideal for <span class="fragment"><code>browser caching.</code></span> That could mean re-grabbing a file that has <span class="fragment"><code>not changed</code></span>!
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>expectations !== reality</h3>
+					<p class="fragment">
+						I came to realize that simply <span class="fragment"><code>adding</code></span> [chunkhash] to my filename didn't exactly achieve what I thought it would out of the box.
+					</p>
+				</section>
+				<section data-background="#ffc600" data-background-image="images/suitcase-rummaging-market-australia11.jpg" data-background-size="cover" data-background-position="center" data-background-repeat="no-repeat">
+					<h3>webpack docs</h3>
+					<p class="fragment" style="background: rgba(250, 235, 215, 0.7)">
+						After rummaging through the newly (and much) improved <b><i>webpack</i></b> documentation, I came across the section called <span class="fragment"><code>Caching</code>.</span> It provided <span class="fragment"><code>some</code></span> of the answers I was seeking.
+					</p>
+				</section>
+				<section data-background="#ffc600" data-background-image="images/HomerThinking.gif" data-background-size="35%" data-background-position="center" data-background-repeat="no-repeat">
+					<p class="fragment">
+						So why did the [chunkhash] for my <span class="fragment"><code>bundle.js</code></span> and <span class="fragment"><code>vendor.js</code></span> files <span class="fragment"><code>change</code></span> every time I ran a new build, even if no changes were made to them?
+					</p>
+				</section>
+				<section data-background="#ffc600" data-background-image="images/Thinking_ideas.png" data-background-size="40%" data-background-position="center" dat-backgrund-padding-bottom="50px" data-background-repeat="no-repeat">
+					<p class="fragment">
+						Because <b><i>webpack</i></b> contains certain boilerplate, specifically the <span class="fragment"><code>runtime</code></span> and <span class="fragment"><code>manifest</code>,</span> on entry.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>< /> === 3</h3>
+					<p class="fragment">
+						There are <span class="fragment"><b>3</b></span> main types of <span class="fragment"><b>code</b></span> in a typical app or site built with <b><i>webpack</i></b>:
+					</p>
+					<ul>
+						<li class="fragment">The source code you have written</li>
+						<li class="fragment">Third party, vendor code your source is dependent on</li>
+						<li class="fragment">Webpack runtime and manifest that conducts the interaction of all modules</li>
+					</ul>
+				</section>
+				<section data-background="#ffc600" data-background-image="images/montre.gif" data-background-size="40%" data-background-position="center" data-background-repeat="no-repeat">
+					<h3>Runtime</h3>
+					<p class="fragment" style="background: rgba(250, 235, 215, 0.7)">
+						The <span class="fragment"><b><i>runtime</i></b>,</span> along with the <span class="fragment"><b><i>manifest data</i></b>,</span> is basically all the code <span class="fragment"><b><i>webpack</i></b></span> needs to connect your modularized app while it's <span class="fragment"><b><i>running</i></b></span> in the browser.
+					</p>
+				</section>
+				<section data-background="#ffc600" data-background-image="images/manifesting.jpg" data-background-size="cover" data-background-position="center" data-background-repeat="no-repeat">
+					<h3>Manifest</h3>
+					<p class="fragment" style="background: rgba(250, 235, 215, 0.7)">
+						<span class="fragment"><code>manifest</code></span> refers to the collection of module related data <span class="fragment"><code>runtime</code></span> uses to resolve and load modules after they have been bundled and shipped to the browser.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Side Effects</h3>
+					<p class="fragment">
+						So why mention all of this? Because <span class="fragment"><code>runtime</code></span> and <span class="fragment"><code>manifest</code></span> affect <span class="fragment"><code>browser caching</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>[chunkhash]</h3>
+					<p>
+						When you start using <span class="fragment"><code>[chunkhash]</code>,</span> certain hashes change even when their content does not. This is caused by the <span class="fragment"><code>injection</code></span> of <span class="fragment"><code>runtime</code></span> and <span class="fragment"><code>manifest</code>,</span> which change every build.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Commons Chunk Plugin</h3>
+					<p>
+						We can use the <b><i>webpack</i></b> <span class="fragment"><code>CommonsChunkPlugin</code></span> to <span class="fragment"><code>extract</code></span> <b><i>webpack</i></b>'s boilerplate runtime and manifest.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>[name] > 1</h3>
+						<pre class="fragment"><code data-trim>
+				new webpack.optimize.CommonsChunkPlugin({
+				  name: 'vendor',
+				  minChunks: Infinity
+				}),
+				new webpack.optimize.CommonsChunkPlugin({
+				  name: 'runtime'
+				}),
+						</code></pre>
+					<p class="fragment">
+						I added a second <span class="fragment"><code>[name] property</code></span> with the value of <span class="fragment"><code>runtime</code></span> so I  could extract the <span class="fragment"><code>runtime/manifest data</code></span> code from <span class="fragment"><code>vendor.js</code></span> to create a separate <span class="fragment"><code>runtime.js</code></span> file.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Separating Concerns</h3>
+					<p class="fragment">
+						Separating <span class="fragment"><code>runtime</code></span> code from <span class="fragment"><code>vendor</code></span> code is the first step towards making sure that the <span class="fragment"><code>vendor hash</code></span> does not change with each new build unless a new 3rd party plugin is added.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Resolving Order</h3>
+						<pre class="fragment"><code data-trim>
+				[gQNZ] ./src/style/style.css 307 bytes {1} [built]
+				[lVK7] ./src/index.js 846 bytes {1} [built]
+				[olkN] ./src/store.js 354 bytes {1} [built]
+				[pnOm] ./src/App.js 3.01 kB {1} [built]
+				[tuRH] ./src/reducers/todo.js 874 bytes {1} [built]
+				[z7yQ] ./src/logo.svg 3.52 kB {1} [built]
+				+ 2 hidden modules
+						</code></pre>
+					<p class="fragment">
+						However, this <span class="fragment"><code>code splitting</code></span> is not enough. Each time a new build takes place, each <span class="fragment"><code>module.id</code></span> is incremented based on resolving order by default. When the resolving order is changed, the <span class="fragment"><code>module.id</code></span> changes.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Blocking Change</h3>
+					<p>
+						So how can we prevent vendor's <span class="fragment"><code>[chunkhash]</code></span> from changing? There are two <b><i>webpack</i></b> plugins that can get us there. One is the <span class="fragment"><code>NamedModulesPlugin</code>,</span> and the other is the <span class="fragment"><code>HashedModuleIdsPlugin</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Named Modules Plugin</h3>
+						<pre class="fragment"><code data-trim>
+				new webpack.NamedModulesPlugin(),
+				new webpack.optimize.CommonsChunkPlugin({
+				  name: 'vendor',
+				  minChunks: Infinity
+				}),
+						</code></pre>
+					<p class="fragment">
+						Uses the <span class="fragment"><code>path to the module</code></span> instead of a <span class="fragment"><code>numerical identifier.</code></span> It's useful in <span class="fragment"><code>development</code></span> because the output is more readable, but it also takes a bit longer to run.
+					</p>
+					<aside class="notes">
+						Run a new build in Terminal to show that only bundle.js and runtime.js [chunkhashes] change. Then even remove the call to NamedModulesPlugin in webpack development config to show that vendor.js [chunkhash] changes when that happens. Then put it back.
+					</aside>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Hashed Module Ids Plugin</h3>
+						<pre class="fragment"><code data-trim>
+				new webpack.HashedModuleIdsPlugin(),
+				new webpack.optimize.CommonsChunkPlugin({
+				  name: 'vendor',
+				  minChunks: Infinity
+				}),
+						</code></pre>
+					<p class="fragment">
+						Recommended for <span class="fragment"><code>production</code></span> builds. It causes <span class="fragment"><code>hashes</code></span> to be based on the <span class="fragment"><code>relative path of the module,</code></span> generating a <span class="fragment"><code>4 character string</code></span> as the <span class="fragment"><code>module id.</code></span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Vendor remains constant</h3>
+					<p class="fragment">
+						So if we were to run a new build, only the [chunkhash] for <span class="fragment"><code>bundle.js</code></span> and <span class="fragment"><code>runtime.js</code></span> would change.
+					</p>
+					<aside class="notes">
+						Run a new build in Terminal to show that only bundle.js and runtime.js [chunkhashes] change. Then even remove the call to HashedModuleIdsPlugin in webpack production config to show that vendor.js [chunkhash] changes when that happens. Then put it back.
+					</aside>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Loaders</h3>
+					<p class="fragment">
+						<b>webpack</b> <span class="fragment"><code>loaders</code></span> transform your files into modules as they are added to your <span class="fragment"><code>dependency graph</code>.</span> <span class="fragment"><code>Loaders</code></span> have 2 main purposes:
+					</p>
+					<ul>
+						<li class="fragment">
+							Identify which file or files should be transformed by a loader (<code>test</code> property)
+						</li>
+						<li class="fragment">
+							Transform those files so that they can be added to your dependency graph, and eventually your <code>bundle.js</code>. (<code>use</code> property)
+						</li>
+					</ul>
+				</section>
+				<section data-background="#ffc600">
+					<h3>JS? Rules</h3>
+						<pre class="fragment"><code data-trim>
+				rules: [
+				  {
+					test: /\.js?/,
+					use: {
+					  loader: 'babel-loader',
+					  options: {
+						presets: ['env', 'stage-1', 'stage-2', 'jest', 'react']
+					  }
+					},
+					exclude: /node_modules/
+				  },
+				]
+						</code></pre>
+					<aside class="notes">
+						The js? rules array consisting of the test, use, and exclude properties. It appears both in my webpack development and production config files.
+					</aside>
+				</section>
+				<section data-background="#ffc600">
+					<h3>JS? test property</h3>
+						<pre class="fragment"><code data-trim>
+				test: /\.js?/,
+						</code></pre>
+					<p class="fragment">
+						The <span class="fragment"><code>test</code></span> property tells webpack what kind of file to match to the <span class="fragment"><code>babel-loader</code></span> and its preset options,
+					<p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>JS? use property</h3>
+						<pre class="fragment"><code data-trim>
+				use: {
+				  loader: 'babel-loader',
+				  options: {
+					presets: ['env', 'stage-1', 'stage-2', 'jest', 'react']
+				  }
+				},
+						</code>
+					</pre>
+					<p class="fragment">
+						and then it <span class="fragment"><code>uses</code></span> that loader to transform those files before adding it to bundle.js. The regex <span class="fragment"><code>/\.js?/</code></span> refers to any extension that starts with <span class="fragment"><code>.js</code>.</span> This means that <span class="fragment"><code>.jsx</code></span> files could and would be included.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Exclude Property</h3>
+						<pre class="fragment"><code data-trim>
+				exclude: /node_modules/
+						</code></pre>
+					<p class="fragment">
+						The <span class="fragment"><code>exclude</code></span> property means that whatever modules match the <span class="fragment"><code>/node_modules/</code></span> regex should be excluded from <span class="fragment"><code>bundle.js</code>.</span>
+					</p>
+				</section>
+				</section>
+				<section data-background="#ffc600">
+					<h3>CSS test property</h3>
+						<pre class="fragment"><code data-trim>
+				test: /\.css$/,
+						</code></pre>
+				</section>
+				<section data-background="#ffc600">
+					<h3>CSS use property</h3>
+						<pre class="fragment"><code data-trim>
+				{
+				  test: /\.css$/,
+				  use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: ['css-loader', 'postcss-loader']
+				  })),
+				},
+						</code></pre>
+				</section>
+				<section data-background="#ffc600">
+					<h3>css hot loader</h3>
+					<p class="fragment">
+						Supports <span class="fragment"><code>hot module replacement</code></span> <span class="fragment"><code>(HMR)</code></span> for an extracted css file. <span class="fragment"><code>shepherdwind</code>,</span> the creator of css-hot-loader, came up with the idea because <span class="fragment"><code>style-loader</code>,</span> which also can achieve css hot reload, needs to inject a style tag into index.html. And this can happen before JS scripts are loaded, resuslting in a page with no styles.
+					</p>
+					<a class="fragment" href="https://github.com/shepherdwind/css-hot-loader">css-hot-loader on Github</a>
+					<a class="fragment" href="https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/30">extract-text-webpack-plugin issue #30</a>
+					<a class="fragment" href="https://github.com/webpack-contrib/extract-text-webpack-plugin/pull/89">extract-text-webpack-plugin issue #89</a>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Hot Module Replacement</h3>
+					<p class="fragment">
+						<span class="fragment"><code>HMR</code></span> <span class="fragment"><code>exchanges,</code></span> <span class="fragment"><code>adds,</code></span> or <span class="fragment"><code>removes</code></span> modules while an app is <span class="fragment"><code>running,</code></span> without a <span class="fragment"><code>full reload</code>.</span> It can speed up <span class="fragment"><code>development</code></span> because:
+					</p>
+					<ul>
+						<li class="fragment">
+							Can retain app state which is lost during a full reload.
+						</li>
+						<li class="fragment">
+							Save valuable development time by only updating what has changed.
+						</li>
+						<li class="fragment">
+							Tweak styling faster.
+						</li>
+					</ul>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Extract Text Webpack Plugin</h3>
+						<pre class="fragment"><code data-trim>
+				new ExtractTextPlugin({
+				  filename: 'style.[contenthash:8].css',
+				}),
+						</code></pre>
+					<p class="fragment">
+						Extracts text from <span class="fragment"><code>bundle.js</code></span> into its own separate file. And the CSS bundle is loaded in parallel to the JS bundle, thereby speeding up load time.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>[contenthash]</h3>
+					<p class="fragment">
+						<span class="fragment"><code>[contenthash]</code></span> returns a hash specific to content. It is available for the <span class="fragment"><code>extract-text-webpack-plugin</code></span> only, and is the most specific hash option available in <b>webpack</b>. And it's great to use with css files for <span class="fragment"><code>browser caching</code>.</span> The hash only changes when the <span class="fragment"><code>css</code></span> changes.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Image Webpack Loader</h3>
+						<pre class="fragment"><code data-trim>
+				import logo from './logo.svg';
+
+				<div className="App-header">
+				  <img src={logo} className="App-logo" alt="logo" />
+				  <h2>Welcome to React with Redux</h2>
+				</div>
+						</code></pre>
+					<p class="fragment">
+						<span class="fragment"><code>Image loader</code></span> module for <b>webpack</b>, and this is what it permits you to do in your <span class="fragment"><code>React Component</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Image Webpack Loader</h3>
+						<pre class="fragment"><code data-trim>
+				{
+				  test: /\.(jpeg?g|png|gif|svg|ico)$/,
+				  use: [
+					{
+					  loader: 'url-loader',
+					  options: { limit: 40000 }
+					},
+					'image-webpack-loader'
+				  ]
+				},
+						</code></pre>
+					<p class="fragment">
+						The code you need to add to your <span class="fragment"><code>webpack config</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Plugins</h3>
+					<p class="fragment">
+						<span class="fragment"><code>Loaders</code></span> only execute a transform on a <span class="fragment"><code>per-file</code></span> basis. <span class="fragment"><code>Plugins</code></span> are most commonly used to perform actions and custom functionality on <span class="fragment"><code>"compilations"</code></span> or <span class="fragment"><code>"chunks"</code></span> of your bundled modules.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Require</h3>
+						<pre class="fragment"><code data-trim>
+				const htmlWebpackPlugin = require('html-webpack-plugin');
+				plugins: [
+
+				]
+						</code></pre>
+					<p class="fragment">
+						In order to use a plugin, you have to <span class="fragment"><code>require</code></span> it,
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Add</h3>
+						<pre class="fragment"><code data-trim>
+				plugins: [
+				  new htmlWebpackPlugin({
+					template: 'src/index.html',
+					favicon: 'src/images/favicon.ico',
+					inject: true
+				  }),
+				]
+						</code></pre>
+					<p class="fragment">
+						and then <span class="fragment"><code>add</code></span> it to the <span class="fragment"><code>plugins array</code>.</span> And since you can use the same plugin many times in the same config for different purposes, you need to create an instance of it by calling it with <span class="fragment"><code>new</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>HTML Webpack Plugin</h3>
+						<pre class="fragment"><code data-trim>
+				plugins: [
+				  new htmlWebpackPlugin({
+					template: 'src/index.html',
+					favicon: 'src/images/favicon.ico',
+					inject: true
+				  }),
+				]
+						</code></pre>
+					<p class="fragment">
+						<span class="fragment">Simplifies the creation of your <span class="fragment"><code>html</code></span> files.</span> <span class="fragment">Useful for webpack bundles that include <span class="fragment"><code>hashes</code></span> in the <span class="fragment"><code>filenames</code>.</span></span> <span class="fragment">Great for <span class="fragment"><code>html templating</code>.</span></span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Named Modules Plugin</h3>
+						<pre class="fragment"><code data-trim>
+				new webpack.NamedModulesPlugin(),
+				new webpack.optimize.CommonsChunkPlugin({
+				  name: 'vendor',
+				  minChunks: Infinity
+				}),
+						</code></pre>
+					<p class="fragment">
+						Will cause the display of the <span class="fragment"><code>relative path</code></span> of a module in Terminal when <span class="fragment"><code>HMR</code></span> is enabled. Good for <span class="fragment"><code>development</code>.</span>
+					</p>
+					<aside class="notes">
+						Run a new build in Terminal to show that only bundle.js and runtime.js [chunkhashes] change. Then even remove the call to NamedModulesPlugin in webpack development config to show that vendor.js [chunkhash] changes when that happens. Then put it back.
+					</aside>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Hashed Module Ids Plugin</h3>
+						<pre class="fragment"><code data-trim>
+				new webpack.HashedModuleIdsPlugin(),
+				new webpack.optimize.CommonsChunkPlugin({
+				  name: 'vendor',
+				  minChunks: Infinity
+				}),
+						</code></pre>
+					<p class="fragment">
+						Will cause <span class="fragment"><code>hashes</code></span> to be based on the <span class="fragment"><code>relative path</code></span> of a module in Terminal, generating a <span class="fragment"><code>4 character string</code></span> as the <span class="fragment"><code>module id</code>.</span> Good for <span class="fragment"><code>production</code>.</span>
+					</p>
+					<aside class="notes">
+						Run a new build in Terminal to show that only bundle.js and runtime.js [chunkhashes] change. Then even remove the call to HasedModuleIdsPlugin in webpack production config to show that vendor.js [chunkhash] changes when that happens. Then put it back.
+					</aside>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Commons Chunk Plugin</h3>
+						<pre class="fragment"><code data-trim>
+				new webpack.optimize.CommonsChunkPlugin({
+				  name: 'vendor',
+				  minChunks: Infinity
+				}),
+				new webpack.optimize.CommonsChunkPlugin({
+				  name: 'runtime'
+				}),
+						</code></pre>
+					<p class="fragment">
+						Creates a separate file known as a <span class="fragment"><code>chunk</code>,</span> consisting of <span class="fragment"><code>common modules</code></span> shared between <span class="fragment"><code>multiple entry points</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Benefits</h3>
+					<p class="fragment">
+						By separating <span class="fragment"><code>common modules</code></span> from <span class="fragment"><code>bundles</code>,</span> the resulting chunked file can be loaded once initially, and <span class="fragment"><code>stored in cache</code></span> for later use. This results in <span class="fragment"><code>pagespeed optimization</code></span> because the browser can serve the shared code from the cache instead of loading a larger bundle whenever a new page is visited.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Extract Text Webpack Plugin</h3>
+						<pre class="fragment"><code data-trim>
+				new ExtractTextPlugin({
+				  filename: 'style.[contenthash:8].css',
+				}),
+						</code></pre>
+					<p class="fragment">
+						We use the <span class="fragment"><code>extract-text-webpack-plugin</code></span> with our <span class="fragment"><code>css loaders</code></span> to execute the initial extraction of <span class="fragment"><code>css</code></span> from <span class="fragment"><code>bundle.js</code>.</span> But this <span class="fragment"><code>css</code></span> also needs to be told <b><i>WHERE</i></b> to go.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Define Plugin</h3>
+						<pre class="fragment"><code data-trim>
+				new webpack.DefinePlugin({
+				  DEV: true
+				}),
+						</code></pre>
+					<p class="fragment">
+						Allows you to create <span class="fragment"><code>global constants</code></span> which can be configured at <span class="fragment"><code>compile</code></span> time.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Benefit</h3>
+						<pre class="fragment"><code data-trim>
+				new webpack.DefinePlugin({
+				  DEV: false,
+				  'process.env.NODE_ENV': JSON.stringify('production')
+				}),
+						</code></pre>
+					<p class="fragment">
+						Allows for different behavior between <span class="fragment"><code>development</code></span> and <span class="fragment"><code>production</code></span> builds.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>devtool property</h3>
+						<pre class="fragment"><code data-trim>
+				devtool: 'eval-source-map',
+						</code></pre>
+					<p class="fragment">
+						Controls how source maps are generated. With <span class="fragment"><code>eval-source-map</code>,</span> each module is executed with <span class="fragment"><code>eval()</code></span> and a <span class="fragment"><code>SourceMap</code></span> is add as a <span class="fragment"><code>DataUrl</code></span> to the <span class="fragment"><code>eval()</code>.</span> Initally slow, but fast on rebuild and yields <span class="fragment"><code>real files</code>.</span> Lines are also correctly mapped because they get mapped to the <span class="fragment"><code>original code</code>.</span> Good for <span class="fragment"><code>development</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>devtool property</h3>
+						<pre class="fragment"><code data-trim>
+				devtool: 'source-map',
+						</code></pre>
+					<p class="fragment">
+						With <span class="fragment"><code>source-map</code>,</span> a full <span class="fragment"><code>SourceMap</code></span> is emitted as a separate file. It adds a <span class="fragment"><code>reference comment</code></span> to the bundle so <span class="fragment"><code>devtools</code></span> knows where to find it. Good for <span class="fragment"><code>production.</code></span> Other production options are <span class="fragment"><code>none</code>,</span> <span class="fragment"><code>hidden-source-map</code>,</span> and <span class="fragment"><code>nosources-source-map</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>devServer Object</h3>
+						<pre class="fragment"><code data-trim>
+				devServer: {
+				  inline: true,
+				  stats: 'minimal',
+				  open: true,
+				  contentBase: './src/',
+				  historyApiFallback: true,
+				  port: port
+				},
+						</code></pre>
+					<p class="fragment">
+						Picked up by the <span class="fragment"><code>webpack-dev-server</code></span> plugin and can be used to change its <span class="fragment"><code>behavior</code></span> in various ways.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>inline property</h3>
+						<pre class="fragment"><code data-trim>
+				inline: true,
+						</code></pre>
+					<p class="fragment">
+						Means that a <span class="fragment"><code>script</code></span> will be inserted in your <span class="fragment"><code>bundle</code></span> to take care of <span class="fragment"><code>live reloading</code>,</span> and <span class="fragment"><code>build messages</code></span> will appear in the <span class="fragment"><code>terminal console</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>stats property</h3>
+						<pre class="fragment"><code data-trim>
+				stats: 'minimal',
+						</code></pre>
+					<p class="fragment">
+						The <span class="fragment"><code>stats</code></span> property refers to the stats that are printed out to the <span class="fragment"><code>Terminal</code></span> console whenever you either run the <span class="fragment"><code>webpack-dev-server</code></span> for <span class="fragment"><code>development</code></span> or run a new <span class="fragment"><code>production build</code>.</span> For development, it is best to print out stats <span class="fragment"><code>highlights</code></span> rather than more <span class="fragment"><code>detailed</code></span> information.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>open property</h3>
+						<pre class="fragment"><code data-trim>
+				open: true,
+						</code></pre>
+					<p class="fragment">
+						Means that the <span class="fragment"><code>webpack-dev-server</code></span> will open your <span class="fragment"><code>default browser</code></span> when it <span class="fragment"><code>launches</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>contentBase property</h3>
+						<pre class="fragment"><code data-trim>
+				contentBase: './src/',
+						</code></pre>
+					<p class="fragment">
+						Tells the server where to serve content from. Only necessary if you want to serve <span class="fragment"><code>static files</code>.</span> And of course we do! <span class="fragment"><code>index.html</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>ContentBase message</h3>
+						<pre class="fragment"><code data-trim>
+				webpack output is served from /
+				Content not from webpack is served from ./src/
+						</code></pre>
+					<p class="fragment">
+						With <span class="fragment"><code>contentBase</code></span> set to <span class="fragment"><code>./src/</code>,</span> the message pertaining to it will be printed to the <span class="fragment"><code>Terminal console</code></span> when the <span class="fragment"><code>server</code></span> is started.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>history Api Fallback property</h3>
+						<pre class="fragment"><code data-trim>
+				historyApiFallback: true,
+						</code></pre>
+					<p class="fragment">
+						When using the <span class="fragment"><code>HTML5 History API</code></span> (frequently used in React apps), <span class="fragment"><code>index.html</code></span> will probably have to be served instead of a <span class="fragment"><code>404 response</code>.</span> You enable this feature by passing <span class="fragment"><code>true</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>stats object</h3>
+						<pre class="fragment"><code data-trim>
+				stats: {
+				  chunks: true,
+				  modules: true
+				},
+						</code></pre>
+					<p class="fragment">
+						Here, <span class="fragment"><code>stats</code></span> is an object unto itself with properties. It is part of my <span class="fragment"><code>webpack-prod.config.js</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>chunks property</h3>
+						<pre class="fragment"><code data-trim>
+				chunks: true,
+						</code></pre>
+					<p class="fragment">
+						Means that <span class="fragment"><code>built modules</code></span> information should be added to <span class="fragment"><code>chunk</code></span> information in <span class="fragment"><code>Terminal</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>modules property</h3>
+						<pre class="fragment"><code data-trim>
+				modules: true
+						</code></pre>
+					<p class="fragment">
+						This means that modules should be sorted by a <span class="fragment"><code>field</code>.</span> In other words, information printed to console will be more visually organized and readable.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>npm_lifecycle_event</h3>
+					<p class="fragment">
+						I used <span class="fragment"><code>npm_lifecycle_event</code></span> in my webpack configs because it provided me with more options for how I write my <span class="fragment"><code>npm scripts</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>ENV message</h3>
+					<p class="fragment">
+						I set the <span class="fragment"><code>npm_lifecycle_event</code></span> environment variable as the value of <span class="fragment"><code>TARGET_ENV</code>.</span> That's so that I could print a message to <span class="fragment"><code>Terminal</code></span> stating whether I was running a <span class="fragment"><code>development</code></span> or <span class="fragment"><code>production</code></span> build.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Ternary Expression</h3>
+						<pre class="fragment"><code data-trim>
+				const TARGET_ENV = process.env.npm_lifecycle_event === 'build' ? 'production' : 'development';
+						</code></pre>
+					<p class="fragment">
+						I used a <span class="fragment"><code>ternary expression</code></span> because in my <span class="fragment"><code>package.json</code></span> scripts, I was only able to add <span class="fragment"><code>TARGET_ENV=development</code></span> in my <span class="fragment"><code>serve</code></span> script, and not <span class="fragment"><code>TARGET_ENV=production</code></span> in my <span class="fragment"><code>build</code></span> script.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>'production'</h3>
+						<pre class="fragment"><code data-trim>
+				new webpack.DefinePlugin({
+				  DEV: false,
+				  'process.env.NODE_ENV': JSON.stringify('production')
+				}),
+						</code></pre>
+					<p class="fragment">
+						The <span class="fragment"><code>ternary expression</code></span> took care of that, because <span class="fragment"><code>'production'</code></span> appears in the <span class="fragment"><code>new webpack.DefinePlugin</code></span> call in my <span class="fragment"><code>webpack-prod.config.js</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3> Dev vs Prod Envs</h3>
+					<p class="fragment">
+						When I first started using <b><i>webpack</i></b> exclusively for <b><i>React</i></b> web apps, I created only one <span class="fragment"><code>webpack.config.js</code></span> file. But as I started needing more loaders, plugins, and environment customizations, I realized that separating my <span class="fragment"><code>webpack-dev.config.js</code></span> from my <span class="fragment"><code>webpack-prod.config.js</code></span> was the way to go.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3> Dev vs Prod Envs</h3>
+					<p class="fragment">
+						Many developers take it even a step further and create a <span class="fragment"><code>webpack-common.config.js</code></span> file for code <span class="fragment"><code>common</code></span> to both <span class="fragment"><code>development</code></span> and <span class="fragment"><code>production</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>CRA approach</h3>
+					<p class="fragment">
+						And <span class="fragment"><b><i>CRA</i></b></span> takes the <span class="fragment"><code>scripts</code></span> approach. A lot like creating scripts for <span class="fragment"><b><i>Gulp</i></b></span> or <span class="fragment"><b><i>Grunt</i></b></span> tasks.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Custom NPM Scripts</h3>
+						<pre class="fragment"><code data-trim>
+				"scripts": {
+				  "test": "jest",
+				  "clean": "rimraf dist",
+				  "serve": "webpack-dev-server --config webpack-dev.config.js && TARGET_ENV=development",
+				  "build": "npm run clean && webpack --config webpack-prod.config.js",
+				  "deploy": "git subtree push --prefix dist origin gh-pages"
+				},
+						</code></pre>
+					<p class="fragment">
+						You can create <span class="fragment"><code>custom</code>,</span> aka <span class="fragment"><code>local</code>,</span> <span class="fragment"><code>npm scripts</code></span> in your <span class="fragment"><code>package.json</code></span> file.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>clean script</h3>
+						<pre class="fragment"><code data-trim>
+				script: {
+				  "clean": "rimraf dist"
+				}
+						</code></pre>
+					<p class="fragment">
+						Is executed in Terminal by running <span class="fragment"><code>npm run clean</code>.</span> <span class="fragment"><code>rimraf</code></span> is an npm plugin which refers to the <span class="fragment"><code>rm -rf</code></span> comand. It cleans everything within the specified directory and all its subdirectories. It's much faster than the <span class="fragment"><code>clean-webpack-plugin</code>,</span> which does the same thing.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>serve script</h3>
+						<pre class="fragment"><code data-trim>
+				"script": {
+				  "serve": "webpack-dev-server --config webpack-dev.config.js && TARGET_ENV=development"
+				}
+						</code></pre>
+					<p class="fragment">
+						<span class="fragment"><code>webpack-dev-server --config webpack-dev.config.js</code></span> means the <span class="fragment"><b>webpack-dev-server</b></span> will run using the <span class="fragment"><b>webpack dev config</b>.</span> <span class="fragment"><code>TARGET_ENV=development</code></span> ensures that my <span class="fragment"><code>"Serving locally..."</code></span> message gets printed to <span class="fragment"><code>Terminal</code></span> when I run this command.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>build script</h3>
+						<pre class="fragment"><code data-trim>
+				"script: {
+				  "build": "npm run clean && webpack --config webpack-prod.config.js",
+				}"
+						</code></pre>
+					<p class="fragment">
+						First the old <span class="fragment"><code>dist</code></span> is removed with <span class="fragment"><code>clean script</code>,</span> followed by a new build. <b>"Serving for production ..."</b> is still printed out to Terminal because of <span class="fragment"><code>'process.env.NODE_ENV': JSON.stringify('production')</code></span> defined in the call to the <span class="fragment"><b>Define Plugin</b>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>uglifyjs webpack plugin</h3>
+					<p class="fragment">
+						If I tried to use the <span class="fragment"><code>uglifyjs-webpack-plugin</code></span> in production using the <span class="fragment"><code>build script</code>,</span> and I wanted to emit <span class="fragment"><code>source-maps,</code></span> I found that none were emitted. When I removed the <span class="fragment"><code>webpack production config</code></span> from the <span class="fragment"><code>build script,</code></span> then they <span class="fragment"><b><i>were</i></b></span> emitted. I came across other problems with the <span class="fragment"><code>uglifyjs-webpack-plugin</code>,</span> but there is no time to discuss them now. I did, however, learn from the <span class="fragment"><code>webpack docs</code></span> that there are alternatives. I look forward to testing them out.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>POSTCSS</h3>
+					<p class="fragment">
+						<span class="fragment">Now to my favorite part.</span> <span class="fragment">Configuring <b>POSTCSS</b> with webpack and React.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>POSTCSS config</h3>
+						<pre class="fragment"><code data-trim>
+				module.exports = {
+				  plugins: [
+					require('postcss-import'),
+					require('postcss-mixins'),
+					require('postcss-simple-vars'),
+					require('postcss-nested'),
+					require('postcss-hexrgba'),
+					require('autoprefixer')
+				  ]
+				}
+						</code></pre class="fragment">
+					<p class="fragment">
+						In order to make <b>POSTCSS</b> work with <b>webpack</b> (and your React app), you have to create a <span class="fragment"><code>postcss.config.js</code></span> file.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>POSTCSS in webpack.config</h3>
+						<pre class="fragment"><code data-trim>
+				module: {
+				  rules: [
+					{
+					  test: /\.css$/,
+					  use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
+						fallback: 'style-loader',
+						use: ['css-loader', 'postcss-loader']
+					  })),
+					}
+				  ]
+				}
+						</code></pre>
+					<p class="fragment">
+						<span class="fragment"><code>css-hot-loader</code></span> is for <span class="fragment"><code>HMR</code></span> of our <span class="fragment"><code>extracted</code></span> <b>css</b>, and we bring together our <b>POSTCSS</b> modules using <span class="fragment"><code>.concat()</code></span> into a new bundled <b>css</b> file.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Benefits</h3>
+					<ul>
+						<li class="fragment">
+							Allows for modularization (_partialization) of your css in development.
+						</li>
+						<li class="fragment">
+							Instead of spreading out your css modules all over the place, i.e., next to the components they are styling, you place them in the same src folder in development.
+						</li>
+						<li class="fragment">
+							You still end up with a single bundled css file in production.
+						</li>
+						<li class="fragment">
+							Provides all sorts of cool features which make styling your app faster and easier.
+						</li>
+					</ul>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Jest and React without CRA</h3>
+					<ul>
+						<li class="fragment">
+							Jest does not play nice with <b>React JSX</b> out of the box.
+						</li>
+						<li class="fragment">
+							And It doesn't play nice with <b>Babel</b> out of the box either.
+						</li>
+						<li class="fragment">
+							Both take some configuration.
+						</li>
+					</ul>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Configuring Babel for Jest</h3>
+						<pre class="fragment"><code data-trim>
+				npm install babel-jest regenerator-runtime --save-dev
+						</code></pre>
+					<p class="fragment">
+						In configuring Babel for Jest, first install the <span class="fragment"><code>babel-jest</code></span> and <span class="fragment"><code>regenerator-runtime</code></span> <span class="fragment"><code>npm packages</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>.babelrc</h3>
+						<pre class="fragment"><code data-trim>
+				{
+				  "presets": ["env", "stage-1", "stage-2", "jest", "react"]
+				}
+						</code></pre>
+					<p class="fragment">
+						Then add all the babel presets you're using in your app in a <span class="fragment"><code>.babelrc</code></span> file which should reside in the root of your project along with your <span class="fragment"><code>package.json</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>babel-jest and babel-react</h3>
+					<p class="fragment">
+						Are used to <span class="fragment"><code>transform</code></span> our code inside of the <span class="fragment"><code>test</code></span> environment.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>NPM setup without CRA</h3>
+						<pre class="fragment"><code data-trim>
+				npm install jest babel-jest babel-preset-es2015 babel-preset-react react-test-renderer --save-dev
+						</code></pre>
+					<p class="fragment">
+						After you have <span class="fragment"><code>installed</code></span> all these <span class="fragment"><code>devDependencies,</code></span> you are almost ready to go. You are, however, ready to use Jest's <span class="fragment"><code>Snapshot Testing</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Jest, React, and Static Assets</h3>
+						<pre class="fragment"><code data-trim data-noescape>
+				"jest": {
+				  "moduleNameMapper": {
+					"\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+					"\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+				  }
+				},
+						</code></pre>
+					<p class="fragment">
+						Placing the above code into your <span class="fragment"><code>package.json</code></span> lets <b>Jest</b> play nice with asset files such as <span class="fragment"><code>stylesheets</code></span> and <span class="fragment"><code>images</code>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Mock files</h3>
+						<pre class="fragment"><code data-trim>
+				// __mocks__/styleMock.js
+
+				module.exports = {};
+						</code></pre>
+						<pre class="fragment"><code data-trim>
+				// __mocks__/fileMock.js
+
+				module.exports = 'test-file-stub';
+						</code></pre>
+					<p class="fragment">
+						Usually, such files aren't really useful in tests, so we can safely <span class="fragment"><code>mock</code></span> them out.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>identity-obj-proxy</h3>
+						<pre class="fragment"><code data-trim>
+				npm install --save-dev identity-obj-proxy
+						</code></pre>
+					<p class="fragment">
+						If you are using <b>CSS modules</b>, then it's better to mock a proxy for your className lookups.
+					</p>
+					<p class="fragment">
+						First you install the <span class="fragment"><code>identity-obj-proxy</code></span> npm package. This package allows you to use an <span class="fragment"><b>ES6 Proxy</b></span> to mock <span class="fragment"><b>CSS Modules</b>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>package.json</h3>
+						<pre class="fragment"><code data-trim data-noescape>
+				// package.json (for CSS Modules)
+				"jest": {
+				  "moduleNameMapper": {
+				    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+				    "\\.(css|less)$": "identity-obj-proxy"
+				  }
+				}
+						</code></pre>
+					<p class="fragment">
+						<span class="fragment"><code>"<rootDir>/__mocks__/styleMock.js"</code></span> is replaced with <span class="fragment"><code>"identity-obj-proxy"</code>.</span> Great for <span class="fragment"><b>Jest Snapshot Testing</b>.</span>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Wrap Up</h3>
+					<p class="fragment">
+						When I first started working on my <b>React workflow</b>, it was some time back. I even left it for a bit and then returned to continue. Much has changed since then.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>CRA</h3>
+					<p class="fragment">
+						<b><i>CRA</i></b> has piled on more <b><i>features</i></b> and <b><i>documentation</i></b>! Whether you end up using it or not, it is worth following them on <b><i>Github</i></b>, visiting their <b><i>issues threads</i></b>, and becoming acquainted with their <b>documentation</b>. They even suggest <b><i>alternatives</i></b>!
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Custom React App - Amido</h3>
+						<blockquote class="twitter-tweet tw-align-center" data-lang="en"><p lang="en" dir="ltr">Customising <a href="https://twitter.com/reactjs">@reactjs</a> create-react-app has been super useful; I&#39;ve written a blog post for <a href="https://twitter.com/WeAreAmido">@WeAreAmido</a> about it <a href="https://t.co/JNEPSQJmIT">https://t.co/JNEPSQJmIT</a></p>&mdash; Callum Mellor-Reed (@callummr) <a href="https://twitter.com/callummr/status/910079163998130176">September 19, 2017</a></blockquote>
+						<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+				</section>
+				<section data-background="#ffc600">
+					<h3>React</h3>
+					<p class="fragment">
+						The <b>React</b> team has been sensitive to developers' needs. For the longest time, they were discussing how to better serve developers in development and production. According to threads I came across on <b>Github</b>, many developers were <b>deploying</b> <b><i>development</i></b> instead of <b><i>production</i></b> code without realizing it. So <b>React</b> responded by adding a little icon to <b>React DevTools</b> that would signal to developers whether their application was <b>deployed</b> with <b><i>development</i></b> or <b><i>production</i></b> code.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>React DevTools</h3>
+					<p class="fragment">
+						If a <B>React</B> application is deployed with <b><i>development</i></b> code, the <b>icon</b> appears <b><i>red</i></b>. If it is deployed with <b><i>production</i></b> code, it appears <b>black</b>. In addition, a new <b><i>warning</i></b> appears in the <b>browser console</b> telling you if your application is running with minified <b><i>development</i></b> code rather than <b><i>production</i></b>.
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>webpack</h3>
+					<p class="fragment">
+						<b><i>webpack</i></b> has drastically improved their <b>documentation</b>, making it easier to master. If you haven't already checked it out, you should. They're doing a really great job!
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Bye Bye patents!</h3>
+					<p>
+						I learned last week via <a href="https://twitter.com/wesbos">@wesbos</a> that Facebook is relicensing <b><i>React</i></b>, <b><i>Jest</i></b>, <b><i>Flow</i></b>, and <b><i>Immutable.js</i></b> under the <b>MIT license</b>!
+						<blockquote>
+							We're relicensing these projects because React is the foundation of a broad ecosystem of open source software for the web, and we don't want to hold back forward progress for nontechnical reasons. - <a href="https://code.facebook.com/posts/300798627056246/relicensing-react-jest-flow-and-immutable-js/" target="_blank">Adam Wolff, Facebook Engineering</a>
+						</blockquote>
+					</p>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Resources</h3>
+					<ul>
+						<li>
+							<a href="https://github.com/interglobalmedia/react-app-with-redux">React App With Redux on Github<br>(contains code I refer to in presentation)</a>
+						</li>
+						<li>
+							<a href="https://github.com/interglobalmedia/react-app-with-redux">React App With Redux<br> (contains workflow I describe in presentation)</a>
+						</li>
+						<li>
+							<a href="https://webpack.js.org/configuration/" target="_blank">webpack documentation</a>
+						</li>
+						<li>
+							<a href="https://facebook.github.io/jest/docs/en/webpack.html" target="_blank">Jest and webpack</a>
+						</li>
+						<li>
+							<a href="https://facebook.github.io/jest/docs/en/webpack.html#content" target="_blank">Handling Static Assets with Jest</a>
+						</li>
+					</ul>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Resources contd</h3>
+					<ul>
+						<li>
+							<a href="https://facebook.github.io/jest/docs/en/tutorial-react.html#content" target="_blank">Testing React Apps With Jest</a>
+						</li>
+
+						<li>
+							<a href="https://github.com/facebookincubator/create-react-app" target="_blank">create-react-app on Github</a>
+						</li>
+						<li>
+							<a href="https://facebook.github.io/react/docs/hello-world.html" target="_blank">React Docs</a>
+						</li>
+						<li>
+							<a href="https://facebook.github.io/react/docs/optimizing-performance.html" target="_blank">Optimizing Performance in React<br>(a must read)</a>
+						</li>
+						<li>
+							<a href="https://github.com/postcss/postcss" target="_blank">POSTCSS on Github</a>
+						</li>
+					</ul>
+				</section>
+				<section data-background="#ffc600">
+					<h3>Resources contd</h3>
+					<ul>
+						<li>
+							<a href="https://github.com/shepherdwind/css-hot-loader" target="_blank">css-hot-loader on Github</a>
+						</li>
+						<li>
+							<a href="https://developer.mozilla.org/en-US/docs/Web/API/History" target="_blank">HTML5 History API</a>
+						</li>
+						<li>
+							<a href="https://github.com/facebook/react/issues/8784" target="_blank">Explore encouraging users to not ship DEV mode to production (a must read!)</a>
+						</li>
+						<li>
+							<a href="https://blog.hellojs.org/deploying-to-gh-pages-with-git-subtree-da743c531a" target="_blank">Deploying to gh pages with git subtree</a>
+						</li>
+						<li>
+							<a href="https://code.facebook.com/posts/300798627056246/relicensing-react-jest-flow-and-immutable-js/" tqarget="_blank">Relicensing React, Jest, Flow, and Immutable.js</a>
+						</li>
+						<li>
+							<a href="https://labs.mlssoccer.com/the-road-to-universal-components-at-major-league-soccer-eeb7aac27e6c" target="_blank">The Road to Universal Components at Major League Soccer (includes <b><i>Storybook</i></b> and <b><i>React Native</i></b>)</a>
+						</li>
+					</ul>
+				</section>
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				slideNumber: true,
+				progress: true,
+				keyboard: true,
+				overview: true,
+				touch: true,
+				fragments: true,
+				showNotes: false,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
