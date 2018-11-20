@@ -1,0 +1,32 @@
+{
+    "name": "react-workflow-presentation-updated",
+    "version": "0.0.2",
+    "description": "React Workflows Without Create React App Updated Presentation and Documentation",
+    "main": "index.js",
+    "directories": {
+        "lib": "lib"
+    },
+    "scripts": {
+        "clean": "rimraf dist",
+        "dist": "mkdir dist",
+        "prebuild": "cp index.html dist/",
+        "build": "cp -R plugin lib js images css dist/",
+        "postbuild": "gh-pages -d dist"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/interglobalmedia/react-workflow-updated-2018.git"
+    },
+    "author": "Maria D. Campbell",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/interglobalmedia/react-workflow-updated-2018/issues"
+    },
+    "homepage": "https://github.com/interglobalmedia/react-workflow-updated-2018#readme",
+    "devDependencies": {
+        "rimraf": "^2.6.2"
+    },
+    "dependencies": {
+        "gh-pages": "^2.0.1"
+    }
+}
