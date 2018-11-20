@@ -250,8 +250,9 @@
                 <pre class="fragment"><code data-trim>
                 module.exports = {
                     entry: {
-                        bundle: './src/index.js',
-                        vendor: VENDOR_LIBS
+                        vendor: VENDOR_LIBS,
+                        bundle: './src/index.js'
+                        
                     },
                 }
                 </code></pre>
@@ -262,18 +263,20 @@
             <section data-background="#ffc600">
                 <h3>main index.js</h3>
                 <pre class="fragment"><code data-trim>
-				import React from 'react';
-				import ReactDOM from 'react-dom';
-				import './favicon.ico';
-				import App from './App';
-				import './styles.scss';
-
-				import './style/style.css';
-
-				ReactDOM.render(<App />, document.getElementById('app'));
+                import React from 'react';
+                import ReactDOM from 'react-dom';
+                import App from './App';
+                import './favicon.ico';
+                import './styles.scss';
 				</code></pre>
                 <p class="fragment">
-                    The files which need to be included in the bundled file in output have all been imported into the <b><i>main</i></b> <span class="fragment"><a href="https://github.com/interglobalmedia/react-timeline-app/blob/master/src/index.js" target="_blank"><code>index.js</code></a></span>                    file.
+                    The files which need to be included in the bundled file in output have all been imported into the
+                    <b><i>main</i></b>
+                    <span class="fragment">
+                        <a href="https://github.com/interglobalmedia/react-timeline-app/blob/master/src/index.js" target="_blank">
+                            <code>index.js</code>
+                        </a>
+                    </span> file.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -352,7 +355,8 @@
                 </code></pre>
                 <p class="fragment">
                     The value of the first property, <span class="fragment"><code>filename</code>,</span> refers to the <b class="fragment">name(s)</b> of output <b class="fragment">bundle(s)</b>. Note the <b>ternary operator</b>. I will talk about that
-                    later. Previously, when I used the <code>CommonsChunkPlugin</code> and not the <code>SplitChunksPlugin</code>, the <b>name</b> of the <b>hash</b> I used was <code class="fragment">[chunkhash:8]</code>. Now that we all are using the
+                    later. Previously, when I used the <code class="fragment">CommonsChunkPlugin</code> and not the <code class="fragment">SplitChunksPlugin</code>, the <b>name</b> of the <b>hash</b> I used was <code class="fragment">[chunkhash:8]</code>.
+                    Now that we all are using the
                     <code class="fragment">SplitChunksPlugin</code> with <b class="fragment">webpack</b>, we have to use
                     <code class="fragment">[contenthash]</code>.
                 </p>
