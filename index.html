@@ -599,7 +599,7 @@
             				new webpack.NamedModulesPlugin(),
             				</code></pre>
                 <p class="fragment">
-                    <p class="fragment">The previous build output in Terminal is possible thanks to the <code class="fragment">NamedModulesPlugin</code></p>
+                    <p class="fragment">The previous build output in Terminal is possible thanks to the <code class="fragment">NamedModulesPlugin</code>.</p>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -712,7 +712,7 @@
             </section>
             <section data-background="#ffc600">
                 <h3>HashedModuleIdsPlugin</h3>
-                <p class="fragment">The previous build output in Terminal is possible thanks to the <code class="fragment">HashedModuleIdsPlugin</code></p>
+                <p class="fragment">The previous build output in Terminal is possible thanks to the <code class="fragment">HashedModuleIdsPlugin</code>.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>Publishing to gh-pages on Build</h3>
@@ -777,8 +777,8 @@
                 <h3>HtmlWebpackPlugin Configuration</h3>
                 <p><b>inject</b></p>
                 <p class="fragment">
-                    <b><i>default</i></b> is set to <code class="fragment">true</code>. I always like to make sure that my <b>JS</b> assets are placed at the bottom of the <code class="fragment">body</code> element, so I use <code>true</code>. You can
-                    check out other options in the <b>HtmlWebpackPlugin</b>
+                    <b><i>default</i></b> is set to <code class="fragment">true</code>. I always like to make sure that my <b class="fragment">JS</b> assets are placed at the bottom of the <code class="fragment">body</code> element, so I use <code class="fragment">true</code>.
+                    You can check out other options in the <b>HtmlWebpackPlugin</b>
                     <a href="https://github.com/jantimon/html-webpack-plugin" target="_blank">docs</a>.
                 </p>
             </section>
@@ -808,7 +808,7 @@
             <section data-background="#ffc600">
                 <h3>Blocking Change</h3>
                 <p>
-                    So how can we prevent vendor's <span class="fragment"><code>[chunkhash]</code></span> from changing? There are two <b><i>webpack</i></b> plugins that can get us there. One is the <span class="fragment"><code>NamedModulesPlugin</code>,</span>                    and the other is the <span class="fragment"><code>HashedModuleIdsPlugin</code>.</span>
+                    So how can we prevent vendor's <span class="fragment"><code>[contenthash]</code></span> from changing? There are two <b><i>webpack</i></b> plugins that can get us there. One is the <span class="fragment"><code>NamedModulesPlugin</code>,</span>                    and the other is the <span class="fragment"><code>HashedModuleIdsPlugin</code>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -837,7 +837,7 @@
             <section data-background="#ffc600">
                 <h3>Vendor remains constant</h3>
                 <p class="fragment">
-                    So if we were to run a new build, only the [chunkhash] for <span class="fragment"><code>bundle.js</code></span> and <span class="fragment"><code>manifest.js</code></span> would change.
+                    So if we were to run a new build, only the <code class="fragment">[contenthash]</code> for <span class="fragment"><code>bundle.js</code></span> and <span class="fragment"><code>manifest.js</code></span> would change.
                 </p>
                 <aside class="notes">
                     Run a new build in Terminal to show that only bundle.js and runtime.js [chunkhashes] change. Then even remove the call to HashedModuleIdsPlugin in webpack production config to show that vendor.js [chunkhash] changes when that happens. Then put it back.
@@ -858,26 +858,26 @@
                 </ul>
             </section>
             <section data-background="#ffc600">
-                <h3>JS? Rules</h3>
+                <h3>JS$ Rules</h3>
                 <pre class="fragment"><code data-trim>
-				rules: [
+                rules: [
                     {
-                        test: /\.js?/,
+                        test: /\.js$/,
                         exclude: /node_modules/,
                         use: {
                             loader: 'babel-loader'
                         }
                     },
-				]
-						</code></pre>
+                ]
+				</code></pre>
                 <aside class="notes">
-                    The js? rules array consisting of the test, use, and exclude properties. It appears both in my webpack development and production config files.
+                    The js$ rules array consisting of the test, use, and exclude properties. It appears both in my <b class="fragment">webpack.base.config.js</b> files.
                 </aside>
             </section>
             <section data-background="#ffc600">
-                <h3>JS? test property</h3>
+                <h3>JS$ test property</h3>
                 <pre class="fragment"><code data-trim>
-				test: /\.js?/,
+				test: /\.js$/,
 						</code></pre>
                 <p class="fragment">
                     The <span class="fragment"><code>test</code></span> property tells webpack what kind of file to match to the <span class="fragment"><code>babel-loader</code></span>. The regex <span class="fragment"><code>/\.js?/</code></span> refers
@@ -895,7 +895,7 @@
                 </p>
             </section>
             <section data-background="#ffc600">
-                <h3>JS? use property</h3>
+                <h3>JS$ use property</h3>
                 <pre class="fragment"><code data-trim>
 				use: {
 				  loader: 'babel-loader',
@@ -908,7 +908,7 @@
             </section>
             <section data-background="#ffc600">
                 <h3>Babel 7</h3>
-                <p class="fragment">Note how the only reference to Babel in the previous slide is <code>loader</code>. Before Babel 7, I would also include <code>presets</code>.</p>
+                <p class="fragment">Note how the only reference to Babel in the previous slide is <code class="fragment">loader</code>. Before Babel 7, I would also include <code class="fragment">presets</code>.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>Babel
