@@ -437,6 +437,77 @@
                 <p class="fragment">Allows you to use the <b class="fragment">require module</b> in your applications.</p>
             </section>
             <section data-background="#ffc600">
+                <h3>Babel 7 Plugins</h3>
+                <p class="fragment">the <b><i>whys </i></b>contd</p>
+                <pre class="fragment"><code data-trim>
+                    "@babel/plugin-proposal-class-properties": "^7.1.0",
+                </code></pre>
+                <p class="fragment">Transforms <b class="fragment">ES6 class syntax</b> into <b class="fragment">ES5 constructor functions</b>. But the <code class="fragment">class syntax feature</code> has not yet been <b class="fragment"><i>approved</i></b>, so it is still
+                    called a <b class="fragment"><i>proposal</i></b>. With <b>Babel 7</b>, we must add the equivalent <b>Babel plugin</b> for each <b><i>modern</i></b> <b>JS feature</b> we want to implement in our applications. That's because there are
+                    no longer <b class="fragment">stage presets</b> in <b>Babel 7</b>.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Babel 7 Plugins</h3>
+                <p class="fragment">the <b><i>whys </i></b>contd</p>
+                <pre class="fragment"><code data-trim>
+                    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+                </code></pre>
+                <p class="fragment">
+                    <b class="fragment">ES6 modules</b> allow us to import something <b><i>from</i></b> something else:
+                </p>
+                <pre class="fragment"><code data-trim>
+                    import * as name from "module-name";
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Babel 7 Plugins</h3>
+                <p class="fragment">the <b><i>whys </i></b>contd</p>
+                <pre class="fragment"><code data-trim>
+                    "@babel/plugin-proposal-export-namespace-from"
+                </code></pre>
+                <p class="fragment">
+                    However, there was no corresponding export!
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Babel 7 Plugins</h3>
+                <p class="fragment">the <b><i>whys </i></b>contd</p>
+                <pre class="fragment"><code data-trim>
+                    "@babel/plugin-proposal-export-namespace-from"
+                </code></pre>
+                <p class="fragment">
+                    plugin proposal: export namespace from
+                </p>
+                <pre class="fragment"><code data-trim>
+                    export * as ns from "mod";
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Babel 7 Plugins</h3>
+                <p class="fragment">the <b><i>whys </i></b>contd</p>
+                <pre class="fragment"><code data-trim>
+                    "@babel/plugin-proposal-throw-expressions": "^7.0.0",
+                </code></pre>
+                <p class="fragment"><b>example:</b></p>
+                <pre class="fragment"><code data-trim>
+                    function test(param = throw new Error('required!')) {
+                        const test = param === true || throw new Error('Falsey!');
+                    }
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Babel 7 Plugins</h3>
+                <p class="fragment">the <b><i>whys </i></b>contd</p>
+                <pre class="fragment"><code data-trim>
+                    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+                </code></pre>
+                <p class="fragment">
+                    <code class="fragment">import()</code> returns a <b class="fragment"><i>promise</i></b>, so it can be used with <a class="fragment" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function"
+                        target="_blank">async functions</a>. However, doing this <b><i>requires</i></b> the <code class="fragment">"@babel/plugin-syntax-dynamic-import"</code>
+                    <b>plugin</b> in <b>Webpack</b>.
+                </p>
+            </section>
+            <section data-background="#ffc600">
                 <h3>Configuring ESLint</h3>
                 <p class="fragment"><b>package.json</b></p>
                 <pre class="fragment"><code data-trim>
@@ -590,7 +661,8 @@
                 }
                 </code></pre>
                 <p class="fragment">
-                    <b><i>webpack</i></b> defines entry points using the entry property in the <b><i>webpack</i></b> configuration object, <span class="fragment"><code>module.exports = {}</code>.</span> The value of the bundle property indicates to <b><i>webpack</i></b>                    what code needs to be bundled.
+                    <b><i>webpack</i></b> defines entry points using the entry property in the <b><i>webpack</i></b> configuration object, <span class="fragment"><code>module.exports = {}</code>.</span> The value of the bundle property indicates to
+                    <b><i>webpack</i></b> what code needs to be bundled.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1114,8 +1186,8 @@
                 <h3>HtmlWebpackPlugin Configuration</h3>
                 <p><b>inject</b></p>
                 <p class="fragment">
-                    <b><i>default</i></b> is set to <code class="fragment">true</code>. I always like to make sure that my <b class="fragment">JS</b> assets are placed at the bottom of the <code class="fragment">body</code> element, so I use <code class="fragment">true</code>.
-                    You can check out other options in the <b>HtmlWebpackPlugin</b>
+                    <b><i>default</i></b> is set to <code class="fragment">true</code>. I always like to make sure that my <b class="fragment">JS</b> assets are placed at the bottom of the <code class="fragment">body</code> element, so I use
+                    <code class="fragment">true</code>. You can check out other options in the <b>HtmlWebpackPlugin</b>
                     <a href="https://github.com/jantimon/html-webpack-plugin" target="_blank">docs</a>.
                 </p>
             </section>
@@ -1261,8 +1333,8 @@
                 <h3>Babel
                     < 7 Presets</h3>
                         <p class="fragment">
-                            Before <b class="fragment">Babel 7</b>, proposal plugins were clumped together within their appropriate <b class="fragment"><i>presets</i></b>. i.e., <b class="fragment">stage-0</b>, <b class="fragment">stage-1</b>, <b class="fragment">stage-2</b>,
-                            etc.
+                            Before <b class="fragment">Babel 7</b>, proposal plugins were clumped together within their appropriate <b class="fragment"><i>presets</i></b>. i.e., <b class="fragment">stage-0</b>, <b class="fragment">stage-1</b>,
+                            <b class="fragment">stage-2</b>, etc.
                         </p>
             </section>
             <section data-background="#ffc600">
@@ -1328,7 +1400,8 @@
                 <p class="fragment"><b><i>why?</i></b></p>
                 <p class="fragment">
                     If you want to <b class="fragment"><i>code split</i></b> in <b class="fragment">webpack</b> and are using <b class="fragment">Babel</b>, you have to use this <b class="fragment">plugin</b>. In addition, if you are (specifically) using
-                    the <a class="fragment" href="https://webpack.js.org/api/module-methods/#import-" target="_blank">import()</a> method, this requires a <b class='fragment'><i>pre-processor</i></b> like <b class="fragment">Babel</b> and the <code class="fragment">@babel/plugin-syntax-dynamic-import</code>                    <b>plugin</b>.
+                    the <a class="fragment" href="https://webpack.js.org/api/module-methods/#import-" target="_blank">import()</a> method, this requires a <b class='fragment'><i>pre-processor</i></b> like <b class="fragment">Babel</b> and the
+                    <code class="fragment">@babel/plugin-syntax-dynamic-import</code> <b>plugin</b>.
                 </p>
             </section>
             <section data-background="#ffc600">
