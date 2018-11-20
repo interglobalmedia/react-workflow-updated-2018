@@ -339,7 +339,194 @@
                 "babel-core": "^7.0.0-bridge.0",
                 </code></pre>
                 <p class="fragment"> These packages, along with
-                    <code class="fragment">babel-jest</code> and <code class="fragment">regenerator-runtime</code> are what is needed now in order to be able to use <b class="fragment">Jest</b> with <b class="fragment">Babel 7</b>.</p>
+                    <code class="fragment">babel-jest</code> and
+                    <code class="fragment">regenerator-runtime</code> are what is needed now in order to be able to use
+                    <b class="fragment">Jest</b> with
+                    <b class="fragment">Babel 7</b>. To learn more about using <b class="fragment">Babel</b> with <b class="fragment">Jest</b>, please visit
+                    <a href="https://jestjs.io/docs/en/getting-started#using-babel">Using Babel</a>.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Configuring Babel 7</h3>
+                <p class="fragment"><b>everything changed</b></p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Configuring Babel 7</h3>
+                <p class="fragment"><b>.babelrc</b></p>
+                <pre class="fragment"><code data-trim>
+                {
+                    "presets": ["env", "react", "stage-1", "stage-2", "jest"]
+                }
+                </code></pre>
+                <p class="fragment">Previously, the <b class="fragment">babel config</b> looked something like <b><i>this</i></b>.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Configuring Babel 7</h3>
+                <p class="fragment"><b>.babelrc</b></p>
+                <pre class="fragment"><code data-trim>
+                {
+                    "presets": [
+                        "@babel/preset-env",
+                        "@babel/preset-react"
+                    ],
+                    "plugins": [
+                        "@babel/plugin-syntax-dynamic-import",
+                        "@babel/plugin-proposal-class-properties",
+                        "@babel/plugin-proposal-export-namespace-from",
+                        "@babel/plugin-proposal-throw-expressions"
+                    ]
+                }
+                </code></pre>
+                <p class="fragment"> Now, the <b class="fragment">babel config</b> looks something like <b><i>this</i></b>.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Configuring Babel 7</h3>
+                <p class="fragment"><b>webpack.base.config.js</b></p>
+                <pre class="fragment"><code data-trim>
+                rules: [{
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    use: {
+                        loader: 'babel-loader'
+                    }
+                },
+                </code></pre>
+                <p class="fragment">Now it looks like <b><i>this</i></b>. No more <b class="fragment"><i>presets</i></b>. Only in <b class="fragment">.babelrc</b>. In addition, I changed the name of the <b><i>webpack config</i></b> file. I will talk about that later.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Babel 7 Packages</h3>
+                <p class="fragment">the <b><i>whys</i></b></p>
+                <pre class="fragment"><code data-trim>
+                @babel/core
+                </code></pre>
+                <p class="fragment">This is the <b>Babel</b> core <b class="fragment"><i>compiler</i></b>. It makes it possible to use <code class="fragment">babel-loader</code>. Most <b class="fragment">babel plugins/top level packages</b> have a <b class="fragment"><i>peerDependency</i></b>                    on
+                    <b class="fragment">@babel/core</b>. Previously it had been <b class="fragment">babel-core</b>. It is also needed for
+                    <b class="fragment">Jest</b>. To learn more about
+                    <a class="fragment" href="https://nodejs.org/en/blog/npm/peer-dependencies/">peerDependencies,</a> click <a class="fragment" href="https://nodejs.org/en/blog/npm/peer-dependencies/">here</a>.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Babel 7 Packages</h3>
+                <p class="fragment">the <b><i>whys </i></b>contd</p>
+                <pre class="fragment"><code data-trim>
+                "babel-core": "^7.0.0-bridge.0"
+                </code></pre>
+                <p class="fragment">This package is needed for <b class="fragment">Jest</b> testing if <b class="fragment">Babel 7</b> is being used. This package is meant to <b>ease</b> the <b class="fragment"><i>transition</i></b> libraries that use "babel-core" as a
+                    <b class="fragment"><i>peerDependency</i></b> for <b class="fragment">Babel 6</b>. To learn more, please visit the
+                    <a href="https://github.com/babel/babel-bridge" class="fragment">babel-bridge repo
+                        </a>.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Babel 7 Packages</h3>
+                <p class="fragment">the <b><i>whys </i></b>contd</p>
+                <pre class="fragment"><code data-trim>
+                "@babel/polyfill": "^7.0.0"
+                </code></pre>
+                <p class="fragment"><b class="fragment">React 16+</b> depends on collection types <a class="fragment" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> and
+                    <a class="fragment" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Set</a>.
+                    <a href="https://babeljs.io/docs/en/babel-polyfill/">@babel/polyfill</a>
+                    <b class="fragment"><i>emulates</i></b> a <b><i>full</i></b> <b class="fragment">ES2015+ environment</b> and is for <b class="fragment">applications</b>. You can use <b>built-ins</b> like <b class="fragment">Promise</b> or <b class="fragment">WeakMap</b>,
+                    static methods like
+                    <b class="fragment">Array.from</b> or <b class="fragment">Object.assign</b>, instance methods like <b class="fragment">Array.prototype.includes</b>, and <b class="fragment">generator functions</b> (provided you use the <b class="fragment">regenerator plugin</b>).
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Babel 7 Packages</h3>
+                <p class="fragment">the <b><i>whys </i></b>contd</p>
+                <pre class="fragment"><code data-trim>
+                "@babel/register": "^7.0.0",
+                </code></pre>
+                <p class="fragment">Allows you to use the <b class="fragment">require module</b> in your applications.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Configuring ESLint</h3>
+                <p class="fragment"><b>package.json</b></p>
+                <pre class="fragment"><code data-trim>
+                "babel-eslint": "^10.0.1",
+                "eslint": "^5.9.0",
+                "eslint-loader": "^2.1.1",
+                "eslint-plugin-import": "^2.14.0",
+                "eslint-plugin-react": "^7.11.1",
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Configuring ESLint</h3>
+                <p class="fragment"><b>.eslintrc.json</b></p>
+                <pre class="fragment"><code data-trim>
+                {
+                    "parser": "babel-eslint",
+                    "env": {
+                        "browser": true,
+                        "commonjs": true,
+                        "es6": true,
+                        "node": true,
+                        "jest": true
+                    },
+                    "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:import/recommended"],
+                    "settings": {
+                        "react": {
+                            "pragma": "React",
+                            "version": "16.6.3"
+                        }
+                    },
+                    "parserOptions": {
+                        "ecmaFeatures": {
+                            "jsx": true
+                        },
+                        "ecmaVersion": 2018,
+                        "sourceType": "module"
+                    },
+                    "plugins": [
+                        "import",
+                        "react"
+                    ],
+                    "rules": {
+                        "no-unused-vars": 0,
+                        "no-console": 0,
+                        "max-len": [1, 120, 2, {
+                            "ignoreComments": true
+                        }],
+                        "prop-types": [0],
+                        "indent": [
+                            0
+                        ],
+                        "linebreak-style": [
+                            "error",
+                            "unix"
+                        ],
+                        "quotes": [
+                            0
+                        ],
+                        "semi": [
+                            0
+                        ]
+                    }
+                }
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Configuring ESLint</h3>
+                <p class="fragment"><b>webpack.base.config.js</b></p>
+                <pre class="fragment"><code data-trim>
+                {
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    loaders: [
+                        'babel-loader',
+                        'eslint-loader'
+                    ]
+                },
+                </code></pre>
+                <p class="fragment">For my complete write up on <b>configuring ESLint with React</b>, please visit
+                    <a href="The Importance Of ESlint (And React)">The
+                        Importance Of ESlint (And React)
+                    </a>. To view the complete <b>webpack.base.config.js</b> file, click
+                    <a href="https://github.com/interglobalmedia/speech-to-text-app/blob/master/config/webpack.base.config.js">
+                        here
+                    </a>.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Configuring Webpack</h3>
+                <p class="fragment"><b>config/webpack.base.config.js</b></p>
             </section>
             <section data-background="#ffc600">
                 <h3>Module Bundler</h3>
