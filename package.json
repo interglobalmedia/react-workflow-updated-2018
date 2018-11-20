@@ -8,7 +8,6 @@
     },
     "scripts": {
         "clean": "rimraf dist && mkdir dist",
-        "dist": "mkdir dist",
         "prebuild": "cp index.html dist/",
         "build": "cp -R plugin lib js images css dist/",
         "postbuild": "gh-pages -d dist"
