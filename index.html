@@ -343,7 +343,8 @@
                     <code class="fragment">regenerator-runtime</code> are what is needed now in order to be able to use
                     <b class="fragment">Jest</b> with
                     <b class="fragment">Babel 7</b>. To learn more about using <b class="fragment">Babel</b> with <b class="fragment">Jest</b>, please visit
-                    <a href="https://jestjs.io/docs/en/getting-started#using-babel">Using Babel</a>.</p>
+                    <a href="https://jestjs.io/docs/en/getting-started#using-babel">Using Babel</a>.
+                </p>
             </section>
             <section data-background="#ffc600">
                 <h3>Configuring Babel 7</h3>
@@ -597,12 +598,247 @@
             </section>
             <section data-background="#ffc600">
                 <h3>Configuring Webpack</h3>
+                <p class="fragment"><b>much changed</b></p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Configuring Webpack</h3>
+                <p class="fragment">
+                    I still have <b><i>two</i></b> webpack <b>config</b> files, but now they reside in a <b>config</b> <b><i>folder</i></b> and are also named differently.
+                </p>
+                <p class="fragment">
+                    One file is called <code class="fragment">webpack.base.config.js</code> and is for webpack <b>configs</b> related to the <b><i>development</i></b> environment, some of which also are related to <b><i>production</i></b>. The other is
+                    <code class="fragment">webpack.prod.config.js</code> and is for webpack <b>configs</b> related <b><i>only</i></b> to the <b><i>production</i></b> environment.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Configuring Webpack</h3>
+                <p class="fragment"><b>why the new configs</b></p>
+                <p class="fragment">Setting up <b>Webpack</b> with these two <b><i>new configs</i></b> means <b><i>drier</i></b> code. No <b><i>duplications</i></b> as before. Click <a href="https://github.com/interglobalmedia/portfolio">here</a> to visit a <b>repo</b> containing
+                    my <b><i>previous</i></b> <b>workflow</b>.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Configuring Webpack</h3>
+                <p><b>what requires/variables have NOT changed (base config)</b></p>
+                <pre class="fragment"><code data-trim>
+                const path = require('path');
+                const webpack = require('webpack');
+                const VENDOR_LIBS = [
+                    'react', 'react-dom'
+                ]
+                </code></pre>
+                <p class="fragment">As you can see, not much!</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Configuring Webpack</h3>
+                <p class="fragment"><b>what requires/variables have changed (base config)</b></p>
+                <pre class="fragment"><code data-trim>
+                const CopyWebpackPlugin = require('copy-webpack-plugin');
+                const merge = require('webpack-merge');
+                const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+                const HtmlWebpackPlugin = require('html-webpack-plugin');
+                const CleanWebpackPlugin = require('clean-webpack-plugin');
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Configuring Webpack</h3>
+                <p class="fragment"><b>how module.exports has changed (base config)</b></p>
+                <pre class="fragment"><code data-trim>
+                module.exports = env => {
+
+                    const {PLATFORM, VERSION} = env;
+
+                        return merge([
+                            {
+                                entry: {
+                                    vendor: VENDOR_LIBS,
+                                    bundle: './src/index.js'
+                            },
+                            output: {
+                                filename: PLATFORM === 'production' ? 'scripts/[name]-[contenthash].js' : 'scripts/[name].js',
+                                path: path.resolve(__dirname, '../dist')
+                            },
+                            module: {
+                                rules: [{
+                                        test: /\.js$/,
+                                        exclude: /node_modules/,
+                                        use: {
+                                            loader: 'babel-loader'
+                                        }
+                                    },
+                                    {
+                                        test: /\.js$/,
+                                        exclude: /node_modules/,
+                                        loaders: [
+                                            'babel-loader',
+                                            'eslint-loader'
+                                        ]
+                                    },
+                                    {
+                                        test: /\.(scss|sass|css)$/,
+                                        exclude: /node_modules/,
+                                        loaders: [
+                                            PLATFORM === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
+                                            {
+                                                loader: 'css-loader',
+                                                options: {
+                                                    modules: true,
+                                                    sourceMap: true,
+                                                    importLoaders: 1,
+                                                    localIdentName: '[local]___[hash:base64:5]'
+                                                },
+                                            },
+                                            'postcss-loader',
+                                            'sass-loader'
+                                        ]
+                                    },
+                                    {
+                                        test: /\.(jpg|png|gif|svg|pdf|ico)$/,
+                                        use: [{
+                                            loader: 'file-loader',
+                                            options: {
+                                                name: '[path][name]-[hash:8].[ext]'
+                                            },
+                                        }],
+                                    },
+                                ]
+                            },
+                            plugins: [
+                                new CleanWebpackPlugin(['dist']),
+                                new HtmlWebpackPlugin({
+                                    template: 'src/index.html',
+                                    favicon: 'src/favicon.ico',
+                                    styles: 'src/styles.css',
+                                    inject: true
+                                }),
+                                new webpack.NamedModulesPlugin(),
+                                new MiniCssExtractPlugin({
+                                    filename: PLATFORM === 'production' ? 'styles/[name]-[hash].css' : '[name].css',
+                                }),
+                                new CopyWebpackPlugin([{
+                                    from: 'src/static'
+                                }]),
+                                new webpack.DefinePlugin({
+                                    'process.env.VERSION': JSON.stringify(env.VERSION),
+                                    'process.env.PLATFORM': JSON.stringify(env.PLATFORM)
+                                })
+                            ]
+                        },
+                    ])
+                }
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Configuring Webpack</h3>
                 <p class="fragment"><b>config/webpack.base.config.js</b></p>
+                <pre class="fragment"><code data-trim>
+                const path = require('path');
+                const webpack = require('webpack');
+                const CopyWebpackPlugin = require('copy-webpack-plugin');
+                const merge = require('webpack-merge');
+                const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+                const HtmlWebpackPlugin = require('html-webpack-plugin');
+                const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+                const VENDOR_LIBS = [
+                    'react', 'react-dom'
+                ]
+
+                module.exports = env => {
+
+                const {PLATFORM, VERSION} = env;
+
+                    return merge([
+                        {
+                            entry: {
+                                vendor: VENDOR_LIBS,
+                                bundle: './src/index.js'
+                            },
+                            output: {
+                                filename: PLATFORM === 'production' ? 'scripts/[name]-[contenthash].js' : 'scripts/[name].js',
+                                path: path.resolve(__dirname, '../dist')
+                            },
+                            module: {
+                                rules: [{
+                                        test: /\.js$/,
+                                        exclude: /node_modules/,
+                                        use: {
+                                            loader: 'babel-loader'
+                                        }
+                                    },
+                                    {
+                                        test: /\.js$/,
+                                        exclude: /node_modules/,
+                                        loaders: [
+                                            'babel-loader',
+                                            'eslint-loader'
+                                        ]
+                                    },
+                                    {
+                                        test: /\.(scss|sass|css)$/,
+                                        exclude: /node_modules/,
+                                        loaders: [
+                                            PLATFORM === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
+                                            {
+                                                loader: 'css-loader',
+                                                options: {
+                                                    modules: true,
+                                                    sourceMap: true,
+                                                    importLoaders: 1,
+                                                    localIdentName: '[local]___[hash:base64:5]'
+                                                },
+                                            },
+                                            'postcss-loader',
+                                            'sass-loader'
+                                        ]
+                                    },
+                                    {
+                                        test: /\.(jpg|png|gif|svg|pdf|ico)$/,
+                                            use: [{
+                                                loader: 'file-loader',
+                                                options: {
+                                                    name: '[path][name]-[hash:8].[ext]'
+                                                },
+                                            }],
+                                    },
+                                ]
+                            },
+                            plugins: [
+                                new CleanWebpackPlugin(['dist']),
+                                new HtmlWebpackPlugin({
+                                    template: 'src/index.html',
+                                    favicon: 'src/favicon.ico',
+                                    styles: 'src/styles.css',
+                                    inject: true
+                                }),
+                                new webpack.NamedModulesPlugin(),
+                                new MiniCssExtractPlugin({
+                                    filename: PLATFORM === 'production' ? 'styles/[name]-[hash].css' : '[name].css',
+                                }),
+                                new CopyWebpackPlugin([{
+                                    from: 'src/static'
+                                }]),
+                                new webpack.DefinePlugin({
+                                    'process.env.VERSION': JSON.stringify(env.VERSION),
+                                    'process.env.PLATFORM': JSON.stringify(env.PLATFORM)
+                                })
+                            ]
+                        },
+                    ])
+                }
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Configuring Webpack</h3>
+                <p class="fragment"><b></b></p>
             </section>
             <section data-background="#ffc600">
                 <h3>Module Bundler</h3>
+                <p>changed</p>
                 <pre class="fragment"><code data-trim>
-						module.exports = {};
+						module.exports = env => { 
+                            const {PLATFORM, VERSION} = env;
+                        };
 						</code></pre>
                 <p class="fragment">
                     <b class="fragment"><i>webpack</i></b> is NOT a task runner. It is a <span class="fragment"><code>module bundler</code>.</span>
@@ -646,7 +882,7 @@
                 }
                 </code></pre>
                 <p class="fragment">
-                    The starting point of <b><i>webpack</i></b>'s dependency graph is called the <span class="fragment"><code>entry point.</code></span> The entry point tells <b><i>webpack</i></b> where to start its <span class="fragment"><code>bundling process,</code></span>                    and then follows the graph of dependencies to know what to bundle.
+                    The starting point of <b><i>webpack</i></b>'s dependency graph is called the <span class="fragment"><code>entry point.</code></span> The entry point tells <b><i>webpack</i></b> where to start its <span class="fragment"><code>bundling process,</code></span>                    and then follows the graph of dependencies to know what to bundle. This entry point did not change since the previous workflow.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -664,6 +900,9 @@
                     <b><i>webpack</i></b> defines entry points using the entry property in the <b><i>webpack</i></b> configuration object, <span class="fragment"><code>module.exports = {}</code>.</span> The value of the bundle property indicates to
                     <b><i>webpack</i></b> what code needs to be bundled.
                 </p>
+            </section>
+            <section data-background="#ffc600">
+
             </section>
             <section data-background="#ffc600">
                 <h3>main index.js</h3>
@@ -1314,216 +1553,6 @@
                 <p class="fragment">
                     and then it <span class="fragment"><code>uses</code></span> that loader to transform those files before adding it to <code class="fragment">bundle.js</code>.
                 </p>
-            </section>
-            <section data-background="#ffc600">
-                <h3>Babel 7</h3>
-                <p class="fragment">Note how the only reference to Babel in the previous slide is <code class="fragment">loader</code>. Before Babel 7, I would also include <code class="fragment">presets</code>.</p>
-            </section>
-            <section data-background="#ffc600">
-                <h3>Babel
-                    < 7</h3>
-                        <pre class="fragment"><code data-trim>
-                loader: 'babel-loader',
-                options: {
-                    presets: ['env', 'stage-1', 'stage-2', 'jest', 'react']
-                }
-                </code></pre>
-            </section>
-            <section data-background="#ffc600">
-                <h3>Babel
-                    < 7 Presets</h3>
-                        <p class="fragment">
-                            Before <b class="fragment">Babel 7</b>, proposal plugins were clumped together within their appropriate <b class="fragment"><i>presets</i></b>. i.e., <b class="fragment">stage-0</b>, <b class="fragment">stage-1</b>,
-                            <b class="fragment">stage-2</b>, etc.
-                        </p>
-            </section>
-            <section data-background="#ffc600">
-                <h3>Babel 7 Presets</h3>
-                <p class="fragment">
-                    <b>.babelrc</b>
-                </p>
-                <pre class="fragment"><code data-trim>
-                    "presets": [
-                        "@babel/preset-env",
-                        "@babel/preset-react"
-                    ],
-                </code></pre>
-                <p class="fragment">
-                    With <b class="fragment">Babel 7</b>, presets were removed from the <b class="fragment">webpack</b> <b class="fragment"><i>config</i></b> and only appear in the <code class="fragment">.babelrc</code> file. Only <b class="fragment">presets</b>                    which were actually <b class="fragment"><i>approved</i></b> appeared in the
-                    <b class="fragment">presets</b> array.
-                </p>
-            </section>
-            <section data-background="#ffc600">
-                <h3>"@babel/preset-env"</h3>
-                <p class="fragment">
-                    <code class="fragment">"@babel/preset-env"</code> is the <b class="fragment">Babel</b> <b><i>preset</i></b> which allows you to use the <b class="fragment"><i>latest</i></b> <b>JS</b>.
-                </p>
-            </section>
-            <section data-background="#ffc600">
-                <h3>"@babel/preset-react"</h3>
-                <p class="fragment">
-                    <code class="fragment">"@babel/preset-react"</code> is the <b class="fragment">Babel</b> <b><i>preset</i></b> which allows you to use <b class="fragment"><i>React</i></b> code.
-                </p>
-            </section>
-            <section data-background="#ffc600">
-                <h3>Babel 7 Presets</h3>
-                <p class="fragment"><b>naming</b></p>
-                <p class="fragment">
-                    The <b class="fragment"><i>naming</i></b> of <b class="fragment">presets</b> changed with <b class="fragment">Babel 7</b> to differentiate between the versions and maintain naming consistency throughout. Instead of simply adding
-                    <code class="fragment">"env"</code> or <code class="fragment">"react"</code> to the <b>preset array</b>, you now <b><i>have</i></b> to add <code class="fragment">"@babel/preset-env"</code> or <code class="fragment">"@babel/preset-react"</code>,
-                    for example.
-                </p>
-            </section>
-            <section data-background="#ffc600">
-                <h3>Babel 7 Proposal Plugins</h3>
-                <p class="fragment"><b>.babelrc</b></p>
-                <pre class="fragment"><code data-trim>
-                    "plugins": [
-                        "@babel/plugin-syntax-dynamic-import",
-                        "@babel/plugin-proposal-class-properties",
-                        "@babel/plugin-proposal-export-namespace-from",
-                        "@babel/plugin-proposal-throw-expressions"
-                    ]
-                </code></pre>
-                <p class="fragment">
-                    Before <b class="fragment">Babel 7</b>, we would just add the <b class="fragment">proposal plugin</b> to the <b class="fragment">config</b>. Now <b class="fragment">Babel</b> differentiates between plugins that have been <b class="fragment"><i>approved</i></b>                    and those that are still in the <b class="fragment"><i>proposal</i></b> stage. Note the <b class="fragment"><i>new naming</i></b> above.
-                </p>
-            </section>
-            <section data-background="#ffc600">
-                <h3>@babel/plugin-syntax-dynamic-import</h3>
-                <p class="fragment">
-                    helps with <b class="fragment"><i>code splitting</i></b>.
-                </p>
-            </section>
-            <section data-background="#ffc600">
-                <h3>@babel/plugin-syntax-dynamic-import</h3>
-                <p class="fragment"><b><i>why?</i></b></p>
-                <p class="fragment">
-                    If you want to <b class="fragment"><i>code split</i></b> in <b class="fragment">webpack</b> and are using <b class="fragment">Babel</b>, you have to use this <b class="fragment">plugin</b>. In addition, if you are (specifically) using
-                    the <a class="fragment" href="https://webpack.js.org/api/module-methods/#import-" target="_blank">import()</a> method, this requires a <b class='fragment'><i>pre-processor</i></b> like <b class="fragment">Babel</b> and the
-                    <code class="fragment">@babel/plugin-syntax-dynamic-import</code> <b>plugin</b>.
-                </p>
-            </section>
-            <section data-background="#ffc600">
-                <h3>@babel/plugin-syntax-dynamic-import</h3>
-                <p class="fragment">
-                    <code class="fragment">import()</code> returns a <b class="fragment"><i>promise</i></b>, so it can be used with <a class="fragment" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function"
-                        target="_blank">async functions</a>. However, doing this <b><i>requires</i></b> the <code class="fragment">"@babel/plugin-syntax-dynamic-import"</code> <b>plugin</b>.
-                </p>
-            </section>
-            <section data-background="#ffc600">
-                <h3>"@babel/plugin-proposal-class-properties"</h3>
-                <p class="fragment">
-                    Instead of this
-                    <pre class="fragment"><code data-trim>
-                        constructor(props) {
-                            super(props);
-                            this.state = {
-                                history: [{
-                                    squares: Array(9).fill(null)
-                                }],
-                                stepNumber : 0,
-                                xIsNext: true
-                            }
-                            this.handleClick = this.handleClick.bind(this);
-                        }
-                    </code></pre>
-                </p>
-            </section>
-            <section data-background="#ffc600">
-                <h3>"@babel/plugin-proposal-class-properties"</h3>
-                <p class="fragment">
-                    This
-                </p>
-                <pre class="fragment"><code data-trim>
-                    state = {
-                        history: [{
-                            squares: Array(9).fill(null)
-                        }],
-                        stepNumber : 0,
-                        xIsNext: true
-                    }
-                    </code></pre>
-            </section>
-            <section data-background="#ffc600">
-                <h3>"@babel/plugin-proposal-class-properties"</h3>
-                <p class="fragment">And this</p>
-                <pre class="fragment"><code data-trim>
-                        handleClick = (i) => {
-                            const history = this.state.history.slice(0,
-                                this.state.stepNumber + 1);
-                            const current = history[history.length - 1];
-                            const squares = current.squares.slice();
-                            if (CalculateWinner(squares) || squares[i]) {
-                                return;
-                            }
-                            squares[i] = this.state.xIsNext ? 'X' : 'O';
-                            this.setState({
-                                history: history.concat([{
-                                    squares: squares
-                                }]),
-                                stepNumber: history.length,
-                                xIsNext: !this.state.xIsNext
-                            })
-                        }
-                    </code></pre>
-            </section>
-            <section data-background="#ffc600">
-                <h3>"@babel/plugin-proposal-class-properties"</h3>
-                <p class="fragment">
-                    Instead of this
-                </p>
-                <pre class="fragment"><code data-trim>
-                    handleClick(i) {
-                        const history = this.state.history.slice(0,
-                            this.state.stepNumber + 1);
-                        const current = history[history.length - 1];
-                        const squares = current.squares.slice();
-                        if (CalculateWinner(squares) || squares[i]) {
-                            return;
-                        }
-                        squares[i] = this.state.xIsNext ? 'X' : 'O';
-                        this.setState({
-                            history: history.concat([{
-                                squares: squares
-                            }]),
-                            stepNumber: history.length,
-                            xIsNext: !this.state.xIsNext
-                        })
-                    }
-                </code></pre>
-            </section>
-            <section data-background="#ffc600">
-                <h3>"@babel/plugin-proposal-export-namespace-from"</h3>
-                <p class="fragment">
-                    <b class="fragment">ES6 modules</b> allow us to import something <b><i>from</i></b> something else:
-                </p>
-                <pre class="fragment"><code data-trim>
-                    import * as name from "module-name";
-                </code></pre>
-            </section>
-            <section data-background="#ffc600">
-                <h3>"@babel/plugin-proposal-export-namespace-from"</h3>
-                <p class="fragement">
-                    However, there was no corresponding export!
-                </p>
-            </section>
-            <section data-background="#ffc600">
-                <h3>"@babel/plugin-proposal-export-namespace-from"</h3>
-                <p class="fragment">
-                    plugin proposal: export namespace from
-                </p>
-                <pre class="fragment"><code data-trim>
-                    export * as ns from "mod";
-                </code></pre>
-            </section>
-            <section data-background="#ffc600">
-                <h3>"@babel/plugin-proposal-throw-expressions"</h3>
-                <pre class="fragment"><code data-trim>
-                    function test(param = throw new Error('required!')) {
-                        const test = param === true || throw new Error('Falsey!');
-                    }
-                </code></pre>
             </section>
             <section data-background="#ffc600">
                 <h3>MiniCssExtractPlugin</h3>
