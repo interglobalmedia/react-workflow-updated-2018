@@ -35,9 +35,19 @@
                 <h1>React</h1>
                 <h2>workflows</h2>
                 <h4>Without Create-React-App</h4>
+                <p><small>Second Edition</small></p>
                 <p>
                     <small>Created by <a href="https://interglobalmedia.github.io/portfolio/" target="_blank">Maria D. Campbell</a> / <a href="http://twitter.com/letsbsocial1" target="_blank">@letsbsocial1</a></small>
                 </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>About This Presentation</h3>
+                <p>
+                    This is the <b>second edition</b> of my <b>React Workflows Without CRA</b>. If you want to acquaint yourself with the <b>first edition</b> as well, please visit the <a href="https://github.com/interglobalmedia/react-workflow-presentation">React
+                    Workflow Presentation</a> repository. For a detailed map of this edition, please visit the <a href="https://github.com/interglobalmedia/react-workflow-updated-2018/tree/e26e04b76a5c1689a7e1c77ee0b9c63734797d01">README</a> of this edition's
+                    repository.
+                </p>
+
             </section>
             <section data-background="#ffc600">
                 <h2>Hi There!</h2>
@@ -433,7 +443,7 @@
             </section>
             <section data-background="#ffc600">
                 <h3>Babel 7 Plugins</h3>
-                <p class="fragment">the <b><i>whys </i></b>contd</p>
+                <p class="fragment">the <b><i>whys</i></b></p>
                 <pre class="fragment"><code data-trim>
                     "@babel/plugin-proposal-class-properties": "^7.1.0",
                 </code></pre>
@@ -444,7 +454,7 @@
             </section>
             <section data-background="#ffc600">
                 <h3>Babel 7 Plugins</h3>
-                <p class="fragment">the <b><i>whys </i></b>contd</p>
+                <p class="fragment">the <b><i>whys</i></b></p>
                 <pre class="fragment"><code data-trim>
                     "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
                 </code></pre>
@@ -457,7 +467,7 @@
             </section>
             <section data-background="#ffc600">
                 <h3>Babel 7 Plugins</h3>
-                <p class="fragment">the <b><i>whys </i></b>contd</p>
+                <p class="fragment">the <b><i>whys</i></b></p>
                 <pre class="fragment"><code data-trim>
                     "@babel/plugin-proposal-export-namespace-from"
                 </code></pre>
@@ -530,7 +540,7 @@
             </section>
             <section data-background="#ffc600">
                 <h3>Babel 7 Packages</h3>
-                <p class="fragment">the <b><i>whys </i></b>contd</p>
+                <p class="fragment">the <b><i>whys</i></b></p>
                 <pre class="fragment"><code data-trim>
                 "babel-core": "^7.0.0-bridge.0"
                 </code></pre>
@@ -541,7 +551,7 @@
             </section>
             <section data-background="#ffc600">
                 <h3>Babel 7 Packages</h3>
-                <p class="fragment">the <b><i>whys </i></b>contd</p>
+                <p class="fragment">the <b><i>whys</i></b></p>
                 <pre class="fragment"><code data-trim>
                 "@babel/polyfill": "^7.0.0"
                 </code></pre>
@@ -555,7 +565,7 @@
             </section>
             <section data-background="#ffc600">
                 <h3>Babel 7 Packages</h3>
-                <p class="fragment">the <b><i>whys </i></b>contd</p>
+                <p class="fragment">the <b><i>whys</i></b></p>
                 <pre class="fragment"><code data-trim>
                 "@babel/register": "^7.0.0",
                 </code></pre>
@@ -882,26 +892,10 @@
                 </code></pre>
             </section>
             <section data-background="#ffc600">
-                <h3>Configuring Webpack</h3>
-                <p class="fragment"><b></b></p>
-            </section>
-            <section data-background="#ffc600">
-                <h3>Module Bundler</h3>
-                <p>changed</p>
-                <pre class="fragment"><code data-trim>
-						module.exports = env => { 
-                            const {PLATFORM, VERSION} = env;
-                        };
-						</code></pre>
-                <p class="fragment">
-                    <b class="fragment"><i>webpack</i></b> is NOT a task runner. It is a <span class="fragment"><code>module bundler</code>.</span>
-                </p>
-            </section>
-            <section data-background="#ffc600">
                 <h3>Dependency Graph</h3>
                 <p class="fragment">
-                    When <b><i>webpack</i></b> processes your app, it recursively builds a <span class="fragment"><code>dependency graph</code></span> that includes every module that your app needs, and then packages all of those modules into a small
-                    number of bundles to be loaded by the browser.
+                    When <b><i>webpack</i></b> processes your app, it recursively builds a <span class="fragment"><code>dependency
+                graph</code></span> that includes every module that your app needs, and then packages all of those modules into a small number of bundles to be loaded by the browser.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -935,27 +929,94 @@
                 }
                 </code></pre>
                 <p class="fragment">
-                    The starting point of <b><i>webpack</i></b>'s dependency graph is called the <span class="fragment"><code>entry point.</code></span> The entry point tells <b><i>webpack</i></b> where to start its <span class="fragment"><code>bundling process,</code></span>                    and then follows the graph of dependencies to know what to bundle. This entry point did not change since the previous workflow.
+                    The starting point of <b><i>webpack</i></b>'s <b>dependency graph</b> is called the <span class="fragment"><code>entry
+                    point.</code></span> The <b>entry point</b> tells <b><i>webpack</i></b> where to start its <span class="fragment"><code>bundling
+                    process,</code></span> and then follows the graph of dependencies to know what to bundle.
                 </p>
             </section>
             <section data-background="#ffc600">
-                <h3>bundle</h3>
+                <h3>entry</h3>
                 <pre class="fragment"><code data-trim>
                 module.exports = {
                     entry: {
                         vendor: VENDOR_LIBS,
                         bundle: './src/index.js'
-                        
                     },
                 }
                 </code></pre>
                 <p class="fragment">
-                    <b><i>webpack</i></b> defines entry points using the entry property in the <b><i>webpack</i></b> configuration object, <span class="fragment"><code>module.exports = {}</code>.</span> The value of the bundle property indicates to
-                    <b><i>webpack</i></b> what code needs to be bundled.
+                    This <b>entry point</b> did <b><i>not</i></b> change since the previous workflow, but <code>module.exports</code> and what now comes before entry did.
                 </p>
             </section>
             <section data-background="#ffc600">
+                <h3>Configuring Webpack</h3>
+                <p class="fragment">module.exports changed</p>
+                <pre class="fragment"><code data-trim>
+                module.exports = env => { 
+                    const {PLATFORM, VERSION} = env;
+                };
+                </code></pre>
+                <p class="fragment">
+                    The <b>env</b> variable is passed to <code>module.exports</code> so that I can make those <b>webpack configurations</b> which are <b><i>required</i></b> both in <b>development</b> and <b>production</b>. <code>PLATFORM</code> refers
+                    to <b>dev</b> or <b>prod</b> <b><i>envs</i></b>, and <code>VERSION</code> refers to <b>staging</b> (stag).
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>vendor</h3>
+                <pre class="fragment"><code data-trim>
+                module.exports = env => {
 
+                    const {PLATFORM, VERSION} = env;
+
+                        return merge([
+                            {
+                                entry: {
+                                    vendor: VENDOR_LIBS,
+                                    bundle: './src/index.js'
+                            },
+                        ])
+                }
+                </code></pre>
+                <p class="fragment">
+                    You may have noticed I have an entry point called <span class="fragment"><code>vendor</code>.</span> You also may notice that there is something else new: <code>return merge([])</code>
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack-merge</h3>
+                <p class="fragment"><b>webpack-merge</b> is what makes it possible to <b><i>merge</i></b> my two <b>configs</b> together into <b>one</b>, thereby resulting in much <b><i>drier</i></b> code as well.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>VENDOR_LIBS</h3>
+                <pre class="fragment"><code data-trim>
+				const VENDOR_LIBS = [
+				  'react', 'react-dom'
+				];
+						</code></pre>
+                <p class="fragment">
+                    Relates to <span class="fragment"><b><i>non-webpack</i></b>,</span> 3rd party plugins. You may notice that I have <b><i>less</i></b> 3rd party plugins now. I am still trying to figure out how to best <b><i>split</i></b> my vendors.
+                    <b>webpack 4</b> warns you if your <b>bundles</b> are <b>> 244kb</b>.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>bundle</h3>
+                <pre class="fragment"><code data-trim>
+                module.exports = env => {
+
+                    const {PLATFORM, VERSION} = env;
+
+                        return merge([
+                            {
+                                entry: {
+                                    vendor: VENDOR_LIBS,
+                                    bundle: './src/index.js'
+                            },
+                        ])
+                }
+                </code></pre>
+                <p class="fragment">
+                    The <b>value</b> of the <b>bundle</b> property indicates to
+                    <b><i>webpack</i></b> what <b>code</b> needs to be <b>bundled</b>.
+                </p>
             </section>
             <section data-background="#ffc600">
                 <h3>main index.js</h3>
@@ -967,7 +1028,7 @@
                 import './styles.scss';
 				</code></pre>
                 <p class="fragment">
-                    The files which need to be included in the bundled file in output have all been imported into the
+                    The <b>files</b> which need to be <b>included</b> in the <b>bundled</b> file in <b>output</b> have all been <b>imported</b> into the
                     <b><i>main</i></b>
                     <span class="fragment">
                         <a href="https://github.com/interglobalmedia/react-timeline-app/blob/master/src/index.js" target="_blank">
@@ -983,32 +1044,7 @@
                     the app is rendered there as well.
                 </p>
             </section>
-            <section data-background="#ffc600">
-                <h3>vendor</h3>
-                <pre class="fragment"><code data-trim>
-                module.exports = {
-                    entry: {
-                        vendor: VENDOR_LIBS,
-                        bundle: './src/index.js'
-                    
-                    },
-                }
-                </code></pre>
-                <p class="fragment">
-                    You may have noticed I add another entry point called <span class="fragment"><code>vendor</code>.</span>
-                </p>
-            </section>
-            <section data-background="#ffc600">
-                <h3>VENDOR_LIBS</h3>
-                <pre class="fragment"><code data-trim>
-				const VENDOR_LIBS = [
-				  'react', 'react-dom'
-				];
-						</code></pre>
-                <p class="fragment">
-                    Relates to <span class="fragment"><b><i>non-webpack</i></b>,</span> 3rd party plugins.
-                </p>
-            </section>
+
             <section data-background="#ffc600" data-background-image="images/code-splitting.jpg" data-background-size="cover" data-background-position="center" data-background-repeat="no-repeat">
                 <h3>Code Splitting</h3>
                 <p class="fragment" style="background: rgba(250, 235, 215, 0.6)">
@@ -1051,10 +1087,21 @@
                 },
                 </code></pre>
                 <p class="fragment">
-                    The value of the first property, <span class="fragment"><code>filename</code>,</span> refers to the <b class="fragment">name(s)</b> of output <b class="fragment">bundle(s)</b>. Note the <b>ternary operator</b>. I will talk about that
-                    later. Previously, when I used the <code class="fragment">CommonsChunkPlugin</code> and not the <code class="fragment">SplitChunksPlugin</code>, the <b>name</b> of the <b>hash</b> I used was <code class="fragment">[chunkhash:8]</code>.
-                    Now that we all are using the
-                    <code class="fragment">SplitChunksPlugin</code> with <b class="fragment">webpack</b>, we have to use
+                    The value of the first property, <span class="fragment"><code>filename</code>,</span> refers to the <b class="fragment">name(s)</b> of output <b class="fragment">bundle(s)</b>. Note the <b>ternary operator</b>.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>filename</h3>
+                <pre class="fragment"><code data-trim>
+                output: {
+                    filename: PLATFORM === 'production' ? 'scripts/[name]-[contenthash].js' : 'scripts/[name].js',
+                    path: path.resolve(__dirname, '../dist'),
+                },
+                </code></pre>
+                <p class="fragment">
+                    Previously, when I used the <code class="fragment">CommonsChunkPlugin</code> and not the <code class="fragment">SplitChunksPlugin</code>, the <b>name</b> of the <b>hash</b> I used was <code class="fragment">[chunkhash:8]</code>. Now
+                    that we all are using the
+                    <code class="fragment">SplitChunksPlugin</code> with <b class="fragment">webpack</b>, we use
                     <code class="fragment">[contenthash]</code>.
                 </p>
             </section>
@@ -1450,7 +1497,7 @@
                     ]
                 </code></pre>
                 <p class="fragment">
-                    My <code>HtmlWebpackPlugin</code> configuration in my <code>webpack-base.config.js</code>.
+                    My <code>HtmlWebpackPlugin</code> configuration in my <code>config/webpack-base.config.js</code>.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1471,7 +1518,7 @@
                 <h3>HtmlWebpackPlugin Configuration</h3>
                 <p><b>styles</b></p>
                 <p class="fragment">
-                    gives the given <code>favicon path</code> to the <b>output html</b>.
+                    gives the given <code>styles path</code> to the <b>output html</b>.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1520,6 +1567,9 @@
                 <p class="fragment">
                     Uses the <span class="fragment"><code>path to the module</code></span> instead of a <span class="fragment"><code>numerical identifier.</code></span> It's useful in <span class="fragment"><code>development</code></span> because the
                     output is more readable, but it also takes a bit longer to run.
+                    <p class="fragment">
+                        <b>Update:</b> This now can be removed in <code>config/webpack.base.config.js</code> as it is a default in dev mode.
+                    </p>
                 </p>
                 <aside class="notes">
                     Run a new build in Terminal to show that only bundle.js and runtime.js [chunkhashes] change. Then even remove the call to NamedModulesPlugin in webpack development config to show that vendor.js [chunkhash] changes when that happens. Then put it back.
@@ -1639,8 +1689,13 @@
                     <li class="fragment">No duplicate compilation (performance)</li>
                     <li class="fragment">Easier to use</li>
                     <li class="fragment">Specific to CSS</li>
-                    <li class="fragment">DOes NOT support HMR <b><i>yet</i></b></li>
+                    <li class="fragment">Does NOT support HMR <b><i>yet</i></b></li>
                 </ul>
+            </section>
+            <section data-background="#ffc600">
+                <h3>MiniCssExtractPlugin</h3>
+                <p>Because it does <b><i>not</i></b> support <b>HMR</b>, I have to use <b>style-loader</b> in <b>dev</b> mode. Otherwise, I would have to do a <b><i>manual</i></b> page refresh to view my style changes. If you are acquainted with the <b>first edition</b>                    of the <b>workflow</b>, you might remember that
+                    <code>style-loader</code> <b><i>does</i></b> support <b>HMR</b>.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>MiniCssExtractPlugin</h3>
@@ -1687,13 +1742,16 @@
             <section data-background="#ffc600">
                 <h3>css hot loader</h3>
                 <p class="fragment">
-                    Supports <span class="fragment"><code>hot module replacement</code></span> <span class="fragment"><code>(HMR)</code></span> for an extracted css file. <span class="fragment"><code>shepherdwind</code>,</span> the creator of css-hot-loader,
-                    came up with the idea because <span class="fragment"><code>style-loader</code>,</span> which also can achieve css hot reload, needs to inject a style tag into index.html. And this can happen before JS scripts are loaded, resuslting
-                    in a page with no styles.
+                    Supports <span class="fragment"><code>hot module replacement</code></span> <span class="fragment"><code>(HMR)</code></span> for an <b>extracted css file</b>. <span class="fragment"><code>shepherdwind</code>,</span> the <b>creator</b>                    of <b>css-hot-loader</b>, came up with the idea because <span class="fragment"><code>style-loader</code>,</span> which also can achieve css hot reload, needs to <b>inject</b> a <b>style tag</b> into <b>index.html</b>. And this can
+                    happen <b><i>before</i></b> JS scripts are <b>loaded</b>, resuslting in a page with no styles.
                 </p>
                 <a class="fragment" href="https://github.com/shepherdwind/css-hot-loader">css-hot-loader on Github</a>
                 <a class="fragment" href="https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/30">extract-text-webpack-plugin issue #30</a>
                 <a class="fragment" href="https://github.com/webpack-contrib/extract-text-webpack-plugin/pull/89">extract-text-webpack-plugin issue #89</a>
+            </section>
+            <section data-background="#ffc600">
+                <h3>css hot loader</h3>
+                <p class="fragment">Does not play nice with the <b>MiniCssExtractPlugin</b>, so I have removed it from the workflow for now. Too bad. it is fantastic.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>Hot Module Replacement</h3>
@@ -1721,7 +1779,9 @@
 				}),
 						</code></pre>
                 <p class="fragment">
-                    Extracts text from <span class="fragment"><code>bundle.js</code></span> into its own separate file. And the CSS bundle is loaded in parallel to the JS bundle, thereby speeding up load time.
+                    Extracts text from <span class="fragment"><code>bundle.js</code></span> into its own separate file. And the <b>CSS
+                    bundle</b> is loaded in parallel to the <b>JS bundle</b>, thereby speeding up load time. Does <b><i>not</i></b> play nice with <b>webpack
+                    4</b>, so was replaced with the <b>MiniCssExtractPlugin</b>.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1729,6 +1789,24 @@
                 <p class="fragment">
                     <span class="fragment"><code>[contenthash]</code></span> returns a hash specific to content. It is available for the <span class="fragment"><code>extract-text-webpack-plugin</code></span> only, and is the most specific hash option
                     available in <b>webpack</b>. And it's great to use with css files for <span class="fragment"><code>browser caching</code>.</span> The hash only changes when the <span class="fragment"><code>css</code></span> changes.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>[contenthash]</h3>
+                <p class="fragment">Apparently, the <b>webpack</b> team has suggested using <code>[contenthash]</code>over <code>[hash]</code> for better long term caching. I'm willing to give it a try (and update here), but I already use <b>webpack</b>'s new <code>[contenthash]</code>                    for <b>JS</b> bundles.</p>
+                <p class="fragment">
+                    <ul>
+                        <li class="fragment">
+                            <a href="https://github.com/webpack/webpack.js.org/issues/2096">
+                                Use `[contenthash]` over `[hash]` and `[chunkhash]` for better long term caching #2096
+                            </a>
+                        </li>
+                        <li class="fragment">
+                            <a href="https://webpack.js.org/guides/caching/">
+                                (Webpack) Caching
+                            </a>
+                        </li>
+                    </ul>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1742,7 +1820,7 @@
 				</div>
 						</code></pre>
                 <p class="fragment">
-                    <span class="fragment"><code>Image loader</code></span> module for <b>webpack</b>, and this is what it permits you to do in your <span class="fragment"><code>React Component</code>.</span>
+                    <span class="fragment"><code>Image loader</code></span> module for <b>webpack</b>, and this is what it permits you to do in your <span class="fragment"><code>React Component</code>.</span> However, it currently has <b>unresolvable</b>                    moderately severe <b>vulnerabilities</b>. Until they go away, I am using <code class="fragment">file-loader</code> for my <b>image</b> needs.
                 </p>
             </section>
             <section data-background="#ffc600">
