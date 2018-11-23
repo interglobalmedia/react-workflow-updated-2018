@@ -978,7 +978,7 @@
                 }
                 </code></pre>
                 <p class="fragment">
-                    You may have noticed I have an entry point called <span class="fragment"><code>vendor</code>.</span> You also may notice that there is something else new: <code>return merge([])</code>
+                    You may have noticed I have an entry point called <span class="fragment"><code>vendor</code>.</span> You also may notice that there is something else new: <code class="fragment">return merge([])</code>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1116,7 +1116,7 @@
                 </code></pre>
                 <p class="fragment">
                     The <b><i>value</i></b> of the second <b>property</b>, <span class="fragment"><code>path</code>,</span> is the <b class="fragement">absolute path</b> to the <b class="fragment">dist folder</b>, where the <b class="fragment">bundled assets</b>                    end up. It has to be required in your
-                    <span class="fragment"><code>webpack.config.js</code></span> in order for you to able to use it.
+                    <span class="fragment"><code>webpack config</code></span> in order for you to able to use it.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1250,6 +1250,7 @@
                 </p>
             </section>
             <section data-background="#ffc600">
+                <h3>Conditions</h3>
                 <ul>
                     <li class="fragment">
                         When a new chunk can be shared OR modules are from the <code>node_modules</code> folder.
@@ -1289,57 +1290,80 @@
             <section data-background="#ffc600">
                 <h3>Dev Output In Terminal</h3>
                 <pre class="fragment"><code data-trim>
-                    10592 ± npm run start ⏎
-                    
-                    > speech-to-text-app@0.0.1 start /Users/mariacam/Development/speech-to-text-app
-                    > webpack-dev-server --mode development --config config/webpack.base.config.js --open --hot --history-api-fallback
-                    --env.PLATFORM=local --env.VERSION=stag
-                    
-                    clean-webpack-plugin: /Users/mariacam/Development/speech-to-text-app/config/dist has been removed.
-                    ℹ ｢wds｣: Project is running at http://localhost:8080/
-                    ℹ ｢wds｣: webpack output is served from /
-                    ℹ ｢wds｣: 404s will fallback to /index.html
-                    ℹ ｢wdm｣: wait until bundle finished: /
-                    ℹ ｢wdm｣: Hash: 86df1fcc980b51830a7b
-                    Version: webpack 4.3.0
-                    Time: 5027ms
-                    Built at: 11/19/2018 6:49:23 PM
-                    Asset Size Chunks Chunk Names
-                    src/favicon-2cc0ddfd.ico 1.06 KiB [emitted]
-                    scripts/bundle.js 2.03 MiB bundle [emitted] bundle
-                    scripts/vendor.js 1.17 MiB vendor [emitted] vendor
-                    favicon.ico 1.06 KiB [emitted]
-                    index.html 469 bytes [emitted]
-                    Entrypoint vendor = scripts/vendor.js
-                    Entrypoint bundle = scripts/bundle.js
-                    [./node_modules/loglevel/lib/loglevel.js] 7.68 KiB {bundle} {vendor} [built]
-                    [./node_modules/react-dom/cjs/react-dom.development.js] 705 KiB {bundle} {vendor} [built]
-                    [./node_modules/react-dom/index.js] 1.33 KiB {bundle} {vendor} [built]
-                    [./node_modules/react/index.js] 190 bytes {bundle} {vendor} [built]
-                    [./node_modules/url/url.js] 22.8 KiB {bundle} {vendor} [built]
-                    [./node_modules/webpack-dev-server/client/index.js?http://localhost:8080]
-                    (webpack)-dev-server/client?http://localhost:8080 7.78 KiB {bundle} {vendor} [built]
-                    [./node_modules/webpack/hot/dev-server.js] (webpack)/hot/dev-server.js 1.66 KiB {bundle} {vendor} [built]
-                    [./node_modules/webpack/hot/log-apply-result.js] (webpack)/hot/log-apply-result.js1.31 KiB {bundle} {vendor} [built]
-                    [./node_modules/webpack/hot/log.js] (webpack)/hot/log.js 1.03 KiB {bundle} {vendor} [built]
-                    [./src/App.js] 3.61 KiB {bundle} [built]
-                    [./src/favicon.ico] 70 bytes {bundle} [built]
-                    [./src/index.js] 330 bytes {bundle} [built]
-                    [./src/styles.scss] 1.33 KiB {bundle} [built]
-                    [0] multi (webpack)-dev-server/client?http://localhost:8080 (webpack)/hot/dev-server.js react react-dom 64 bytes
-                    {vendor} [built]
-                    [1] multi (webpack)-dev-server/client?http://localhost:8080 (webpack)/hot/dev-server.js ./src/index.js 52 bytes
-                    {bundle} [built]
-                    + 47 hidden modules
-                    Child html-webpack-plugin for "index.html":
-                    1 asset
-                    Entrypoint undefined = index.html
-                    [./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html] 504 bytes {0} [built]
-                    [./node_modules/lodash/lodash.js] 527 KiB {0} [built]
-                    [./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 509 bytes {0} [built]
-                    [./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 519 bytes {0} [built]
-                    ℹ ｢wdm｣: Compiled successfully.
+                10755 ± npm run start ✖ ✹ ✭
+
+                > speech-to-text-app@0.0.1 start /Users/mariacam/Development/speech-to-text-app
+                > webpack-dev-server --mode development --config config/webpack.base.config.js --open --hot --history-api-fallback
+                --env.PLATFORM=local --env.VERSION=stag
+
+                clean-webpack-plugin: /Users/mariacam/Development/speech-to-text-app/config/dist has been removed.
+                ℹ ｢wds｣: Project is running at http://localhost:8080/
+                ℹ ｢wds｣: webpack output is served from /
+                ℹ ｢wds｣: 404s will fallback to /index.html
+                ℹ ｢wdm｣: wait until bundle finished: /
+                ℹ ｢wdm｣: Hash: 52d4cbe5cd5859cdf269
+                Version: webpack 4.3.0
+                Time: 4490ms
+                Built at: 11/22/2018 10:59:22 AM
+                Asset Size Chunks Chunk Names
+                src/favicon-2cc0ddfd.ico 1.06 KiB [emitted]
+                scripts/bundle.js 2.11 MiB bundle [emitted] bundle
+                scripts/vendor.js 3.01 MiB vendor [emitted] vendor
+                favicon.ico 1.06 KiB [emitted]
+                index.html 469 bytes [emitted]
+                Entrypoint vendor = scripts/vendor.js
+                Entrypoint bundle = scripts/bundle.js
+                [./node_modules/@fortawesome/fontawesome-svg-core/index.es.js] 60.2 KiB {bundle} {vendor} [built]
+                [./node_modules/@fortawesome/free-brands-svg-icons/index.es.js] 427 KiB {vendor} [built]
+                [./node_modules/@fortawesome/free-regular-svg-icons/index.es.js] 116 KiB {vendor} [built]
+                [./node_modules/@fortawesome/free-solid-svg-icons/index.es.js] 600 KiB {bundle} {vendor} [built]
+                [./node_modules/@fortawesome/react-fontawesome/index.es.js] 10.7 KiB {bundle} {vendor} [built]
+                [./node_modules/core-js/index.js] 640 bytes {vendor} [built]
+                [./node_modules/core-js/modules/core.string.unescape-html.js] 306 bytes {vendor} [built]
+                [./node_modules/react-dom/cjs/react-dom.development.js] 705 KiB {bundle} {vendor} [built]
+                [./node_modules/react-dom/index.js] 1.33 KiB {bundle} {vendor} [built]
+                [./node_modules/react/index.js] 190 bytes {bundle} {vendor} [built]
+                [./node_modules/webpack-dev-server/client/index.js?http://localhost:8080]
+                (webpack)-dev-server/client?http://localhost:8080 7.78 KiB {bundle} {vendor} [built]
+                [./node_modules/webpack/hot/dev-server.js] (webpack)/hot/dev-server.js 1.66 KiB {bundle} {vendor} [built]
+                [./src/index.js] 382 bytes {bundle} [built]
+                [0] multi (webpack)-dev-server/client?http://localhost:8080 (webpack)/hot/dev-server.js core-js react react-dom
+                @fortawesome/fontawesome-svg-core @fortawesome/free-brands-svg-icons @fortawesome/free-regular-svg-icons
+                @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome 136 bytes {vendor} [built]
+                [1] multi (webpack)-dev-server/client?http://localhost:8080 (webpack)/hot/dev-server.js ./src/index.js 52 bytes
+                {bundle} [built]
+                + 391 hidden modules
+                Child html-webpack-plugin for "index.html":
+                1 asset
+                Entrypoint undefined = index.html
+                [./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html] 504 bytes {0} [built]
+                [./node_modules/lodash/lodash.js] 527 KiB {0} [built]
+                [./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 509 bytes {0} [built]
+                [./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 519 bytes {0} [built]
                 </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Dev Output In Terminal</h3>
+                <p class="fragment">
+                    So much has changed even in the <b>Terminal</b> <b><i>output</i></b> when running your <b>React application</b> in
+                    <b>dev
+    mode</b> with <b>webpack-dev-server</b>. Everything configured in <code>config/webpack.base.config.js</code> prints out in Terminal. So cool, right?
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Dev Output In Terminal</h3>
+                <p class="fragment">This is what a <b>dev output in Terminal</b> might have looked like with the <b><i>first edition</i></b> of my workflow:</p>
+                <pre class="fragment"><code data-trim>
+				[gQNZ] ./src/style/style.css 307 bytes {1} [built]
+				[lVK7] ./src/index.js 846 bytes {1} [built]
+				[olkN] ./src/store.js 354 bytes {1} [built]
+				[pnOm] ./src/App.js 3.01 kB {1} [built]
+				[tuRH] ./src/reducers/todo.js 874 bytes {1} [built]
+				[z7yQ] ./src/logo.svg 3.52 kB {1} [built]
+				+ 2 hidden modules
+                </code></pre>
+                <p class="fragment">To read more about <b><i>this</i></b> output in the <b>first edition</b>, please visit <a href="">dev output first
+        edition</a>.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>Named Modules Plugin</h3>
@@ -1347,8 +1371,12 @@
             				new webpack.NamedModulesPlugin(),
             				</code></pre>
                 <p class="fragment">
-                    <p class="fragment">The previous build output in Terminal is possible thanks to the <code class="fragment">NamedModulesPlugin</code>.</p>
+                    <p class="fragment">The previous build output in <b>Terminal</b> was possible thanks to the <code class="fragment">NamedModulesPlugin</code>. With <b>webpack 4</b>, there is no need to add this line in <code>config/webpkack.base.js</code>. It is <b>built in</b>                        by <b>default</b>. But as you have already seen, it looks mighty different too!
+                    </p>
                 </p>
+            </section>
+            <section>
+                <h3>dev output in Terminal >= webpack 4</h3>
             </section>
             <section data-background="#ffc600">
                 <h3>Build Output in Terminal</h3>
@@ -1738,6 +1766,26 @@
             </section>
             <section data-background="#ffc600">
                 <h3>MiniCssExtractPlugin.loader</h3>
+                <p class="fragment">How you call the MiniCssExtractLoader.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>CSS Loader and CSS Modules</h3>
+                <p class="fragment">
+                    This <b>workflow</b> supports <b>CSS Modules</b>. In order to make that happen, we have to add the following <b>options</b> to our
+                    <b>css-loader</b>:
+                </p>
+                <pre class="fragment"><code data-trim>
+                    loader: 'css-loader',
+                    options: {
+                        modules: true,
+                        sourceMap: true,
+                        importLoaders: 1,
+                        localIdentName: '[local]___[hash:base64:5]'
+                    },
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>CSS Modules</h3>
             </section>
             <section data-background="#ffc600">
                 <h3>css hot loader</h3>
@@ -1770,19 +1818,6 @@
                         Tweak styling faster.
                     </li>
                 </ul>
-            </section>
-            <section data-background="#ffc600">
-                <h3>Extract Text Webpack Plugin</h3>
-                <pre class="fragment"><code data-trim>
-				new ExtractTextPlugin({
-				  filename: 'style.[contenthash:8].css',
-				}),
-						</code></pre>
-                <p class="fragment">
-                    Extracts text from <span class="fragment"><code>bundle.js</code></span> into its own separate file. And the <b>CSS
-                    bundle</b> is loaded in parallel to the <b>JS bundle</b>, thereby speeding up load time. Does <b><i>not</i></b> play nice with <b>webpack
-                    4</b>, so was replaced with the <b>MiniCssExtractPlugin</b>.
-                </p>
             </section>
             <section data-background="#ffc600">
                 <h3>[contenthash]</h3>
@@ -1821,24 +1856,6 @@
 						</code></pre>
                 <p class="fragment">
                     <span class="fragment"><code>Image loader</code></span> module for <b>webpack</b>, and this is what it permits you to do in your <span class="fragment"><code>React Component</code>.</span> However, it currently has <b>unresolvable</b>                    moderately severe <b>vulnerabilities</b>. Until they go away, I am using <code class="fragment">file-loader</code> for my <b>image</b> needs.
-                </p>
-            </section>
-            <section data-background="#ffc600">
-                <h3>Image Webpack Loader</h3>
-                <pre class="fragment"><code data-trim>
-				{
-				  test: /\.(jpeg?g|png|gif|svg|ico)$/,
-				  use: [
-					{
-					  loader: 'url-loader',
-					  options: { limit: 40000 }
-					},
-					'image-webpack-loader'
-				  ]
-				},
-						</code></pre>
-                <p class="fragment">
-                    The code you need to add to your <span class="fragment"><code>webpack config</code>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
