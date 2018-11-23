@@ -6,14 +6,11 @@
 
 ## Site Map:
 
-### Landing Page: 
-[landing page](https://interglobalmedia.github.io/react-workflow-updated-2018/#/)
++ Landing Page: [landing page](https://interglobalmedia.github.io/react-workflow-updated-2018/#/)
 
-### About This Presentation: 
-[Slide 1](https://interglobalmedia.github.io/react-workflow-updated-2018/#/1)
++ About This Presentation: [Slide 1](https://interglobalmedia.github.io/react-workflow-updated-2018/#/1)
 
-### A Bit About Me: 
-[Slide 2](https://interglobalmedia.github.io/react-workflow-updated-2018/#/2) - [Slide 4](https://interglobalmedia.github.io/react-workflow-updated-2018/#/4)
++ A Bit About Me: [Slide 2](https://interglobalmedia.github.io/react-workflow-updated-2018/#/2) - [Slide 4](https://interglobalmedia.github.io/react-workflow-updated-2018/#/4)
 
 ### Why Discuss React Workflows?: 
 [Slide 5](https://interglobalmedia.github.io/react-workflow-updated-2018/#/5) - [Slide 11](https://interglobalmedia.github.io/react-workflow-updated-2018/#/11)
