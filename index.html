@@ -701,6 +701,7 @@
                 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
                 const HtmlWebpackPlugin = require('html-webpack-plugin');
                 const CleanWebpackPlugin = require('clean-webpack-plugin');
+                const WorkboxPlugin = require('workbox-webpack-plugin');
                 </code></pre>
             </section>
             <section data-background="#ffc600">
@@ -714,15 +715,20 @@
                         return merge([
                             {
                                 entry: {
-                                    vendor: VENDOR_LIBS,
-                                    bundle: './src/index.js'
-                            },
-                            output: {
-                                filename: PLATFORM === 'production' ? 'scripts/[name]-[contenthash].js' : 'scripts/[name].js',
-                                path: path.resolve(__dirname, '../dist')
-                            },
-                            module: {
-                                rules: [{
+                                    main: './src/index.js'
+                                },
+                                output: {
+                                    filename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                                    chunkFilename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                                    path: path.resolve(__dirname, '../dist')
+                                },
+                                optimization: {
+                                    splitChunks: {
+                                        chunks: 'all'
+                                    }
+                                },
+                                module: {
+                                    rules: [{
                                         test: /\.js$/,
                                         exclude: /node_modules/,
                                         use: {
@@ -757,12 +763,12 @@
                                     },
                                     {
                                         test: /\.(jpg|png|gif|svg|pdf|ico)$/,
-                                        use: [{
-                                            loader: 'file-loader',
-                                            options: {
-                                                name: '[path][name]-[hash:8].[ext]'
-                                            },
-                                        }],
+                                            use: [{
+                                                loader: 'file-loader',
+                                                options: {
+                                                    name: '[path][name].[hash:8].[ext]'
+                                                },
+                                            }],
                                     },
                                 ]
                             },
@@ -774,18 +780,20 @@
                                     styles: 'src/styles.css',
                                     inject: true
                                 }),
-                                new webpack.NamedModulesPlugin(),
                                 new MiniCssExtractPlugin({
-                                    filename: PLATFORM === 'production' ? 'styles/[name]-[hash].css' : '[name].css',
+                                    filename: PLATFORM === 'production' ? 'styles/[name].[hash].css' : '[name].css',
                                 }),
                                 new CopyWebpackPlugin([{
                                     from: 'src/static'
                                 }]),
+                                new WorkboxPlugin.GenerateSW({
+                                    swDest: 'sw.js'
+                                }),
                                 new webpack.DefinePlugin({
                                     'process.env.VERSION': JSON.stringify(env.VERSION),
                                     'process.env.PLATFORM': JSON.stringify(env.PLATFORM)
                                 })
-                            ]
+                            ],
                         },
                     ])
                 }
@@ -923,8 +931,7 @@
                 <pre class="fragment"><code data-trim>
                 module.exports = {
                     entry: {
-                        vendor: VENDOR_LIBS,
-                        bundle: './src/index.js'
+                        main: './src/index.js'
                     },
                 }
                 </code></pre>
@@ -939,13 +946,12 @@
                 <pre class="fragment"><code data-trim>
                 module.exports = {
                     entry: {
-                        vendor: VENDOR_LIBS,
-                        bundle: './src/index.js'
+                        main: './src/index.js'
                     },
                 }
                 </code></pre>
                 <p class="fragment">
-                    This <b>entry point</b> did <b><i>not</i></b> change since the previous workflow, but <code>module.exports</code> and what now comes before entry did.
+                    This <b>entry point</b> <b><i>did</i></b> change since the previous workflow, <b><i>and</i></b> <code>module.exports</code> and what now comes before entry did as well.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -962,43 +968,21 @@
                 </p>
             </section>
             <section data-background="#ffc600">
-                <h3>vendor</h3>
+                <h3>entry changed</h3>
                 <pre class="fragment"><code data-trim>
-                module.exports = env => {
-
-                    const {PLATFORM, VERSION} = env;
-
-                        return merge([
-                            {
-                                entry: {
-                                    vendor: VENDOR_LIBS,
-                                    bundle: './src/index.js'
-                            },
-                        ])
-                }
+                entry: {
+                    main: './src/index.js'
+                },
                 </code></pre>
-                <p class="fragment">
-                    You may have noticed I have an entry point called <span class="fragment"><code>vendor</code>.</span> You also may notice that there is something else new: <code>return merge([])</code>
-                </p>
+                <p class="fragment">I no longer include a <b>VENDOR_LIBS</b> (vendor) <b>entry</b>. That means I no longer <b><i>define</i></b> a <b>VENDOR_LIBS</b> <b><i>variable</i></b> containing the <b>third party dependencies</b> I use in my application. This has to
+                    do with the <b><i>new</i></b> way of <code class="fragment">code splitting</code> in <b>webpack 4</b> using the <code class="fragment">SplitChunksPlugin</code> instead of <code class="fragment">CommonsChunkPlugin</code>.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>webpack-merge</h3>
                 <p class="fragment"><b>webpack-merge</b> is what makes it possible to <b><i>merge</i></b> my two <b>configs</b> together into <b>one</b>, thereby resulting in much <b><i>drier</i></b> code as well.</p>
             </section>
             <section data-background="#ffc600">
-                <h3>VENDOR_LIBS</h3>
-                <pre class="fragment"><code data-trim>
-				const VENDOR_LIBS = [
-				  'react', 'react-dom'
-				];
-						</code></pre>
-                <p class="fragment">
-                    Relates to <span class="fragment"><b><i>non-webpack</i></b>,</span> 3rd party plugins. You may notice that I have <b><i>less</i></b> 3rd party plugins now. I am still trying to figure out how to best <b><i>split</i></b> my vendors.
-                    <b>webpack 4</b> warns you if your <b>bundles</b> are <b>> 244kb</b>.
-                </p>
-            </section>
-            <section data-background="#ffc600">
-                <h3>bundle</h3>
+                <h3>main</h3>
                 <pre class="fragment"><code data-trim>
                 module.exports = env => {
 
@@ -1007,15 +991,14 @@
                         return merge([
                             {
                                 entry: {
-                                    vendor: VENDOR_LIBS,
-                                    bundle: './src/index.js'
+                                    main: './src/index.js'
                             },
                         ])
                 }
                 </code></pre>
                 <p class="fragment">
-                    The <b>value</b> of the <b>bundle</b> property indicates to
-                    <b><i>webpack</i></b> what <b>code</b> needs to be <b>bundled</b>.
+                    The <b>value</b> of the <b>main</b> property indicates to
+                    <b><i>webpack</i></b> what <b>code</b> needs to be <b>bundled</b>. Previously I called it <b>bundle</b>, but now for consistency and readability sake, I changed it to <b>main</b>.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1023,9 +1006,11 @@
                 <pre class="fragment"><code data-trim>
                 import React from 'react';
                 import ReactDOM from 'react-dom';
+                import 'core-js/es6/map';
+                import 'core-js/es6/set';
                 import App from './App';
-                import './favicon.ico';
                 import './styles.scss';
+                import './favicon.ico';
 				</code></pre>
                 <p class="fragment">
                     The <b>files</b> which need to be <b>included</b> in the <b>bundled</b> file in <b>output</b> have all been <b>imported</b> into the
@@ -1035,6 +1020,20 @@
                             <code>index.js</code>
                         </a>
                     </span> file.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>core.js in index.js</h3>
+                <p class="fragment"><b>the</b> <b><i>why</i></b></p>
+                <pre class="fragment"><code data-trim>
+                import 'core-js/es6/map';
+                import 'core-js/es6/set';
+                </code></pre>
+                <p class="fragment">
+                    A polyfilled environment for React 16 using core-js to support older browsers. Visit the
+                    <a href="https://reactjs.org/docs/javascript-environment-requirements.html">React
+                    documentation
+                    </a> to learn more.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1070,20 +1069,23 @@
                 <h3>Output</h3>
                 <pre class="fragment"><code data-trim>
                 output: {
-                    filename: PLATFORM === 'production' ? 'scripts/[name]-[contenthash].js' : 'scripts/[name].js',
-                    path: path.resolve(__dirname, '../dist'),
+                    filename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                    chunkFilename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                    path: path.resolve(__dirname, '../dist')
                 },
                 </code></pre>
                 <p class="fragment">
-                    Once you've bundled all your assets together, you need to tell <b><i>webpack</i></b> <span class="fragment"><b><i>where</i></b></span> to bundle your app. The <span class="fragment"><code>output object</code></span> tells <b><i>webpack</i></b>                    what to do with bundled code.
+                    Once you've bundled all your assets together, you need to tell <b><i>webpack</i></b> <span class="fragment"><b><i>where</i></b></span> to bundle your app. The <span class="fragment"><code>output object</code></span> tells <b><i>webpack</i></b>                    what to do with <b>bundled</b> code. But this <code class="fragment">output object</code> <b><i>differs greatly</i></b> from the <b>first edition</b> of this
+                    <b>workflow</b>.
                 </p>
             </section>
             <section data-background="#ffc600">
                 <h3>filename</h3>
                 <pre class="fragment"><code data-trim>
                 output: {
-                    filename: PLATFORM === 'production' ? 'scripts/[name]-[contenthash].js' : 'scripts/[name].js',
-                    path: path.resolve(__dirname, '../dist'),
+                    filename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                    chunkFilename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                    path: path.resolve(__dirname, '../dist')
                 },
                 </code></pre>
                 <p class="fragment">
@@ -1094,15 +1096,29 @@
                 <h3>filename</h3>
                 <pre class="fragment"><code data-trim>
                 output: {
-                    filename: PLATFORM === 'production' ? 'scripts/[name]-[contenthash].js' : 'scripts/[name].js',
-                    path: path.resolve(__dirname, '../dist'),
+                    filename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                    chunkFilename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                    path: path.resolve(__dirname, '../dist')
                 },
                 </code></pre>
                 <p class="fragment">
                     Previously, when I used the <code class="fragment">CommonsChunkPlugin</code> and not the <code class="fragment">SplitChunksPlugin</code>, the <b>name</b> of the <b>hash</b> I used was <code class="fragment">[chunkhash:8]</code>. Now
                     that we all are using the
-                    <code class="fragment">SplitChunksPlugin</code> with <b class="fragment">webpack</b>, we use
-                    <code class="fragment">[contenthash]</code>.
+                    <code class="fragment">SplitChunksPlugin</code> with <b class="fragment">webpack</b>, some of us use
+                    <code class="fragment">[contenthash]</code>. For more about <code class="fragment">[contenthash]</code> and <b>webpack 4</b>, click <a href="https://github.com/webpack/webpack/issues/7179">here</a>.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>chunkFilename</h3>
+                <pre class="fragment"><code data-trim>
+                output: {
+                    filename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                    chunkFilename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                    path: path.resolve(__dirname, '../dist')
+                },
+                </code></pre>
+                <p class="fragment"><code class="fragment">chunkFilename</code> determines the name of <b>non-entry</b> chunk files. In my configuration, that means <b><i>either</i></b> <b>vendor chunks</b> or (at least with this particular workflow)
+                    <b>dynamic imports</b>. Again, note the <b>ternary operator</b>.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1110,13 +1126,14 @@
                 <pre class="fragment"><code data-trim>
                 const path = require('path');
                 output: {
-                    filename: PLATFORM === 'production' ? 'scripts/[name]-[contenthash].js' : 'scripts/[name].js',
-                    path: path.resolve(__dirname, '../dist'),
+                    filename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                    chunkFilename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                    path: path.resolve(__dirname, '../dist')
                 },
                 </code></pre>
                 <p class="fragment">
-                    The <b><i>value</i></b> of the second <b>property</b>, <span class="fragment"><code>path</code>,</span> is the <b class="fragement">absolute path</b> to the <b class="fragment">dist folder</b>, where the <b class="fragment">bundled assets</b>                    end up. It has to be required in your
-                    <span class="fragment"><code>webpack.config.js</code></span> in order for you to able to use it.
+                    The <b><i>value</i></b> of the third <b>property</b>, <span class="fragment"><code>path</code>,</span> is the <b class="fragement">absolute path</b> to the <b class="fragment">dist folder</b>, where the <b class="fragment">bundled assets</b>                    end up. It has to be required in your
+                    <span class="fragment"><code>webpack config</code></span> in order for you to able to use it.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1124,8 +1141,9 @@
                 <pre class="fragment"><code data-trim>
                 const path = require('path');
                 output: {
-                    filename: PLATFORM === 'production' ? 'scripts/[name]-[contenthash].js' : 'scripts/[name].js',
-                    path: path.resolve(__dirname, '../dist'),
+                    filename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                    chunkFilename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                    path: path.resolve(__dirname, '../dist')
                 },
             	</code></pre>
                 <p class="fragment">
@@ -1135,26 +1153,50 @@
                 </p>
             </section>
             <section data-background="#ffc600">
-                <h3>name</h3>
+                <h3>[name]</h3>
                 <pre class="fragment"><code data-trim>
-                const path = require('path');
                 output: {
-                    filename: PLATFORM === 'production' ? 'scripts/[name]-[contenthash].js' : 'scripts/[name].js',
-                    path: path.resolve(__dirname, '../dist'),
+                    filename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                    chunkFilename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                    path: path.resolve(__dirname, '../dist')
                 },
                 </code></pre>
                 <p class="fragment">
-                    I use the <b>[name]</b> property because of my <span class="fragment"><code>code splitting</code></span> resulting from <span class="fragment"><b><i>two</i></b></span> entry points. <b>[name]</b> takes into consideration that there
-                    can be more than one <b class="fragment">bundle</b> file, and they may have different names.
+                    I use the <b>[name]</b> property because of my <span class="fragment"><code class="fragment">code splitting</code></span> resulting from <span class="fragment"><b><i>naming</i></b></span> different types of <b>chunks</b>. Previously
+                    the reasoning was because of <code class="fragment">> 1</code> <b>entry point</b>, but now it's because of <code class="fragment">> 1</code> type of <b>chunk</b>. As you saw, they do <b><i>not</i></b> reside in the <b>entry point</b>!
                 </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>[name]</h3>
+                <pre class="fragment"><code data-trim>
+                output: {
+                    filename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                    chunkFilename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                    path: path.resolve(__dirname, '../dist')
+                },
+                </code></pre>
+                <p class="fragment">
+                    <b>[name]</b> takes into consideration that there can be more than one type of <b class="fragment">bundle (main)</b> file, and they may have different names.
+                </p>
+            </section>
+            <section>
+                <h3>[contenthash]</h3>
+                <pre class="fragment"><code data-trim>
+                output: {
+                    filename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                    chunkFilename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                    path: path.resolve(__dirname, '../dist')
+                },
+                </code></pre>
+                <p>According to </p>
             </section>
             <section data-background="#ffc600">
                 <h3>[contenthash]</h3>
                 <pre class="fragment"><code data-trim>
-                const path = require('path');
                 output: {
-                    filename: PLATFORM === 'production' ? 'scripts/[name]-[contenthash].js' : 'scripts/[name].js',
-                    path: path.resolve(__dirname, '../dist'),
+                    filename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                    chunkFilename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                    path: path.resolve(__dirname, '../dist')
                 },
                 </code></pre>
                 <p class="fragment">
@@ -1164,7 +1206,8 @@
             <section data-background="#ffc600">
                 <h3>expectations !== reality</h3>
                 <p class="fragment">
-                    I came to realize that simply <span class="fragment"><code>adding</code></span> <b class="fragment">[contenthash]</b> to my filename didn't exactly achieve what I thought it would out of the box.
+                    I came to realize that simply <span class="fragment"><code>adding</code></span> <b class="fragment">[contenthash]</b>
+                    <b class="fragment">(previously [chunkhash])</b> to my filename didn't exactly achieve what I thought it would out of the box.
                 </p>
             </section>
             <section data-background="#ffc600" data-background-image="images/suitcase-rummaging-market-australia11.jpg" data-background-size="cover" data-background-position="center" data-background-repeat="no-repeat">
@@ -1250,6 +1293,7 @@
                 </p>
             </section>
             <section data-background="#ffc600">
+                <h3>Conditions</h3>
                 <ul>
                     <li class="fragment">
                         When a new chunk can be shared OR modules are from the <code>node_modules</code> folder.
@@ -1289,57 +1333,80 @@
             <section data-background="#ffc600">
                 <h3>Dev Output In Terminal</h3>
                 <pre class="fragment"><code data-trim>
-                    10592 ± npm run start ⏎
-                    
-                    > speech-to-text-app@0.0.1 start /Users/mariacam/Development/speech-to-text-app
-                    > webpack-dev-server --mode development --config config/webpack.base.config.js --open --hot --history-api-fallback
-                    --env.PLATFORM=local --env.VERSION=stag
-                    
-                    clean-webpack-plugin: /Users/mariacam/Development/speech-to-text-app/config/dist has been removed.
-                    ℹ ｢wds｣: Project is running at http://localhost:8080/
-                    ℹ ｢wds｣: webpack output is served from /
-                    ℹ ｢wds｣: 404s will fallback to /index.html
-                    ℹ ｢wdm｣: wait until bundle finished: /
-                    ℹ ｢wdm｣: Hash: 86df1fcc980b51830a7b
-                    Version: webpack 4.3.0
-                    Time: 5027ms
-                    Built at: 11/19/2018 6:49:23 PM
-                    Asset Size Chunks Chunk Names
-                    src/favicon-2cc0ddfd.ico 1.06 KiB [emitted]
-                    scripts/bundle.js 2.03 MiB bundle [emitted] bundle
-                    scripts/vendor.js 1.17 MiB vendor [emitted] vendor
-                    favicon.ico 1.06 KiB [emitted]
-                    index.html 469 bytes [emitted]
-                    Entrypoint vendor = scripts/vendor.js
-                    Entrypoint bundle = scripts/bundle.js
-                    [./node_modules/loglevel/lib/loglevel.js] 7.68 KiB {bundle} {vendor} [built]
-                    [./node_modules/react-dom/cjs/react-dom.development.js] 705 KiB {bundle} {vendor} [built]
-                    [./node_modules/react-dom/index.js] 1.33 KiB {bundle} {vendor} [built]
-                    [./node_modules/react/index.js] 190 bytes {bundle} {vendor} [built]
-                    [./node_modules/url/url.js] 22.8 KiB {bundle} {vendor} [built]
-                    [./node_modules/webpack-dev-server/client/index.js?http://localhost:8080]
-                    (webpack)-dev-server/client?http://localhost:8080 7.78 KiB {bundle} {vendor} [built]
-                    [./node_modules/webpack/hot/dev-server.js] (webpack)/hot/dev-server.js 1.66 KiB {bundle} {vendor} [built]
-                    [./node_modules/webpack/hot/log-apply-result.js] (webpack)/hot/log-apply-result.js1.31 KiB {bundle} {vendor} [built]
-                    [./node_modules/webpack/hot/log.js] (webpack)/hot/log.js 1.03 KiB {bundle} {vendor} [built]
-                    [./src/App.js] 3.61 KiB {bundle} [built]
-                    [./src/favicon.ico] 70 bytes {bundle} [built]
-                    [./src/index.js] 330 bytes {bundle} [built]
-                    [./src/styles.scss] 1.33 KiB {bundle} [built]
-                    [0] multi (webpack)-dev-server/client?http://localhost:8080 (webpack)/hot/dev-server.js react react-dom 64 bytes
-                    {vendor} [built]
-                    [1] multi (webpack)-dev-server/client?http://localhost:8080 (webpack)/hot/dev-server.js ./src/index.js 52 bytes
-                    {bundle} [built]
-                    + 47 hidden modules
-                    Child html-webpack-plugin for "index.html":
-                    1 asset
-                    Entrypoint undefined = index.html
-                    [./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html] 504 bytes {0} [built]
-                    [./node_modules/lodash/lodash.js] 527 KiB {0} [built]
-                    [./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 509 bytes {0} [built]
-                    [./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 519 bytes {0} [built]
-                    ℹ ｢wdm｣: Compiled successfully.
+                10755 ± npm run start ✖ ✹ ✭
+
+                > speech-to-text-app@0.0.1 start /Users/mariacam/Development/speech-to-text-app
+                > webpack-dev-server --mode development --config config/webpack.base.config.js --open --hot --history-api-fallback
+                --env.PLATFORM=local --env.VERSION=stag
+
+                clean-webpack-plugin: /Users/mariacam/Development/speech-to-text-app/config/dist has been removed.
+                ℹ ｢wds｣: Project is running at http://localhost:8080/
+                ℹ ｢wds｣: webpack output is served from /
+                ℹ ｢wds｣: 404s will fallback to /index.html
+                ℹ ｢wdm｣: wait until bundle finished: /
+                ℹ ｢wdm｣: Hash: 52d4cbe5cd5859cdf269
+                Version: webpack 4.3.0
+                Time: 4490ms
+                Built at: 11/22/2018 10:59:22 AM
+                Asset Size Chunks Chunk Names
+                src/favicon-2cc0ddfd.ico 1.06 KiB [emitted]
+                scripts/bundle.js 2.11 MiB bundle [emitted] bundle
+                scripts/vendor.js 3.01 MiB vendor [emitted] vendor
+                favicon.ico 1.06 KiB [emitted]
+                index.html 469 bytes [emitted]
+                Entrypoint vendor = scripts/vendor.js
+                Entrypoint bundle = scripts/bundle.js
+                [./node_modules/@fortawesome/fontawesome-svg-core/index.es.js] 60.2 KiB {bundle} {vendor} [built]
+                [./node_modules/@fortawesome/free-brands-svg-icons/index.es.js] 427 KiB {vendor} [built]
+                [./node_modules/@fortawesome/free-regular-svg-icons/index.es.js] 116 KiB {vendor} [built]
+                [./node_modules/@fortawesome/free-solid-svg-icons/index.es.js] 600 KiB {bundle} {vendor} [built]
+                [./node_modules/@fortawesome/react-fontawesome/index.es.js] 10.7 KiB {bundle} {vendor} [built]
+                [./node_modules/core-js/index.js] 640 bytes {vendor} [built]
+                [./node_modules/core-js/modules/core.string.unescape-html.js] 306 bytes {vendor} [built]
+                [./node_modules/react-dom/cjs/react-dom.development.js] 705 KiB {bundle} {vendor} [built]
+                [./node_modules/react-dom/index.js] 1.33 KiB {bundle} {vendor} [built]
+                [./node_modules/react/index.js] 190 bytes {bundle} {vendor} [built]
+                [./node_modules/webpack-dev-server/client/index.js?http://localhost:8080]
+                (webpack)-dev-server/client?http://localhost:8080 7.78 KiB {bundle} {vendor} [built]
+                [./node_modules/webpack/hot/dev-server.js] (webpack)/hot/dev-server.js 1.66 KiB {bundle} {vendor} [built]
+                [./src/index.js] 382 bytes {bundle} [built]
+                [0] multi (webpack)-dev-server/client?http://localhost:8080 (webpack)/hot/dev-server.js core-js react react-dom
+                @fortawesome/fontawesome-svg-core @fortawesome/free-brands-svg-icons @fortawesome/free-regular-svg-icons
+                @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome 136 bytes {vendor} [built]
+                [1] multi (webpack)-dev-server/client?http://localhost:8080 (webpack)/hot/dev-server.js ./src/index.js 52 bytes
+                {bundle} [built]
+                + 391 hidden modules
+                Child html-webpack-plugin for "index.html":
+                1 asset
+                Entrypoint undefined = index.html
+                [./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html] 504 bytes {0} [built]
+                [./node_modules/lodash/lodash.js] 527 KiB {0} [built]
+                [./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 509 bytes {0} [built]
+                [./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 519 bytes {0} [built]
                 </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Dev Output In Terminal</h3>
+                <p class="fragment">
+                    So much has changed even in the <b>Terminal</b> <b><i>output</i></b> when running your <b>React application</b> in
+                    <b>dev
+    mode</b> with <b>webpack-dev-server</b>. Everything configured in <code>config/webpack.base.config.js</code> prints out in Terminal. So cool, right?
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Dev Output In Terminal</h3>
+                <p class="fragment">This is what a <b>dev output in Terminal</b> might have looked like with the <b><i>first edition</i></b> of my workflow:</p>
+                <pre class="fragment"><code data-trim>
+				[gQNZ] ./src/style/style.css 307 bytes {1} [built]
+				[lVK7] ./src/index.js 846 bytes {1} [built]
+				[olkN] ./src/store.js 354 bytes {1} [built]
+				[pnOm] ./src/App.js 3.01 kB {1} [built]
+				[tuRH] ./src/reducers/todo.js 874 bytes {1} [built]
+				[z7yQ] ./src/logo.svg 3.52 kB {1} [built]
+				+ 2 hidden modules
+                </code></pre>
+                <p class="fragment">To read more about <b><i>this</i></b> output in the <b>first edition</b>, please visit <a href="">dev output first
+        edition</a>.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>Named Modules Plugin</h3>
@@ -1347,8 +1414,12 @@
             				new webpack.NamedModulesPlugin(),
             				</code></pre>
                 <p class="fragment">
-                    <p class="fragment">The previous build output in Terminal is possible thanks to the <code class="fragment">NamedModulesPlugin</code>.</p>
+                    <p class="fragment">The previous build output in <b>Terminal</b> was possible thanks to the <code class="fragment">NamedModulesPlugin</code>. With <b>webpack 4</b>, there is no need to add this line in <code>config/webpkack.base.js</code>. It is <b>built in</b>                        by <b>default</b>. But as you have already seen, it looks mighty different too!
+                    </p>
                 </p>
+            </section>
+            <section>
+                <h3>dev output in Terminal >= webpack 4</h3>
             </section>
             <section data-background="#ffc600">
                 <h3>Build Output in Terminal</h3>
@@ -1738,6 +1809,26 @@
             </section>
             <section data-background="#ffc600">
                 <h3>MiniCssExtractPlugin.loader</h3>
+                <p class="fragment">How you call the MiniCssExtractLoader.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>CSS Loader and CSS Modules</h3>
+                <p class="fragment">
+                    This <b>workflow</b> supports <b>CSS Modules</b>. In order to make that happen, we have to add the following <b>options</b> to our
+                    <b>css-loader</b>:
+                </p>
+                <pre class="fragment"><code data-trim>
+                    loader: 'css-loader',
+                    options: {
+                        modules: true,
+                        sourceMap: true,
+                        importLoaders: 1,
+                        localIdentName: '[local]___[hash:base64:5]'
+                    },
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>CSS Modules</h3>
             </section>
             <section data-background="#ffc600">
                 <h3>css hot loader</h3>
@@ -1770,19 +1861,6 @@
                         Tweak styling faster.
                     </li>
                 </ul>
-            </section>
-            <section data-background="#ffc600">
-                <h3>Extract Text Webpack Plugin</h3>
-                <pre class="fragment"><code data-trim>
-				new ExtractTextPlugin({
-				  filename: 'style.[contenthash:8].css',
-				}),
-						</code></pre>
-                <p class="fragment">
-                    Extracts text from <span class="fragment"><code>bundle.js</code></span> into its own separate file. And the <b>CSS
-                    bundle</b> is loaded in parallel to the <b>JS bundle</b>, thereby speeding up load time. Does <b><i>not</i></b> play nice with <b>webpack
-                    4</b>, so was replaced with the <b>MiniCssExtractPlugin</b>.
-                </p>
             </section>
             <section data-background="#ffc600">
                 <h3>[contenthash]</h3>
@@ -1821,24 +1899,6 @@
 						</code></pre>
                 <p class="fragment">
                     <span class="fragment"><code>Image loader</code></span> module for <b>webpack</b>, and this is what it permits you to do in your <span class="fragment"><code>React Component</code>.</span> However, it currently has <b>unresolvable</b>                    moderately severe <b>vulnerabilities</b>. Until they go away, I am using <code class="fragment">file-loader</code> for my <b>image</b> needs.
-                </p>
-            </section>
-            <section data-background="#ffc600">
-                <h3>Image Webpack Loader</h3>
-                <pre class="fragment"><code data-trim>
-				{
-				  test: /\.(jpeg?g|png|gif|svg|ico)$/,
-				  use: [
-					{
-					  loader: 'url-loader',
-					  options: { limit: 40000 }
-					},
-					'image-webpack-loader'
-				  ]
-				},
-						</code></pre>
-                <p class="fragment">
-                    The code you need to add to your <span class="fragment"><code>webpack config</code>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
