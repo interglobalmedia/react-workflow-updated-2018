@@ -6,21 +6,62 @@
 
 ## Site Map:
 
-### Landing Page: [react workflows without create react app landing page](https://interglobalmedia.github.io/react-workflow-updated-2018/#/)
+### Landing Page: 
+[landing page](https://interglobalmedia.github.io/react-workflow-updated-2018/#/)
 
-### About This Presentation: [about this presentation](https://interglobalmedia.github.io/react-workflow-updated-2018/#/1)
+### About This Presentation: 
+[Slide 1](https://interglobalmedia.github.io/react-workflow-updated-2018/#/1)
 
-### A Bit About Me: [about me](https://interglobalmedia.github.io/react-workflow-updated-2018/#/2) - [about me end](https://interglobalmedia.github.io/react-workflow-updated-2018/#/4)
+### A Bit About Me: 
+[Slide 2](https://interglobalmedia.github.io/react-workflow-updated-2018/#/2) - [Slide 4](https://interglobalmedia.github.io/react-workflow-updated-2018/#/4)
 
-### Why Discuss React Workflows?: [why discuss react workflows?](https://interglobalmedia.github.io/react-workflow-updated-2018/#/5) - [why discuss react workflows? end](https://interglobalmedia.github.io/react-workflow-updated-2018/#/11)
+### Why Discuss React Workflows?: 
+[Slide 5](https://interglobalmedia.github.io/react-workflow-updated-2018/#/5) - [Slide 11](https://interglobalmedia.github.io/react-workflow-updated-2018/#/11)
 
-### Where Webpack Comes In: [where webpack comes in](https://interglobalmedia.github.io/react-workflow-updated-2018/#/12) - [where webpack comes in end](https://interglobalmedia.github.io/react-workflow-updated-2018/#/20)
+### Where Webpack Comes In: 
+[Slide 12](https://interglobalmedia.github.io/react-workflow-updated-2018/#/12) - [Slide 20](https://interglobalmedia.github.io/react-workflow-updated-2018/#/20)
 
-### Custom React Workflows: [custom react workflows](https://interglobalmedia.github.io/react-workflow-updated-2018/#/21) - [custom react workflows end](https://interglobalmedia.github.io/react-workflow-updated-2018/#/23)
+### Custom React Workflows: 
+[Slide 21](https://interglobalmedia.github.io/react-workflow-updated-2018/#/21) - [Slide 23](https://interglobalmedia.github.io/react-workflow-updated-2018/#/23)
 
-### package.json: [package.json](https://interglobalmedia.github.io/react-workflow-updated-2018/#/24)
+### package.json: 
+[Slide 24](https://interglobalmedia.github.io/react-workflow-updated-2018/#/24)
 
-### What Has Not Changed (Jest): [what has not changed (jest)](https://interglobalmedia.github.io/react-workflow-updated-2018/#/25)
+### What Has Not Changed (Jest): 
+[Slide 25](https://interglobalmedia.github.io/react-workflow-updated-2018/#/25)
 
-### What Has Changed (Jest): [what has changed (jest)](https://interglobalmedia.github.io/react-workflow-updated-2018/#/26)
+### What Has Changed (Jest): 
+[Slide 26](https://interglobalmedia.github.io/react-workflow-updated-2018/#/26)
+
+### What Has Not Changed (Jest DevDeps):
+[Slide 27](https://interglobalmedia.github.io/react-workflow-updated-2018/#/27)
+
+### What has Changed (Jest DevDeps):
+[Slide 28](https://interglobalmedia.github.io/react-workflow-updated-2018/#/28)
+
+### Configuring Babel 7:
+[Slide 29](https://interglobalmedia.github.io/react-workflow-updated-2018/#/29) -  [Slide 31](https://interglobalmedia.github.io/react-workflow-updated-2018/#/31)
+
+### Babel < 7 Presets:
+[Slide 32](https://interglobalmedia.github.io/react-workflow-updated-2018/#/32)
+
+### Babel 7 Presets:
+[Slide 33](https://interglobalmedia.github.io/react-workflow-updated-2018/#/33) - [Slide 36](https://interglobalmedia.github.io/react-workflow-updated-2018/#/36)
+
+### Babel Plugins:
+[Slide 37](https://interglobalmedia.github.io/react-workflow-updated-2018/#/37) - [Slide 42](https://interglobalmedia.github.io/react-workflow-updated-2018/#/42)
+
+### Configuring Babel 7 (config/webpack.base.config.js):
+[Slide 43](https://interglobalmedia.github.io/react-workflow-updated-2018/#/43)
+
+### Babel 7 Packages:
+[Slide 44](https://interglobalmedia.github.io/react-workflow-updated-2018/#/44) - [Slide 47](https://interglobalmedia.github.io/react-workflow-updated-2018/#/47)
+
+### Configuring ESLint:
+[Slide 48](https://interglobalmedia.github.io/react-workflow-updated-2018/#/48) - [Slide 50](https://interglobalmedia.github.io/react-workflow-updated-2018/#/50)
+
+### Configuring Webpack:
+[Slide 51](https://interglobalmedia.github.io/react-workflow-updated-2018/#/51) -
+
+
 
