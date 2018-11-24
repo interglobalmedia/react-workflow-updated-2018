@@ -1315,27 +1315,20 @@
                 </ul>
             </section>
             <section data-background="#ffc600 ">
-                <h3>Extracting a Manifest</h3>
+                <h3>Extracting a Runtime/Manifest</h3>
+                <p class="fragment"><b>config/webpack.prod.config.js</b></p>
                 <pre class="fragment "><code data-trim>
                 optimization: {
-                    splitChunks: {
-                        cacheGroups: {
-                            default: false,
-                            vendors: false
-                        },
-                    },
-                    runtimeChunk: {
-                        name: 'manifest',
-                    },
-                    minimizer: [new UglifyJSPlugin()],
+                    runtimeChunk: 'single',
                 },
                 </code></pre>
-                <p class="fragment ">After adding <code class="fragment ">runtimeChunk</code>, a <b><i>new</i></b> <code class="fragment ">manifest</code> file will be created.</p>
+                <p class="fragment ">After adding <code class="fragment ">runtimeChunk</code>, a <b><i>new</i></b> (default name) <code class="fragment ">runtime</code> file will be created. The value <code class="fragment">"single"</code> creates a <b><i>single</i></b>
+                    <b>runtime file</b> to be shared for <b>ALL</b> generated <b>chunks</b>.</p>
             </section>
             <section data-background="#ffc600 ">
                 <h3>Dev Output In Terminal</h3>
                 <pre class="fragment "><code data-trim>
-                10755 ± npm run start ✖ ✹ ✭
+                10926 ± npm run start ✹
 
                 > speech-to-text-app@0.0.1 start /Users/mariacam/Development/speech-to-text-app
                 > webpack-dev-server --mode development --config config/webpack.base.config.js --open --hot --history-api-fallback
@@ -1346,48 +1339,52 @@
                 ℹ ｢wds｣: webpack output is served from /
                 ℹ ｢wds｣: 404s will fallback to /index.html
                 ℹ ｢wdm｣: wait until bundle finished: /
-                ℹ ｢wdm｣: Hash: 52d4cbe5cd5859cdf269
+                ℹ ｢wdm｣: Hash: cc60f0b1138d573ca57d
                 Version: webpack 4.3.0
-                Time: 4490ms
-                Built at: 11/22/2018 10:59:22 AM
+                Time: 7393ms
+                Built at: 11/23/2018 3:29:44 PM
                 Asset Size Chunks Chunk Names
-                src/favicon-2cc0ddfd.ico 1.06 KiB [emitted]
-                scripts/bundle.js 2.11 MiB bundle [emitted] bundle
-                scripts/vendor.js 3.01 MiB vendor [emitted] vendor
+                src/favicon.2cc0ddfd.ico 1.06 KiB [emitted]
+                scripts/Speech.chunk.js 29.9 KiB Speech [emitted] Speech
+                scripts/main.chunk.js 50.2 KiB main [emitted] main
+                scripts/vendors~Speech.chunk.js 794 KiB vendors~Speech [emitted] vendors~Speech
+                scripts/vendors~main.chunk.js 1.27 MiB vendors~main [emitted] vendors~main
                 favicon.ico 1.06 KiB [emitted]
-                index.html 469 bytes [emitted]
-                Entrypoint vendor = scripts/vendor.js
-                Entrypoint bundle = scripts/bundle.js
-                [./node_modules/@fortawesome/fontawesome-svg-core/index.es.js] 60.2 KiB {bundle} {vendor} [built]
-                [./node_modules/@fortawesome/free-brands-svg-icons/index.es.js] 427 KiB {vendor} [built]
-                [./node_modules/@fortawesome/free-regular-svg-icons/index.es.js] 116 KiB {vendor} [built]
-                [./node_modules/@fortawesome/free-solid-svg-icons/index.es.js] 600 KiB {bundle} {vendor} [built]
-                [./node_modules/@fortawesome/react-fontawesome/index.es.js] 10.7 KiB {bundle} {vendor} [built]
-                [./node_modules/core-js/index.js] 640 bytes {vendor} [built]
-                [./node_modules/core-js/modules/core.string.unescape-html.js] 306 bytes {vendor} [built]
-                [./node_modules/react-dom/cjs/react-dom.development.js] 705 KiB {bundle} {vendor} [built]
-                [./node_modules/react-dom/index.js] 1.33 KiB {bundle} {vendor} [built]
-                [./node_modules/react/index.js] 190 bytes {bundle} {vendor} [built]
+                index.html 485 bytes [emitted]
+                precache-manifest.ead46283758951b05b27e4de5ca60d6c.js 655 bytes [emitted]
+                sw.js 907 bytes [emitted]
+                Entrypoint main = scripts/vendors~main.chunk.js scripts/main.chunk.js
+                [./node_modules/core-js/es6/map.js] 208 bytes {vendors~main} [built]
+                [./node_modules/core-js/es6/set.js] 208 bytes {vendors~main} [built]
                 [./node_modules/webpack-dev-server/client/index.js?http://localhost:8080]
-                (webpack)-dev-server/client?http://localhost:8080 7.78 KiB {bundle} {vendor} [built]
-                [./node_modules/webpack/hot/dev-server.js] (webpack)/hot/dev-server.js 1.66 KiB {bundle} {vendor} [built]
-                [./src/index.js] 382 bytes {bundle} [built]
-                [0] multi (webpack)-dev-server/client?http://localhost:8080 (webpack)/hot/dev-server.js core-js react react-dom
-                @fortawesome/fontawesome-svg-core @fortawesome/free-brands-svg-icons @fortawesome/free-regular-svg-icons
-                @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome 136 bytes {vendor} [built]
-                [1] multi (webpack)-dev-server/client?http://localhost:8080 (webpack)/hot/dev-server.js ./src/index.js 52 bytes
-                {bundle} [built]
-                + 391 hidden modules
-                Child html-webpack-plugin for "index.html ":
+                (webpack)-dev-server/client?http://localhost:8080 7.78 KiB {vendors~main} [built]
+                [./node_modules/webpack-dev-server/client/overlay.js] (webpack)-dev-server/client/overlay.js 3.58 KiB {vendors~main}
+                [built]
+                [./node_modules/webpack-dev-server/client/socket.js] (webpack)-dev-server/client/socket.js 1.05 KiB{vendors~main}
+                [built]
+                [./node_modules/webpack/hot sync ^\.\/log$] (webpack)/hot sync nonrecursive ^\.\/log$ 170 bytes {main} [built]
+                [./node_modules/webpack/hot/dev-server.js] (webpack)/hot/dev-server.js 1.66 KiB {vendors~main} [built]
+                [./node_modules/webpack/hot/emitter.js] (webpack)/hot/emitter.js 77 bytes {vendors~main} [built]
+                [./node_modules/webpack/hot/log-apply-result.js] (webpack)/hot/log-apply-result.js 1.31 KiB {vendors~main} [built]
+                [./node_modules/webpack/hot/log.js] (webpack)/hot/log.js 1.03 KiB {vendors~main} [built]
+                [0] multi (webpack)-dev-server/client?http://localhost:8080 (webpack)/hot/dev-server.js ./src/index.js 52 bytes {main}
+                [built]
+                [./src/App.js] 1.04 KiB {main} [built]
+                [./src/favicon.ico] 70 bytes {main} [built]
+                [./src/index.js] 382 bytes {main} [built]
+                [./src/styles.scss] 1.33 KiB {main} [built]
+                + 117 hidden modules
+                Child html-webpack-plugin for "index.html":
                 1 asset
                 Entrypoint undefined = index.html
                 [./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html] 504 bytes {0} [built]
                 [./node_modules/lodash/lodash.js] 527 KiB {0} [built]
                 [./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 509 bytes {0} [built]
                 [./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 519 bytes {0} [built]
+                ℹ ｢wdm｣: Compiled successfully.
                 </code></pre>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>Dev Output In Terminal</h3>
                 <p class="fragment ">
                     So much has changed even in the <b>Terminal</b> <b><i>output</i></b> when running your <b>React application</b> in
@@ -1395,7 +1392,20 @@
     mode</b> with <b>webpack-dev-server</b>. Everything configured in <code>config/webpack.base.config.js</code> prints out in Terminal. So cool, right?
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
+                <p><b>custom script, webpack-dev-server</b></p>
+                <pre class="fragment"><code data-trim>
+                10926 ± npm run start ✹
+
+                > speech-to-text-app@0.0.1 start /Users/mariacam/Development/speech-to-text-app
+                > webpack-dev-server --mode development --config config/webpack.base.config.js --open --hot --history-api-fallback
+                --env.PLATFORM=local --env.VERSION=stag
+                </code></pre>
+                <p class="fragment">
+                    <code class="fragment">npm run start</code> is my script for running my app in <b>dev mode</b> using <code class="fragment">webpack-dev-server</code>.
+                </p>
+            </section>
+            <section data-background="#ffc600">
                 <h3>Dev Output In Terminal</h3>
                 <p class="fragment ">This is what a <b>dev output in Terminal</b> might have looked like with the <b><i>first edition</i></b> of my workflow:</p>
                 <pre class="fragment "><code data-trim>
