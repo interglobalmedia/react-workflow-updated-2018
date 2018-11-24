@@ -1407,6 +1407,31 @@
                 </p>
             </section>
             <section data-background="#ffc600">
+                <h3>mode=development</h3>
+                <p><b>custom script, webpack-dev-server</b></p>
+                <pre class="fragment"><code data-trim>
+                new webpack.DefinePlugin({
+                    'process.env.VERSION': JSON.stringify(env.VERSION),
+                    'process.env.PLATFORM': JSON.stringify(env.PLATFORM)
+                })
+                </code></pre>
+                <p class="fragment">Sets
+                    <a href="https://webpack.js.org/concepts/mode/">process.env.NODE_ENV</a> on <b>DefinePlugin</b> to <code>value=development</code>. it also enables
+                    <b>NamedChunksPlugin</b> and <b>NamedModulesPlugin</b>. This is the way I defined development in the first edition.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>mode=development</h3>
+                <p><b>custom script, webpack-dev-server</b></p>
+                <pre class="fragment"><code data-trim>
+                new webpack.DefinePlugin({
+                    'process.env.VERSION': JSON.stringify(env.VERSION),
+                    'process.env.PLATFORM': JSON.stringify(env.PLATFORM)
+                })
+                </code></pre>
+                <p class="fragment">Now, I define it as shown above, alongside <b>ternary operators</b> throughout <code>webpack.base.config.js</code> using the <b>PLATFORM</b> variable.</p>
+            </section>
+            <section data-background="#ffc600">
                 <p><b>custom script, webpack-dev-server</b></p>
                 <pre class="fragment"><code data-trim>
                 10926 ± npm run start ✹
@@ -1565,9 +1590,35 @@
                     <b>hash</b> is emitted identifying that build.
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
+                <h3>Dev Output In Terminal</h3>
+                <p class="fragment"><b>dev instance info</b></p>
+                <pre class="fragment"><code data-trim>
+                Version: webpack 4.3.0
+                Time: 7393ms
+                Built at: 11/23/2018 3:29:44 PM
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Dev Output In Terminal</h3>
+                <p class="fragment"><b>assets emitted</b></p>
+                <a class="fragment" href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/97">Link to Slide 97</a>
+                <p class="fragment">If you check to see how assets were set up in <b class="fragment">webpack.base.config.js</b>, viewable in <b>slide 97</b>, this would all make sense.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Dev Output In Terminal</h3>
+                <p class="fragment"><b>assets emitted</b></p>
+                <a class="fragment" href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/97">Link to Slide 97</a>
+                <p class="fragment">
+                    Also note
+                    <code>src/favicon.2cc0ddfd.ico</code>. This is why I end up with a <b>src</b> folder in <b>dist</b> containing this file. However, I need to add that as the <b>value</b> of <b>favicon</b> in the <b>HtmlWebpackPlugin</b> definition
+                    in order to <b>inject</b> <code>favicon.ico</code> into <code>index.html</code>.
+                </p>
+            </section>
+            <section data-background="#ffc600">
                 <h3>Build Output in Terminal</h3>
-                <pre class="fragment "><code data-trim>
+                <pre class="fragment"><code data-trim>
                     10594 ± npm run predeploy ✖
                     
                     > speech-to-text-app@0.0.1 predeploy /Users/mariacam/Development/speech-to-text-app
