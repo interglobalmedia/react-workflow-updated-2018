@@ -1617,116 +1617,218 @@
                 </p>
             </section>
             <section data-background="#ffc600">
+                <p>
+                    <b>
+                    other webpack base configs
+                    </b>
+                </p>
+                <pre class="fragment"><code data-trim>
+                optimization: {
+                    splitChunks: {
+                        chunks: 'all'
+                    }
+                },
+                </code></pre>
+                <p class="fragment">The <code>'all'</code> value means that chunks can be shared between <b><i>async</i></b> and <b><i>non-async</i></b>
+                    <b>chunks</b>, and this can be very powerful.</p>
+            </section>
+            <section data-background="#ffc600">
+                <p>
+                    <b>
+                        other webpack base configs
+                    </b>
+                </p>
+                <pre class="fragment"><code data-trim>
+                new CopyWebpackPlugin([{
+                    from: 'src/static'
+                }]),
+                </code></pre>
+                <p class="fragment">I didn't technically need the <b>copy-webpack-plugin</b> for this particular app I used towards this <b>second edition</b>, but normally I would (it's where I would place my images for example), so I added it to the workflow here. Basically
+                    it <b><i>copies</i></b> any <b>assets</b> in the <b>static</b> folder over to the <b>dist</b> folder.</p>
+            </section>
+            <section data-background="#ffc600">
+                <p>
+                    <b>
+                        other webpack base configs
+                    </b>
+                </p>
+                <pre class="fragment"><code data-trim>
+                new WorkboxPlugin.GenerateSW({
+                    swDest: 'sw.js'
+                }),
+                </code></pre>
+                <p class="fragment">This is something entirely <b><i>new</i></b> to the workflow, but <b><i>not</i></b> to <b>CRA</b>. It is the configuration for the <b>workbox-webpack-plugin</b>.</p>
+            </section>
+            <section data-background="#ffc600">
+                <p>
+                    <b>
+                        other webpack base configs
+                    </b>
+                </p>
+                <pre class="fragment"><code data-trim>
+                new WorkboxPlugin.GenerateSW({
+                    swDest: 'sw.js'
+                }),
+                </code></pre>
+                <p class="fragment">This configuration generates an <b>sw.js</b> (service-worker) file in <b>production</b>, and lets webpack know its <b>destination</b>, including the name of the file. The reason there is no <b>dest</b> folder is because if one was added
+                    (dist) to the 'path', then a <b><i>new</i></b> <b>dist</b> within <b>dist</b> would be created. webpack already knows its destination.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>service worker</h3>
+                <p class="fragment">the <b><i>why</i></b> :
+                    <a href="https://developers.google.com/web/tools/workbox/guides/precache-files/">precache
+                        files
+                    </a>
+                </p>
+                <p class="fragment">
+                    If you want your web app to work <b>offline</b> or there are assets you know can be <b>cached</b> for a long time, <b>pre-caching</b> is the best approach. <b>precaching</b> a file <b><i>ensures</i></b> that a file is <b>downloaded</b>                    and <b>cached</b>
+                    <b><i>before</i></b> a <b>service worker</b> is <b>installed</b>, meaning that if your <b>service worker</b> is <b>installed</b>, your files will be cached.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>workbox and precaching</h3>
+                <p class="fragment">
+                    the workbox-webpack-plugin provides an easy way to precache files, but it can also create a precache-manifest.json file that lists the files to precache. It provides a list of the files to be precached along with revisioning.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>precache-manifest.json</h3>
+                <pre class="fragment"><code data-trim>
+                self.__precacheManifest = [
+                  {
+                    "url": "styles/main.690dfc9a9eacd0ee4d0f.css"
+                  },
+                  {
+                    "url": "styles/Speech.690dfc9a9eacd0ee4d0f.css"
+                  },
+                  {
+                    "revision": "2cc0ddfdc87f52e9d8c0c7d5b6efbebe",
+                    "url": "src/favicon.2cc0ddfd.ico"
+                  },
+                  {
+                    "revision": "c00558e3eb099318bfd7",
+                    "url": "scripts/vendors~main.1ad1cd98b3cea083930b.chunk.js"
+                  },
+                  {
+                    "revision": "91502a5c5a80b43265a1",
+                    "url": "scripts/vendors~Speech.f0e3c9ecdeb61f482646.chunk.js"
+                  },
+                  {
+                    "revision": "526080fd283e0b39d519",
+                    "url": "scripts/runtime.f6f71c9f7a8cf14b349f.chunk.js"
+                  },
+                  {
+                    "revision": "1365bbd7f1fd166121d6",
+                    "url": "scripts/main.f8d88775b8bc47d47855.chunk.js"
+                  },
+                  {
+                    "revision": "07fd12356b7d18233857",
+                    "url": "scripts/Speech.d477efae3d7e20cf3ae3.chunk.js"
+                  },
+                  {
+                    "revision": "23378fffa3b2d116a81dbb2052c30463",
+                    "url": "index.html"
+                  },
+                  {
+                    "revision": "2cc0ddfdc87f52e9d8c0c7d5b6efbebe",
+                    "url": "favicon.ico"
+                  }
+                ];
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>precache-manifest.json</h3>
+                <p class="fragment">
+                    <b>precache-manifest.json</b> prints out the <b><i>list</i></b> of <b>files</b> being <b>precached</b>, basically all your app's <b>assets</b> (by default). It consists of <b><i>two</i></b> <b>attribute-value</b> pairs. The <b>url</b>                    attribute and its <b>value</b>, and the <b>revisioning</b> attribute and its <b>value</b>.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>precache-manifest.json</h3>
+                <p class="fragment"><b>url</b> attribute-value pair</p>
+                <p class="fragment">
+                    The <b>url</b> value is the <b><i>path</i></b> to the <b>asset</b> as it appears in the <b>index.html</b> tag. That <b><i>usually</i></b> does <b><i>not</i></b> <b>change</b> unless there is a complete <b>overhaul</b> of an app's <b>workflow configuration</b>!
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>precache-manifest.json</h3>
+                <p class="fragment"><b>revisioning</b> attribute-value pair</p>
+                <p class="fragment">
+                    The <b>revisioning</b> value on the other hand, <b><i>changes</i></b> when there is a <b><i>change</i></b> to the
+                    <b>asset</b>'s <b><i>content</i></b>. This way, old versions of a file will not continue to be cached. They are <b><i>updated</i></b> with the help of <b>workbox</b> and <b><i>new</i></b> <b>caches</b> are generated.
+                </p>
+            </section>
+            <section data-background="#ffc600">
                 <h3>Build Output in Terminal</h3>
                 <pre class="fragment"><code data-trim>
-                    10594 ± npm run predeploy ✖
-                    
-                    > speech-to-text-app@0.0.1 predeploy /Users/mariacam/Development/speech-to-text-app
-                    > webpack --mode production --config config/webpack.prod.config.js --env.PLATFORM=production --env.VERSION=stag
-                    --progress
-                    
-                    clean-webpack-plugin: /Users/mariacam/Development/speech-to-text-app/config/dist has been removed.
-                    10% building modules 1/1 modules 0 active(node:36460) DeprecationWarning: Tapable.plugin is deprecated. Use new API on
-                    `.hooks` instead
-                    10% building modules 6/10 modules 4 active ...pment/speech-to-text-app/src/App.scs 10% building modules 7/10 modules 3
-                    active ...pment/speech-to-text-app/src/App.scs 10% building modules 8/10 modules 2 active
-                    ...pment/speech-to-text-app/src/App.scs 10% building modules 8/11 modules 3 active
-                    ...t-app/src/components/speech/Speech.j 11% building modules 9/11 modules 2 active
-                    ...pment/speech-to-text-app/src/App.scs 11% building modules 9/12 modules 3 active
-                    ...p/node_modules/object-assign/index.j 11% building modules 9/13 modules 4 active
-                    ...app/src/components/speech/Speech.scs 11% building modules 10/13 modules 3 active
-                    ...app/src/components/speech/Speech.sc 11% building modules 10/14 modules 4 active
-                    ...t-app/src/components/utils/helpers. 11% building modules 10/15 modules 5 active
-                    ...-app/src/components/utils/download. 11% building modules 10/16 modules 6 active
-                    ...p/src/components/savenote/SaveNote. 11% building modules 10/17 modules 7 active
-                    ...pp/src/components/getnote/GetNotes. 11% building modules 10/18 modules 8 active
-                    ...t-dom/node_modules/scheduler/index. 11% building modules 11/18 modules 7 active
-                    ...t-dom/node_modules/scheduler/index. 11% building modules 12/18 modules 6 active
-                    ...t-dom/node_modules/scheduler/index. 11% building modules 13/18 modules 5 active
-                    ...t-dom/node_modules/scheduler/index. 11% building modules 14/18 modules 4 active
-                    ...t-dom/node_modules/scheduler/index. 11% building modules 15/18 modules 3 active
-                    ...app/src/components/speech/Speech.sc 11% building modules 15/19 modules 4 active
-                    ...awesome/react-fontawesome/index.es. 11% building modules 15/20 modules 5 active
-                    ...some/free-solid-svg-icons/index.es. 11% building modules 15/21 modules 6 active
-                    ...duler/cjs/scheduler.production.min. 11% building modules 16/21 modules 5 active
-                    ...duler/cjs/scheduler.production.min. 11% building modules 16/22 modules 6 active
-                    ...rc/components/utils/storageSupport. 12% building modules 17/22 modules 5 active
-                    ...rc/components/utils/storageSupport. 12% building modules 18/22 modules 4 active
-                    ...some/free-solid-svg-icons/index.es. 12% building modules 19/22 modules 3 active
-                    ...some/free-solid-svg-icons/index.es. 12% building modules 19/23 modules 4 active
-                    ...ent/speech-to-text-app/src/App.scss 12% building modules 20/23 modules 3 active
-                    ...some/free-solid-svg-icons/index.es. 12% building modules 21/23 modules 2 active
-                    ...some/free-solid-svg-icons/index.es. 12% building modules 21/24 modules 3 active
-                    .../speech-to-text-app/src/styles.scss 12% building modules 22/24 modules 2 active
-                    ...some/free-solid-svg-icons/index.es. 12% building modules 22/25 modules 3 active
-                    .../speech-to-text-app/src/styles.scss 12% building modules 23/25 modules 2 active
-                    ...some/free-solid-svg-icons/index.es. 12% building modules 23/26 modules 3 active
-                    ...ode_modules/webpack/buildin/global. 12% building modules 24/26 modules 2 active
-                    ...some/free-solid-svg-icons/index.es. 12% building modules 24/27 modules 3 active
-                    ...some/fontawesome-svg-core/index.es. 12% building modules 24/28 modules 4 active
-                    ...-app/node_modules/prop-types/index. 13% building modules 25/28 modules 3 active
-                    ...some/fontawesome-svg-core/index.es. 13% building modules 26/28 modules 2 active
-                    ...some/fontawesome-svg-core/index.es. 13% building modules 26/29 modules 3 active
-                    ...p/src/components/speech/Speech.scss 13% building modules 27/29 modules 2 active
-                    ...some/fontawesome-svg-core/index.es. 13% building modules 28/29 modules 1 active
-                    ...some/free-solid-svg-icons/index.es. 13% building modules 28/30 modules 2 active
-                    ...rop-types/factoryWithThrowingShims. 13% building modules 29/30 modules 1 active
-                    ...some/free-solid-svg-icons/index.es. 13% building modules 30/31 modules 1 active
-                    ...rop-types/lib/ReactPropTypesSecret.Hash: a33fe1088773b9b16ca6
-                    Version: webpack 4.3.0
-                    Time: 21634ms
-                    Built at: 11/19/2018 6:53:17 PM
-                    Asset Size Chunks Chunk Names
-                    src/favicon-2cc0ddfd.ico 1.06 KiB [emitted]
-                    scripts/manifest-fc320f2d2cc3648c411a.js 1.04 KiB 0 [emitted] manifest
-                    styles/bundle-a33fe1088773b9b16ca6.css 2.09 KiB 1 [emitted] bundle
-                    scripts/bundle-29b1a8f65461af1ff8f6.js 145 KiB 1 [emitted] bundle
-                    scripts/vendor-d1e563ec142061a10b3e.js 108 KiB 2 [emitted] vendor
-                    favicon.ico 1.06 KiB [emitted]
-                    index.html 667 bytes [emitted]
-                    Entrypoint vendor = scripts/manifest-fc320f2d2cc3648c411a.js scripts/vendor-d1e563ec142061a10b3e.js
-                    Entrypoint bundle = scripts/manifest-fc320f2d2cc3648c411a.js styles/bundle-a33fe1088773b9b16ca6.css
-                    scripts/bundle-29b1a8f65461af1ff8f6.js
-                    [./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 509 bytes {1} [built]
-                    [./src/App.scss] 245 bytes {1} [built]
-                    [./src/favicon.ico] 70 bytes {1} [built]
-                    [./src/index.js] ./src/index.js + 8 modules 617 KiB {1} [built]
-                    | ./src/index.js 330 bytes [built]
-                    | ./src/App.js 3.61 KiB [built]
-                    | + 7 hidden modules
-                    [./src/styles.scss] 39 bytes {1} [built]
-                    [0] multi react react-dom 40 bytes {2} [built]
-                    + 17 hidden modules
-                    Child mini-css-extract-plugin
-                    node_modules/css-loader/index.js??ref--6-1!node_modules/postcss-loader/src/index.js!node_modules/sass-loader/lib/loader.js!src/App.scss:
-                    Entrypoint mini-css-extract-plugin = *
-                    [./node_modules/css-loader/index.js??ref--6-1!./node_modules/postcss-loader/src/index.js!./node_modules/sass-loader/lib/loader.js!./src/App.scss]
-                    ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src!./node_modules/sass-loader/lib/loader.js!./src/App.scss
-                    2.47 KiB {0} [built]
-                    + 1 hidden module
-                    Child mini-css-extract-plugin
-                    node_modules/css-loader/index.js??ref--6-1!node_modules/postcss-loader/src/index.js!node_modules/sass-loader/lib/loader.js!src/styles.scss:
-                    Entrypoint mini-css-extract-plugin = *
-                    [./node_modules/css-loader/index.js??ref--6-1!./node_modules/postcss-loader/src/index.js!./node_modules/sass-loader/lib/loader.js!./src/styles.scss]
-                    ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src!./node_modules/sass-loader/lib/loader.js!./src/styles.scss
-                    959 bytes {0} [built]
-                    + 1 hidden module
-                    Child html-webpack-plugin for "index.html ":
-                    1 asset
-                    Entrypoint undefined = index.html
-                    [./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html] 504 bytes {0} [built]
-                    [./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 509 bytes {0} [built]
-                    [./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 519 bytes {0} [built]
-                    + 1 hidden module
-                    Child mini-css-extract-plugin
-                    node_modules/css-loader/index.js??ref--6-1!node_modules/postcss-loader/src/index.js!node_modules/sass-loader/lib/loader.js!src/components/speech/Speech.scss:
-                    Entrypoint mini-css-extract-plugin = *
-                    2 modules
+                npm run predeploy ⏎ ✹
+
+                > speech-to-text-app@0.0.1 predeploy /Users/mariacam/Development/speech-to-text-app
+                > webpack --mode production --config config/webpack.prod.config.js --env.PLATFORM=production --env.VERSION=stag
+                --progress
+
+                clean-webpack-plugin: /Users/mariacam/Development/speech-to-text-app/config/dist has been removed.
+                0% compiling(node:29675) DeprecationWarning: Tapable.plugin is deprecated. Use new API on `.hooks` instead
+                Hash: 690dfc9a9eacd0ee4d0f
+                Version: webpack 4.3.0
+                Time: 25239ms
+                Built at: 11/23/2018 6:36:14 PM
+                Asset Size Chunks Chunk Names
+                styles/main.690dfc9a9eacd0ee4d0f.css 720 bytes 4 [emitted] main
+                src/favicon.2cc0ddfd.ico 1.06 KiB [emitted]
+                styles/Speech.690dfc9a9eacd0ee4d0f.css 1.39 KiB 1 [emitted] Speech
+                scripts/Speech.d477efae3d7e20cf3ae3.chunk.js 7.32 KiB 1 [emitted] Speech
+                scripts/runtime.f6f71c9f7a8cf14b349f.chunk.js 2.64 KiB 2 [emitted] runtime
+                scripts/vendors~main.1ad1cd98b3cea083930b.chunk.js 129 KiB 3 [emitted] vendors~main
+                scripts/vendors~Speech.f0e3c9ecdeb61f482646.chunk.js 26.6 KiB 0 [emitted] vendors~Speech
+                scripts/main.f8d88775b8bc47d47855.chunk.js 1.27 KiB 4 [emitted] main
+                favicon.ico 1.06 KiB [emitted]
+                index.html 686 bytes [emitted]
+                precache-manifest.25877dad8e187853834337f15891def2.js 967 bytes [emitted]
+                sw.js 907 bytes [emitted]
+                asset-manifest.json 702 bytes [emitted]
+                Entrypoint main = scripts/runtime.f6f71c9f7a8cf14b349f.chunk.js scripts/vendors~main.1ad1cd98b3cea083930b.chunk.js
+                styles/main.690dfc9a9eacd0ee4d0f.css scripts/main.f8d88775b8bc47d47855.chunk.js
+                [+EN/] ./src/styles.scss 39 bytes {4} [built]
+                [NX+1] ./src/App.scss 245 bytes {4} [built]
+                [Z1A6] ./src/components/speech/Speech.js + 5 modules 12.9 KiB {1} [built]
+                | 6 modules
+                [m1cd] ./src/favicon.ico 70 bytes {4} [built]
+                [tjUo] ./src/index.js + 1 modules 1.45 KiB {4} [built]
+                | ./src/index.js 382 bytes [built]
+                | ./src/App.js 1.04 KiB [built]
+                [yLpj] (webpack)/buildin/global.js 509 bytes {0} [built]
+                + 89 hidden modules
+                Child mini-css-extract-plugin
+                node_modules/css-loader/index.js??ref--6-1!node_modules/postcss-loader/src/index.js!node_modules/sass-loader/lib/loader.js!src/App.scss:
+                Entrypoint mini-css-extract-plugin = *
+                [bUMP]
+                ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src!./node_modules/sass-loader/lib/loader.js!./src/App.scss
+                2.47 KiB {0} [built]
+                + 1 hidden module
+                Child mini-css-extract-plugin
+                node_modules/css-loader/index.js??ref--6-1!node_modules/postcss-loader/src/index.js!node_modules/sass-loader/lib/loader.js!src/styles.scss:
+                Entrypoint mini-css-extract-plugin = *
+                [OL5h]
+                ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src!./node_modules/sass-loader/lib/loader.js!./src/styles.scss
+                959 bytes {0} [built]
+                + 1 hidden module
+                Child html-webpack-plugin for "index.html":
+                1 asset
+                Entrypoint undefined = index.html
+                [MFLM] ./node_modules/html-webpack-plugin/lib/loader.js!./src/index.html 504 bytes {0} [built]
+                [YuTi] (webpack)/buildin/module.js 519 bytes {0} [built]
+                [yLpj] (webpack)/buildin/global.js 509 bytes {0} [built]
+                + 1 hidden module
+                Child mini-css-extract-plugin
+                node_modules/css-loader/index.js??ref--6-1!node_modules/postcss-loader/src/index.js!node_modules/sass-loader/lib/loader.js!src/components/speech/Speech.scss:
+                Entrypoint mini-css-extract-plugin = *
+                2 modules
                 </code></pre>
             </section>
             <section data-background="#ffc600 ">
                 <h3>HashedModuleIdsPlugin</h3>
-                <p class="fragment ">The previous build output in Terminal is possible thanks to the <code class="fragment ">HashedModuleIdsPlugin</code>.</p>
+                <p class="fragment ">The previous build output in Terminal is possible thanks to the <code class="fragment ">HashedModuleIdsPlugin</code>. Note the 4 character hashes within brackets.</p>
             </section>
             <section data-background="#ffc600 ">
                 <h3>Publishing to gh-pages on Build</h3>
