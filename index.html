@@ -810,92 +810,96 @@
                 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
                 const HtmlWebpackPlugin = require('html-webpack-plugin');
                 const CleanWebpackPlugin = require('clean-webpack-plugin');
-
-                const VENDOR_LIBS = [
-                    'react', 'react-dom'
-                ]
+                const WorkboxPlugin = require('workbox-webpack-plugin');
 
                 module.exports = env => {
 
-                const {PLATFORM, VERSION} = env;
+                    const {PLATFORM, VERSION} = env;
 
-                    return merge([
-                        {
-                            entry: {
-                                vendor: VENDOR_LIBS,
-                                bundle: './src/index.js'
-                            },
-                            output: {
-                                filename: PLATFORM === 'production' ? 'scripts/[name]-[contenthash].js' : 'scripts/[name].js',
-                                path: path.resolve(__dirname, '../dist')
-                            },
-                            module: {
-                                rules: [{
-                                        test: /\.js$/,
-                                        exclude: /node_modules/,
-                                        use: {
-                                            loader: 'babel-loader'
-                                        }
-                                    },
-                                    {
-                                        test: /\.js$/,
-                                        exclude: /node_modules/,
-                                        loaders: [
-                                            'babel-loader',
-                                            'eslint-loader'
-                                        ]
-                                    },
-                                    {
-                                        test: /\.(scss|sass|css)$/,
-                                        exclude: /node_modules/,
-                                        loaders: [
-                                            PLATFORM === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
-                                            {
-                                                loader: 'css-loader',
-                                                options: {
-                                                    modules: true,
-                                                    sourceMap: true,
-                                                    importLoaders: 1,
-                                                    localIdentName: '[local]___[hash:base64:5]'
+                        return merge([
+                            {
+                                entry: {
+                                    main: './src/index.js'
+                                },
+                                output: {
+                                    filename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                                    chunkFilename: PLATFORM === 'production' ? 'scripts/[name].[contenthash].chunk.js' : 'scripts/[name].chunk.js',
+                                    path: path.resolve(__dirname, '../dist')
+                                },
+                                optimization: {
+                                    splitChunks: {
+                                        chunks: 'all'
+                                    }
+                                },
+                                module: {
+                                    rules: [{
+                                            test: /\.js$/,
+                                            exclude: /node_modules/,
+                                            use: {
+                                                loader: 'babel-loader'
+                                            }
+                                        },
+                                        {
+                                            test: /\.js$/,
+                                            exclude: /node_modules/,
+                                            loaders: [
+                                                'babel-loader',
+                                                'eslint-loader'
+                                            ]
+                                        },
+                                        {
+                                            test: /\.(scss|sass|css)$/,
+                                            exclude: /node_modules/,
+                                            loaders: [
+                                                PLATFORM === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
+                                                {
+                                                    loader: 'css-loader',
+                                                    options: {
+                                                        modules: true,
+                                                        sourceMap: true,
+                                                        importLoaders: 1,
+                                                        localIdentName: '[local]___[hash:base64:5]'
+                                                    },
                                                 },
-                                            },
-                                            'postcss-loader',
-                                            'sass-loader'
-                                        ]
-                                    },
-                                    {
-                                        test: /\.(jpg|png|gif|svg|pdf|ico)$/,
-                                            use: [{
-                                                loader: 'file-loader',
-                                                options: {
-                                                    name: '[path][name]-[hash:8].[ext]'
-                                                },
-                                            }],
-                                    },
-                                ]
+                                                'postcss-loader',
+                                                'sass-loader'
+                                            ]
+                                        },
+                                        {
+                                            test: /\.(jpg|png|gif|svg|pdf|ico)$/,
+                                                use: [{
+                                                    loader: 'file-loader',
+                                                    options: {
+                                                        name: '[path][name].[hash:8].[ext]'
+                                                    },
+                                                }],
+                                        },
+                                    ]
+                                },
+                                plugins: [
+                                    new CleanWebpackPlugin(['dist']),
+                                    new HtmlWebpackPlugin({
+                                        template: 'src/index.html',
+                                        favicon: 'src/favicon.ico',
+                                        styles: 'src/styles.css',
+                                        inject: true
+                                    }),
+                                    new MiniCssExtractPlugin({
+                                        filename: PLATFORM === 'production' ? 'styles/[name].[hash].css' : '[name].css',
+                                    }),
+                                    new CopyWebpackPlugin([{
+                                        from: 'src/static'
+                                    }]),
+                                    new WorkboxPlugin.GenerateSW({
+                                        swDest: 'sw.js'
+                                    }),
+                                    new webpack.DefinePlugin({
+                                        'process.env.VERSION': JSON.stringify(env.VERSION),
+                                        'process.env.PLATFORM': JSON.stringify(env.PLATFORM)
+                                    })
+                                ],
                             },
-                            plugins: [
-                                new CleanWebpackPlugin(['dist']),
-                                new HtmlWebpackPlugin({
-                                    template: 'src/index.html',
-                                    favicon: 'src/favicon.ico',
-                                    styles: 'src/styles.css',
-                                    inject: true
-                                }),
-                                new webpack.NamedModulesPlugin(),
-                                new MiniCssExtractPlugin({
-                                    filename: PLATFORM === 'production' ? 'styles/[name]-[hash].css' : '[name].css',
-                                }),
-                                new CopyWebpackPlugin([{
-                                    from: 'src/static'
-                                }]),
-                                new webpack.DefinePlugin({
-                                    'process.env.VERSION': JSON.stringify(env.VERSION),
-                                    'process.env.PLATFORM': JSON.stringify(env.PLATFORM)
-                                })
-                            ]
-                        },
-                    ])
+                        ])
                 }
                 </code></pre>
             </section>
@@ -1421,7 +1425,7 @@
                 </p>
             </section>
             <section data-background="#ffc600">
-                <h3>mode=development</h3>
+                <h3>mode === development</h3>
                 <p><b>custom script, webpack-dev-server</b></p>
                 <pre class="fragment"><code data-trim>
                 new webpack.DefinePlugin({
@@ -1826,9 +1830,71 @@
                 2 modules
                 </code></pre>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
+                <p><b>custom script,</b> npm run predeploy</p>
+                <pre class="fragment"><code data-trim>
+                npm run predeploy ⏎ ✹
+
+                > speech-to-text-app@0.0.1 predeploy /Users/mariacam/Development/speech-to-text-app
+                > webpack --mode production --config config/webpack.prod.config.js --env.PLATFORM=production --env.VERSION=stag
+                --progress
+                </code></pre>
+                <p class="fragment">
+                    <code>npm run predeploy</code> is the <b>custom script</b> I run before I <b><i>deploy</i></b> to <b>gh-pages</b>. It
+                    <b><i>builds</i></b> my <b>dist </b>folder required for <b>deployment</b> (or re-deployment) to <b>gh-pages</b>. This script is shorter than npm run start, and some things should also look <b><i>familiar</i></b>.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>mode === production</h3>
+                <p class="fragment"><b>custom script,</b> npm run predeploy</p>
+                <pre class="fragment"><code data-trim>
+                npm run predeploy ⏎ ✹
+
+                > speech-to-text-app@0.0.1 predeploy /Users/mariacam/Development/speech-to-text-app
+                > webpack --mode production --config config/webpack.prod.config.js --env.PLATFORM=production --env.VERSION=stag
+                --progress
+                </code></pre>
+                <p class="fragment">
+                    Now, instead of <code class="fragment">webpack-dev-server</code> command, we use the <code class="fragment">webpack</code> commmand. In order to <b><i>properly</i></b> use the <code class="fragment">webpack</code> command, we need
+                    to have the <code class="fragment">webpack-cli</code> installed as a <b><i>devDependency</i></b> in our app.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>mode === production</h3>
+                <p class="fragment"><b>custom script,</b> npm run predeploy</p>
+                <p class="fragment">
+                    This is a <b><i>change</i></b> from the <a href="https://github.com/interglobalmedia/portfolio/blob/master/package.json">first
+    edition</a>, where I used <code>TARGET_ENV=development</code> in my custom <code>npm run serve</code> script, declared and defined a variable <code>TARGET_ENV</code> in <code>webpack-dev.config.js</code>, and <code>new
+    webpack.DefinePlugin({DEV:
+    true})</code>.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>mode === production</h3>
+                <p class="fragment"><b>custom script,</b> npm run predeploy</p>
+                <p class="fragment">I also did <b><i>not</i></b> install or use the <b>webpack-cli</b>, which can be <b><i>limiting</i></b>.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>mode === production</h3>
+                <p class="fragment"><b>custom script,</b> npm run predeploy</p>
+                <pre class="fragment"><code data-trim>
+                webpack --mode production --config config/webpack.prod.config.js --env.PLATFORM=production --env.VERSION=stag
+                </code></pre>
+                <p class="fragment">This line is similar to the one related to <code class="fragment">webpack-dev-server</code>, but for <b>production</b>. The <code class="fragment">--progress</code> flag allows you to see the <b>(%) progress</b> of your <b>production</b>                    build.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Build Output In Terminal</h3>
+                <p class="fragment"><b>assets emitted</b></p>
+                <p class="fragment">Again, if you check to see how assets were set up in <b class="fragment">webpack.base.config.js</b>, viewable in <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/57">slide 57</a>, assets emitted would <b><i>mostly</i></b>                    make sense. <b><i>Specifically</i></b>, <b><i>non</i></b> <b>node_module</b> related .js files/chunks and .css related files/chunks. But there is one <b><i>type</i></b> of file that throws many people off. Can you guess which one that
+                    is?
+            </section>
+            <section data-background="#ffc600">
                 <h3>HashedModuleIdsPlugin</h3>
-                <p class="fragment ">The previous build output in Terminal is possible thanks to the <code class="fragment ">HashedModuleIdsPlugin</code>. Note the 4 character hashes within brackets.</p>
+                <p class="fragment ">The previous <b>build output</b> in <b>Terminal</b> is in part possible thanks to the <code class="fragment ">HashedModuleIdsPlugin</code>. Note the <b><i>4 character</i></b> <b>hashes</b> within <b><i>brackets</i></b>. Visit <a class="fragment"
+                        href="https://interglobalmedia.github.io/react-workflow-presentation/#/51">slide
+        51</a> to
+                    <a class="fragment" href="slide 55">slide 55</a> of the <b>first edition</b> to learn more.</p>
             </section>
             <section data-background="#ffc600 ">
                 <h3>Publishing to gh-pages on Build</h3>
