@@ -1402,36 +1402,168 @@
                 --env.PLATFORM=local --env.VERSION=stag
                 </code></pre>
                 <p class="fragment">
-                    <code class="fragment">npm run start</code> is my script for running my app in <b>dev mode</b> using <code class="fragment">webpack-dev-server</code>.
+                    <code class="fragment">npm run start</code> is my custom script for running my app in <b>dev mode</b> using <code class="fragment">webpack-dev-server</code>.
+                    <code>webpack-dev-server --mode development</code> runs the <code>webpack-dev-server</code> in development. <code>webpack-dev-server</code> provides a simple web server and ability to use live reloading in development only.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <p><b>custom script, webpack-dev-server</b></p>
+                <pre class="fragment"><code data-trim>
+                10926 ± npm run start ✹
+
+                > speech-to-text-app@0.0.1 start /Users/mariacam/Development/speech-to-text-app
+                > webpack-dev-server --mode development --config config/webpack.base.config.js --open --hot --history-api-fallback
+                --env.PLATFORM=local --env.VERSION=stag
+                </code></pre>
+                <p class="fragment">
+                    Next we have to tell <b>webpack</b> <b><i>where</i></b> to look for <b>files</b>. Since we are <b>using</b> the <b><i>script</i></b> to do this <b><i>instead of</i></b> the <b>webpack config</b> file, we first add the <code>--config</code>                    flag to let
+                    <b>webpack</b> know that the <code>webpack.base.config.js</code> file is in the <b>config</b> folder.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <p><b>custom script, webpack-dev-server</b></p>
+                <pre class="fragment"><code data-trim>
+                10926 ± npm run start ✹
+
+                > speech-to-text-app@0.0.1 start /Users/mariacam/Development/speech-to-text-app
+                > webpack-dev-server --mode development --config config/webpack.base.config.js --open --hot --history-api-fallback
+                --env.PLATFORM=local --env.VERSION=stag
+                </code></pre>
+                <p class="fragment">
+                    We can <b><i>only</i></b> use this flag if there indeed IS a <b>config</b> folder that holds <code>webpack.base.config.js</code>.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <p><b>custom script, webpack-dev-server</b></p>
+                <pre class="fragment"><code data-trim>
+                10926 ± npm run start ✹
+
+                > speech-to-text-app@0.0.1 start /Users/mariacam/Development/speech-to-text-app
+                > webpack-dev-server --mode development --config config/webpack.base.config.js --open --hot --history-api-fallback
+                --env.PLATFORM=local --env.VERSION=stag
+                </code></pre>
+                <p class="fragment">The <code>--config</code> flag is followed by <code>config/webpack.base.config.js</code> to <b>indicate</b> the <b>file</b> to <b><i>interpret</i></b> in <b>dev mode</b>. The <code>--open</code> flag opens the application in your <b><i>default</i></b>                    browser.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <p><b>custom script, webpack-dev-server</b></p>
+                <pre class="fragment"><code data-trim>
+                10926 ± npm run start ✹
+
+                > speech-to-text-app@0.0.1 start /Users/mariacam/Development/speech-to-text-app
+                > webpack-dev-server --mode development --config config/webpack.base.config.js --open --hot --history-api-fallback
+                --env.PLATFORM=local --env.VERSION=stag
+                </code></pre>
+                <p class="fragment">
+                    The <code>--hot</code> flag enables HMR (Hot Module Replacement).
+                    <a href="https://survivejs.com/webpack/appendices/hmr/">
+                        HMR builds on top of WDS
+                    </a> (webpack-dev-server). It makes it possible to swap modules live.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <p><b>custom script, webpack-dev-server</b></p>
+                <p class="fragment"><b>style-loader</b></p>
+                <p class="fragment">
+                    The reason I use <code class="fragment">style-loader</code> in <b class="fragment">development</b>, for example, is because the<code class="fragment">MiniCssExtractPlugin</code> does NOT support <b class="fragment">HMR</b>, but
+                    <code class="fragment">style-loader</code> DOES. That makes it possible to update any changes in my styles without refreshing the page.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <p><b>custom script, webpack-dev-server</b></p>
+                <pre class="fragment"><code data-trim>
+                10926 ± npm run start ✹
+
+                > speech-to-text-app@0.0.1 start /Users/mariacam/Development/speech-to-text-app
+                > webpack-dev-server --mode development --config config/webpack.base.config.js --open --hot --history-api-fallback
+                --env.PLATFORM=local --env.VERSION=stag
+                </code></pre>
+                <p class="fragment">
+                    The <code class="fragment">--history-api-fallback</code> flag makes <b>404s</b> fallback to <code class="fragment">/index.html</code>.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <p><b>custom script, webpack-dev-server</b></p>
+                <pre class="fragment"><code data-trim>
+                10926 ± npm run start ✹
+
+                > speech-to-text-app@0.0.1 start /Users/mariacam/Development/speech-to-text-app
+                > webpack-dev-server --mode development --config config/webpack.base.config.js --open --hot --history-api-fallback
+                --env.PLATFORM=local --env.VERSION=stag
+                </code></pre>
+                <p class="fragment">
+                    <code class="fragment">--env.PLATFORM=local</code> lets webpack-dev-server know that it is running locally. Whatever is set to
+                    <code class="fragment">PLATFORM === 'development'</code> in <code class="fragment">config/webpack.base.config.js</code> will be triggered by <code class="fragment">npm run start</code>.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <p><b>custom script, webpack-dev-server</b></p>
+                <pre class="fragment"><code data-trim>
+                10926 ± npm run start ✹
+
+                > speech-to-text-app@0.0.1 start /Users/mariacam/Development/speech-to-text-app
+                > webpack-dev-server --mode development --config config/webpack.base.config.js --open --hot --history-api-fallback
+                --env.PLATFORM=local --env.VERSION=stag
+                </code></pre>
+                <p class="fragment">
+                    <code class="fragment">--env.VERSION=stag</code> refers to the <b>staging environment</b>. The staging environment here is in
+                    <b>dev mode</b>.
                 </p>
             </section>
             <section data-background="#ffc600">
                 <h3>Dev Output In Terminal</h3>
-                <p class="fragment ">This is what a <b>dev output in Terminal</b> might have looked like with the <b><i>first edition</i></b> of my workflow:</p>
-                <pre class="fragment "><code data-trim>
-				[gQNZ] ./src/style/style.css 307 bytes {1} [built]
-				[lVK7] ./src/index.js 846 bytes {1} [built]
-				[olkN] ./src/store.js 354 bytes {1} [built]
-				[pnOm] ./src/App.js 3.01 kB {1} [built]
-				[tuRH] ./src/reducers/todo.js 874 bytes {1} [built]
-				[z7yQ] ./src/logo.svg 3.52 kB {1} [built]
-				+ 2 hidden modules
+                <p><b>dev instance info</b></p>
+                <pre class="fragment"><code data-trim>
+                clean-webpack-plugin: /Users/mariacam/Development/speech-to-text-app/config/dist has been removed.
                 </code></pre>
-                <p class="fragment ">To read more about <b><i>this</i></b> output in the <b>first edition</b>, please visit <a href=" ">dev output first
-        edition</a>.</p>
-            </section>
-            <section data-background="#ffc600 ">
-                <h3>Named Modules Plugin</h3>
-                <pre class="fragment "><code data-trim>
-            				new webpack.NamedModulesPlugin(),
-            				</code></pre>
-                <p class="fragment ">
-                    <p class="fragment ">The previous build output in <b>Terminal</b> was possible thanks to the <code class="fragment ">NamedModulesPlugin</code>. With <b>webpack 4</b>, there is no need to add this line in <code>config/webpkack.base.js</code>. It is <b>built in</b>                        by <b>default</b>. But as you have already seen, it looks mighty different too!
-                    </p>
+                <p class="fragment">
+                    This line lets us know that the <a href="https://survivejs.com/webpack/building/tidying-up/">clean-webpack-plugin</a> has removed any old file versions in the dist folder before a build process.
                 </p>
             </section>
-            <section>
-                <h3>dev output in Terminal >= webpack 4</h3>
+            <section data-background="#ffc600">
+                <h3>Dev Output In Terminal</h3>
+                <p><b>dev instance info</b></p>
+                <pre class="fragment"><code data-trim>
+                ℹ ｢wds｣: Project is running at http://localhost:8080/
+                ℹ ｢wds｣: webpack output is served from /
+                </code></pre>
+                <p class="fragment">
+                    The first line emitted by <b>WDS</b> tells us on which localhost our app is running. the next lets us know the <b>contentBase</b> of the <b>dev build</b>. In the <b>first edition</b>, I added a <b>devServer</b> object to my
+                    <b>webpack dev config</b>, and <b>contentBase</b> was one of its properties. I set <b>contentBase</b> to
+                    <code>'./src/'</code>. If it is not explicitly set, then it defaults to <code>'/'</code>.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Dev Output In Terminal</h3>
+                <p class="fragment"><b>dev instance info</b></p>
+                <pre class="fragment"><code data-trim>
+                ℹ ｢wds｣: 404s will fallback to /index.html
+                </code></pre>
+                <p class="fragment">This line is emitted as a result of the <code>--history-api-fallback</code> flag.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Dev Output In Terminal</h3>
+                <p class="fragment"><b>dev instance info</b></p>
+                <pre class="fragment"><code data-trim>
+                ℹ ｢wdm｣: wait until bundle finished: /
+                ℹ ｢wdm｣: Hash: cc60f0b1138d573ca57d
+                </code></pre>
+                <p class="fragment">
+                    <code class="fragment">[wdm]</code> stands for <code class="fragment">webpack-dev-middleware</code>. It is new to <b>webpack
+4</b>, and is a <b>wrapper</b> that <b>emits</b> files <b><i>processed</i></b> by <b>webpack</b> to a <b>server</b>. It is <b>built</b> into <b>WDS</b>, but is also available as a separate package to allow more custom options.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Dev Output In Terminal</h3>
+                <p class="fragment"><b>dev instance info</b></p>
+                <pre class="fragment"><code data-trim>
+                ℹ ｢wdm｣: wait until bundle finished: /
+                ℹ ｢wdm｣: Hash: cc60f0b1138d573ca57d
+                </code></pre>
+                <p class="fragment">
+                    As the <b>dev</b> bundle is being built, <b>[wdm]</b> prints out the first message. After the build is complete, it prints out a compilation/build <b>hash</b>. Every time a <b><i>change</i></b> is made in the <b>dev</b> build, a <b><i>new</i></b>
+                    <b>hash</b> is emitted identifying that build.
+                </p>
             </section>
             <section data-background="#ffc600 ">
                 <h3>Build Output in Terminal</h3>
