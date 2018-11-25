@@ -2182,9 +2182,19 @@ emitted</b> would <b><i>mostly</i></b> make sense. <b><i>Specifically</i></b>, <
                 <h3>webpack.prod.config.js</h3>
                 <p class="fragment"><b>cacheGroups:</b> vendor</p>
                 <pre class="fragment"><code data-trim>
-                    name(module) {}
+                name(module) {}
                 </code></pre>
-                <p class="fragment"></p>
+                <p class="fragment">
+                    Providing a string or function to generate the name of a split chunk allows you to use a custom name. Here we are providing a function. To learn more, please click <a href="https://webpack.js.org/plugins/split-chunks-plugin/">here</a>.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment"><b>cacheGroups:</b> vendor</p>
+                <pre class="fragment"><code data-trim>
+                const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+                </code></pre>
+                <code class="fragment">module.context</code>
             </section>
             <section data-background="#ffc600">
                 <h3>HashedModuleIdsPlugin</h3>

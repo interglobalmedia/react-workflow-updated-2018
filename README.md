@@ -4,6 +4,8 @@
 
 ### Reflects changes to React 16.6.3, Babel 7, ESLint 5.9.0, and Webpack 4.3.0
 
+This is the second edition of a custom workflow I created for my React applications, incorporating changes that took place in React 16.6.3, ESLint 5.9.0, Babel 7, and Webpack 4. This is not meant as an all inclusive example of what has changed in those dependencies/devDependencies. Hopefully it will encourage others to take a deeper dive into them and expand their horizons as developers. I know that creating this deck expanded my horizons, and I had loads of fun learning new things along the way. To go through the first edition, please visit the <a href="https://github.com/interglobalmedia/react-workflow-presentation">React Workflow Presentation</a> repository.
+
 If you feel that there are improvements that can be made to any of the documentation, please make a pull request and it will be reviewed for approval. Thanks!
 
 ## Site Map:
