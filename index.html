@@ -191,7 +191,8 @@
                 <ul>
                     <li class="fragment">Eslint Configuration for React</li>
                     <li class="fragment">Jest Testing</li>
-                    <li class="fragment"><b>Code Splitting</b> using the <b>SplitChunksPlugin</b></li>
+                    <li class="fragment"><b>Bundle Splitting</b> using the <b>SplitChunksPlugin</b></li>
+                    <li class="fragment"><b>Code Splitting</b> using the <b>SplitChunksPlugin</b> and <b>dynamic imports</b></li>
                     <li class="fragment">CSS Modules</li>
                     <li class="fragment">.SCSS</li>
                     <li class="fragment">Image/File Import</li>
@@ -976,7 +977,7 @@
                 },
                 </code></pre>
                 <p class="fragment">I no longer include a <b>VENDOR_LIBS</b> (vendor) <b>entry</b>. That means I no longer <b><i>define</i></b> a <b>VENDOR_LIBS</b> <b><i>variable</i></b> containing the <b>third party dependencies</b> I use in my application. This has to
-                    do with the <b><i>new</i></b> way of <code class="fragment">code splitting</code> in <b>webpack 4</b> using the <code class="fragment">SplitChunksPlugin</code> instead of <code class="fragment">CommonsChunkPlugin</code>.</p>
+                    do with the <b><i>new</i></b> way of <code class="fragment">bundle splitting</code> in <b>webpack 4</b> using the <code class="fragment">SplitChunksPlugin</code> instead of <code class="fragment">CommonsChunkPlugin</code>.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>webpack-merge</h3>
@@ -1046,7 +1047,7 @@
             </section>
 
             <section data-background="#ffc600" data-background-image="images/code-splitting.jpg" data-background-size="cover" data-background-position="center" data-background-repeat="no-repeat">
-                <h3>Code Splitting</h3>
+                <h3>Code/Bundle Splitting</h3>
                 <p class="fragment" style="background: rgba(250, 235, 215, 0.6)">
                     is important for <span class="fragment"><code>browser caching</code>.</span>
                 </p>
@@ -1163,8 +1164,22 @@
                 },
                 </code></pre>
                 <p class="fragment">
-                    I use the <b>[name]</b> property because of my <span class="fragment"><code class="fragment">code splitting</code></span> resulting from <span class="fragment"><b><i>naming</i></b></span> different types of <b>chunks</b>. Previously
+                    I use the <b>[name]</b> property because of my <span class="fragment"><code class="fragment">bundle splitting</code></span> resulting from <span class="fragment"><b><i>naming</i></b></span> different types of <b>chunks</b>. Previously
                     the reasoning was because of <code class="fragment">> 1</code> <b>entry point</b>, but now it's because of <code class="fragment">> 1</code> type of <b>chunk</b>. As you saw, they do <b><i>not</i></b> reside in the <b>entry point</b>!
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Bundle Splitting vs Code Splitting</h3>
+                <p class="fragment">With <b><i>webpack 4</i></b>, it has become clear to me that <b>bundle splitting</b> and <b>code splitting</b> are NOT <b><i>interchangeable</i></b>, as I previously thought. That's because of my introduction to <b>dynamic imports</b>,
+                    which IS <b>code splitting</b>, as opposed to <b><i>multiple entry points</i></b>, which is <b>bundle splitting</b>.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Bundle Splitting vs Code Splitting</h3>
+                <p class="fragment">
+                    I will be updating the <b>terminology</b> in the <b>first edition</b> of this <b><i>workflow</i></b>. I came across a fantastic article on medium that gets into the <b><i>difference</i></b> between the two, and helped me tremendously
+                    in <b>optimizing</b> my <b>vendor</b> bundle(s):
+                    <a href="https://hackernoon.com/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758">The
+                    100% correct way to split your chunks with Webpack</a>, by <i>David Gilbertson</i>.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1883,8 +1898,189 @@
             <section data-background="#ffc600">
                 <h3>Build Output In Terminal</h3>
                 <p class="fragment"><b>assets emitted</b></p>
-                <p class="fragment">Again, if you check to see how assets were set up in <b class="fragment">webpack.base.config.js</b>, viewable in <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/57">slide 57</a>, assets emitted would <b><i>mostly</i></b>                    make sense. <b><i>Specifically</i></b>, <b><i>non</i></b> <b>node_module</b> related .js files/chunks and .css related files/chunks. But there is one <b><i>type</i></b> of file that throws many people off. Can you guess which one that
-                    is?
+                <p class="fragment">Again, if you check to see how <b>assets</b> were set up in <b class="fragment">webpack.base.config.js</b>, viewable in <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/57">slide 57</a>, <b>assets
+emitted</b> would <b><i>mostly</i></b> make sense. <b><i>Specifically</i></b>, <b><i>non</i></b> <b>node_module</b> related <code>.js files/chunks</code> and <code>.css files/chunks</code>. But there is <b>one</b> <b><i>type</i></b> of file that throws
+                    many people off and that I wanted to <b>discuss</b> <b><i>only</i></b> in <b>production</b> because of its related <b>configuration</b> in <b>config/webpack.prod.config.js</b>. Can you guess which one that is?
+            </section>
+            <section data-background="#ffc600">
+                <h3>Build Output In Terminal</h3>
+                <p class="fragment"><b>assets emitted:</b> bundle splitting</p>
+                <pre class="fragment"><code data-trim>
+                scripts/vendors~main.1ad1cd98b3cea083930b.chunk.js 129 KiB 3 [emitted] vendors~main
+                scripts/vendors~Speech.f0e3c9ecdeb61f482646.chunk.js 26.6 KiB 0 [emitted] vendors~Speech
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <p>config/webpack.prod.config.js</p>
+                <pre class="fragment"><code data-trim>
+                const webpack = require('webpack');
+                const merge = require('webpack-merge');
+
+                const ManifestPlugin = require('webpack-manifest-plugin');
+                const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+                const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+                const Visualizer = require('webpack-visualizer-plugin');
+
+                const baseConfig = require('./webpack.base.config');
+
+                const prodConfiguration = env => {
+                    return merge([
+                        {
+                            optimization: {
+                                splitChunks: {
+                                    chunks: 'all',
+                                    maxInitialRequests: Infinity,
+                                    minSize: 0,
+                                    cacheGroups: {
+                                        vendor: {
+                                            test: / [\\/]node_modules[\\/]/,
+                                            name(module) {
+                                                // get the name. E.g. node_modules/packageName/not/this/part.js
+                                                // or node_modules/packageName
+                                                const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+
+                                                // npm package names are URL-safe, but some servers don't like @ symbols
+                                                return `npm.${packageName.replace('@', '')}`;
+                                            },
+                                        },
+                                        styles: {
+                                            name: 'main',
+                                            test: /\.css$/,
+                                            chunks: 'all',
+                                            enforce: true
+                                        }
+                                    },
+                                },
+                                runtimeChunk: 'single',
+                                minimizer: [
+                                    new UglifyJSPlugin(),
+                                    new OptimizeCssAssetsPlugin()
+                                ],
+                            },
+                            plugins: [
+                                new ManifestPlugin({
+                                    fileName: ('asset-manifest.json')
+                                }),
+                                new webpack.HashedModuleIdsPlugin(),
+                                new Visualizer({ filename: './statistics.html'})
+                            ]
+                        }
+                    ])
+                }
+
+                module.exports = env => {
+                    return merge(baseConfig(env), prodConfiguration(env));
+                }
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Build Output In Terminal</h3>
+                <p class="fragment">
+                    (vendor) node_module bundle splitting
+                </p>
+                <p class="fragment">
+                    When I first tried to implement the <b>approach</b> I took in the <b>first edition</b>, the <b>size</b> of my <b>vendor</b> bundle was VERY BIG. It was <code>> 2MB</code>, way over the suggested size of
+                    <code><= 244KB</code>. Then I tried to split up the <b>vendor entry files</b> into <b>individual node_module dependencies</b>, but that did no good.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Build Output In Terminal</h3>
+                <p class="fragment">
+                    (vendor) node_module bundle splitting
+                </p>
+                <p class="fragment">
+                    I started searching for a better way. At this point I knew that I should split the vendor bundle somehow into individual node_module chunks, but I just did not know how. I had to learn more about the new webpack in order to make that happen.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>Build Output In Terminal</h3>
+                <p class="fragment">
+                    (vendor) bundle splitting
+                </p>
+                <p class="fragment">
+                    After further research into <b>webpack</b> and some <b>google searches</b>, I came across <i>David Gilbertson</i>'s article <a href="https://hackernoon.com/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758">The 100% correct way to split your chunks with Webpack</a>.
+                    It was EXACTLY what I was looking for!
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>
+                    (vendor) bundle splitting
+                </h3>
+                <p class="fragment">Go to slide 138, webpack.prod.config.js, and look for the following:</p>
+                <pre class="fragment"><code data-trim>
+                optimization: {
+                    splitChunks: {
+                        chunks: 'all',
+                        maxInitialRequests: Infinity,
+                        minSize: 0,
+                        cacheGroups: {
+                            vendor: {
+                                test: / [\\/]node_modules[\\/]/,
+                                name(module) {
+                                    // get the name. E.g. node_modules/packageName/not/this/part.js
+                                    // or node_modules/packageName
+                                    const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+                
+                                    // npm package names are URL-safe, but some servers don't like @ symbols
+                                    return `npm.${packageName.replace('@', '')}`;
+                                },
+                            },
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p>what <b><i>hasn't</i></b> changed</p>
+                <pre class="fragment"><code data-trim>
+                const webpack = require('webpack');
+                const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+                const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+                </code></pre>
+                <p class="fragment">As in the first edition, we need to require webpack, optimize-css-assets-webpack-plugin, and the uglifyjs-webpack-plugin.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment">what's <b><i>new</i></b></p>
+                <pre class="fragment"><code data-trim>
+                    const merge = require('webpack-merge');
+                    const ManifestPlugin = require('webpack-manifest-plugin');
+                    const Visualizer = require('webpack-visualizer-plugin');
+                    const baseConfig = require('./webpack.base.config');
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment">what's <b><i>new</i></b></p>
+                <ul class="fragemtn">
+                    <li class="fragment">
+                        require the <b>merge-webpack plugin</b>, since we are merging base with prod.
+                    </li>
+                    <li class="fragment">
+                        require the <b>webpack-manifest-plugin</b> so that we can create an asset-manifest.plugin on build.
+                    </li>
+                    <li class="fragment">
+                        require the <b>webpack-visualizer-plugin</b> to see which modules are taking up space and which might be duplicates.
+                    </li>
+                    <li class="fragment">
+                        require <b>webpack.base.config.js</b> so that we can merge it into webpack.prod.config.js.
+                    </li>
+                </ul>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <pre class="fragment"><code data-trim>
+                    const prodConfiguration = env => {}
+                </code></pre>
+                <p class="fragment">Again we pass env into prodConfiguration, but this time we do not have to differentiate between development and production as we did in baseConfig. By default, mode === production unless configured otherwise.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <pre class="fragment"><code data-trim>
+                module.exports = env => {
+                    return merge(baseConfig(env), prodConfiguration(env));
+                }
+                </code></pre>
+                <p class="fragment">This is the <b>code</b> responsible for <b><i>merging</i></b> <b>baseConfig</b> with <b>prodConfiguration</b> and passing <b>env</b> into those <b>configs</b>. Since we are <b><i>exporting</i></b> it, we can use these <b>configs</b> in
+                    our <b>package.json</b>. In the <b>first edition</b> we were using <b>process.env</b>, and did <b><i>not</i></b> have to <b>export</b> our <b>env</b>. It was accessible globally. This <b>configuration</b> does NOT use <b>process.env</b>,
+                    so we have to export it to make it available globally.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>HashedModuleIdsPlugin</h3>
@@ -1893,7 +2089,7 @@
         51</a> to
                     <a class="fragment" href="slide 55">slide 55</a> of the <b>first edition</b> to learn more.</p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>Publishing to gh-pages on Build</h3>
                 <pre class="fragment "><code data-trim>
                     > tic-tac-toe-no-cra@0.0.1 deploy /Users/mariacam/Development/tic-tac-toe-no-cra
@@ -1902,13 +2098,13 @@
                     Published
                 </code></pre>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>Separating Concerns</h3>
                 <p class="fragment ">The current build resulted in a separate file called <b class="fragment ">manifest</b> containing the <code class="fragment ">manifest</code>. In my previous workflow, a a file called <b class="fragment ">runtime</b> was created. Both
-                    contain the <code class="fragment ">manifest</code> and <code class="fragment ">runtime</code> mentioned earlier.
+                    contain the <code class="fragment">manifest</code> and <code class="fragment ">runtime</code> mentioned earlier.
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>HtmlWebpackPlugin</h3>
                 <p class="fragment ">
                     Because my webpack configuration is using the <code class="fragment ">HtmlWebpackPlugin</code>, there is no need to worry about adding the <b class="fragment "><i>script tag</i></b> for the <b class="fragment ">manifest</b>. The plugin
@@ -1979,7 +2175,7 @@
 				+ 2 hidden modules
 						</code></pre>
                 <p class="fragment ">
-                    However, this <span class="fragment "><code>code splitting</code></span> is not enough. Each time a new build takes place, each <span class="fragment "><code>module.id</code></span> is incremented based on resolving order by default.
+                    However, this <span class="fragment "><code>bundle splitting</code></span> is not enough. Each time a new build takes place, each <span class="fragment "><code>module.id</code></span> is incremented based on resolving order by default.
                     When the resolving order is changed, the <span class="fragment "><code>module.id</code></span> changes.
                 </p>
             </section>
