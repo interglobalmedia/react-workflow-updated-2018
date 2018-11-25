@@ -2,7 +2,7 @@
 
 ## Updated November 23, 2018
 
-### Reflects changes to React 16.6 and Webpack 4.3.0
+### Reflects changes to React 16.6.3, Babel 7, ESLint 5.9.0, and Webpack 4.3.0
 
 ## Site Map:
 
