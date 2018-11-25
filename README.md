@@ -4,6 +4,8 @@
 
 ### Reflects changes to React 16.6.3, Babel 7, ESLint 5.9.0, and Webpack 4.3.0
 
+If you feel that there are improvements that can be made to any of the documentation, please make a pull request and it will be reviewed for approval. Thanks!
+
 ## Site Map:
 
 + Landing Page: [Landing Page](https://interglobalmedia.github.io/react-workflow-updated-2018/#/)

@@ -2083,6 +2083,110 @@ emitted</b> would <b><i>mostly</i></b> make sense. <b><i>Specifically</i></b>, <
                     so we have to export it to make it available globally.</p>
             </section>
             <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment">optimization</p>
+                <pre class="fragment"><code data-trim>
+                optimization: {
+                    splitChunks: {
+                        chunks: 'all',
+                        maxInitialRequests: Infinity,
+                        minSize: 0,
+                    }
+                }
+                </code></pre>
+                <p class="fragment"><b>webpack 4</b> runs <b>optimizations</b> for you depending on the chosen <a href="https://webpack.js.org/concepts/mode/">mode</a>. You can still <b><i>manually</i></b> <b>configure</b> and <b>override</b> them, as done here.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment">splitChunks</p>
+                <pre class="fragment"><code data-trim>
+                chunks: 'all',
+                </code></pre>
+                <p class="fragment">
+                    As previously mentioned in [slide], choosing <code>chunks: 'all'</code> means that <b>chunks</b> can be <b><i>shared</i></b> between <b>async</b> and <b>non-async</b> chunks. It <b><i>also</i></b> tells webpack to put everything in
+                    <code>node_modules/</code> into a file called <b>vendors~main.js</b>. That's why <b>vendors~main.js</b> is output in our <b>dev build</b> as well.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment">splitChunks</p>
+                <pre class="fragment"><code data-trim>
+                maxInitialRequests: Infinity,
+                </code></pre>
+                <p class="fragment">
+                    By default, <b>webpack</b> sets <code>maxInitialRequests</code> to <code>3</code> in <a href="https://webpack.js.org/concepts/mode/">production</a>, but since we are <b><i>splitting up</i></b> our <b>vendors~main.js</b> into <b><i>individual</i></b>                    <b>modules</b> of an <b><i>indefinite</i></b> number, we <b><i>override</i></b> the <b>default</b> and set it to <code>Infinity</code>.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment">splitChunks</p>
+                <pre class="fragment"><code data-trim>
+                    minSize: 0,
+                </code></pre>
+                <p class="fragment">The minSize refers to the minimum size in bytes for a chunk to be generated. Since we want to split ALL modules no matter what the size, we override the default and set the minSize to 0.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment">cacheGroups</p>
+                <pre class="fragment"><code data-trim>
+                cacheGroups: {
+                    vendor: {
+                        test: / [\\/]node_modules[\\/]/,
+                        name(module) {
+                            // get the name. E.g. node_modules/packageName/not/this/part.js
+                            // or node_modules/packageName
+                            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+                    
+                            // npm package names are URL-safe, but some servers don't like @ symbols
+                            return `npm.${packageName.replace('@', '')}`;
+                        },
+                    },
+                    styles: {
+                        name: 'main',
+                        test: /\.css$/,
+                        chunks: 'all',
+                        enforce: true
+                    }
+                }
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment"><b>cacheGroups:</b> vendor</p>
+                <pre class="fragment"><code data-trim>
+                    test: / [\\/]node_modules[\\/]/,
+                </code></pre>
+                <p class="fragment">Instead of <b><i>excluding</i></b> as we do with our <b>loaders</b> in <b>webpack.base.config.js</b>, we are <b><i>testing</i></b> for the <code>/node_modules/</code> directory.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment"><b>cacheGroups:</b> vendor</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment"><b>cacheGroups:</b> vendor</p>
+                <pre class="fragment"><code data-trim>
+                name(module) {
+                    // get the name. E.g. node_modules/packageName/not/this/part.js
+                    // or node_modules/packageName
+                    const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+                    // npm package names are URL-safe, but some servers don't like @ symbols
+                    return `npm.${packageName.replace('@', '')}`;
+                },
+                </code></pre>
+                <p class="fragment">
+                    the <b>name</b> function with the <b><i>parameter</i></b> <b>module</b> passed in to it, contains a return statement which will generate the name of a chunk if conditions are met set in the value of the packageName variable.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment"><b>cacheGroups:</b> vendor</p>
+                <pre class="fragment"><code data-trim>
+                    name(module) {}
+                </code></pre>
+                <p class="fragment"></p>
+            </section>
+            <section data-background="#ffc600">
                 <h3>HashedModuleIdsPlugin</h3>
                 <p class="fragment ">The previous <b>build output</b> in <b>Terminal</b> is in part possible thanks to the <code class="fragment ">HashedModuleIdsPlugin</code>. Note the <b><i>4 character</i></b> <b>hashes</b> within <b><i>brackets</i></b>. Visit <a class="fragment"
                         href="https://interglobalmedia.github.io/react-workflow-presentation/#/51">slide
