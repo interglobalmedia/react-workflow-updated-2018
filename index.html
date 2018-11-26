@@ -2152,15 +2152,24 @@ emitted</b> would <b><i>mostly</i></b> make sense. <b><i>Specifically</i></b>, <
             </section>
             <section data-background="#ffc600">
                 <h3>webpack.prod.config.js</h3>
-                <p class="fragment"><b>cacheGroups:</b> vendor</p>
-                <pre class="fragment"><code data-trim>
-                    test: / [\\/]node_modules[\\/]/,
-                </code></pre>
-                <p class="fragment">Instead of <b><i>excluding</i></b> as we do with our <b>loaders</b> in <b>webpack.base.config.js</b>, we are <b><i>testing</i></b> for the <code>/node_modules/</code> directory.</p>
+                <p class="fragment">cacheGroups</p>
+                <p class="fragment"><b>cachGroups</b> tells webpack to create chunks based on some conditions. To learn more, please visit the <a href="https://webpack.js.org/plugins/split-chunks-plugin/">webpack 4 docs</a>.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment"><b>Configuring cacheGroups:</b> vendor</p>
+                <p class="fragment">
+                    The defaults assign all modules from node_modules to a cacheGroup called vendors and all modules duplicated in at least 2 chunks to a cache group default. So that's what default cacheGroups is all about! To learn more, please visit the
+                    <a href="https://www.webpackjs.com/plugins/split-chunks-plugin/">SplitChunksPlugin docs</a> for <b>webpack 4.26.1</b>, but a slightly different version (and target market) than the <a href="https://webpack.js.org/plugins/split-chunks-plugin/">purely English docs</a>.
+                </p>
             </section>
             <section data-background="#ffc600">
                 <h3>webpack.prod.config.js</h3>
                 <p class="fragment"><b>cacheGroups:</b> vendor</p>
+                <pre class="fragment"><code data-trim>
+                    test: / [\\/]node_modules[\\/]/,
+                </code></pre>
+                <p class="fragment">Instead of <b><i>excluding</i></b> as we do with our <b>loaders</b> in <b>webpack.base.config.js</b>, we are <b><i>testing</i></b> for the <code>/node_modules/</code> directory. In other words, our <a href="https://hackernoon.com/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758">vendor cacheGroups</a>                    refers to and is used for any module being loaded from node_modules.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>webpack.prod.config.js</h3>
@@ -2175,7 +2184,7 @@ emitted</b> would <b><i>mostly</i></b> make sense. <b><i>Specifically</i></b>, <
                 },
                 </code></pre>
                 <p class="fragment">
-                    the <b>name</b> function with the <b><i>parameter</i></b> <b>module</b> passed in to it, contains a return statement which will generate the name of a chunk if conditions are met set in the value of the packageName variable.
+                    the <b>name</b> function with the <b><i>parameter</i></b> <b>module</b> passed in to it, contains a return statement which will generate the name of a chunk if conditions set in the value of the packageName variable are met.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -2194,7 +2203,155 @@ emitted</b> would <b><i>mostly</i></b> make sense. <b><i>Specifically</i></b>, <
                 <pre class="fragment"><code data-trim>
                 const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
                 </code></pre>
-                <code class="fragment">module.context</code>
+
+                <p class="fragment">So <b><i>why</i></b> <code class="fragment">module.context</code>? <a href="https://webpack.js.org/configuration/entry-context/">context</a> is an absolute string to the directory that contains the entry files. like:</p>
+                <pre class="fragment"><code data-trim>
+                    module.exports = {
+                        //...
+                        context: path.resolve(__dirname, 'app')
+                    };
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment"><b>cacheGroups:</b> vendor</p>
+                <pre class="fragment"><code data-trim>
+                const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+                </code></pre>
+                <p class="fragment">
+                    A <a href="https://webpack.js.org/guides/dependency-management/">context</a> is created if your request contains expressions, so the <b><i>exact</i></b> <b>module</b> is <b><i>not</i></b> <b>known</b> on compile time.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment"><b>cacheGroups:</b> vendor</p>
+                <p class="fragment">webpack parses the require() call and extracts some information:</p>
+                <pre class="fragment"><code data-trim>
+                Directory: ./template 
+                Regular expression: /^.*\.ejs$/
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment"><b>cacheGroups:</b> vendor</p>
+                <pre class="fragment"><code data-trim>
+                const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+                </code></pre>
+                <p class="fragment">A
+                    <a href="https://webpack.js.org/guides/dependency-management/">context module</a> is generated. It contains references to all modules in that directory that can be required with a request matching the regular expression.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment"><b>cacheGroups:</b> vendor</p>
+                <p class="fragment">So if module.context matches the regular expression passed to .match() method, it will be returned via the following:</p>
+                <pre class="fragment"><code data-trim>
+                    // npm package names are URL-safe, but some servers don't like @ symbols
+                    return `npm.${packageName.replace('@', '')}`;
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment"><b>cacheGroups:</b> vendor</p>
+                <pre class="fragment"><code data-trim>
+                    // npm package names are URL-safe, but some servers don't like @ symbols
+                    return `npm.${packageName.replace('@', '')}`;
+                </code></pre>
+                <p class="fragment">We remove any "@" from any package names, because some servers don't like the "@" symbol. Have you ever tried to search for info regarding a package where the name starts with "@"? The browser rejects it! The same principle applies here.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment"><b>cacheGroups:</b> styles</p>
+                <pre class="fragment"><code data-trim>
+                styles: {
+                    name: 'main',
+                    test: /\.css$/,
+                    chunks: 'all',
+                    enforce: true
+                }
+                </code></pre>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment"><b>cacheGroups:</b> styles</p>
+                <pre class="fragment"><code data-trim>
+                name: 'main',
+                </code></pre>
+                <p class="fragment">
+                    I wanted to name the beginning of my css main, so I added the name property for cacheGroup styles. otherwise, it would end up being a number id followed by a [hash].[ext]. And I did not want that!
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment"><b>cacheGroups:</b> styles</p>
+                <pre class="fragment"><code data-trim>
+                test: /\.css$/,
+                </code></pre>
+                <p class="fragment">The test property checks for chunks that end in .css.</p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment"><b>cacheGroups:</b> styles</p>
+                <pre class="fragment"><code>chunks: 'all',</code></pre>
+                <p class="fragment">
+                    chunks: 'all' ensures that all css is extracted into one file. I dynamically imported my Speech.js into my top level App.js, so not only did I split the Speech.js code away from main.js, but I also split away Speech.js's associated styles residing in
+                    Speech.scss (and compiled to Speech.css) from main.css. I ended up with 2 style chunks/files.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment"><b>cacheGroups:</b> styles</p>
+                <pre class="fragment"><code data-trim>
+                enforce: true
+                </code></pre>
+                <p class="fragment">
+                    The enforce property ensured that aside from the Speech.css file, all other styles would reside in one main.css file.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment"><b>optimization:</b> runtimeChunk</p>
+                <pre class="fragment"><code data-trim>
+                runtimeChunk: 'single',
+                </code></pre>
+                <p class="fragment">
+                    creates a "single" runtime file to be shared with all generated chunks. I had an equivalent configuration in the first edition, and wanted to keep it that way!
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment"><b>optimization:</b> minimizer</p>
+                <pre class="fragment"><code data-trim>
+                minimizer: [
+                    new UglifyJSPlugin(),
+                    new OptimizeCssAssetsPlugin()
+                ],
+                </code></pre>
+                <p class="fragment">
+                    optimization.minimize property by default tells webpack to minimize the js bundle using the
+                    <a href="https://webpack.js.org/plugins/uglifyjs-webpack-plugin/">UglifyjsWebpackPlugin</a>. I am using two minimizers, one for js, and the other for css, so I use the optimization.minimizer property, an array.
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment"><b>optimization:</b> minimizer</p>
+                <p class="fragment">
+                    Adding <b>new UglifyJSPlugin()</b> is probably a bit redundant (now that I know better), but I had to add it in the first edition, so it was a matter of habit!
+                </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment">plugins</p>
+                <pre class="fragment"><code data-trim>
+                    plugins: [
+                        new ManifestPlugin({
+                            fileName: ('asset-manifest.json')
+                        }),
+                        new webpack.HashedModuleIdsPlugin(),
+                        new Visualizer({ filename: './statistics.html'}),
+                        new BundleAnalyzerPlugin()
+                    ]
+                </code></pre>
             </section>
             <section data-background="#ffc600">
                 <h3>HashedModuleIdsPlugin</h3>
