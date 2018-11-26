@@ -128,8 +128,8 @@
             </section>
             <section data-background="#ffc600">
                 <img class="fragment" width="400" height="300" data-src="images/gulp-grunt.jpg" alt="Grunt vs Gulp">
-                <p>
-                    If done from scratch, it can mean fewer workflow files and lines of code. If you come from task runners like <span class="fragment"><b><i>Gulp</i></b></span> (I do) or <span class="fragment"><b><i>Grunt</i></b></span>, you know what
+                <p class="fragment">
+                    If done from scratch, it can mean fewer workflow files and lines of code. If you come from task runners like <span class="fragment"><b><i>Gulp</i></b></span> (I do) or <span class="fragment"><b><i>Grunt</i></b>,</span> you know what
                     I'm talking about.
                 </p>
             </section>
@@ -313,8 +313,8 @@
                         "raf/polyfill"
                     ],
                 </code></pre>
-                <p class="fragment"><b>React 16+</b> depends on <code class="fragment">requestAnimationFrame</code>, even in <b class="fragment"><i>test
-                environments</i></b>. First install the <b class="fragment">raf</b> npm package, and then add this to your <b class="fragment">package.json</b>. This was the same in my previous workflow.</p>
+                <p class="fragment"><b class="fragment">React 16+</b> depends on <span class="fragment"><code>requestAnimationFrame</code>,</span> even in <span class="fragment"><b ><i>test
+                environments</i></b>.</span> First install the <b class="fragment">raf</b> npm package, and then add this to your <span class="fragment"><b>package.json</b>.</span> This was the same in my previous workflow.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>What Has Changed (Jest)</h3>
@@ -326,12 +326,12 @@
                 </code></pre>
                 <p class="fragment">
                     Even though all that has changed here is adding <code class="fragment">|scss</code> to
-                    <code class="fragment">identity-obj-proxy</code>, so much else changed that resulted in the need to add this to the
+                    <span class="fragment"><code>identity-obj-proxy</code>,</span> so much else changed that resulted in the need to add this to the
                     <code class="fragment">moduleNameMapper</code> property. Again, please ignore the closing <code class="fragment">rootdir</code> tag.
                 </p>
             </section>
             <section data-background="#ffc600">
-                <h3>What Has Not Changed (Jest DevDeps)</h3>
+                <h3>What Has Not Changed (Jest devDeps)</h3>
                 <pre class="fragment"><code data-trim>
                 "babel-jest": "^23.6.0",
                 "enzyme": "^3.7.0",
@@ -349,11 +349,11 @@
                 "@babel/core": "^7.1.6",
                 "babel-core": "^7.0.0-bridge.0",
                 </code></pre>
-                <p class="fragment"> These packages, along with
+                <p class="fragment">These packages, along with
                     <code class="fragment">babel-jest</code> and
                     <code class="fragment">regenerator-runtime</code> are what is needed now in order to be able to use
                     <b class="fragment">Jest</b> with
-                    <b class="fragment">Babel 7</b>. To learn more about using <b class="fragment">Babel</b> with <b class="fragment">Jest</b>, please visit
+                    <span class="fragment"><b>Babel 7</b>.</span> To learn more about using <b class="fragment">Babel</b> with <span class="fragment"><b>Jest</b>,</span> please visit
                     <a href="https://jestjs.io/docs/en/getting-started#using-babel">Using Babel</a>.
                 </p>
             </section>
@@ -394,8 +394,9 @@
                 <h3>Babel
                     < 7 Presets</h3>
                         <p class="fragment">
-                            Before <b class="fragment">Babel 7</b>, proposal plugins were clumped together within their appropriate <b class="fragment"><i>presets</i></b>. i.e., <b class="fragment">stage-0</b>, <b class="fragment">stage-1</b>,
-                            <b class="fragment">stage-2</b>, etc.
+                            Before <span class="fragment"><b>Babel 7</b>,</span> proposal plugins were clumped together within their appropriate <span class="fragment"><b><i>presets</i></b>.</span> i.e., <span class="fragment"><b>stage-0</b>,</span>
+                            <span class="fragment"><b>stage-1</b>,</span>
+                            <span class="fragment"><b>stage-2</b>,</span> etc.
                         </p>
             </section>
             <section data-background="#ffc600">
@@ -410,7 +411,7 @@
                     ],
                 </code></pre>
                 <p class="fragment">
-                    With <b class="fragment">Babel 7</b>, presets were removed from the <b class="fragment">webpack</b> <b class="fragment"><i>config</i></b> and only appear in the <code class="fragment">.babelrc</code> file. Only <b class="fragment">presets</b>                    which were actually <b class="fragment"><i>approved</i></b> appeared in the
+                    With <span class="fragment"><b>Babel 7</b>,</span> presets were removed from the <b class="fragment">webpack</b> <b class="fragment"><i>config</i></b> and only appear in the <code class="fragment">.babelrc</code> file. Only <b class="fragment">presets</b>                    which were actually <b class="fragment"><i>approved</i></b> appeared in the
                     <b class="fragment">presets</b> array.
                 </p>
             </section>
@@ -438,8 +439,7 @@
                 <p class="fragment">
                     The <b class="fragment"><i>naming</i></b> of <b class="fragment">presets</b> changed with <b class="fragment">Babel
             7</b> to differentiate between the versions and maintain naming consistency throughout. Instead of simply adding
-                    <code class="fragment">"env"</code> or <code class="fragment">"react"</code> to the <b>preset array</b>, you now <b><i>have</i></b> to add <code class="fragment">"@babel/preset-env"</code> or <code class="fragment">"@babel/preset-react"</code>,
-                    for example.
+                    <code class="fragment">"env"</code> or <code class="fragment">"react"</code> to the <b>preset array</b>, you now <b><i>have</i></b> to add <code class="fragment">"@babel/preset-env"</code> or <span class="fragment"><code>"@babel/preset-react"</code>,</span>                    for example.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -448,10 +448,11 @@
                 <pre class="fragment"><code data-trim>
                     "@babel/plugin-proposal-class-properties": "^7.1.0",
                 </code></pre>
-                <p class="fragment">Transforms <b class="fragment">ES6 class syntax</b> into <b class="fragment">ES5 constructor
-            functions</b>. But the <code class="fragment">class syntax feature</code> has not yet been <b class="fragment"><i>approved</i></b>, so it is still called a <b class="fragment"><i>proposal</i></b>. With <b>Babel 7</b>, we must add the equivalent
-                    <b>Babel
-            plugin</b> for each <b><i>modern</i></b> <b>JS feature</b> we want to implement in our applications. That's because there are no longer <b class="fragment">stage presets</b> in <b>Babel 7</b>.</p>
+                <p class="fragment">Transforms <b class="fragment">ES6 class syntax</b> into <span class="fragment"><b>ES5 constructor
+            functions</b>.</span> But the <code class="fragment">class syntax feature</code> has not yet been <span class="fragment"><b><i>approved</i></b>,</span> so it is still called a <span class="fragment"><b><i>proposal</i></b>.</span> With
+                    <span class="fragment"><b>Babel 7</b>,</span> we must add the equivalent
+                    <b class="fragment">Babel
+            plugin</b> for each <b class="fragment"><i>modern</i></b> <b class="fragment">JS feature</b> we want to implement in our applications. That's because there are no longer <b class="fragment">stage presets</b> in <span class="fragment"><b>Babel 7</b>.</span></p>
             </section>
             <section data-background="#ffc600">
                 <h3>Babel 7 Plugins</h3>
@@ -460,7 +461,7 @@
                     "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
                 </code></pre>
                 <p class="fragment">
-                    <b class="fragment">ES6 modules</b> allow us to import something <b><i>from</i></b> something else:
+                    <b>ES6 modules</b> allow us to import something <b><i>from</i></b> something else:
                 </p>
                 <pre class="fragment"><code data-trim>
                     import * as name from "module-name";
@@ -473,7 +474,7 @@
                     "@babel/plugin-proposal-export-namespace-from"
                 </code></pre>
                 <p class="fragment">
-                    However, there was no corresponding export!
+                    However, there was <b class="fragment"><i>no</i></b> <span class="fragment"><b>corresponding export</b>!</span>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -483,7 +484,7 @@
                     "@babel/plugin-proposal-export-namespace-from"
                 </code></pre>
                 <p class="fragment">
-                    plugin proposal: export namespace from
+                    <b>plugin proposal:</b> export namespace from
                 </p>
                 <pre class="fragment"><code data-trim>
                     export * as ns from "mod";
@@ -509,9 +510,10 @@
                     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
                 </code></pre>
                 <p class="fragment">
-                    <code class="fragment">import()</code> returns a <b class="fragment"><i>promise</i></b>, so it can be used with
-                    <a class="fragment" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function" target="_blank">async functions</a>. However, doing this <b><i>requires</i></b> the <code class="fragment">"@babel/plugin-syntax-dynamic-import"</code>
-                    <b>plugin</b> in <b>Webpack</b>.
+                    <code class="fragment">import()</code> returns a <span class="fragment"><b><i>promise</i></b>,</span> so it can be used with
+                    <span class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function" target="_blank">async functions</a>.</span> However, doing this <b class="fragment"><i>requires</i></b> the
+                    <code class="fragment">"@babel/plugin-syntax-dynamic-import"</code>
+                    <b>plugin</b> in <span class="fragment"><b>Webpack</b>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -526,7 +528,7 @@
                     }
                 },
                 </code></pre>
-                <p class="fragment">Now it looks like <b><i>this</i></b>. No more <b class="fragment"><i>presets</i></b>. Only in <b class="fragment">.babelrc</b>. In addition, I changed the name of the <b><i>webpack config</i></b> file. I will talk about that later.</p>
+                <p class="fragment">Now <code class="fragment">.JS$ rules</code> looks like <b><i>this</i></b>. No more <span class="fragment"><b><i>presets</i></b>.</span> Only in <span class="fragment"><b>.babelrc</b>.</span> In addition, I changed the name of the <b class="fragment"><i>webpack config</i></b>                    file. I will talk about that later.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>JS$ test property</h3>
@@ -534,9 +536,9 @@
             	test: /\.js$/,
             	</code></pre>
                 <p class="fragment">
-                    The <span class="fragment"><code>test</code></span> property tells webpack what kind of file to match to the
-                    <span class="fragment"><code>babel-loader</code></span>. The regex <span class="fragment "><code>/\.js$/</code></span> refers to any extension that matches
-                    <span class="fragment"><code>.js</code> at the end of a filename.</span>
+                    The <span class="fragment"><code class="fragment">test</code></span> property tells webpack what kind of file to match to the
+                    <span class="fragment"><code>babel-loader</code>.</span> The regex <span class="fragment "><code>/\.js$/</code></span> refers to any extension that matches
+                    <span class="fragment"><code>.js</code></span> at the end of a filename.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -556,7 +558,7 @@
                 },
             	</code></pre>
                 <p class="fragment">
-                    Then it <span class="fragment"><code>uses</code></span> that loader to transform those files before adding it to <code class="fragment">bundle.js</code>.
+                    Then it <code class="fragment">uses</code> that loader to transform those files before adding it to <span class="fragment"><code>bundle.js</code>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -565,10 +567,11 @@
                 <pre class="fragment"><code data-trim>
                 @babel/core
                 </code></pre>
-                <p class="fragment">This is the <b>Babel</b> core <b class="fragment"><i>compiler</i></b>. It makes it possible to use <code class="fragment">babel-loader</code>. Most <b class="fragment">babel plugins/top level packages</b> have a <b class="fragment"><i>peerDependency</i></b>                    on
-                    <b class="fragment">@babel/core</b>. Previously it had been <b class="fragment">babel-core</b>. It is also needed for
-                    <b class="fragment">Jest</b>. To learn more about
-                    <a class="fragment" href="https://nodejs.org/en/blog/npm/peer-dependencies/">peerDependencies,</a> click <a class="fragment" href="https://nodejs.org/en/blog/npm/peer-dependencies/">here</a>.</p>
+                <p class="fragment">This is the <b>Babel</b> core <span class="fragment"><b><i>compiler</i></b>.</span> It makes it possible to use <span class="fragment"><code>babel-loader</code>.</span> Most <b class="fragment">babel plugins/top level packages</b> have
+                    a <b class="fragment"><i>peerDependency</i></b> on
+                    <span class="fragment"><b>@babel/core</b>.</span> Previously it had been <span class="fragment"><b>babel-core</b>.</span> It is also needed for
+                    <span class="fragment"><b>Jest</b>.</span> To learn more about
+                    <a class="fragment" href="https://nodejs.org/en/blog/npm/peer-dependencies/">peerDependencies,</a> click <span class="fragment"><a href="https://nodejs.org/en/blog/npm/peer-dependencies/">here</a>.</span></p>
             </section>
             <section data-background="#ffc600">
                 <h3>Babel 7 Packages</h3>
@@ -576,10 +579,11 @@
                 <pre class="fragment"><code data-trim>
                 "babel-core": "^7.0.0-bridge.0"
                 </code></pre>
-                <p class="fragment">This package is needed for <b class="fragment">Jest</b> testing if <b class="fragment">Babel 7</b> is being used. This package is meant to <b>ease</b> the <b class="fragment"><i>transition</i></b> libraries that use "babel-core" as a
-                    <b class="fragment"><i>peerDependency</i></b> for <b class="fragment">Babel 6</b>. To learn more, please visit the
-                    <a href="https://github.com/babel/babel-bridge" class="fragment">babel-bridge repo
-                        </a>.</p>
+                <p class="fragment">This package is needed for <b class="fragment">Jest</b> testing if <b class="fragment">Babel 7</b> is being used. This package is meant to <b class="fragment">ease</b> the <b class="fragment"><i>transition</i></b> libraries that use "babel-core"
+                    as a
+                    <b class="fragment"><i>peerDependency</i></b> for <span class="fragment"><b>Babel 6</b>.</span> To learn more, please visit the
+                    <span class="fragment"><a href="https://github.com/babel/babel-bridge">babel-bridge repo
+                        </a>.</span></p>
             </section>
             <section data-background="#ffc600">
                 <h3>Babel 7 Packages</h3>
@@ -1447,10 +1451,10 @@
             </section>
             <section data-background="#ffc600">
                 <h3>Dev Output In Terminal</h3>
-                <p class="fragment ">
-                    So much has changed even in the <b>Terminal</b> <b><i>output</i></b> when running your <b>React application</b> in
-                    <b>dev
-    mode</b> with <b>webpack-dev-server</b>. Everything configured in <code>config/webpack.base.config.js</code> prints out in Terminal. So cool, right?
+                <p class="fragment">
+                    So much has changed even in <b class="fragment">Terminal</b> <b class="fragment"><i>output</i></b> when running your <b class="fragment">React application</b> in
+                    <b class="fragment">dev
+    mode</b> with <span class="fragment"><b>webpack-dev-server</b>.</span> Everything configured in <code class="fragment">config/webpack.base.config.js</code> prints out in <span class="fragment"><b>Terminal</b>.</span> So cool, right?
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1463,12 +1467,13 @@
                 --env.PLATFORM=local --env.VERSION=stag
                 </code></pre>
                 <p class="fragment">
-                    <code class="fragment">npm run start</code> is my custom script for running my app in <b>dev mode</b> using <code class="fragment">webpack-dev-server</code>.
-                    <code>webpack-dev-server --mode development</code> runs the <code>webpack-dev-server</code> in development. <code>webpack-dev-server</code> provides a simple web server and ability to use live reloading in development only.
+                    <code class="fragment">npm run start</code> is my custom script for running my app in <b class="fragment">dev mode</b> using <span class="fragment"><code>webpack-dev-server</code>.</span>
+                    <code class="fragment">webpack-dev-server --mode development</code> runs the <code class="fragment">webpack-dev-server</code> in development. <code class="fragment">webpack-dev-server</code> provides a simple web server and ability
+                    to use live reloading in development only.
                 </p>
             </section>
             <section data-background="#ffc600">
-                <h3>mode === development</h3>
+                <h3>--mode development</h3>
                 <p><b>custom script, webpack-dev-server</b></p>
                 <pre class="fragment"><code data-trim>
                 new webpack.DefinePlugin({
@@ -1477,12 +1482,12 @@
                 })
                 </code></pre>
                 <p class="fragment">Sets
-                    <a href="https://webpack.js.org/concepts/mode/">process.env.NODE_ENV</a> on <b>DefinePlugin</b> to <code>value=development</code>. it also enables
-                    <b>NamedChunksPlugin</b> and <b>NamedModulesPlugin</b>. This is the way I defined development in the first edition.
+                    <a class="fragment" href="https://webpack.js.org/concepts/mode/">process.env.PLATFORM</a> on <b class="fragment">DefinePlugin</b> to <span class="fragment"><code>--mode development</code>.</span> it also enables
+                    <b class="fragment">NamedChunksPlugin</b> and <span class="fragment"><b>NamedModulesPlugin</b>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
-                <h3>mode === development</h3>
+                <h3>--mode development</h3>
                 <p><b>custom script, webpack-dev-server</b></p>
                 <pre class="fragment"><code data-trim>
                 new webpack.DefinePlugin({
