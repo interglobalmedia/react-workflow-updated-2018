@@ -1169,7 +1169,8 @@
                 },
                 </code></pre>
                 <p class="fragment">
-                    The <b><i>value</i></b> of the third <b>property</b>, <span class="fragment"><code>path</code>,</span> is the <b class="fragement">absolute path</b> to the <b class="fragment">dist folder</b>, where the <b class="fragment">bundled assets</b>                    end up. It has to be required in your
+                    The <b class="fragment"><i>value</i></b> of the third <b class="fragment">property</b>, <span class="fragment"><code>path</code>,</span> is the <b class="fragment">absolute path</b> to the <b class="fragment">dist folder</b>, where
+                    the <b class="fragment">bundled assets</b> end up. It has to be <b class="fragment"><i>required</i></b> in your
                     <span class="fragment"><code>webpack config</code></span> in order for you to able to use it.
                 </p>
             </section>
@@ -1199,8 +1200,9 @@
                 },
                 </code></pre>
                 <p class="fragment">
-                    I use the <b>[name]</b> property because of my <span class="fragment"><code class="fragment">bundle splitting</code></span> resulting from <span class="fragment"><b><i>naming</i></b></span> different types of <b>chunks</b>. Previously
-                    the reasoning was because of <code class="fragment">> 1</code> <b>entry point</b>, but now it's because of <code class="fragment">> 1</code> type of <b>chunk</b>. As you saw, they do <b><i>not</i></b> reside in the <b>entry point</b>!
+                    I use the <b class="fragment">[name]</b> property because of my <span class="fragment"><code class="fragment">bundle splitting</code></span> resulting from <span class="fragment"><b><i>naming</i></b></span> different types of <b class="fragment">chunks</b>.
+                    Previously the reasoning was because of <code class="fragment">> 1</code> <b>entry point</b>, but now it's because of <code class="fragment">> 1</code> type of <b>chunk</b>. As you saw, they do <b class="fragment"><i>not</i></b> reside
+                    in the <b class="fragment">entry point</b>!
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1211,10 +1213,9 @@
             <section data-background="#ffc600">
                 <h3>Bundle Splitting vs Code Splitting</h3>
                 <p class="fragment">
-                    I will be updating the <b>terminology</b> in the <b>first edition</b> of this <b><i>workflow</i></b>. I came across a fantastic article on medium that gets into the <b><i>difference</i></b> between the two, and helped me tremendously
-                    in <b>optimizing</b> my <b>vendor</b> bundle(s):
-                    <a href="https://hackernoon.com/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758">The
-                    100% correct way to split your chunks with Webpack</a>, by <i>David Gilbertson</i>.
+                    I will be updating the <b class="fragment">terminology</b> in the <b class="fragment">first edition</b> of this <b class="fragment"><i>workflow</i></b>. I came across a fantastic article on medium that gets into the <b class="fragment"><i>difference</i></b>                    between the two, and helped me tremendously in <b class="fragment">optimizing</b> my <b class="fragment">vendor</b> <b class="fragment">bundle(s)</b>:
+                    <a class="fragment" href="https://hackernoon.com/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758">The
+                    100% correct way to split your chunks with Webpack</a>, <i class="fragment">by David Gilbertson</i>.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1227,7 +1228,7 @@
                 },
                 </code></pre>
                 <p class="fragment">
-                    <b>[name]</b> takes into consideration that there can be more than one type of <b class="fragment">bundle (main)</b> file, and they may have different names.
+                    <b class="fragment">[name]</b> takes into consideration that there can be more than one type of <b class="fragment">bundle (main)</b> file, and they may have <b class="fragment"><i>different</i></b> <b class="fragment">names</b>.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1239,8 +1240,8 @@
                     path: path.resolve(__dirname, '../dist')
                 },
                 </code></pre>
-                <p class="fragment">A simple way to make sure the <b>browser</b> picks up <b><i>changed</i></b> files is by <b><i>using</i></b> <code class="fragment">output.filename</code> <b>substitutions</b>. The <b>[hash]</b> (or previously for me [chunkhash]) can be
-                    used to include a <b><i>build-specific</i></b> <b>hash</b> in the <b>filename</b>.
+                <p class="fragment">A simple way to make sure the <b class="fragment">browser</b> picks up <b class="fragment"><i>changed</i></b> files is by <b class="fragment"><i>using</i></b> <code class="fragment">output.filename</code> <b class="fragment">substitutions</b>.
+                    The <b class="fragment">[hash]</b> (or previously for me [chunkhash]) can be used to include a <b class="fragment"><i>build-specific</i></b> <b class="fragment">hash</b> in the <b class="fragment">filename</b>.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1254,7 +1255,7 @@
                 </code></pre>
                 <p class="fragment">
                     It's even better to use the
-                    <code class="fragment">[contenthash]</code> substitution, which is the hash of the <b><i>content</i></b> of a file, <b><i>different</i></b> for each type of <b>asset</b>.
+                    <code class="fragment">[contenthash]</code> <b class="fragment">substitution</b>, which is the hash of the <b class="fragment"><i>content</i></b> of a file, <b class="fragment"><i>different</i></b> for each type of <b class="fragment">asset</b>.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1270,7 +1271,7 @@
                 <p>And for
                     <a href="https://github.com/webpack/webpack/issues/7179 ">Code Splitting (Async Chunks)</a>:</p>
                 <p class="fragment">
-                    Also don't forget to set the chunkFilename for Code Splitting (Async Chunks):
+                    Also don't forget to set the <b class="fragment">chunkFilename</b> for Code Splitting (Async Chunks):
                 </p>
                 <pre class="fragment"><code data-trim>
                 const output = {
@@ -1324,29 +1325,34 @@
             </section>
             <section data-background="#ffc600 ">
                 <h3>CommonsChunkPlugin</h3>
-                <p class="fragment ">Originally, chunks (and modules imported inside them) were connected by a parent-child relationship in the internal webpack graph. The <span class="fragment "><b><i>CommonsChunkPlugin</i></b></span> was used to avoid duplicated dependencies
-                    across them, but further optimizations were not possible. Since <b class="fragment"><i>webpack v4</i></b>, the <b class="fragment "><i>CommonsChunkPlugin</i></b> was removed in favor of <span class="fragment "><b>optimization.splitChunks</b>.</span></p>
+                <p class="fragment"><span class="fragment"><b><i>Originally</i></b>,</span> <b class="fragment">chunks</b> (and <b class="fragment">modules</b> <b class="fragment"><i>imported</i></b> inside them) were connected by a parent-child relationship in the internal
+                    webpack graph. The <span class="fragment "><b><i>CommonsChunkPlugin</i></b></span> was <b class="fragment"><i>used</i></b> to <b><i>avoid</i></b> <b class="fragment">duplicated dependencies</b> across them, but further optimizations
+                    were not possible. Since <span class="fragment"><b><i>webpack v4</i></b>,</span> the <b class="fragment "><i>CommonsChunkPlugin</i></b> was removed in favor of
+                    <span class="fragment "><b>optimization.splitChunks</b>.</span>
+                </p>
             </section>
             <section data-background="#ffc600" data-background-image="images/chunk-splitting.jpg" data-background-size="100%" data-background-position="center" data-background-repeat="no-repeat">
                 <h3>SplitChunksPlugin</h3>
                 <p class="fragment" style="background: rgba(250, 235, 215, 0.7)">
-                    We can use the <b><i>webpack</i></b> <span class="fragment"><code>SplitChunksPlugin</code></span> to <span class="fragment "><code>split</code></span> <b><i>(vendor) dependencies</i></b> into chunks</b>.
+                    We can use the <b class="fragment"><i>webpack</i></b> <span class="fragment"><code>SplitChunksPlugin</code></span> to <span class="fragment"><code>split</code></span> <b class="fragment"><i>(vendor) dependencies</i></b> into
+                    <span class="fragment"><b>chunks</b>.</span>
                 </p>
             </section>
             <section data-background="#ffc600 ">
                 <h3>SplitChunksPlugin</h3>
-                <p class="fragment ">Out of the box, <code>SplitChunksPlugin</code> should work well for most users.</p>
+                <p class="fragment ">Out of the box, <code class="fragment">SplitChunksPlugin</code> should work well for most users.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>SplitChunksPlugin</h3>
                 <p class="fragment ">
-                    By default it only affects <b class="fragment ">on-demand chunks</b>, because changing <b class="fragment ">initial chunks</b> would affect the <b class="fragment ">script tags</b> the html file should include to run the project.
+                    By default it only affects <span class="fragment"><b>on-demand chunks</b>,</span> because changing <b class="fragment ">initial chunks</b> would affect the <b class="fragment ">script tags</b> the html file should include to run the
+                    project.
                 </p>
             </section>
             <section data-background="#ffc600" data-background-image="images/chunked-chocolate.jpg" data-background-size="100%" data-background-position="center" data-background-repeat="no-repeat">
                 <h3>SplitChunksPlugin</h3>
                 <p class="fragment" style="background: rgba(250, 235, 215, 0.7)">
-                    <b>webpack</b> will automatically split chunks based on the following conditions:
+                    <b class="fragment">webpack</b> will <b class="fragment"><i>automatically</i></b> <b class="fragment">split chunks</b> based on the following <span class="fragment"><b>conditions</b>:</span>
                 </p>
             </section>
             <section data-background="#ffc600 ">
@@ -1377,8 +1383,8 @@
                     runtimeChunk: 'single',
                 },
                 </code></pre>
-                <p class="fragment ">After adding <code class="fragment ">runtimeChunk</code>, a <b><i>new</i></b> (default name) <code class="fragment ">runtime</code> file will be created. The value <code class="fragment">"single"</code> creates a <b><i>single</i></b>
-                    <b>runtime file</b> to be shared for <b>ALL</b> generated <b>chunks</b>.</p>
+                <p class="fragment ">After adding <span class="fragment"><code>runtimeChunk</code>,</span> a <b><i>new</i></b> (default name) <code class="fragment">runtime</code> file will be created. The value <code class="fragment">"single"</code> creates a <b class="fragment"><i>single</i></b>
+                    <b>runtime file</b> to be shared for <b class="fragment">ALL</b> generated <span class="fragment"><span class="fragment"><b>chunks</b>.</span></p>
             </section>
             <section data-background="#ffc600 ">
                 <h3>Dev Output In Terminal</h3>
