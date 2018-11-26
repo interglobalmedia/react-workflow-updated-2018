@@ -935,8 +935,10 @@
             <section data-background="#ffc600">
                 <h3>Dependency Graph</h3>
                 <p class="fragment">
-                    When <b><i>webpack</i></b> processes your app, it recursively builds a <span class="fragment"><code>dependency
-                graph</code></span> that includes every module that your app needs, and then packages all of those modules into a small number of bundles to be loaded by the browser.
+                    When <b><i>webpack</i></b> processes your app, it <b class="fragment"><i>recursively</i></b> <b class="fragment">builds</b> a <span class="fragment"><code>dependency
+                graph</code></span> that <b class="fragment"><i>includes</i></b> every <b class="fragment">module</b> that your app <b class="fragment"><i>needs</i></b>, and then <b class="fragment"><i>packages</i></b> all of those <b class="fragment">modules</b>                    into a small number of
+                    <b class="fragment"><i>bundles</i></b> to be <b class="fragment">loaded</b> by the
+                    <b class="fragment">browser</b>.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -969,9 +971,9 @@
                 }
                 </code></pre>
                 <p class="fragment">
-                    The starting point of <b><i>webpack</i></b>'s <b>dependency graph</b> is called the <span class="fragment"><code>entry
-                    point.</code></span> The <b>entry point</b> tells <b><i>webpack</i></b> where to start its <span class="fragment"><code>bundling
-                    process,</code></span> and then follows the graph of dependencies to know what to bundle.
+                    The starting point of <b><i>webpack</i></b>'s <b class="fragment">dependency graph</b> is called the <code class="fragment">entry
+                    point</code>. The <b class="fragment">entry point</b> tells <b><i>webpack</i></b> where to start its <code class="fragment">bundling
+                    process</code>, and then follows the graph of dependencies to know what to bundle.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -984,7 +986,7 @@
                 }
                 </code></pre>
                 <p class="fragment">
-                    This <b>entry point</b> <b><i>did</i></b> change since the previous workflow, <b><i>and</i></b> <code>module.exports</code> and what now comes before entry did as well.
+                    The <b class="fragment">entry point</b> <b class="fragment"><i>did</i></b> change since the previous workflow, <b><i>and</i></b> <code class="fragment">module.exports</code>, and what now comes <b class="fragment"><i>before</i></b>                    <b class="fragment">entry</b> did as well.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -996,8 +998,9 @@
                 };
                 </code></pre>
                 <p class="fragment">
-                    The <b>env</b> variable is passed to <code>module.exports</code> so that I can make those <b>webpack configurations</b> which are <b><i>required</i></b> both in <b>development</b> and <b>production</b>. <code>PLATFORM</code> refers
-                    to <b>dev</b> or <b>prod</b> <b><i>envs</i></b>, and <code>VERSION</code> refers to <b>staging</b> (stag).
+                    The <b class="fragment">env</b> variable is passed to <code class="fragment">module.exports</code> so that I can make those <b class="fragment">webpack configurations</b> which are <b class="fragment"><i>required</i></b> both in
+                    <b class="fragment">development</b> and <b class="fragment">production</b>.
+                    <code class="fragment">PLATFORM</code> refers to <b class="frgment">dev</b> or <b class="fragment">prod</b> <b class="fragment"><i>envs</i></b>, and <code class="fragment">VERSION</code> refers to <b class="fragment">staging</b> (stag).
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1007,12 +1010,12 @@
                     main: './src/index.js'
                 },
                 </code></pre>
-                <p class="fragment">I no longer include a <b>VENDOR_LIBS</b> (vendor) <b>entry</b>. That means I no longer <b><i>define</i></b> a <b>VENDOR_LIBS</b> <b><i>variable</i></b> containing the <b>third party dependencies</b> I use in my application. This has to
-                    do with the <b><i>new</i></b> way of <code class="fragment">bundle splitting</code> in <b>webpack 4</b> using the <code class="fragment">SplitChunksPlugin</code> instead of <code class="fragment">CommonsChunkPlugin</code>.</p>
+                <p class="fragment">I no longer include a <b class="fragment">VENDOR_LIBS (vendor)</b> <b class="fragment">entry</b>. That means I no longer <b class="fragment"><i>define</i></b> a <b class="fragment">VENDOR_LIBS</b> <b class="fragment"><i>variable</i></b>                    containing the <b class="fragment">third party dependencies</b> I use in my application. This has to do with the <b class="fragment"><i>new</i></b> way of <code class="fragment">bundle splitting</code> in <b>webpack 4</b> using the
+                    <code class="fragment">SplitChunksPlugin</code> instead of <code class="fragment">CommonsChunkPlugin</code>.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>webpack-merge</h3>
-                <p class="fragment"><b>webpack-merge</b> is what makes it possible to <b><i>merge</i></b> my two <b>configs</b> together into <b>one</b>, thereby resulting in much <b><i>drier</i></b> code as well.</p>
+                <p class="fragment"><b class="fragment">webpack-merge</b> is what makes it possible to <b class="fragment"><i>merge</i></b> my two <b class="fragment">configs</b> together into <b class="fragment">one</b>, thereby resulting in much <b class="fragment"><i>drier</i></b>                    code as well.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>main</h3>
@@ -1030,8 +1033,9 @@
                 }
                 </code></pre>
                 <p class="fragment">
-                    The <b>value</b> of the <b>main</b> property indicates to
-                    <b><i>webpack</i></b> what <b>code</b> needs to be <b>bundled</b>. Previously I called it <b>bundle</b>, but now for consistency and readability sake, I changed it to <b>main</b>.
+                    The <b class="fragment">value</b> of the <b class="fragment">main</b> property indicates to
+                    <b class="fragment"><i>webpack</i></b> what <b class="fragment">code</b> needs to be <b class="fragment">bundled</b>. Previously I called it <b class="fragment">bundle</b>, but now for consistency and readability sake, I changed it
+                    to <b class="fragment">main</b>.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1046,8 +1050,8 @@
                 import './favicon.ico';
 				</code></pre>
                 <p class="fragment">
-                    The <b>files</b> which need to be <b>included</b> in the <b>bundled</b> file in <b>output</b> have all been <b>imported</b> into the
-                    <b><i>main</i></b>
+                    The <b class="fragment">files</b> which need to be <b class="fragment">included</b> in the <b class="fragment">bundled</b> file in <b class="fragment">output</b> have all been <b class="fragment">imported</b> into the
+                    <b class="fragment"><i>main</i></b>
                     <span class="fragment">
                         <a href="https://github.com/interglobalmedia/react-timeline-app/blob/master/src/index.js" target="_blank">
                             <code>index.js</code>
@@ -1063,7 +1067,7 @@
                 import 'core-js/es6/set';
                 </code></pre>
                 <p class="fragment">
-                    A polyfilled environment for React 16 using core-js to support older browsers. Visit the
+                    A <b class="fragment"><i>polyfilled</i></b> environment for <b class="fragment">React 16</b> using <b class="fragment">core-js</b> to <b class="fragment"><i>support</i></b> <b class="fragment">older browsers</b>. Visit the
                     <a href="https://reactjs.org/docs/javascript-environment-requirements.html">React
                     documentation
                     </a> to learn more.
@@ -1072,11 +1076,10 @@
             <section data-background="#ffc600">
                 <h3>ReactDOM.render()</h3>
                 <p class="fragment">
-                    And the <b><i>main</i></b> <span class="fragment"><a href="https://github.com/interglobalmedia/react-timeline-app/blob/master/src/index.js" target="_blank"><code>App Component</code></a></span> that holds everything else related to
-                    the app is rendered there as well.
+                    And the <b clas="fragment"><i>main</i></b> <span class="fragment"><a href="https://github.com/interglobalmedia/react-timeline-app/blob/master/src/index.js" target="_blank"><code>App Component</code></a></span> that holds everything
+                    else related to the app is rendered there as well.
                 </p>
             </section>
-
             <section data-background="#ffc600" data-background-image="images/code-splitting.jpg" data-background-size="cover" data-background-position="center" data-background-repeat="no-repeat">
                 <h3>Code/Bundle Splitting</h3>
                 <p class="fragment" style="background: rgba(250, 235, 215, 0.6)">
@@ -1086,7 +1089,8 @@
             <section data-background="#ffc600">
                 <h3>Browser Caching</h3>
                 <p class="fragment">
-                    is great because it allows sites to load faster once the client has grabbed the necessary files and assets from the server the first time a user visits the page.
+                    is <b class="fragment"><i>great</i></b> because it <b class="fragment"><i>allows</i></b> <b class="fragment">sites</b> to <b class="fragment"><i>load faster</i></b> once the <b class="fragment">client</b> has <b class="fragment"><i>grabbed</i></b>                    the <b class="fragment">necessary</b> <b class="fragment"><i>files</i></b> and <b class="fragment"><i>assets</i></b> from the server the
+                    <b class="fragment">first time</b> a user <b class="fragment">visits</b> the <b class="fragment">page</b>.
                 </p>
             </section>
             <section data-background="#ffc600" data-background-image="images/browser-caching.jpg" data-background-size="100%" data-background-position="center" data-background-repeat="no-repeat" style="background: rgba(170, 170, 170, 0.6)">
@@ -1108,8 +1112,8 @@
                 },
                 </code></pre>
                 <p class="fragment">
-                    Once you've bundled all your assets together, you need to tell <b><i>webpack</i></b> <span class="fragment"><b><i>where</i></b></span> to bundle your app. The <span class="fragment"><code>output object</code></span> tells <b><i>webpack</i></b>                    what to do with <b>bundled</b> code. But this <code class="fragment">output object</code> <b><i>differs greatly</i></b> from the <b>first edition</b> of this
-                    <b>workflow</b>.
+                    Once you've <b class="fragment"><i>bundled</i></b> all your <b class="fragment">assets</b> together, you need to tell <b class="fragment"><i>webpack</i></b> <span class="fragment"><b><i>where</i></b></span> to <b class="fragment">bundle</b>                    your app. The <span class="fragment"><code>output object</code></span> tells <b class="fragment"><i>webpack</i></b> what to do with <b class="fragment">bundled</b> code. But this <code class="fragment">output object</code> <b class="fragment"><i>differs greatly</i></b>                    from the <b>first edition</b> of this
+                    <b class="fragment">workflow</b>.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1150,8 +1154,8 @@
                     path: path.resolve(__dirname, '../dist')
                 },
                 </code></pre>
-                <p class="fragment"><code class="fragment">chunkFilename</code> determines the name of <b>non-entry</b> chunk files. In my configuration, that means <b><i>either</i></b> <b>vendor chunks</b> or (at least with this particular workflow)
-                    <b>dynamic imports</b>. Again, note the <b>ternary operator</b>.
+                <p class="fragment"><code class="fragment">chunkFilename</code> determines the name of <b class="fragment">non-entry</b> chunk files. In <b class="fragment"><i>my</i></b> <b class="fragment">configuration</b>, that means <b class="fragment"><i>either</i></b>                    <b class="fragment">vendor chunks</b> or (at least with this particular workflow)
+                    <b class="fragment">dynamic imports</b>. Again, note the <b class="fragment">ternary operator</b>.
                 </p>
             </section>
             <section data-background="#ffc600">
