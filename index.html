@@ -2516,18 +2516,18 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                         }),
                     ]
                 </code></pre>
-                <p class="fragment ">
+                <p class="fragment">
                     My <code class="fragment">HtmlWebpackPlugin</code> <b class="fragment"><i>configuration</i></b> in my <span class="fragment"><code>config/webpack-base.config.js</code>.</span>
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>HtmlWebpackPlugin Configuration</h3>
                 <p><b>template</b></p>
-                <p class="fragment ">
+                <p class="fragment">
                     is the <b>webpack</b> <code class="fragment">require path</code> to the <span class="fragment"><b>template</b>.</span>
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>HtmlWebpackPlugin Configuration</h3>
                 <p><b>favicon</b></p>
                 <p class="fragment ">
@@ -2545,20 +2545,23 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 <h3>HtmlWebpackPlugin Configuration</h3>
                 <p><b>inject</b></p>
                 <p class="fragment ">
-                    <b><i>default</i></b> is set to <code class="fragment ">true</code>. I always like to make sure that my <b class="fragment ">JS</b> assets are placed at the bottom of the <code class="fragment ">body</code> element, so I use
-                    <code class="fragment ">true</code>. You can check out other options in the <b>HtmlWebpackPlugin</b>
-                    <a href="https://github.com/jantimon/html-webpack-plugin " target="_blank ">docs</a>.
+                    <b class="fragment"><i>default</i></b> is set to <span class="fragment"><code>true</code>.</span> I always like to make sure that my <span class="fragment"><b>JS <i>assets</i></b></span> are <b class="fragment">placed</b> at the
+                    <b class="fragment"><i>bottom</i></b> of the <span class="fragment"><code>body</code> element,</span> so I use
+                    <span class="fragment"><code>true</code>.</span> You can check out <i class="fragment">other options</i> in the <b class="fragment">HtmlWebpackPlugin</b>
+                    <span class="fragment"><a href="https://github.com/jantimon/html-webpack-plugin " target="_blank ">docs</a>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
                 <h3>Separating Concerns</h3>
                 <p class="fragment ">
-                    Separating <span class="fragment "><code>runtime</code></span> code from <span class="fragment "><code>vendor</code></span> code is the first step towards making sure that the <span class="fragment "><code>vendor hash</code></span>                    does not <b><i>change</i></b> with each <b><i>new</i></b> <b>build</b> unless a <b><i>new</i></b> <b>3rd party plugin</b> is added.
+                    Separating <span class="fragment"><code>runtime</code> code</span> from <span class="fragment"><code>vendor</code> code</span> is the first step towards making sure that the <code class="fragment">vendor hash</code> does
+                    <span class="fragment">not <b><i>change</i></b></span> with each <b class="fragment"><i>new</i> build</b> unless a <b class="fragment"><i>new</i> 3rd party plugin</b> is added.
                 </p>
             </section>
             <section data-background="#ffc600">
                 <h3>Separating Concerns</h3>
-                <p class="fragment">Using <b>[contenthash]</b> instead of <b>[chunkhash]</b> or <b>[hash]</b> is another step towards making sure that the <b>vendor</b> <b><i>hash</i></b> does <b><i>not</i></b> <b>change</b> with <b><i>each</i></b> <b>new build</b> <b><i>unless</i></b>                    a <b><i>new</i></b> <b>3rd party plugin</b> is <b>added</b>.</p>
+                <p class="fragment">Using <code class="fragment">[contenthash]</code> instead of <code class="fragment">[chunkhash]</code> or <code class="fragment">[hash]</code> is another step towards making sure that the <b class="fragment">vendor <i>hash</i></b> does
+                    <b class="fragment"><i>not</i> change</b> with <b class="fragment"><i>each</i> new build</b> <b><i>unless</i></b> a <b><i>new</i></b> <b class="fragment">3rd party plugin</b> is <span class="fragment"><b>added</b>.</span></p>
             </section>
             <section data-background="#ffc600 ">
                 <h3>Resolving Order</h3>
@@ -2572,14 +2575,15 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
 				+ 2 hidden modules
 						</code></pre>
                 <p class="fragment ">
-                    However, this <span class="fragment "><code>bundle splitting</code></span> is not enough. Each time a new build takes place, each <span class="fragment "><code>module.id</code></span> is incremented based on resolving order by default.
-                    When the resolving order is changed, the <span class="fragment "><code>module.id</code></span> changes.
+                    However, this <span class="fragment"><code>bundle splitting</code></span> is not enough. Each time a
+                    <a class="fragment" href="https://interglobalmedia.github.io/react-workflow-presentation/#/52">new build</a> takes place, each <span class="fragment"><code>module.id</code></span> is <i class="fragment">incremented</i> based on
+                    <i class="fragment">resolving order</i> by <span class="fragment"><b><i>default</i></b>.</span> When the <i class="fragment">resolving order</i> is <span class="fragment"><b>changed</b>,</span> the <span class="fragment "><code>module.id</code></span>                    <span class="fragment"><b><i>changes</i></b>.</span>
                 </p>
             </section>
             <section data-background="#ffc600 ">
                 <h3>Blocking Change</h3>
                 <p>
-                    So how can we prevent vendor's <span class="fragment "><code>[contenthash]</code></span> from changing? There are two <b><i>webpack</i></b> plugins that can get us there. One is the <span class="fragment
+                    So how can we prevent <span class="fragment">vendor's <code>[contenthash]</code></span> from changing? There are two <b><i>webpack</i></b> plugins that can get us there. One is the <span class="fragment
                     "><code>NamedModulesPlugin</code>,</span> and the other is the <span class="fragment "><code>HashedModuleIdsPlugin</code>.</span>
                 </p>
             </section>
@@ -2609,17 +2613,22 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 </p>
             </section>
             <section data-background="#ffc600">
-                <h3>HashedModuleIdsPlugin: <a href="https://webpack.js.org/guides/caching/">before</a></h3>
-                <p class="fragment">Let's say our webpack.prod.config.js doesn't include the <b>HashedModuleIdsPlugin</b> and we have made a change to our js code. we might have added another React component, a helper function, etc. We would expect the hashes of our main
-                    js bundle and our asset-manifest.json to change on production build, but not our vendor bundle. However, all three change. <b><i>Why?</i></b></p>
+                <h3>HashedModuleIdsPlugin</h3>
+                <p class="fragment"><a href="https://webpack.js.org/guides/caching/">before</a></p>
+                <p class="fragment"><i>Let's say</i> our <b>webpack.prod.config.js</b> doesn't include the <b>HashedModuleIdsPlugin</b> and we have made a <b><i>change</i></b> to our <b>js <i>code</i></b>. we might have <b><i>added</i></b> another <b>React <i>component</i></b>,
+                    a <b><i>helper</i> function</b>, etc. We would <b><i>expect</i></b> the <b>hashes</b> of our <b>main js bundle</b> and our <b>asset-manifest.json</b> to <i>change</i> on <b>production build</b>, but <i>not</i> our <b>vendor bundle</b>.
+                    However, <i>all three</i> <b>change</b>.
+                    <b><i>Why?</i></b></p>
             </section>
             <section data-background="#ffc600">
-                <h3>HashedModuleIdsPlugin: <a href="https://webpack.js.org/guides/caching/">before</a></h3>
-                <p class="fragment">Because each webpack module.id changes whenever the resolving order is changed. The resolving order changes whenever the module.id has changed. The vendor bundle hash changes because its resolving order has changed and therefore its module.id
-                    as well.</p>
+                <h3>HashedModuleIdsPlugin</h3>
+                <p class="fragment"><a href="https://webpack.js.org/guides/caching/">before</a></p>
+                <p class="fragment">Because each <b>webpack</b> <code class="fragment">module.id</code> <b class="fragment"><i>changes</i></b> whenever the <b class="fragment"><i>resolving order</i></b> is <span class="fragment"><b>changed</b>.</span> The <b class="fragment"><i>resolving order</i></b>                    <b class="fragment">changes</b> whenever the <code class="fragment">module.id</code> has <span class="fragment"><b>changed</b>.</span> The <b>vendor bundle</b> <code class="fragment">hash</code> <b><i>changes</i></b> because its
+                    <b class="fragment"><i>resolving order</i></b> has <b class="fragment"><i>changed</i></b> and therefore its <code class="fragment">module.id</code> as well.</p>
             </section>
             <section data-background="#ffc600">
-                <h3>HashedModuleIdsPlugin: <a href="https://webpack.js.org/guides/caching/">before</a></h3>
+                <h3>HashedModuleIdsPlugin</h3>
+                <p class="fragment"><a href="https://webpack.js.org/guides/caching/">before</a></p>
                 <ul class="fragment">
                     <li class="fragment">
                         <b>main js bundle:</b> changed because new content was added.
@@ -2633,7 +2642,8 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 </ul>
             </section>
             <section data-background="#ffc600">
-                <h3>HashedModuleIdsPlugin: <a href="https://webpack.js.org/guides/caching/">after</a></h3>
+                <h3>HashedModuleIdsPlugin</h3>
+                <p class="fragment"><a href="https://webpack.js.org/guides/caching/">after</a></p>
                 <p><b class="fragment">Vendor remains constant</b></p>
                 <p class="fragment">
                     Let's say we add the HashedModuleIdsPlugin to our webpack production config and then ran another build. Our hash should stay consistent between builds. If we were to make a change to our js code again, the vendor hash should still remain the same because
