@@ -1776,7 +1776,9 @@
             <section data-background="#ffc600">
                 <h3>workbox and precaching</h3>
                 <p class="fragment">
-                    the workbox-webpack-plugin provides an easy way to precache files, but it can also create a precache-manifest.json file that lists the files to precache. It provides a list of the files to be precached along with revisioning.
+                    the <code class="fragment">workbox-webpack-plugin</code> provides an <b class="fragment"><i>easy way</i></b> to <b class="fragment">precache</b> files, but it can <b class="fragment"><i>also</i></b> <b class="fragment">create</b> a
+                    <code class="fragment">precache-manifest.json</code> file that <b class="fragment"><i>lists</i></b> the <b class="fragment">files</b> to <span class="fragment"><b><i>precache</i></b>.</span> It provides a list of the files to be precached
+                    <b class="fragment"><i>along with</i></b> <span class="fragment"><b>revisioning</b>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1827,22 +1829,25 @@
             <section data-background="#ffc600">
                 <h3>precache-manifest.json</h3>
                 <p class="fragment">
-                    <b>precache-manifest.json</b> prints out the <b><i>list</i></b> of <b>files</b> being <b>precached</b>, basically all your app's <b>assets</b> (by default). It consists of <b><i>two</i></b> <b>attribute-value</b> pairs. The <b>url</b>                    attribute and its <b>value</b>, and the <b>revisioning</b> attribute and its <b>value</b>.
+                    <b class="fragment">precache-manifest.json</b> prints out the <b class="fragment"><i>list</i></b> of <b class="fragment">files</b> being <span class="fragment"><b>precached</b>,</span> basically all your app's <b class="fragment">assets</b>                    <span class="fragment">(by default).</span> It consists of <b class="fragment"><i>two</i></b> <b class="fragment">attribute-value</b> <span class="fragment">pairs.</span> The <b class="fragment">url</b> attribute and its <span class="fragment"><b>value</b>,</span>                    and the <b class="fragment">revisioning</b> attribute and its
+                    <span class="fragment"><b>value</b>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
                 <h3>precache-manifest.json</h3>
                 <p class="fragment"><b>url</b> attribute-value pair</p>
                 <p class="fragment">
-                    The <b>url</b> value is the <b><i>path</i></b> to the <b>asset</b> as it appears in the <b>index.html</b> tag. That <b><i>usually</i></b> does <b><i>not</i></b> <b>change</b> unless there is a complete <b>overhaul</b> of an app's <b>workflow configuration</b>!
+                    The <b class="fragment">url</b> value is the <b class="fragment"><i>path</i></b> to the <b class="fragment">asset</b> as it appears in the <b class="fragment">index.html</b> tag. That <b class="fragment"><i>usually</i></b> does
+                    <b class="fragment"><i>not</i></b> <b class="fragment">change</b> unless there is a complete <b class="fragment">overhaul</b> of an app's <span class="fragment"><b>workflow configuration</b>!</span>
                 </p>
             </section>
             <section data-background="#ffc600">
                 <h3>precache-manifest.json</h3>
                 <p class="fragment"><b>revisioning</b> attribute-value pair</p>
                 <p class="fragment">
-                    The <b>revisioning</b> value on the other hand, <b><i>changes</i></b> when there is a <b><i>change</i></b> to the
-                    <b>asset</b>'s <b><i>content</i></b>. This way, old versions of a file will not continue to be cached. They are <b><i>updated</i></b> with the help of <b>workbox</b> and <b><i>new</i></b> <b>caches</b> are generated.
+                    The <b class="fragment">revisioning</b> value on the other hand, <b class="fragment"><i>changes</i></b> when there is a <b class="fragment"><i>change</i></b> to the
+                    <span class="fragment"><b>asset</b>'s</span> <span class="fragment"><b><i>content</i></b>.</span> This way, <b class="fragment"><i>old</i></b> <b class="fragment">versions</b> of a <span class="fragment">file</span> will <b class="fragment"><i>not continue</i></b>                    to be <span class="fragment"><b>cached</b>.</span> They are <b class="fragment"><i>updated</i></b> with the help of <b class="fragment">workbox</b> and
+                    <b class="fragment"><i>new</i></b> <b class="fragment">caches</b> are generated.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1923,12 +1928,12 @@
                 --progress
                 </code></pre>
                 <p class="fragment">
-                    <code>npm run predeploy</code> is the <b>custom script</b> I run before I <b><i>deploy</i></b> to <b>gh-pages</b>. It
-                    <b><i>builds</i></b> my <b>dist </b>folder required for <b>deployment</b> (or re-deployment) to <b>gh-pages</b>. This script is shorter than npm run start, and some things should also look <b><i>familiar</i></b>.
+                    <code class="fragment">npm run predeploy</code> is the <b class="fragment">custom script</b> I run before I <b class="fragment"><i>deploy</i></b> to <span class="fragment"><b>gh-pages</b>.</span> It
+                    <b class="fragment"><i>builds</i></b> my <b class="fragment">dist </b>folder required for <span class="fragment"><b>deployment</b> (or re-deployment)</span> to <span class="fragment"><b>gh-pages</b>.</span> This <b class="fragment">script</b>                    is <b class="fragment"><i>shorter</i></b> than <span class="fragment"><code>npm run start</code>,</span> and some things should also look <span class="fragment"><b><i>familiar</i></b>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
-                <h3>mode === production</h3>
+                <h3>--mode production</h3>
                 <p class="fragment"><b>custom script,</b> npm run predeploy</p>
                 <pre class="fragment"><code data-trim>
                 npm run predeploy ⏎ ✹
@@ -1938,40 +1943,40 @@
                 --progress
                 </code></pre>
                 <p class="fragment">
-                    Now, instead of <code class="fragment">webpack-dev-server</code> command, we use the <code class="fragment">webpack</code> commmand. In order to <b><i>properly</i></b> use the <code class="fragment">webpack</code> command, we need
-                    to have the <code class="fragment">webpack-cli</code> installed as a <b><i>devDependency</i></b> in our app.
+                    Now, instead of <code class="fragment">webpack-dev-server</code> command, we use the <code class="fragment">webpack</code> commmand. In order to <b class="fragment"><i>properly</i></b> use the <code class="fragment">webpack</code>                    command, we need to have the <code class="fragment">webpack-cli</code> installed as a <b class="fragment"><i>devDependency</i></b> in our app.
                 </p>
             </section>
             <section data-background="#ffc600">
-                <h3>mode === production</h3>
+                <h3>--mode production</h3>
                 <p class="fragment"><b>custom script,</b> npm run predeploy</p>
                 <p class="fragment">
-                    This is a <b><i>change</i></b> from the <a href="https://github.com/interglobalmedia/portfolio/blob/master/package.json">first
-    edition</a>, where I used <code>TARGET_ENV=development</code> in my custom <code>npm run serve</code> script, declared and defined a variable <code>TARGET_ENV</code> in <code>webpack-dev.config.js</code>, and <code>new
+                    This is a <b class="fragment"><i>change</i></b> from the <span class="fragment"><a href="https://github.com/interglobalmedia/portfolio/blob/master/package.json">first
+    edition</a>,</span> where I used <code class="fragment">TARGET_ENV=development</code> in my <b class="fragment">custom</b> <code class="fragment">npm run serve</code> script, <b class="fragment"><i>declared</i></b> and <b class="fragment"><i>defined</i></b>                    a variable <code class="fragment">TARGET_ENV</code> in <span class="fragment"><code>webpack-dev.config.js</code>,</span> and <span class="fragment"><code>new
     webpack.DefinePlugin({DEV:
-    true})</code>.
+    true})</code>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
-                <h3>mode === production</h3>
+                <h3>--mode production</h3>
                 <p class="fragment"><b>custom script,</b> npm run predeploy</p>
-                <p class="fragment">I also did <b><i>not</i></b> install or use the <b>webpack-cli</b>, which can be <b><i>limiting</i></b>.</p>
+                <p class="fragment">I also did <b><i>not</i></b> <b class="fragment">install</b> or <b class="fragment">use</b> the <b class="fragment">webpack-cli</b> in the <span class="fragment"><b><i>first edition</i></b>,</span> which can be <span class="fragment"><b><i>limiting</i></b>.</span></p>
             </section>
             <section data-background="#ffc600">
-                <h3>mode === production</h3>
+                <h3>--mode production</h3>
                 <p class="fragment"><b>custom script,</b> npm run predeploy</p>
                 <pre class="fragment"><code data-trim>
                 webpack --mode production --config config/webpack.prod.config.js --env.PLATFORM=production --env.VERSION=stag
                 </code></pre>
-                <p class="fragment">This line is similar to the one related to <code class="fragment">webpack-dev-server</code>, but for <b>production</b>. The <code class="fragment">--progress</code> flag allows you to see the <b>(%) progress</b> of your <b>production</b>                    build.
+                <p class="fragment">This line is similar to the one for <span class="fragment"><code>webpack-dev-server</code>,</span> but for <span class="fragment"><b>production</b>.</span> The <code class="fragment">--progress</code> flag allows you to see the <span class="fragment">(%)<b> progress</b></span>                    of your <b class="fragment">production</b> build.
                 </p>
             </section>
             <section data-background="#ffc600">
                 <h3>Build Output In Terminal</h3>
                 <p class="fragment"><b>assets emitted</b></p>
-                <p class="fragment">Again, if you check to see how <b>assets</b> were set up in <b class="fragment">webpack.base.config.js</b>, viewable in <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/57">slide 57</a>, <b>assets
-emitted</b> would <b><i>mostly</i></b> make sense. <b><i>Specifically</i></b>, <b><i>non</i></b> <b>node_module</b> related <code>.js files/chunks</code> and <code>.css files/chunks</code>. But there is <b>one</b> <b><i>type</i></b> of file that throws
-                    many people off and that I wanted to <b>discuss</b> <b><i>only</i></b> in <b>production</b> because of its related <b>configuration</b> in <b>config/webpack.prod.config.js</b>. Can you guess which one that is?
+                <p class="fragment">Again, if you check to see how <b class="fragment">assets</b> were set up in <span class="fragment"><b>webpack.base.config.js</b>,</span> viewable in <span class="fragment"><a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/60">slide 60</a>,</span>
+                    <b class="fragment">assets
+emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class="fragment"><b><i>Specifically</i></b>,</span> <span class="fragment"><b><i>non</i></b> <b>node_module</b></span> related <code class="fragment">.js files/chunks</code>                    and <span class="fragment"><code>.css files/chunks</code>.</span> But there is <span class="fragment"><b>one</b> <b><i>type</i></b></span> of <b class="fragment">file</b> that throws many people off and that I wanted to <span class="fragment"><b>discuss</b>                    <b><i>only</i></b></span>                    in
+                    <b class="fragment">production</b> because of its <b class="fragment">configuration</b> in <span class="fragment"><b>config/webpack.prod.config.js</b>.</span> Can you guess which one that is?
             </section>
             <section data-background="#ffc600">
                 <h3>Build Output In Terminal</h3>
@@ -2050,8 +2055,8 @@ emitted</b> would <b><i>mostly</i></b> make sense. <b><i>Specifically</i></b>, <
                     (vendor) node_module bundle splitting
                 </p>
                 <p class="fragment">
-                    When I first tried to implement the <b>approach</b> I took in the <b>first edition</b>, the <b>size</b> of my <b>vendor</b> bundle was VERY BIG. It was <code>> 2MB</code>, way over the suggested size of
-                    <code><= 244KB</code>. Then I tried to split up the <b>vendor entry files</b> into <b>individual node_module dependencies</b>, but that did no good.</p>
+                    When I first tried to <b class="fragment"><i>implement</i></b> the <a class="fragment" href="https://github.com/interglobalmedia/portfolio/blob/master/webpack-prod.config.js">approach</a> I took in the <span class="fragment"><b>first edition</b>,</span>                    the <b class="fragment"><i>size</i></b> of my <b class="fragment">vendor</b> bundle was <span class="fragment">VERY BIG.</span> It was <span class="fragment"><code>> 2MB</code>,</span> way over the <span class="fragment"><b><i>suggested</i></b>                    size</span>                    of
+                    <span class="fragment"><code><= 244KB</code>.</span> Then I tried to <b class="fragment"><i>split up</i></b> the <b class="fragment">vendor entry files</b> into <span class="fragment"><b><i>individual</i> node_module dependencies</b>,</span>                    but that did no good.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>Build Output In Terminal</h3>
@@ -2059,7 +2064,7 @@ emitted</b> would <b><i>mostly</i></b> make sense. <b><i>Specifically</i></b>, <
                     (vendor) node_module bundle splitting
                 </p>
                 <p class="fragment">
-                    I started searching for a better way. At this point I knew that I should split the vendor bundle somehow into individual node_module chunks, but I just did not know how. I had to learn more about the new webpack in order to make that happen.
+                    I started <b class="fragment"><i>searching</i></b> for a <span class="fragment"><b>better way</b>.</span> At this point I <b class="fragment"><i>knew</i></b> that I should <b class="fragment">split</b> the <b class="fragment">vendor <i>bundle</i></b>                    <b class="fragment">somehow</b> into <b class="fragment"><i>individual</i></b> <b class="fragment">node_module</b> <span class="fragment"><b><i>chunks</i></b>,</span> but I just did <span class="fragment"><b><i>not know</i></b> how.</span>                    I had to <span class="fragment">learn <b><i>more</i></b></span> about the <span class="fragment"><b><i>new</i> webpack</b></span> in order to make that happen.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -2068,8 +2073,8 @@ emitted</b> would <b><i>mostly</i></b> make sense. <b><i>Specifically</i></b>, <
                     (vendor) bundle splitting
                 </p>
                 <p class="fragment">
-                    After further research into <b>webpack</b> and some <b>google searches</b>, I came across <i>David Gilbertson</i>'s article <a href="https://hackernoon.com/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758">The 100% correct way to split your chunks with Webpack</a>.
-                    It was EXACTLY what I was looking for!
+                    After <span class="fragment"><i class="fragment">further</i> <b class="fragment">research</b></span> into <b class="fragment">webpack</b> and some <span><b class="fragment">google <i class="fragment">searches,</i></b></span> I came
+                    across <span class="fragment"><i>David Gilbertson</i>'s</span> article <span class="fragment"><a href="https://hackernoon.com/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758">The 100% correct way to split your chunks with Webpack</a>.</span>                    <span class="fragment">It was EXACTLY what I was looking for!</span>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -2080,7 +2085,7 @@ emitted</b> would <b><i>mostly</i></b> make sense. <b><i>Specifically</i></b>, <
                 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
                 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
                 </code></pre>
-                <p class="fragment">As in the first edition, we need to require webpack, optimize-css-assets-webpack-plugin, and the uglifyjs-webpack-plugin.</p>
+                <p class="fragment">As in the <span class="fragment"><b><i>first edition</i></b>,</span> we need to <b class="fragment"><i>require</i></b> <span class="fragment"><b>webpack</b>,</span> <span class="fragment"><b>optimize-css-assets-webpack-plugin</b>,</span>                    and the <span class="fragment"><b>uglifyjs-webpack-plugin</b>.</span></p>
             </section>
             <section data-background="#ffc600">
                 <h3>webpack.prod.config.js</h3>
@@ -2115,7 +2120,9 @@ emitted</b> would <b><i>mostly</i></b> make sense. <b><i>Specifically</i></b>, <
                 <pre class="fragment"><code data-trim>
                     const prodConfiguration = env => {}
                 </code></pre>
-                <p class="fragment">Again we pass env into prodConfiguration, but this time we do not have to differentiate between development and production as we did in baseConfig. By default, mode === production unless configured otherwise.</p>
+                <p class="fragment">We pass <b class="fragment"><i>env</i></b> into <span class="fragment"><b>prodConfiguration</b>,</span> but this time we <b class="fragment">do <i>not</i></b> have to <span class="fragment"><b>differentiate</b> <i>between</i></span>
+                    <b class="fragment">development</b> and <b class="fragment">production</b> as we <b class="fragment"><i>did</i></b> in <span class="fragment"><b>baseConfig</b>.</span> By <span class="fragment"><b><i>default</i></b>,</span> <code class="fragment">mode ===
+                    production</code> unless <b class="fragment"><i>configured</i></b> otherwise.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>webpack.prod.config.js</h3>
