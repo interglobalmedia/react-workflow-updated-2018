@@ -2365,9 +2365,16 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 <p class="fragment"><b>cacheGroups:</b> styles</p>
                 <pre class="fragment"><code>chunks: 'all',</code></pre>
                 <p class="fragment">
-                    chunks: 'all' ensures that all css is extracted into one file. I dynamically imported my Speech.js into my top level App.js, so not only did I split the Speech.js code away from main.js, but I also split away Speech.js's associated styles residing in
-                    Speech.scss (and compiled to Speech.css) from main.css. I ended up with 2 style chunks/files.
+                    <code class="fragment">chunks: 'all'</code> <span class="fragment"><b><i>ensures</i></b> that</span> <b class="fragment"><i>all </i>css</b> <span class="fragment">is <b><i>extracted</i></b></span> <span class="fragment">into</span>                    <span class="fragment"><b><i>one</i> file</b>.</span>
+                    <span class="fragment">I</span>
+                    <b class="fragment"><i>dynamically</i> imported</b> my <b class="fragment">Speech.js</b> into my <b class="fragment"><i>top </i>level</b> <span class="fragment"><b>App.js</b>.</span> <b class="fragment"><i>Not only</i></b> did I
+                    <b class="fragment"><i>split</i></b> the <b class="fragment">Speech.js</b> code <b><i>away</i> from</b> <span class="fragment"><code>main[contenthash].chunk.js</code>,</span> but I also <i>split away</i> <span class="fragment"><b>Speech.js</b>'s</span>                    <span class="fragment"><b>Speech.scss</b> (compiled to <b>Speech.css</b>)</span> from <span class="fragment"><b>main.css</b>.</span>
                 </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>webpack.prod.config.js</h3>
+                <p class="fragment"><b>cacheGroups:</b> styles</p>
+                <p class="fragment">I ended up with <b><i>2 style</i></b> chunks/files.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>webpack.prod.config.js</h3>
@@ -2376,7 +2383,8 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 enforce: true
                 </code></pre>
                 <p class="fragment">
-                    The enforce property ensured that aside from the Speech.css file, all other styles would reside in one main.css file.
+                    The <span class="fragment"><code>enforce</code> property</span> <span class="fragment"><b><i>set to</i></b> true</span> <span><b><i>ensures</i> </b>that</span> <b class="fragrament"><i>aside from</i></b> the <span class="fragment"><b>Speech.css</b> file,</span>
+                    <b class="fragment"><i>all other styles</i></b> would reside in <span class="fragment"><i>one</i> <b>main.css</b> file.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -2386,8 +2394,7 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 runtimeChunk: 'single',
                 </code></pre>
                 <p class="fragment">
-                    creates a "single" <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/88">runtime</a> file to be shared with all generated chunks. I had an equivalent configuration in the first edition, and wanted to keep it
-                    that way!
+                    creates a <span class="fragment"><code>"single"</code> <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/88">runtime</a> file</span> to be <b class="fragment"><i>shared with</i></b> <span class="fragment"><b><i>all</i> generated chunks</b>.</span>                    I had an <b class="fragment"><i>equivalent</i> configuration</b> in the <span class="fragment"><b><i>first edition</i></b>,</span> and wanted to keep it that way!
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -2400,15 +2407,16 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 ],
                 </code></pre>
                 <p class="fragment">
-                    optimization.minimize property by default tells webpack to minimize the js bundle using the
-                    <a href="https://webpack.js.org/plugins/uglifyjs-webpack-plugin/">UglifyjsWebpackPlugin</a>. I am using two minimizers, one for js, and the other for css, so I use the optimization.minimizer property, an array.
+                    <code class="fragment">optimization.minimize</code> <b><i>property</i></b> by default tells <b>webpack</b> to <span class="fragment"><b><i>minimize</i> </b>the <b>js bundle</b></span> using the
+                    <span class="fragment"><a href="https://webpack.js.org/plugins/uglifyjs-webpack-plugin/">UglifyjsWebpackPlugin</a>.</span> I am using <b><i>two</i></b> minimizers, one for <b><i>js</i></b>, and the other for <b><i>css</i></b>, so I
+                    use the <span class="fragment"><code>optimization.minimizer</code> property,</span> an array.
                 </p>
             </section>
             <section data-background="#ffc600">
                 <h3>webpack.prod.config.js</h3>
                 <p class="fragment"><b>optimization:</b> minimizer</p>
                 <p class="fragment">
-                    Adding <b>new UglifyJSPlugin()</b> is probably a bit redundant (now that I know better), but I had to add it in the first edition, so it was a matter of habit!
+                    Adding <b class="fragment">new UglifyJSPlugin()</b> is probably a bit <b><i>redundant</i></b> (now that I know better), but I had to add it in the first edition, so it was a matter of habit!
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -2433,27 +2441,28 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                     fileName: ('asset-manifest.json')
                 }),
                 </code></pre>
-                <p class="fragment">the webpack-manifest-plugin creates the asset-manifest.json that generates the manifest data mentioned in <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/88">slide 88</a>, <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/89">slide 89</a>,
-                    and <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/90">slide 90</a>.
+                <p class="fragment">the <code class="fragment">webpack-manifest-plugin</code> <b class="fragment"><i>creates</i></b> <span class="fragment">the <code>asset-manifest.json</code></span> that <b class="fragment"><i>generates</i></b> the <b class="fragment">manifest data</b>                    mentioned in <span class="fragment"><a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/88">slide 88</a>,</span>
+                    <span class="fragment"><a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/89">slide 89</a>,</span> and <span class="fragment"><a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/90">slide 90</a>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
                 <h3>webpack.prod.config.js</h3>
                 <p class="fragment">asset-manifest.json</p>
-                <p class="fragment">An <b>asset-manifest.json</b> file is generated in the <b><i>root ('/') directory</i></b> with a mapping of <b><i>all</i></b> <b>source file names</b> to their corresponding <b>output file</b>. Like:
+                <p class="fragment">An <b clas="fragment">asset-manifest.json</b> file is generated in the <b class="fragment"><i>root ('/') directory</i></b> with a mapping of <span class="fragment"><b><i>all</i></b> <b>source file names</b></span> to their corresponding
+                    <span class="fragment"><b>output file</b>.</span> <span class="fragment">Like:</span>
                 </p>
                 <pre class="fragment"><code data-trim>
                                 runtime.js": "scripts/runtime.f6f71c9f7a8cf14b349f.chunk.js",
                                 "vendors~main.js": "scripts/vendors~main.1ad1cd98b3cea083930b.chunk.js",
                                 </code></pre>
-                <p>Please visit the <b>asset-manifest.json</b> <a href="https://github.com/interglobalmedia/speech-to-text-app/blob/master/dist/asset-manifest.json">source
+                <p class="fragment">Please visit the <b>asset-manifest.json</b> <a href="https://github.com/interglobalmedia/speech-to-text-app/blob/master/dist/asset-manifest.json">source
                     code</a>.
                 </p>
             </section>
             <section data-background="#ffc600" data-background-image="images/manifesting.jpg " data-background-size="cover " data-background-position="center" data-background-repeat="no-repeat">
                 <h3>webpack.prod.config.js</h3>
                 <p class="fragment"><b>asset-manifest.json</b></p>
-                <p class="fragment" style="background: rgba(250, 235, 215, 0.6)">As mentioned earlier, the runtime along with the manifest data residing in asset-manifest.json, is basicallyc all the code webpack needs to connect your modularized app while it's running in the browser.
+                <p class="fragment" style="background: rgba(250, 235, 215, 0.6)">As mentioned earlier, the runtime along with the manifest data residing in asset-manifest.json, is basically all the code webpack needs to connect your modularized app while it's running in the browser.
             </section>
             <section data-background="#ffc600" data-background-image="images/manifesting.jpg " data-background-size="cover " data-background-position="center" data-background-repeat="no-repeat">
                 <h3>webpack.prod.config.js</h3>

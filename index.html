@@ -2462,43 +2462,46 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
             <section data-background="#ffc600" data-background-image="images/manifesting.jpg " data-background-size="cover " data-background-position="center" data-background-repeat="no-repeat">
                 <h3>webpack.prod.config.js</h3>
                 <p class="fragment"><b>asset-manifest.json</b></p>
-                <p class="fragment" style="background: rgba(250, 235, 215, 0.6)">As mentioned earlier, the runtime along with the manifest data residing in asset-manifest.json, is basically all the code webpack needs to connect your modularized app while it's running in the browser.
+                <p class="fragment" style="background: rgba(250, 235, 215, 0.6)">As <b>mentioned</b> <b><i>earlier</i></b>, the <b>runtime</b> along with the <b>manifest</b> data residing in <b>asset-manifest.json</b>, is basically all the code <b>webpack</b> needs to connect your modularized app while it's running
+                    in the browser.
             </section>
             <section data-background="#ffc600" data-background-image="images/manifesting.jpg " data-background-size="cover " data-background-position="center" data-background-repeat="no-repeat">
                 <h3>webpack.prod.config.js</h3>
                 <p class="fragment"><b>asset-manifest.json</b></p>
                 <p class="fragment" style="background: rgba(250, 235, 215, 0.6)">
-                    It contains the loading and resolving logic needed to connect your modules as they interact. This includes connecting modules that have already been loaded into the browser as well as logic to lazy-load the ones that haven't.</p>
+                    It <b>contains</b> the <b><i>loading</i></b> and <b><i>resolving</i></b> <b>logic</b> needed to <b><i>connect</i></b> your <b>modules</b> as they <b><i>interact</i></b>. This <b><i>includes</i></b> connecting modules that have <b><i>already</i></b>                    been loaded into the <b>browser</b> as well as <b><i>logic</i></b> to <b>lazy-load</b> the ones that <b><i>haven't</i></b>.</p>
                 </p>
             </section>
             <section data-background="#ffc600">
                 <h3>HashedModuleIdsPlugin</h3>
-                <p class="fragment ">The previous <b>build output</b> in <b>Terminal</b> is in part possible thanks to the <code class="fragment ">HashedModuleIdsPlugin</code>. Note the <b><i>4 character</i></b> <b>hashes</b> within <b><i>brackets</i></b>. Visit <a class="fragment"
-                        href="https://interglobalmedia.github.io/react-workflow-presentation/#/51">slide
+                <p class="fragment ">The <b class="fragment">build output</b> in the <b class="fragment"><i>first edition</i></b> in <b class="fragment">Terminal</b> viewable in <a class="fragment" href="https://interglobalmedia.github.io/react-workflow-presentation/#/52">here</a>                    is in part possible thanks to the <span class="fragment"><code >HashedModuleIdsPlugin</code>.</span> Note the <b class="fragment"><i>4 character</i> hashes</b> within <span class="fragment"><b><i>brackets</i></b>.</span> Visit <a class="fragment"
+                        href="https://interglobalmedia.github.io/react-workflow-presentation/#51">slide
         51</a> to
-                    <a class="fragment" href="slide 55">slide 55</a> of the <b>first edition</b> to learn more.</p>
+                    <a class="fragment" href="https://interglobalmedia.github.io/react-workflow-presentation/#/55">slide 55</a> of the <b class="fragment">first edition</b> to learn more.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>Publishing to gh-pages on Build</h3>
                 <pre class="fragment "><code data-trim>
-                    > tic-tac-toe-no-cra@0.0.1 deploy /Users/mariacam/Development/tic-tac-toe-no-cra
+                    > speech-to-text-app@0.0.1 deploy /Users/mariacam/Development/speech-to-text-app
                     > gh-pages -d dist
                     
                     Published
                 </code></pre>
-                <p class="fragment"><code class="fragment">gh-pages -d dist</code> is the value of my custom script <code class="fragment">npm run deploy</code>. It is possible because of the <b class="fragment">gh-pages</b> npm dependency.</p>
+                <p class="fragment"><code class="fragment">gh-pages -d dist</code> is the value of my custom script <span class="fragment"><code>npm run deploy</code>.</span> It is possible because of the <b class="fragment">gh-pages</b> npm dependency.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>Separating Concerns</h3>
-                <p class="fragment ">The current build results in a separate file called <b class="fragment">asset-manifest.json</b> containing the <code class="fragment ">manifest data</code> mentioned previously. In my previous workflow, a file called <b class="fragment ">runtime.js</b>,
-                    but no asset-manifest.json. Here there is a separation of concerns as both an asset-manifest.json and a runtime.js is created.
+                <p class="fragment ">The <b class="fragment"><i>current</i> build</b> results in a <b class="fragment"><i>separate</i> file</b> called <b class="fragment">asset-manifest.json</b> containing the <span class="fragment"><code>manifest data</code>.</span> In my
+                    <span class="fragment"><b><i>previous</i> workflow</b>,</span> a file called
+                    <span class="fragment"><b>runtime.js</b>,</span> but <span class="fragment"><b><i>no</i></b> asset-manifest.json.</span> Here there is a <b class="fragment"><i>separation</i> of concerns</b> as <b class="fragment"><i>both</i></b> an
+                    <b class="fragment">asset-manifest.json</b> and a <b class="fragment">runtime.js</b> is <span class="fragment"><b><i>created</i></b>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
                 <h3>HtmlWebpackPlugin</h3>
                 <p class="fragment ">
-                    Because my webpack configuration is using the <code class="fragment ">HtmlWebpackPlugin</code>, there is no need to worry about adding the <b class="fragment "><i>script tag</i></b> for the <b class="fragment ">manifest</b>. The plugin
-                    adds a <b class="fragment "><i>reference</i></b> to <code class="fragment ">index.html</code>.
+                    Because my <b class="fragment">webpack configuration</b> is using the <span class="fragment"><code>HtmlWebpackPlugin</code>,</span> there is no need to worry about adding the <b class="fragment "><i>script tag</i></b> for the
+                    <span class="fragment"><b>manifest</b>.</span> The plugin adds a <b class="fragment "><i>reference</i></b> to <span class="fragment"><code>index.html</code>.</span>
                 </p>
             </section>
             <section data-background="#ffc600 ">
@@ -2514,28 +2517,28 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                     ]
                 </code></pre>
                 <p class="fragment ">
-                    My <code>HtmlWebpackPlugin</code> configuration in my <code>config/webpack-base.config.js</code>.
+                    My <code class="fragment">HtmlWebpackPlugin</code> <b class="fragment"><i>configuration</i></b> in my <span class="fragment"><code>config/webpack-base.config.js</code>.</span>
                 </p>
             </section>
             <section data-background="#ffc600 ">
                 <h3>HtmlWebpackPlugin Configuration</h3>
                 <p><b>template</b></p>
                 <p class="fragment ">
-                    is the <b>webpack</b> <code>require path</code> to the <b>template</b>.
+                    is the <b>webpack</b> <code class="fragment">require path</code> to the <span class="fragment"><b>template</b>.</span>
                 </p>
             </section>
             <section data-background="#ffc600 ">
                 <h3>HtmlWebpackPlugin Configuration</h3>
                 <p><b>favicon</b></p>
                 <p class="fragment ">
-                    gives the given <code>favicon path</code> to the <b>output html</b>.
+                    gives the given <code class="fragment">favicon path</code> to the <span class="fragment"><b>output html</b>.</span>
                 </p>
             </section>
             <section data-background="#ffc600 ">
                 <h3>HtmlWebpackPlugin Configuration</h3>
                 <p><b>styles</b></p>
                 <p class="fragment ">
-                    gives the given <code>styles path</code> to the <b>output html</b>.
+                    gives the given <code class="fragment">styles path</code> to the <span class="fragment"><b>output html</b>.</span>
                 </p>
             </section>
             <section data-background="#ffc600 ">
