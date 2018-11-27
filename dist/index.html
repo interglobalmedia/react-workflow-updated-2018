@@ -2258,7 +2258,9 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 name(module) {}
                 </code></pre>
                 <p class="fragment">
-                    Providing a string or function to generate the name of a split chunk allows you to use a custom name. Here we are providing a function. To learn more, please click <a href="https://webpack.js.org/plugins/split-chunks-plugin/">here</a>.
+                    Providing a <b class="fragment"><i>string</i></b> or <b class="fragment"><i>function</i></b> to <b class="fragment">generate</b> the <b class="fragment"><i>name</i></b> of a <b class="fragment">split chunk</b> <b class="fragment"><i>allows</i> you</b>                    to <b class="fragment"><i>use</i></b> a <span class="fragment"><b>custom <i>name</i></b>.</span> <b class="fragment"><i>Here</i></b> we are <b class="fragment">providing</b> a <span class="fragment"><b><i>function</i></b>.</span> To
+                    learn <span class="fragment"><b><i>more</i></b>,</span> please click
+                    <span class="fragment"><a href="https://webpack.js.org/plugins/split-chunks-plugin/">here</a>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -2268,7 +2270,8 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
                 </code></pre>
 
-                <p class="fragment">So <b><i>why</i></b> <code class="fragment">module.context</code>? <a href="https://webpack.js.org/configuration/entry-context/">context</a> is an absolute string to the directory that contains the entry files. like:</p>
+                <p class="fragment">So <b><i>why</i></b> <span class="fragment"><code>module.context</code>?</span> <a class="fragment" href="https://webpack.js.org/configuration/entry-context/">context</a> is an <b class="fragment"><i>absolute</i> string</b> to the <b class="fragment">directory</b>                    that <b class="fragment">contains</b> the <span class="fragment"><b><i>entry</i> files</b>.</span> <span class="fragment">Like:</span>
+                </p>
                 <pre class="fragment"><code data-trim>
                     module.exports = {
                         //...
@@ -2283,13 +2286,15 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
                 </code></pre>
                 <p class="fragment">
-                    A <a href="https://webpack.js.org/guides/dependency-management/">context</a> is created if your request contains expressions, so the <b><i>exact</i></b> <b>module</b> is <b><i>not</i></b> <b>known</b> on compile time.
+                    A <a class="fragment" href="https://webpack.js.org/guides/dependency-management/">context</a> is <b class="fragment"><i>created</i></b> if your <b class="fragment">request <i>contains</i></b> <span class="fragment"><b>expressions</b>,</span>                    so the
+                    <b class="fragment"><i>exact</i> module</b> is
+                    <b class="fragment"><i>not</i> known</b> on compile time.
                 </p>
             </section>
             <section data-background="#ffc600">
                 <h3>webpack.prod.config.js</h3>
                 <p class="fragment"><b>cacheGroups:</b> vendor</p>
-                <p class="fragment">webpack parses the require() call and extracts some information:</p>
+                <p class="fragment"><b class="fragment">webpack</b> <b class="fragment"><i>parses</i></b> the <b class="fragment">require() <i>call</i></b> and <b class="fragment"><i>extracts</i></b> some <span class="fragment"><b>information</b>:</span></p>
                 <pre class="fragment"><code data-trim>
                 Directory: ./template 
                 Regular expression: /^.*\.ejs$/
@@ -2302,13 +2307,14 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
                 </code></pre>
                 <p class="fragment">A
-                    <a href="https://webpack.js.org/guides/dependency-management/">context module</a> is generated. It contains references to all modules in that directory that can be required with a request matching the regular expression.
+                    <a class="fragment" href="https://webpack.js.org/guides/dependency-management/">context module</a> is <span class="fragment"><b><i>generated</i></b>.</span> It <b class="fragment">contains</b> <b class="fragment"><i>references</i></b>                    to <b class="fragment">all modules</b> in that <b class="fragment">directory</b> that <b class="fragment"><i>can be</i> required</b> with a <b class="fragment">request <i>matching</i></b> the <span class="fragment"><b>regular expression</b>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
                 <h3>webpack.prod.config.js</h3>
                 <p class="fragment"><b>cacheGroups:</b> vendor</p>
-                <p class="fragment">So if module.context matches the regular expression passed to .match() method, it will be returned via the following:</p>
+                <p class="fragment">So if <code class="fragment">module.context</code> <b class="fragment"><i>matches</i></b> the <b class="fragment">regular expression</b> <b class="fragment"><i>passed </i>to</b> the <code class="fragment">.match()</code> method, it will
+                    be <b class="fragment"><i>returned</i></b> via the following:</p>
                 <pre class="fragment"><code data-trim>
                     // npm package names are URL-safe, but some servers don't like @ symbols
                     return `npm.${packageName.replace('@', '')}`;
@@ -2321,7 +2327,8 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                     // npm package names are URL-safe, but some servers don't like @ symbols
                     return `npm.${packageName.replace('@', '')}`;
                 </code></pre>
-                <p class="fragment">We remove any "@" from any package names, because some servers don't like the "@" symbol. Have you ever tried to search for info regarding a package where the name starts with "@"? The browser rejects it! The same principle applies here.</p>
+                <p class="fragment">We remove any <code class="fragment">"@"</code> from <b class="fragment">any</b> <span class="fragment"><b><i>package names</i></b>,</span> because <b class="fragment"><i>some</i> servers</b> <b class="fragment"><i>don't like</i></b> the
+                    <code class="fragment">"@"</code> <span class="fragment"><b>symbol</b>.</span> Have you ever tried to <b class="fragment"><i>search</i></b> for <b class="fragment">info</b> regarding a <b class="fragment">package</b> where the <b class="fragment">name <i class="fragment">starts with</i></b>                    <span class="fragment"><code>"@"</code>?</span> The <b class="fragment">browser</b> <span class="fragment"><b><i>rejects it</i></b> !</span> The same principle applies here.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>webpack.prod.config.js</h3>
@@ -2342,7 +2349,7 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 name: 'main',
                 </code></pre>
                 <p class="fragment">
-                    I wanted to name the beginning of my css main, so I added the name property for cacheGroup styles. otherwise, it would end up being a number id followed by a [hash].[ext]. And I did not want that!
+                    I wanted to <b class="fragment"><i>name</i></b> the <b class="fragment">beginning</b> of my <b class="fragment">css</b> <span class="fragment"><b><i>main</i></b>,</span> so I <b class="fragment">added</b> the <b class="fragment"><i>name</i> property</b>                    for the <span class="fragment"><b><i>styles</i> cacheGroup</b>.</span> <span class="fragment"><i>Otherwise</i>,</span> it would <b class="fragment">end up being</b> a <b class="fragment"><i>number</i> id</b> followed by <span class="fragment"><b>[hash].[ext]</b>.</span>                    And I did not want that!
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -2351,7 +2358,7 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 <pre class="fragment"><code data-trim>
                 test: /\.css$/,
                 </code></pre>
-                <p class="fragment">The test property checks for chunks that end in .css.</p>
+                <p class="fragment">The <b class="fragment"><i>test</i> property</b> <b class="fragment"><i>checks for</i></b> <b class="fragment">chunks</b> that <b class="fragment"><i>end in</i></b> <span class="fragment"><code>.css</code>.</span></p>
             </section>
             <section data-background="#ffc600">
                 <h3>webpack.prod.config.js</h3>
