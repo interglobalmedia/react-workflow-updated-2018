@@ -2131,9 +2131,11 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                     return merge(baseConfig(env), prodConfiguration(env));
                 }
                 </code></pre>
-                <p class="fragment">This is the <b>code</b> responsible for <b><i>merging</i></b> <b>baseConfig</b> with <b>prodConfiguration</b> and passing <b>env</b> into those <b>configs</b>. Since we are <b><i>exporting</i></b> it, we can use these <b>configs</b> in
-                    our <b>package.json</b>. In the <b>first edition</b> we were using <b>process.env</b>, and did <b><i>not</i></b> have to <b>export</b> our <b>env</b>. It was accessible globally. This <b>configuration</b> does NOT use <b>process.env</b>,
-                    so we have to export it to make it available globally.</p>
+                <p class="fragment">This is the <b class="fragment">code</b> responsible for <b class="fragment"><i>merging</i></b> <b class="fragment">baseConfig</b> with <b class="fragment">prodConfiguration</b> and passing <b class="fragment">env</b> into those
+                    <span class="fragment"><b>configs</b>.</span> Since we are <span class="fragment"><b><i>exporting</i></b>,</span> we can use these <b class="fragment">configs</b> in our <span class="fragment"><b>package.json</b>.</span> In the
+                    <b class="fragment"><i>first edition</i></b> we were using
+                    <span class="fragment"><b>global</b> <i>process.env</i>,</span> and
+                    <b class="fragment">did <i>not</i></b> have to <b class="fragment">export</b> our <span class="fragment"><b>env</b>.</span> This <b class="fragment">configuration</b> does NOT use <span class="fragment"><b>global </b><i>process.env</i>,</span>                    so we have to export it to make it available globally.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>webpack.prod.config.js</h3>
@@ -2147,7 +2149,8 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                     }
                 }
                 </code></pre>
-                <p class="fragment"><b>webpack 4</b> runs <b>optimizations</b> for you depending on the chosen <a href="https://webpack.js.org/concepts/mode/">mode</a>. You can still <b><i>manually</i></b> <b>configure</b> and <b>override</b> them, as done here.</p>
+                <p class="fragment"><b class="fragment">webpack 4</b> runs <b class="fragment">optimizations</b> for you <b class="fragment"><i>depending </i>on</b> the chosen <span class="fragment"><a href="https://webpack.js.org/concepts/mode/">mode</a>.</span> You can
+                    still <b class="fragment"><i>manually</i> configure</b> and <span class="fragment"><b>override</b> them,</span> as done here.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>webpack.prod.config.js</h3>
@@ -2156,8 +2159,8 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 chunks: 'all',
                 </code></pre>
                 <p class="fragment">
-                    As previously mentioned in [slide], choosing <code>chunks: 'all'</code> means that <b>chunks</b> can be <b><i>shared</i></b> between <b>async</b> and <b>non-async</b> chunks. It <b><i>also</i></b> tells webpack to put everything in
-                    <code>node_modules/</code> into a file called <b>vendors~main.js</b>. That's why <b>vendors~main.js</b> is output in our <b>dev build</b> as well.
+                    Choosing <code class="fragment">chunks: 'all'</code> means that <b class="fragment">chunks</b> can be <b class="fragment"><i>shared</i></b> between <b class="fragment">async</b> and <b class="fragment">non-async</b> chunks. It <b class="fragment"><i>also</i></b>                    tells <b class="fragment">webpack</b> to put <b class="fragment"><i>everything</i></b> in
+                    <code class="fragment">node_modules/</code> into a <b class="fragment">file</b> called <span class="fragment"><b>vendors~main.<[contenthash]>.chunk.js</b>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -2167,7 +2170,9 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 maxInitialRequests: Infinity,
                 </code></pre>
                 <p class="fragment">
-                    By default, <b>webpack</b> sets <code>maxInitialRequests</code> to <code>3</code> in <a href="https://webpack.js.org/concepts/mode/">production</a>, but since we are <b><i>splitting up</i></b> our <b>vendors~main.js</b> into <b><i>individual</i></b>                    <b>modules</b> of an <b><i>indefinite</i></b> number, we <b><i>override</i></b> the <b>default</b> and set it to <code>Infinity</code>.
+                    By <span class="fragment"><b><i>default</i></b>,</span> <b class="fragment">webpack</b> sets <code class="fragment">maxInitialRequests</code> to <code class="fragment">3</code> in <span class="fragment"><a href="https://webpack.js.org/concepts/mode/">production</a>,</span>                    but since we are <b class="fragment"><i>splitting up</i></b> our <b class="fragment">vendors~main.<[contenthash]>.chunk.js</b> into <b class="fragment"><i>individual</i> modules</b> of an <b class="fragment"><i>indefinite</i></b>
+                    <span class="fragment">number,</span> we <b class="fragment"><i>override</i></b> the <b class="fragment">default</b> and set it to
+                    <span class="fragment"><code>Infinity</code>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -2176,7 +2181,8 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 <pre class="fragment"><code data-trim>
                     minSize: 0,
                 </code></pre>
-                <p class="fragment">The minSize refers to the minimum size in bytes for a chunk to be generated. Since we want to split ALL modules no matter what the size, we override the default and set the minSize to 0.</p>
+                <p class="fragment">The <b class="fragment">minSize</b> refers to the <b class="fragment"><i>minimum size</i></b> in <b class="fragment">bytes</b> for a <b class="fragment">chunk</b> to be <span class="fragment"><b><i>generated</i></b>.</span> Since we want
+                    to <b class="fragment"><i>split</i></b> ALL <b class="fragment">modules</b> <b class="fragment"><i>no matter what</i></b> the <span class="fragment"><b><i>size</i></b>,</span> we <b class="fragment">override</b> the <b class="fragment"><i>default</i></b>                    and <b class="fragment"><i>set</i></b> the <b class="fragment">minSize</b> to <span class="fragment"><code>0</code>.</span></p>
             </section>
             <section data-background="#ffc600">
                 <h3>webpack.prod.config.js</h3>
@@ -2206,14 +2212,18 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
             <section data-background="#ffc600">
                 <h3>webpack.prod.config.js</h3>
                 <p class="fragment">cacheGroups</p>
-                <p class="fragment"><b>cachGroups</b> tells webpack to create chunks based on some conditions. To learn more, please visit the <a href="https://webpack.js.org/plugins/split-chunks-plugin/">webpack 4 docs</a>.</p>
+                <p class="fragment"><b class="fragment">cacheGroups</b> tells <b class="fragment">webpack</b> to <b class="fragment"><i>create</i></b> <b class="fragment">chunks</b> <b class="fragment"><i>based on</i></b> some <span class="fragment"><b>conditions</b>.</span>                    To learn <span class="fragment"><b><i>more</i></b>,</span> please visit the
+                    <span class="fragment"><a href="https://webpack.js.org/plugins/split-chunks-plugin/">webpack 4 docs</a>.</span></p>
             </section>
             <section data-background="#ffc600">
                 <h3>webpack.prod.config.js</h3>
                 <p class="fragment"><b>Configuring cacheGroups:</b> vendor</p>
                 <p class="fragment">
-                    The defaults assign all modules from node_modules to a cacheGroup called vendors and all modules duplicated in at least 2 chunks to a cache group default. So that's what default cacheGroups is all about! To learn more, please visit the
-                    <a href="https://www.webpackjs.com/plugins/split-chunks-plugin/">SplitChunksPlugin docs</a> for <b>webpack 4.26.1</b>, but a slightly different version (and target market) than the <a href="https://webpack.js.org/plugins/split-chunks-plugin/">purely English docs</a>.
+                    The <b class="fragment"><i>defaults</i></b> <b>assign</b> <b class="fragment"><i>all modules</i></b> from <code class="fragment">node_modules</code> to a <b class="fragment">cacheGroup</b> called <b class="fragment"><i>vendors</i></b>                    and <b class="fragment"><i>all modules</i></b> <b class="fragment">duplicated</b> in <b class="fragment"><i>at least</i></b> <code class="fragment">2</code> <b class="fragment"><i>chunks</i></b> to a <b>cacheGroup</b> called
+                    <span class="fragment"><b><i>default</i></b>.</span> So <i>that's</i> what <b class="fragment"><i>default</i></b> <b class="fragment">cacheGroups</b> is all about! To learn <span><b><i>more</i></b>,</span> please visit the
+                    <a class="fragment" href="https://www.webpackjs.com/plugins/split-chunks-plugin/">SplitChunksPlugin docs</a> for <span class="fragment"><b>webpack 4.26.1</b>,</span> but a <i>slightly</i> <b>different</b> version (and target market)
+                    than the
+                    <span class="fragment"><a href="https://webpack.js.org/plugins/split-chunks-plugin/">purely English docs</a>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -2222,7 +2232,8 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 <pre class="fragment"><code data-trim>
                     test: / [\\/]node_modules[\\/]/,
                 </code></pre>
-                <p class="fragment">Instead of <b><i>excluding</i></b> as we do with our <b>loaders</b> in <b>webpack.base.config.js</b>, we are <b><i>testing</i></b> for the <code>/node_modules/</code> directory. In other words, our <a href="https://hackernoon.com/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758">vendor cacheGroups</a>                    refers to and is used for any module being loaded from node_modules.</p>
+                <p class="fragment">Instead of <b class="fragment"><i>excluding</i></b> as we do with our <b class="fragment">loaders</b> in <b class="fragment">webpack.base.config.js</b>, we are <b class="fragment"><i>testing</i></b> for the <code class="fragment">/node_modules/</code>                    directory. In other words, our
+                    <span class="fragment"><a href="https://hackernoon.com/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758">vendor cacheGroups</a></span> <b class="fragment"><i>refers to</i></b> and is <b class="fragment"><i>used for</i></b>                    <b class="fragment"><i>any </i>module</b> being <b class="fragment"><i>loaded</i></b> from <span class="fragment"><code>node_modules/</code>.</span></p>
             </section>
             <section data-background="#ffc600">
                 <h3>webpack.prod.config.js</h3>
@@ -2237,7 +2248,7 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 },
                 </code></pre>
                 <p class="fragment">
-                    the <b>name</b> function with the <b><i>parameter</i></b> <b>module</b> passed in to it, contains a return statement which will generate the name of a chunk if conditions set in the value of the packageName variable are met.
+                    the <b class="fragment"><i>name</i> function</b> with the <b class="fragment"><i>parameter</i> module</b> <b class="fragment"><i>passed</i> in</b> to it, <b class="fragment">contains</b> a <b class="fragment"><i>return</i> statement</b>                    which will <b class="fragment"><i>generate</i></b> the <b class="fragment">name</b> of a <b class="fragment"><i>chunk</i></b> if <b class="fragment">conditions</b> <b class="fragment"><i>set</i></b> in the <b class="fragment">value</b>                    of the <b class="fragment"><i>packageName</i></b> <b class="fragment">variable</b> are <span class="fragment"><b><i>met</i></b>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
