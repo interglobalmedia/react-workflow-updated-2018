@@ -1622,9 +1622,10 @@
                 ℹ ｢wds｣: webpack output is served from /
                 </code></pre>
                 <p class="fragment">
-                    The first line emitted by <b>WDS</b> tells us on which localhost our app is running. the next lets us know the <b>contentBase</b> of the <b>dev build</b>. In the <b>first edition</b>, I added a <b>devServer</b> object to my
-                    <b>webpack dev config</b>, and <b>contentBase</b> was one of its properties. I set <b>contentBase</b> to
-                    <code>'./src/'</code>. If it is not explicitly set, then it defaults to <code>'/'</code>.
+                    The first line emitted by <b>[wds]</b> tells us on which localhost our app is running. the next lets us know the <b class="fragment">contentBase</b> of the <span class="fragment"><b>dev build</b>.</span> In the <b>first edition</b>,
+                    I added a <b class="fragment">devServer</b> object to my
+                    <b class="fragment">webpack dev config</b>, and <b class="fragment">contentBase</b> was one of its properties. I set <b>contentBase</b> to
+                    <span class="fragment"><code>'./src/'</code>.</span> If it is not explicitly set, then it defaults to <span class="fragment"><code>'/'</code>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1633,7 +1634,7 @@
                 <pre class="fragment"><code data-trim>
                 ℹ ｢wds｣: 404s will fallback to /index.html
                 </code></pre>
-                <p class="fragment">This line is emitted as a result of the <code>--history-api-fallback</code> flag.</p>
+                <p class="fragment">This line is emitted as a result of the <code class="fragment">--history-api-fallback</code> <span class="fragment">flag.</span></p>
             </section>
             <section data-background="#ffc600">
                 <h3>Dev Output In Terminal</h3>
@@ -1643,9 +1644,23 @@
                 ℹ ｢wdm｣: Hash: cc60f0b1138d573ca57d
                 </code></pre>
                 <p class="fragment">
-                    <code class="fragment">[wdm]</code> stands for <code class="fragment">webpack-dev-middleware</code>. It is new to <b>webpack
-4</b>, and is a <b>wrapper</b> that <b>emits</b> files <b><i>processed</i></b> by <b>webpack</b> to a <b>server</b>. It is <b>built</b> into <b>WDS</b>, but is also available as a separate package to allow more custom options.
+                    <code class="fragment">[wdm]</code> stands for <span class="fragment"><code >webpack-dev-middleware</code>.</span> It is <b><i>not</i></b> <b>new</b> to <b>webpack
+4</b>, but it <b><i>is</i></b> <b>new</b> to me because of my new approach(es) to the workflow. It is a <b>wrapper</b> that <b>emits</b> files <b><i>processed</i></b> by <b>webpack</b> to a <b>server</b>. It is <b>built</b> into <b>[wds]</b>, but is also
+                    available as a <b><i>separate</i></b> package to allow more <b>custom</b> options.
                 </p>
+            </section>
+            <section data-background="#ffc600">
+                <h3>[wds]/[wdm]</h3>
+                <blockquote class="fragment">
+                    The <b>webpack-dev-server</b> is a little <b>Node.js Express server</b>, which uses the <b>webpack-dev-middleware</b> to serve a webpack bundle. It also has a little runtime which is connected to the server via Sock.js. The server
+                    emits information about the compilation state to the client, which reacts to those events. You can choose between different modes, depending on your needs. - <a href="https://github.com/webpack/docs/wiki/webpack-dev-server">webpack wiki docs on Github</a>
+                </blockquote>
+            </section>
+            <section data-background="#ffc600">
+                <h3>[wds][wdm]</h3>
+                <p class="fragment">It was very <b><i>difficult</i></b> to pin down <b>current</b> (official) documentation which would provide a good explanation of the <b>[wdm]</b> <b><i>internal</i></b> to <b>[wds]</b>. I don't know how <b>'current'</b> the explanation
+                    I found in the <b><i>webpack wiki</i></b> is (it's a over a year old), but it still gives a good idea of the
+                    <a href="https://github.com/webpack/docs/wiki/webpack-dev-server">relationship</a> between <b>[wds]</b> and <b>[wdm]</b>.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>Dev Output In Terminal</h3>
@@ -1663,7 +1678,7 @@
                 <h3>Dev Output In Terminal</h3>
                 <p class="fragment"><b>dev instance info</b></p>
                 <pre class="fragment"><code data-trim>
-                Version: webpack 4.3.0
+                Version: webpack 4.3.0124
                 Time: 7393ms
                 Built at: 11/23/2018 3:29:44 PM
                 </code></pre>
@@ -1671,7 +1686,7 @@
             <section data-background="#ffc600">
                 <h3>Dev Output In Terminal</h3>
                 <p class="fragment"><b>assets emitted</b></p>
-                <p class="fragment">If you check to see how assets were set up in <b class="fragment">webpack.base.config.js</b>, viewable in <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/99">slide 100</a>, this would all make sense.
+                <p class="fragment">If you check to see how assets were set up in <b class="fragment">webpack.base.config.js</b>, viewable in <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/103">slide 103</a>, this would all make sense.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1679,8 +1694,9 @@
                 <p class="fragment"><b>assets emitted</b></p>
                 <p class="fragment">
                     Also note
-                    <code>src/favicon.2cc0ddfd.ico</code> in <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/100">slide 100</a>. This is why I end up with a <b>src</b> folder in <b>dist</b> containing this file. However, I need
-                    to add that as the <b>value</b> of <b>favicon</b> in the <b>HtmlWebpackPlugin</b> definition in order to <b>inject</b> <code>favicon.ico</code> into <code>index.html</code>.
+                    <code class="fragment">src/favicon.2cc0ddfd.ico</code> in <span class="fragment"><a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/103">slide 103</a>.</span> This is why I end up with a <b class="fragment">src</b>                    folder in
+                    <b class="fragment">dist</b> containing this <span class="fragment"><b><i>file</i></b>.</span> However, I need to <b class="fragment"><i>add</i></b> it as the <b class="fragment">value</b> of <b class="fragment">favicon</b> in the
+                    <b class="fragment">HtmlWebpackPlugin</b> <b class="fragment"><i>configuration</i></b> in order to <b class="fragment">inject</b> <code class="fragment">favicon.ico</code> into <span class="fragment"><code>index.html</code>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1696,8 +1712,8 @@
                     }
                 },
                 </code></pre>
-                <p class="fragment">The <code>'all'</code> value means that chunks can be shared between <b><i>async</i></b> and <b><i>non-async</i></b>
-                    <b>chunks</b>, and this can be very powerful.</p>
+                <p class="fragment">The <code class="fragment">'all'</code> value means that <b class="fragment">chunks</b> can be <b class="fragment"><i>shared</i></b> between <b class="fragment"><i>async</i></b> and <b class="fragment"><i>non-async</i></b>
+                    <b class="fragment">chunks</b>, and this can be very <span class="fragment"><b><i>powerful</i></b>.</span></p>
             </section>
             <section data-background="#ffc600">
                 <p>
@@ -1710,8 +1726,9 @@
                     from: 'src/static'
                 }]),
                 </code></pre>
-                <p class="fragment">I didn't technically need the <b>copy-webpack-plugin</b> for this particular app I used towards this <b>second edition</b>, but normally I would (it's where I would place my images for example), so I added it to the workflow here. Basically
-                    it <b><i>copies</i></b> any <b>assets</b> in the <b>static</b> folder over to the <b>dist</b> folder.</p>
+                <p class="fragment">I didn't <b><i>technically</i></b> need the <b class="fragment">copy-webpack-plugin</b> for the app I used towards this <span class="fragment"><b>second edition</b>,</span> but normally I <span class="fragment"><b><i>would</i></b> (it's where
+                    I would place my images for example),</span> so I <b class="fragment"><i>added</i></b> it to the <b class="fragment">workflow</b> here. Basically it <b class="fragment"><i>copies</i></b> any <b class="fragment">assets</b> in the
+                    <b class="fragment">static</b> folder over to the <b class="fragment">dist</b> folder.</p>
             </section>
             <section data-background="#ffc600">
                 <p>
@@ -1724,7 +1741,8 @@
                     swDest: 'sw.js'
                 }),
                 </code></pre>
-                <p class="fragment">This is something entirely <b><i>new</i></b> to the workflow, but <b><i>not</i></b> to <b>CRA</b>. It is the configuration for the <b>workbox-webpack-plugin</b>.</p>
+                <p class="fragment">This is something entirely <b><i>new</i></b> to the <span class="fragment"><b>workflow</b>,</span> but <b class="fragment"><i>not</i></b> to <span class="fragment"><b>CRA</b>.</span> It is the <b class="fragment">configuration</b> for
+                    the <span class="fragment"><b>workbox-webpack-plugin</b>.</span></p>
             </section>
             <section data-background="#ffc600">
                 <p>
@@ -1737,8 +1755,9 @@
                     swDest: 'sw.js'
                 }),
                 </code></pre>
-                <p class="fragment">This configuration generates an <b>sw.js</b> (service-worker) file in <b>production</b>, and lets webpack know its <b>destination</b>, including the name of the file. The reason there is no <b>dest</b> folder is because if one was added
-                    (dist) to the 'path', then a <b><i>new</i></b> <b>dist</b> within <b>dist</b> would be created. webpack already knows its destination.
+                <p class="fragment">This <b class="fragment">configuration</b> generates an <span class="fragment"><b>sw.js</b> (service-worker)</span> file in <span class="fragment"><b>production</b>,</span> and lets <b class="fragment">webpack</b> <b class="fragment"><i>know</i></b>                    its <span class="fragment"><b>destination</b>,</span> including the <b class="fragment"><i>name</i></b> of the <span class="fragment">file.</span> The reason there is no <b class="fragment">dest</b> folder is because if one was added
+                    <span class="fragment">(dist)</span> to the <span class="fragment">'path',</span> then a <b><i>new</i></b> <b class="fragment">dist</b> within <b class="fragment">dist</b> would be created. <b class="fragment">webpack</b> already knows
+                    its <span class="fragment"><b><i>destination</i></b>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1749,8 +1768,9 @@
                     </a>
                 </p>
                 <p class="fragment">
-                    If you want your web app to work <b>offline</b> or there are assets you know can be <b>cached</b> for a long time, <b>pre-caching</b> is the best approach. <b>precaching</b> a file <b><i>ensures</i></b> that a file is <b>downloaded</b>                    and <b>cached</b>
-                    <b><i>before</i></b> a <b>service worker</b> is <b>installed</b>, meaning that if your <b>service worker</b> is <b>installed</b>, your files will be cached.
+                    If you want your web app to work <b class="fragment">offline</b> or there are <b class="fragment">assets</b> you know can be <b class="fragment">cached</b> for a long time, <b class="fragment">pre-caching</b> is the best approach.
+                    <b class="fragment">precaching</b> a file <b class="fragment"><i>ensures</i></b> that a file is <b class="fragment">downloaded</b> and <b class="fragment">cached</b>
+                    <b class="fragment"><i>before</i></b> a <b class="fragment">service worker</b> is <span class="fragment"><b>installed</b>,</span> meaning that if your <b class="fragment">service worker</b> is <span class="fragment"><b>installed</b>,</span>                    your <b class="fragment">files</b> will be <span class="fragment"><b><i>cached</i></b>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
