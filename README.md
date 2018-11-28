@@ -2,6 +2,9 @@
 
 ## Updated November 28, 2018
 
+## Note on src/favicon.ico issue that comes up in the workflow: 
+I made a quick change to get rid of the src folder. Instead of injecting favicon.ico into index.html (which causes src/ to be copied into dist/), I placed favicon.ico into the root of static/. It then was copied into the root of dist where index.html resides. Result? No more src folder. Now you just have to manually add your favicon.ico link tag into index.html in src. That way it will copy over with the rest of index.html into dist.
+
 ### Reflects changes to React 16.6.3, Babel 7, ESLint 5.9.0, and Webpack 4.3.0
 
 This is the second edition of a custom workflow I created for my React applications, incorporating changes that took place in React 16.6.3, ESLint 5.9.0, Babel 7, and Webpack 4. This is not meant as an all inclusive example of what has changed in those dependencies/devDependencies. Hopefully it will encourage others to take a deeper dive into them and expand their horizons as developers. I know that creating this deck expanded my horizons, and I had loads of fun learning new things along the way. To go through the first edition, please visit the <a href="https://github.com/interglobalmedia/react-workflow-presentation">React Workflow Presentation</a> repository.
