@@ -72,7 +72,7 @@
             <section data-background="#ffc600">
                 <h1>?</h1>
                 <p class="fragment">
-                    So why am I here today to discuss <span class="fragment"><b>React workflows</b></span>?
+                    So why am I here today to discuss <span class="fragment"><b>React workflows</b>?</span>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -90,7 +90,7 @@
             <section data-background="#ffc600">
                 <img src="images/hiddenman-580x504.jpg" width="480" height="404">
                 <p>
-                    <span class="fragment">Why <span class="fragment"><b><i>blindly</i></b></span>?</span> <span class="fragment">Because the workflow is <span class="fragment"><b><i>hidden</i></b></span> by default.</span> <span class="fragment">In order to see what is going on,</span>                    <span class="fragment">you have to eject out of <span class="fragment"><b><i>CRA</i></b>.</span></span>
+                    <span class="fragment">Why <span class="fragment"><b><i>blindly</i></b> ?</span> <span class="fragment">Because the workflow is <span class="fragment"><b><i>hidden</i></b></span> by default.</span> <span class="fragment">In order to see what is going on,</span>                    <span class="fragment">you have to eject out of <span class="fragment"><b><i>CRA</i></b>.</span></span>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -123,7 +123,7 @@
             <section data-background="#ffc600">
                 <h1>?</h1>
                 <p class="fragment">
-                    So why <b><i>webpack</i></b>?
+                    So why <b><i>webpack </i></b>?
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -591,13 +591,12 @@
                 <pre class="fragment"><code data-trim>
                 "@babel/polyfill": "^7.0.0"
                 </code></pre>
-                <p class="fragment"><b class="fragment">React 16+</b> depends on collection types <a class="fragment" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> and
-                    <span class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Set</a>.</span>
+                <p class="fragment"><b>React 16+</b> depends on collection types <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> and
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">Set</a>.
                     <a href="https://babeljs.io/docs/en/babel-polyfill/">@babel/polyfill</a>
-                    <b class="fragment"><i>emulates</i></b> a <b><i>full</i></b> <b class="fragment">ES2015+ environment</b> and is for <span class="fragment"><b>applications</b>.</span> You can use <b class="fragment">built-ins</b> like <b class="fragment">Promise</b>                    or <span class="fragment"><b>WeakMap</b>,</span> static methods like
-                    <b class="fragment">Array.from</b> or <span class="fragment"><b>Object.assign</b>,</span> instance methods like <span class="fragment"><b>Array.prototype.includes</b>,</span> and <span class="fragment"><b >generator functions</b> provided
-                    you use the
-                    <b class="fragment">regenerator plugin</b>.</span>
+                    <b><i>emulates</i></b> a <b><i>full</i></b> <b>ES2015+ environment</b> and is for <b>applications</b>. You can use <b>built-ins</b> like <b>Promise</b> or <b>WeakMap</b>, static methods like
+                    <b>Array.from</b> or <b>Object.assign</b>, instance methods like <b>Array.prototype.includes</b>, and <b>generator functions</b> provided you use the
+                    <b>regenerator plugin</b>.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1260,7 +1259,9 @@
                 </code></pre>
                 <p class="fragment">
                     It's even better to use the
-                    <code class="fragment">[contenthash]</code> <b class="fragment">substitution</b>, which is the hash of the <b class="fragment"><i>content</i></b> of a file, <b class="fragment"><i>different</i></b> for each type of <b class="fragment">asset</b>.
+                    <code class="fragment">[contenthash]</code> <span class="fragment"><b>substitution</b>,</span> which is the hash of the <b class="fragment"><i>content</i></b> of a file, <b class="fragment"><i>different</i></b> for each type of
+                    <span class="fragment"><b>asset</b>.</span>
+                </p>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1686,7 +1687,7 @@
             <section data-background="#ffc600">
                 <h3>Dev Output In Terminal</h3>
                 <p class="fragment"><b>assets emitted</b></p>
-                <p class="fragment">If you check to see how assets were set up in <b class="fragment">webpack.base.config.js</b>, viewable in <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/103">slide 103</a>, this would all make sense.
+                <p class="fragment">If you check to see how assets were set up in <span class="fragment"><b>webpack.base.config.js</b>,</span> viewable in <span class="fragment"><a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/103">slide 103</a>,</span>                    this would all make sense.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -1713,7 +1714,7 @@
                 },
                 </code></pre>
                 <p class="fragment">The <code class="fragment">'all'</code> value means that <b class="fragment">chunks</b> can be <b class="fragment"><i>shared</i></b> between <b class="fragment"><i>async</i></b> and <b class="fragment"><i>non-async</i></b>
-                    <b class="fragment">chunks</b>, and this can be very <span class="fragment"><b><i>powerful</i></b>.</span></p>
+                    <span class="fragment"><b>chunks</b>,</span> and this can be very <span class="fragment"><b><i>powerful</i></b>.</span></p>
             </section>
             <section data-background="#ffc600">
                 <p>
@@ -2232,7 +2233,7 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 <pre class="fragment"><code data-trim>
                     test: / [\\/]node_modules[\\/]/,
                 </code></pre>
-                <p class="fragment">Instead of <b class="fragment"><i>excluding</i></b> as we do with our <b class="fragment">loaders</b> in <b class="fragment">webpack.base.config.js</b>, we are <b class="fragment"><i>testing</i></b> for the <code class="fragment">/node_modules/</code>                    directory. In other words, our
+                <p class="fragment">Instead of <b class="fragment"><i>excluding</i></b> as we do with our <b class="fragment">loaders</b> in <span class="fragment"><b>webpack.base.config.js</b>,</span> we are <b class="fragment"><i>testing</i></b> for the <code class="fragment">/node_modules/</code>                    directory. In other words, our
                     <span class="fragment"><a href="https://hackernoon.com/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758">vendor cacheGroups</a></span> <b class="fragment"><i>refers to</i></b> and is <b class="fragment"><i>used for</i></b>                    <b class="fragment"><i>any </i>module</b> being <b class="fragment"><i>loaded</i></b> from <span class="fragment"><code>node_modules/</code>.</span></p>
             </section>
             <section data-background="#ffc600">
@@ -2787,8 +2788,9 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
             <section data-background="#ffc600">
                 <h3>SCSS, CSS Modules, and React</h3>
                 <p class="fragment">
-                    Let's use the same example for SCSS in React using CSS Modules, as we do in this project. We would import Speech.scss into Speech.js, and those styles would only affect Speech.js. But maybe we want to have styles global to the whole project that we don't
-                    import anywhere. As a matter of fact, we don't even change the syntax of the classNames. We would treat this global styling the same as we would in any application using SCSS. Please visit the <b>Speech To Text App</b>                    <a href="https://github.com/interglobalmedia/speech-to-text-app">repository</a> to see for yourself.
+                    Let's use the same example for <b>SCSS <i>in</i> React</b> using <b>CSS Modules</b>, as we do in this project. We would <i>import</i> <b>Speech.scss</b> into <b>Speech.js</b>, and those styles would <b><i>only</i> affect</b> <b>Speech.js</b>.
+                    But maybe we want to have <b><i>styles</i> global</b> to the whole project that we <b><i>don't</i> import</b> anywhere. As a matter of fact, we <b><i>don't</i></b> even <b>change</b> the <b><i>syntax</i></b> of the <b>classNames</b>.
+                    We would treat this global styling the same as we would in any application using SCSS. Please visit the <b>Speech To Text App</b> <a href="https://github.com/interglobalmedia/speech-to-text-app">repository</a> to see for yourself.
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -2832,7 +2834,8 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
             </section>
             <section data-background="#ffc600 ">
                 <h3>[contenthash]</h3>
-                <p class="fragment ">Apparently, the <b>webpack</b> team has suggested using <code>[contenthash]</code>over <code>[hash]</code> for better long term caching with the MiniCssExtractPlugin. I'm willing to give it a try, as I already use <b>webpack</b>'s new
+                <p class="fragment ">Apparently, the <b>webpack</b> team has suggested using <code>[contenthash]</code>over <code>[hash]</code> for better long term caching with the <b>MiniCssExtractPlugin</b>. I'm willing to give it a try, as I already use <b>webpack</b>'s
+                    new
                     <code>[contenthash]</code> for <b>JS</b> bundles and it works beautifully.</p>
                 <p class="fragment ">
                     <ul>
@@ -2847,21 +2850,6 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                             </a>
                         </li>
                     </ul>
-                </p>
-            </section>
-            <section data-background="#ffc600 ">
-                <h3>Image Webpack Loader</h3>
-                <pre class="fragment "><code data-trim>
-				import logo from './logo.svg';
-
-				<div className="App-header ">
-				  <img src={logo} className="App-logo " alt="logo " />
-				  <h2>Welcome to React with Redux</h2>
-				</div>
-						</code></pre>
-                <p class="fragment ">
-                    <span class="fragment "><code>Image loader</code></span> module for <b>webpack</b>, and this is what it permits you to do in your <span class="fragment
-                    "><code>React Component</code>.</span> However, it currently has <b>unresolvable</b> moderately severe <b>vulnerabilities</b>. Until they go away, I am using <code class="fragment ">file-loader</code> for my <b>image</b> needs.
                 </p>
             </section>
             <section data-background="#ffc600 ">
@@ -2880,7 +2868,7 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
 				]
 						</code></pre>
                 <p class="fragment ">
-                    In order to use a plugin, you have to <span class="fragment "><code>require</code></span> it,
+                    In order to use a plugin, you have to <code>require</code> it.
                 </p>
             </section>
             <section data-background="#ffc600 ">
@@ -2896,58 +2884,8 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 ]
 				</code></pre>
                 <p class="fragment ">
-                    and then <span class="fragment "><code>add</code></span> it to the <span class="fragment "><code>plugins array</code>.</span> And since you can use the same plugin many times in the same config for different purposes, you need to create
-                    an instance of it by calling it with <span class="fragment "><code>new</code>.</span>
+                    and then <code>add</code> it to the <code>plugins array</code>. And since you can use the same plugin many times in the same config for different purposes, you need to create an instance of it by calling it with <code>new</code>.
                 </p>
-            </section>
-            <section data-background="#ffc600">
-                <h3>HTML Webpack Plugin</h3>
-                <pre class="fragment "><code data-trim>
-                plugins: [
-                    new HtmlWebpackPlugin({
-                        template: 'src/index.html',
-                        favicon: 'src/favicon.ico',
-                        styles: 'src/styles.css',
-                        inject: true
-                    }),
-                ]
-				</code></pre>
-                <p class="fragment ">
-                    <span class="fragment ">Simplifies the creation of your <span class="fragment "><code>html</code></span> files.</span> <span class="fragment ">Useful for webpack bundles that include <span class="fragment "><code>hashes</code></span>                    in the <span class="fragment "><code>filenames</code>.</span></span> <span class="fragment ">Great for <span class="fragment "><code>html templating</code>.</span></span>
-                </p>
-            </section>
-            <section data-background="#ffc600 ">
-                <h3>Named Modules Plugin</h3>
-                <pre class="fragment "><code data-trim>
-				new webpack.NamedModulesPlugin(),
-				new webpack.optimize.CommonsChunkPlugin({
-				  name: 'vendor',
-				  minChunks: Infinity
-				}),
-						</code></pre>
-                <p class="fragment ">
-                    Will cause the display of the <span class="fragment "><code>relative path</code></span> of a module in Terminal when <span class="fragment "><code>HMR</code></span> is enabled. Good for <span class="fragment "><code>development</code>.</span>
-                </p>
-                <aside class="notes ">
-                    Run a new build in Terminal to show that only bundle.js and runtime.js [chunkhashes] change. Then even remove the call to NamedModulesPlugin in webpack development config to show that vendor.js [chunkhash] changes when that happens. Then put it back.
-                </aside>
-            </section>
-            <section data-background="#ffc600 ">
-                <h3>HashedModuleIdsPlugin</h3>
-                <pre class="fragment "><code data-trim>
-				new webpack.HashedModuleIdsPlugin(),
-				new webpack.optimize.CommonsChunkPlugin({
-				  name: 'vendor',
-				  minChunks: Infinity
-				}),
-						</code></pre>
-                <p class="fragment ">
-                    Will cause <span class="fragment "><code>hashes</code></span> to be based on the <span class="fragment "><code>relative path</code></span> of a module in Terminal, generating a <span class="fragment
-                    "><code>4 character string</code></span> as the <span class="fragment "><code>module id</code>.</span> Good for <span class="fragment "><code>production</code>.</span>
-                </p>
-                <aside class="notes ">
-                    Run a new build in Terminal to show that only bundle.js and runtime.js [chunkhashes] change. Then even remove the call to HasedModuleIdsPlugin in webpack production config to show that vendor.js [chunkhash] changes when that happens. Then put it back.
-                </aside>
             </section>
             <section data-background="#ffc600 ">
                 <h3>CRA approach</h3>
@@ -2978,7 +2916,7 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 <h3>clean script</h3>
                 <pre class="fragment "><code data-trim>
 				script: {
-				  "clean ": "rimraf dist "
+				  "clean ": "rimraf dist"
 				}
 				</code></pre>
                 <p class="fragment ">
@@ -2992,8 +2930,8 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                     "cleanSrc": "rimraf dist/src",
                 }
                 </code></pre>
-                <p class="fragment">This script also has not changed since the first edition. I use it to get rid of the src folder which gets injected into dist on production build because of the presence of favicon.ico. I am successful in getting rid of it both in master
-                    and gh-pages in the first edition, but then I deploy differently there.</p>
+                <p class="fragment"><b><i>This</i> script</b> also has <b><i>not</i> changed</b> since the <b>first edition</b>. I use it to <b>get <i>rid</i></b> of the <b>src folder</b> which <b>gets <i>injected</i></b> into <b>dist</b> on <b>production build</b> because
+                    of the <b><i>presence</i></b> of <b>favicon.ico</b>. I am <b><i>successful</i></b> in <b>getting <i></i>rid of it</b> both in <b>master</b> and <b>gh-pages</b> in the <b><i>first edition</i></b>, but then I <b>deploy <i>differently</i></b>                    there.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>cleanSrc script</h3>
@@ -3053,17 +2991,6 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 </p>
             </section>
             <section data-background="#ffc600">
-                <h3>Bye Bye patents!</h3>
-                <p>
-                    I learned last week via <a href="https://twitter.com/wesbos">@wesbos</a> that Facebook is relicensing <b><i>React</i></b>, <b><i>Jest</i></b>, <b><i>Flow</i></b>, and <b><i>Immutable.js</i></b> under the <b>MIT license</b>!
-                    <blockquote>
-                        We're relicensing these projects because React is the foundation of a broad ecosystem of open source software for the web, and we don't want to hold back forward progress for nontechnical reasons. - <a href="https://code.facebook.com/posts/300798627056246/relicensing-react-jest-flow-and-immutable-js/"
-                            target="_blank">Adam Wolff, Facebook Engineering</a>
-                    </blockquote>
-                </p>
-                <p><b>Note:</b> for posterity only!</p>
-            </section>
-            <section data-background="#ffc600">
                 <h3>Resources</h3>
                 <ul>
                     <li>
@@ -3089,7 +3016,7 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 </ul>
             </section>
             <section data-background="#ffc600">
-                <h3>Resources contd (new)</h3>
+                <h3>Resources contd</h3>
                 <ul>
                     <li>
                         <a href="https://medium.freecodecamp.org/how-to-combine-webpack-4-and-babel-7-to-create-a-fantastic-react-app-845797e036ff" target="_blank">How to combine Webpack 4 and Babel 7 to create a fantastic React app</a>
@@ -3112,7 +3039,7 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 </ul>
             </section>
             <section data-background="#ffc600">
-                <h3>Resources contd (new)</h3>
+                <h3>Resources contd</h3>
                 <ul>
                     <li>
                         <a href="https://webpack.js.org/plugins/mini-css-extract-plugin/" target="_blank">MiniCssExtractPlugin</a>
