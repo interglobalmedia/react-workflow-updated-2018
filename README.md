@@ -42,11 +42,37 @@ If you feel that there are improvements that can be made to any of the documenta
 
 + Configuring Babel 7 (config/webpack.base.config.js): <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/43" target="_blank" rel="noopener noreferrer">Slide 43</a>
 
-+ Babel 7 Packages: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/44" target="_blank" rel="noopener noreferrer">Slide 44</a> - <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/47" target="_blank" rel="noopener noreferrer">Slide 47</a>
++ JS$ test property: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/44" target="_blank" rel="noopener noreferrer">Slide 44</a>
 
-+ Configuring ESLint: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/48" target="_blank" rel="noopener noreferrer">Slide 48</a> - <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/50" target="_blank" rel="noopener noreferrer">Slide 50</a>
++ JS$ exclude property:
+ <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/45" target="_blank" rel="noopener noreferrer">Slide 45</a>
 
-+ Configuring Webpack: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/51" target="_blank" rel="noopener noreferrer">Slide 51</a> -
++ JS$ use property:
+<a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/46" target="_blank" rel="noopener noreferrer">Slide 46</a>
+
++ Babel 7 Packages:
+<a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/47" target="_blank" rel="noopener noreferrer">Slide 47</a> - <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/50" target="_blank" rel="noopener noreferrer">Slide 50</a>
+
++ Configuring ESLint: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/51" target="_blank" rel="noopener noreferrer">Slide 51</a> - <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/50" target="_blank" rel="noopener noreferrer">Slide 53</a>
+
++ Configuring Webpack: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/54" target="_blank" rel="noopener noreferrer">Slide 54</a> - <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/60" target="_blank" rel="noopener noreferrer">Slide 60</a>
+
++ Dependency Graph: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/61" target="_blank" rel="noopener noreferrer">Slide 61</a>
+
++ webpack basics: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/62" target="_blank" rel="noopener noreferrer">Slide 62</a>
+
++ entry: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/63" target="_blank" rel="noopener noreferrer">Slide 63</a> - <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/64" target="_blank" rel="noopener noreferrer">Slide 64</a>
+
++ Configuring Webpack:
+    + + module.exports changed <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/65" target="_blank" rel="noopener noreferrer">Slide 65</a>
+    + + entry changed <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/66" target="_blank" rel="noopener noreferrer">Slide 66</a>
+    + + webpack-merge <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/67" target="_blank" rel="noopener noreferrer">Slide 67</a>
+    + + main <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/68" target="_blank" rel="noopener noreferrer">Slide 68</a>
+    + + main index.js <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/69" target="_blank" rel="noopener noreferrer">Slide 69</a>
+    + + core.js in index.js: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/70" target="_blank" rel="noopener noreferrer">Slide 70</a>
+    + + ReactDOM.render() <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/71" target="_blank" rel="noopener noreferrer">Slide 71</a>
+    + + Code/Bundle Splitting <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/72" target="_blank" rel="noopener noreferrer">Slide 72</a>
+    + + Browser Caching
 
 
 
