@@ -2646,8 +2646,8 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 <p class="fragment"><a href="https://webpack.js.org/guides/caching/">after</a></p>
                 <p><b class="fragment">Vendor remains constant</b></p>
                 <p class="fragment">
-                    Let's say we add the HashedModuleIdsPlugin to our webpack production config and then ran another build. Our hash should stay consistent between builds. If we were to make a change to our js code again, the vendor hash should still remain the same because
-                    no changes were made to the bundle. <b><i>Check it for yourself!</i></b>
+                    Let's say we <b><i>add</i></b> the <b>HashedModuleIdsPlugin</b> to our <b>webpack</b> <b><i>production</i> config</b> and then <i>ran</i> another <b>build</b>. Our <b>hash</b> should <b>stay <i>consistent</i></b> between <b>builds</b>.
+                    If we were to make a <b><i>change</i></b> to our <b>js code</b> again, the <b>vendor hash</b> should <i>still</i> remain the <b>same</b> because <b><i>no</i> changes</b> were made to the <b>bundle</b>. <b><i>Check it for yourself!</i></b>
                 </p>
                 <aside class="notes">
                     Run a new build in Terminal to show that only bundle.js and runtime.js [contenthashes] change. Then even remove the call to HashedModuleIdsPlugin in webpack production config to show that vendor.js [contenthash] changes when that happens. Then put it
@@ -2682,17 +2682,16 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
             </section>
             <section data-background="#ffc600 ">
                 <h3>MiniCssExtractPlugin</h3>
-                <p class="fragment ">
-                    <b class="fragment "><i>Extracts</i></b> <b>CSS</b> into <b class="fragment ">separate</b> files. It creates a <b class="fragment ">CSS</b> file per <b class="fragment ">JS</b> file which contains <b class="fragment ">CSS</b>. Great
-                    for
-                    <b class="fragment ">React</b> and <b class="fragment ">CSS Modules</b>!
+                <p class="fragment">
+                    <b class="fragment"><i>Extracts</i></b> <b>CSS</b> into <b class="fragment ">separate</b> files. It creates a <b class="fragment ">CSS</b> file per <b class="fragment ">JS</b> file which contains <span class="fragment"><b>CSS</b>.</span>                    Great for
+                    <b class="fragment">React</b> and <span class="fragment"><b>CSS Modules</b>!</span>
                 </p>
             </section>
             <section data-background="#ffc600 ">
                 <h3>MiniCssExtractPlugin</h3>
                 <p class="fragment ">
-                    Supports <code class="fragment ">on-demand-loading</code> of <b class="fragment ">CSS</b> and <b class="fragment ">Source
-                        Maps</b>.
+                    Supports <code class="fragment ">on-demand-loading</code> of <b class="fragment ">CSS</b> and <span class="fragment"><b>Source
+                        Maps</b>.</span>
                 </p>
             </section>
             <section data-background="#ffc600 ">
@@ -2705,9 +2704,10 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                     <li class="fragment ">Does NOT support HMR <b><i>yet</i></b></li>
                 </ul>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>MiniCssExtractPlugin</h3>
-                <p>Because it does <b><i>not</i></b> support <b>HMR</b>, I have to use <b>style-loader</b> in <b>dev</b> mode. Otherwise, I would have to do a <b><i>manual</i></b> page refresh to view my style changes. If you are acquainted with the <b>first edition</b>                    of the <b>workflow</b>, you might remember that
+                <p>Because it does <b><i>not</i></b> support <b>HMR</b>, I have to use <code>style-loader</code> in <b>dev</b> mode. Otherwise, I would have to do a <b><i>manual</i></b> page refresh to view my style changes. If you are acquainted with the
+                    <b>first edition</b> of the <b>workflow</b>, you might remember that
                     <code>style-loader</code> <b><i>does</i></b> support <b>HMR</b>.</p>
             </section>
             <section data-background="#ffc600 ">
@@ -2739,8 +2739,8 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                     test: /\.(scss|sass|css)$/,
                 </code></pre>
                 <p class="fragment ">
-                    This <b>test property</b> includes <code class="fragment ">.scss</code>, <code class="fragment ">.sass</code>, and <code class="fragment ">.css</code> extensions, because I use <code class="fragment
-                    ">.scss</code> in my <b class="fragment ">React applications</b>. That <code class="fragment ">.scss</code> then has to be compiled into <code class="fragment ">.css</code>. This is a much more efficient way of implementing the <b>test property</b>.
+                    This <b>test property</b> includes <code>.scss</code>, <code>.sass</code>, and <code>.css</code> extensions, because I use <code>.scss</code> in my <b>React applications</b>. That <code>.scss</code> then has to be compiled into <code>.css</code>.
+                    This is a much more efficient way of implementing the <b>test property</b>.
                 </p>
             </section>
             <section data-background="#ffc600 ">
@@ -2780,8 +2780,9 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
             </section>
             <section data-background="#ffc600">
                 <h3>CSS Modules</h3>
-                <p>When you add <b><i>support</i></b> for <b>CSS Modules</b>, whatever styles you add to a particular React component's scss/css file will only affect the styling of that particular component. If you have a component called Speech, a js file
-                    called Speech.js, and file called Speech.scss, those styles will only affect Speech.js. That's because you are importing them specifically into Speech.js. You'll get a better understanding if you visit this project's <a>repository</a>                    and study the code.</p>
+                <p>When you add <b><i>support</i></b> for <b>CSS Modules</b>, whatever <b><i>styles</i></b> you <b>add</b> to a particular <b>React <i>component</i></b>'s <b>scss/css</b> file will <b><i>only</i> affect</b> the <b><i>styling</i></b> of that
+                    <b><i>particular</i> component</b>. If you have a <b>component</b> called <b><i>Speech</i></b>, a <b><i>js</i> file</b> called <b>Speech.js</b>, and <b><i>stylesheet</i></b> called <b>Speech.scss</b>, those styles will only affect
+                    <b>Speech.js</b>. That's because you are <b><i>importing</i></b> them <i>specifically</i> into <b>Speech.js</b>. You'll get a better understanding if you visit this project's <a>repository</a> and study the code.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>SCSS, CSS Modules, and React</h3>
