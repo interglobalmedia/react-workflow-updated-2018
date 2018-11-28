@@ -94,7 +94,7 @@
                 </p>
             </section>
             <section data-background="#ffc600">
-                <a href="https://unsplash.com/photos/GVFaCidhlhQ"><img src="images/austin-neill-246598.jpg" width="600" height="350"></a>
+                <a href="https://unsplash.com/photos/GVFaCidhlhQ" target="_blank" rel="noopener noreferrer"><img src="images/austin-neill-246598.jpg" width="600" height="350"></a>
                 <p>
                     <span class="fragment">But once you eject,</span> <span class="fragment"><b><i>THERE IS NO GOING BACK!</i></b></span>
                 </p>
@@ -532,12 +532,12 @@
             </section>
             <section data-background="#ffc600">
                 <h3>JS$ test property</h3>
-                <pre class="fragment "><code data-trim>
+                <pre class="fragment"><code data-trim>
             	test: /\.js$/,
             	</code></pre>
                 <p class="fragment">
                     The <span class="fragment"><code class="fragment">test</code></span> property tells webpack what kind of file to match to the
-                    <span class="fragment"><code>babel-loader</code>.</span> The regex <span class="fragment "><code>/\.js$/</code></span> refers to any extension that matches
+                    <span class="fragment"><code>babel-loader</code>.</span> The regex <span class="fragment"><code>/\.js$/</code></span> refers to any extension that matches
                     <span class="fragment"><code>.js</code></span> at the end of a filename.</span>
                 </p>
             </section>
@@ -547,7 +547,7 @@
                 exclude: /node_modules/,
                 </code></pre>
                 <p class="fragment">
-                    The <span class="fragment"><code>exclude</code></span> property means that whatever modules match the <span class="fragment "><code>/node_modules/</code></span> regex should be excluded from <span class="fragment "><code>bundle.js</code>.</span>
+                    The <span class="fragment"><code>exclude</code></span> property means that whatever modules match the <span class="fragment"><code>/node_modules/</code></span> regex should be excluded from <span class="fragment"><code>bundle.js</code>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -996,7 +996,7 @@
                 <h3>Configuring Webpack</h3>
                 <p class="fragment">module.exports changed</p>
                 <pre class="fragment"><code data-trim>
-                module.exports = env => { 
+                module.exports = env => {
                     const {PLATFORM, VERSION} = env;
                 };
                 </code></pre>
@@ -1284,29 +1284,29 @@
                 }
                 </code></pre>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>
                     < /> === 3</h3>
-                <p class="fragment ">
-                    There are <span class="fragment "><b>3</b></span> main types of <span class="fragment "><b>code</b></span> in a typical app or site built with <b><i>webpack</i></b>:
+                <p class="fragment">
+                    There are <span class="fragment"><b>3</b></span> main types of <span class="fragment"><b>code</b></span> in a typical app or site built with <b><i>webpack</i></b>:
                 </p>
                 <ul>
-                    <li class="fragment ">The source code you have written</li>
-                    <li class="fragment ">Third party, vendor code your source is dependent on</li>
-                    <li class="fragment ">Webpack runtime and manifest that conducts the interaction of all modules</li>
+                    <li class="fragment">The source code you have written</li>
+                    <li class="fragment">Third party, vendor code your source is dependent on</li>
+                    <li class="fragment">Webpack runtime and manifest that conducts the interaction of all modules</li>
                 </ul>
             </section>
-            <section data-background="#ffc600" data-background-image="images/montre.gif" data-background-size="40% " data-background-position="center " data-background-repeat="no-repeat ">
+            <section data-background="#ffc600" data-background-image="images/montre.gif" data-background-size="40%" data-background-position="center" data-background-repeat="no-repeat">
                 <h3>Runtime</h3>
-                <p class="fragment " style="background: rgba(250, 235, 215, 0.7)">
-                    The <span class="fragment "><b><i>runtime</i></b>,</span> along with the <span class="fragment "><b><i>manifest data</i></b>,</span> is basically all the code <span class="fragment "><b><i>webpack</i></b></span> needs to connect your
-                    modularized app while it's <span class="fragment "><b><i>running</i></b></span> in the browser.
+                <p class="fragment" style="background: rgba(250, 235, 215, 0.7)">
+                    The <span class="fragment"><b><i>runtime</i></b>,</span> along with the <span class="fragment"><b><i>manifest data</i></b>,</span> is basically all the code <span class="fragment"><b><i>webpack</i></b></span> needs to connect your
+                    modularized app while it's <span class="fragment"><b><i>running</i></b></span> in the browser.
                 </p>
             </section>
-            <section data-background="#ffc600" data-background-image="images/manifesting.jpg " data-background-size="cover " data-background-position="center" data-background-repeat="no-repeat ">
+            <section data-background="#ffc600" data-background-image="images/manifesting.jpg" data-background-size="cover" data-background-position="center" data-background-repeat="no-repeat">
                 <h3>Manifest</h3>
-                <p class="fragment " style="background: rgba(250, 235, 215, 0.7)">
-                    <span class="fragment "><code>manifest</code></span> refers to the collection of module related data <span class="fragment"><code>runtime</code></span> uses to resolve and load modules after they have been bundled and shipped to the
+                <p class="fragment" style="background: rgba(250, 235, 215, 0.7)">
+                    <span class="fragment"><code>manifest</code></span> refers to the collection of module related data <span class="fragment"><code>runtime</code></span> uses to resolve and load modules after they have been bundled and shipped to the
                     browser.
                 </p>
             </section>
@@ -1317,22 +1317,22 @@
             <section data-background="#ffc600" data-background-image="images/side-effects.jpg" data-background-size="100%" data-background-position="center" data-background-repeat="no-repeat">
                 <h3>Side Effects</h3>
                 <p class="fragment" style="background: rgba(250, 235, 215, 0.7)">
-                    So why mention all of this? Because <span class="fragment "><code>runtime</code></span> and <span class="fragment "><code>manifest</code></span> affect <span class="fragment "><code>browser caching</code>.</span>
+                    So why mention all of this? Because <span class="fragment"><code>runtime</code></span> and <span class="fragment"><code>manifest</code></span> affect <span class="fragment"><code>browser caching</code>.</span>
                 </p>
             </section>
-            <section data-background="#ffc600" data-background-image="images/thunderstorm-montana-1900-1.jpg" data-background-size="cover" data-background-position="center " data-background-repeat="no-repeat ">
+            <section data-background="#ffc600" data-background-image="images/thunderstorm-montana-1900-1.jpg" data-background-size="cover" data-background-position="center" data-background-repeat="no-repeat">
                 <h3>[chunkhash]</h3>
                 <p class="fragment" style="background: rgba(250, 235, 215, 0.5)">
-                    Previously when using <span class="fragment"><code>[chunkhash]</code>,</span> certain hashes change even when their content did not. This was caused by the <span class="fragment "><code>injection</code></span> of <span class="fragment
+                    Previously when using <span class="fragment"><code>[chunkhash]</code>,</span> certain hashes change even when their content did not. This was caused by the <span class="fragment"><code>injection</code></span> of <span class="fragment
                     "><code>runtime</code></span> and <span class="fragment"><code>manifest</code>,</span> which changed every build.
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>CommonsChunkPlugin</h3>
                 <p class="fragment"><span class="fragment"><b><i>Originally</i></b>,</span> <b class="fragment">chunks</b> (and <b class="fragment">modules</b> <b class="fragment"><i>imported</i></b> inside them) were connected by a parent-child relationship in the internal
-                    webpack graph. The <span class="fragment "><b><i>CommonsChunkPlugin</i></b></span> was <b class="fragment"><i>used</i></b> to <b><i>avoid</i></b> <b class="fragment">duplicated dependencies</b> across them, but further optimizations
-                    were not possible. Since <span class="fragment"><b><i>webpack v4</i></b>,</span> the <b class="fragment "><i>CommonsChunkPlugin</i></b> was removed in favor of
-                    <span class="fragment "><b>optimization.splitChunks</b>.</span>
+                    webpack graph. The <span class="fragment"><b><i>CommonsChunkPlugin</i></b></span> was <b class="fragment"><i>used</i></b> to <b><i>avoid</i></b> <b class="fragment">duplicated dependencies</b> across them, but further optimizations
+                    were not possible. Since <span class="fragment"><b><i>webpack v4</i></b>,</span> the <b class="fragment"><i>CommonsChunkPlugin</i></b> was removed in favor of
+                    <span class="fragment"><b>optimization.splitChunks</b>.</span>
                 </p>
             </section>
             <section data-background="#ffc600" data-background-image="images/chunk-splitting.jpg" data-background-size="100%" data-background-position="center" data-background-repeat="no-repeat">
@@ -1342,14 +1342,14 @@
                     <span class="fragment"><b>chunks</b>.</span>
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>SplitChunksPlugin</h3>
-                <p class="fragment ">Out of the box, <code class="fragment">SplitChunksPlugin</code> should work well for most users.</p>
+                <p class="fragment">Out of the box, <code class="fragment">SplitChunksPlugin</code> should work well for most users.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>SplitChunksPlugin</h3>
-                <p class="fragment ">
-                    By default it only affects <span class="fragment"><b>on-demand chunks</b>,</span> because changing <b class="fragment ">initial chunks</b> would affect the <b class="fragment ">script tags</b> the html file should include to run the
+                <p class="fragment">
+                    By default it only affects <span class="fragment"><b>on-demand chunks</b>,</span> because changing <b class="fragment">initial chunks</b> would affect the <b class="fragment">script tags</b> the html file should include to run the
                     project.
                 </p>
             </section>
@@ -1359,40 +1359,40 @@
                     <b class="fragment">webpack</b> will <b class="fragment"><i>automatically</i></b> <b class="fragment">split chunks</b> based on the following <span class="fragment"><b>conditions</b>:</span>
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>Conditions</h3>
                 <ul>
-                    <li class="fragment ">
+                    <li class="fragment">
                         When a new chunk can be shared OR modules are from the <code>node_modules</code> folder.
                     </li>
-                    <li class="fragment ">
+                    <li class="fragment">
                         When a new chunk is bigger than 30kb (before min+gz)
                     </li>
-                    <li class="fragment ">
+                    <li class="fragment">
                         The maximum number of parallel requests when loading chunks on demand would be lower or equal to 5.
                     </li>
-                    <li class="fragment ">
+                    <li class="fragment">
                         The maximum number of parallel requests at initial page load would be lower or equal to 3.
                     </li>
-                    <li class="fragment ">
+                    <li class="fragment">
                         When trying to fulfill the last two conditions, bigger chunks are preferred.
                     </li>
                 </ul>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>Extracting a Runtime</h3>
                 <p class="fragment"><b>config/webpack.prod.config.js</b></p>
-                <pre class="fragment "><code data-trim>
+                <pre class="fragment"><code data-trim>
                 optimization: {
                     runtimeChunk: 'single',
                 },
                 </code></pre>
-                <p class="fragment ">After adding <span class="fragment"><code>runtimeChunk</code>,</span> a <b><i>new</i></b> (default name) <code class="fragment">runtime</code> file will be created. The value <code class="fragment">"single"</code> creates a <b class="fragment"><i>single</i></b>
+                <p class="fragment">After adding <span class="fragment"><code>runtimeChunk</code>,</span> a <b><i>new</i></b> (default name) <code class="fragment">runtime</code> file will be created. The value <code class="fragment">"single"</code> creates a <b class="fragment"><i>single</i></b>
                     <b>runtime file</b> to be shared for <b class="fragment">ALL</b> generated <span class="fragment"><span class="fragment"><b>chunks</b>.</span></p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>Dev Output In Terminal</h3>
-                <pre class="fragment "><code data-trim>
+                <pre class="fragment"><code data-trim>
                 10926 ± npm run start ✹
 
                 > speech-to-text-app@0.0.1 start /Users/mariacam/Development/speech-to-text-app
@@ -1482,7 +1482,7 @@
                 })
                 </code></pre>
                 <p class="fragment">Sets
-                    <a class="fragment" href="https://webpack.js.org/concepts/mode/">process.env.PLATFORM</a> on <b class="fragment">DefinePlugin</b> to <span class="fragment"><code>--mode development</code>.</span> it also enables
+                    <a class="fragment" href="https://webpack.js.org/concepts/mode/" target="_blank" rel="noopener noreferrer">process.env.PLATFORM</a> on <b class="fragment">DefinePlugin</b> to <span class="fragment"><code>--mode development</code>.</span>                    it also enables
                     <b class="fragment">NamedChunksPlugin</b> and <span class="fragment"><b>NamedModulesPlugin</b>.</span>
                 </p>
             </section>
@@ -2056,7 +2056,8 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                     (vendor) node_module bundle splitting
                 </p>
                 <p class="fragment">
-                    When I first tried to <b class="fragment"><i>implement</i></b> the <a class="fragment" href="https://github.com/interglobalmedia/portfolio/blob/master/webpack-prod.config.js">approach</a> I took in the <span class="fragment"><b>first edition</b>,</span>                    the <b class="fragment"><i>size</i></b> of my <b class="fragment">vendor</b> bundle was <span class="fragment">VERY BIG.</span> It was <span class="fragment"><code>> 2MB</code>,</span> way over the <span class="fragment"><b><i>suggested</i></b>                    size</span>                    of
+                    When I first tried to <b class="fragment"><i>implement</i></b> the <a class="fragment" href="https://github.com/interglobalmedia/portfolio/blob/master/webpack-prod.config.js" target="_blank" rel="noopener noreferrer">approach</a> I
+                    took in the <span class="fragment"><b>first edition</b>,</span> the <b class="fragment"><i>size</i></b> of my <b class="fragment">vendor</b> bundle was <span class="fragment">VERY BIG.</span> It was <span class="fragment"><code>> 2MB</code>,</span>                    way over the <span class="fragment"><b><i>suggested</i></b>                    size</span> of
                     <span class="fragment"><code><= 244KB</code>.</span> Then I tried to <b class="fragment"><i>split up</i></b> the <b class="fragment">vendor entry files</b> into <span class="fragment"><b><i>individual</i> node_module dependencies</b>,</span>                    but that did no good.</p>
             </section>
             <section data-background="#ffc600">
@@ -2269,7 +2270,7 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
                 </code></pre>
 
-                <p class="fragment">So <b><i>why</i></b> <span class="fragment"><code>module.context</code>?</span> <a class="fragment" href="https://webpack.js.org/configuration/entry-context/">context</a> is an <b class="fragment"><i>absolute</i> string</b> to the <b class="fragment">directory</b>                    that <b class="fragment">contains</b> the <span class="fragment"><b><i>entry</i> files</b>.</span> <span class="fragment">Like:</span>
+                <p class="fragment">So <b><i>why</i></b> <span class="fragment"><code>module.context</code>?</span> <a class="fragment" href="https://webpack.js.org/configuration/entry-context/" target="_blank" rel="noopener noreferrer">context</a> is an <b class="fragment"><i>absolute</i> string</b>                    to the <b class="fragment">directory</b> that <b class="fragment">contains</b> the <span class="fragment"><b><i>entry</i> files</b>.</span> <span class="fragment">Like:</span>
                 </p>
                 <pre class="fragment"><code data-trim>
                     module.exports = {
@@ -2285,7 +2286,7 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
                 </code></pre>
                 <p class="fragment">
-                    A <a class="fragment" href="https://webpack.js.org/guides/dependency-management/">context</a> is <b class="fragment"><i>created</i></b> if your <b class="fragment">request <i>contains</i></b> <span class="fragment"><b>expressions</b>,</span>                    so the
+                    A <a class="fragment" href="https://webpack.js.org/guides/dependency-management/" target="_blank" rel="noopener noreferrer">context</a> is <b class="fragment"><i>created</i></b> if your <b class="fragment">request <i>contains</i></b>                    <span class="fragment"><b>expressions</b>,</span> so the
                     <b class="fragment"><i>exact</i> module</b> is
                     <b class="fragment"><i>not</i> known</b> on compile time.
                 </p>
@@ -2306,7 +2307,8 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
                 </code></pre>
                 <p class="fragment">A
-                    <a class="fragment" href="https://webpack.js.org/guides/dependency-management/">context module</a> is <span class="fragment"><b><i>generated</i></b>.</span> It <b class="fragment">contains</b> <b class="fragment"><i>references</i></b>                    to <b class="fragment">all modules</b> in that <b class="fragment">directory</b> that <b class="fragment"><i>can be</i> required</b> with a <b class="fragment">request <i>matching</i></b> the <span class="fragment"><b>regular expression</b>.</span>
+                    <a class="fragment" href="https://webpack.js.org/guides/dependency-management/" target="_blank" rel="noopener noreferrer">context module</a> is <span class="fragment"><b><i>generated</i></b>.</span> It <b class="fragment">contains</b>                    <b class="fragment"><i>references</i></b> to <b class="fragment">all modules</b> in that <b class="fragment">directory</b> that <b class="fragment"><i>can be</i> required</b> with a <b class="fragment">request <i>matching</i></b> the
+                    <span class="fragment"><b>regular expression</b>.</span>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -2458,13 +2460,13 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                     code</a>.
                 </p>
             </section>
-            <section data-background="#ffc600" data-background-image="images/manifesting.jpg " data-background-size="cover " data-background-position="center" data-background-repeat="no-repeat">
+            <section data-background="#ffc600" data-background-image="images/manifesting.jpg " data-background-size="cover" data-background-position="center" data-background-repeat="no-repeat">
                 <h3>webpack.prod.config.js</h3>
                 <p class="fragment"><b>asset-manifest.json</b></p>
                 <p class="fragment" style="background: rgba(250, 235, 215, 0.6)">As <b>mentioned</b> <b><i>earlier</i></b>, the <b>runtime</b> along with the <b>manifest</b> data residing in <b>asset-manifest.json</b>, is basically all the code <b>webpack</b> needs to connect your modularized app while it's running
                     in the browser.
             </section>
-            <section data-background="#ffc600" data-background-image="images/manifesting.jpg " data-background-size="cover " data-background-position="center" data-background-repeat="no-repeat">
+            <section data-background="#ffc600" data-background-image="images/manifesting.jpg " data-background-size="cover" data-background-position="center" data-background-repeat="no-repeat">
                 <h3>webpack.prod.config.js</h3>
                 <p class="fragment"><b>asset-manifest.json</b></p>
                 <p class="fragment" style="background: rgba(250, 235, 215, 0.6)">
@@ -2473,14 +2475,14 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
             </section>
             <section data-background="#ffc600">
                 <h3>HashedModuleIdsPlugin</h3>
-                <p class="fragment ">The <b class="fragment">build output</b> in the <b class="fragment"><i>first edition</i></b> in <b class="fragment">Terminal</b> viewable in <a class="fragment" href="https://interglobalmedia.github.io/react-workflow-presentation/#/52">here</a>                    is in part possible thanks to the <span class="fragment"><code >HashedModuleIdsPlugin</code>.</span> Note the <b class="fragment"><i>4 character</i> hashes</b> within <span class="fragment"><b><i>brackets</i></b>.</span> Visit <a class="fragment"
-                        href="https://interglobalmedia.github.io/react-workflow-presentation/#51">slide
+                <p class="fragment">The <b class="fragment">build output</b> in the <b class="fragment"><i>first edition</i></b> in <b class="fragment">Terminal</b> viewable in <a class="fragment" href="https://interglobalmedia.github.io/react-workflow-presentation/#/52"
+                        target="_blank" rel="noopener noreferrer">here</a> is in part possible thanks to the <span class="fragment"><code >HashedModuleIdsPlugin</code>.</span> Note the <b class="fragment"><i>4 character</i> hashes</b> within <span class="fragment"><b><i>brackets</i></b>.</span>                    Visit <a class="fragment" href="https://interglobalmedia.github.io/react-workflow-presentation/#51" target="_blank" rel="noopener noreferrer">slide
         51</a> to
-                    <a class="fragment" href="https://interglobalmedia.github.io/react-workflow-presentation/#/55">slide 55</a> of the <b class="fragment">first edition</b> to learn more.</p>
+                    <a class="fragment" href="https://interglobalmedia.github.io/react-workflow-presentation/#/55" target="_blank" rel="noopener noreferrer">slide 55</a> of the <b class="fragment">first edition</b> to learn more.</p>
             </section>
             <section data-background="#ffc600">
                 <h3>Publishing to gh-pages on Build</h3>
-                <pre class="fragment "><code data-trim>
+                <pre class="fragment"><code data-trim>
                     > speech-to-text-app@0.0.1 deploy /Users/mariacam/Development/speech-to-text-app
                     > gh-pages -d dist
                     
@@ -2490,7 +2492,7 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
             </section>
             <section data-background="#ffc600">
                 <h3>Separating Concerns</h3>
-                <p class="fragment ">The <b class="fragment"><i>current</i> build</b> results in a <b class="fragment"><i>separate</i> file</b> called <b class="fragment">asset-manifest.json</b> containing the <span class="fragment"><code>manifest data</code>.</span> In my
+                <p class="fragment">The <b class="fragment"><i>current</i> build</b> results in a <b class="fragment"><i>separate</i> file</b> called <b class="fragment">asset-manifest.json</b> containing the <span class="fragment"><code>manifest data</code>.</span> In my
                     <span class="fragment"><b><i>previous</i> workflow</b>,</span> a file called
                     <span class="fragment"><b>runtime.js</b>,</span> but <span class="fragment"><b><i>no</i></b> asset-manifest.json.</span> Here there is a <b class="fragment"><i>separation</i> of concerns</b> as <b class="fragment"><i>both</i></b> an
                     <b class="fragment">asset-manifest.json</b> and a <b class="fragment">runtime.js</b> is <span class="fragment"><b><i>created</i></b>.</span>
@@ -2498,14 +2500,14 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
             </section>
             <section data-background="#ffc600">
                 <h3>HtmlWebpackPlugin</h3>
-                <p class="fragment ">
-                    Because my <b class="fragment">webpack configuration</b> is using the <span class="fragment"><code>HtmlWebpackPlugin</code>,</span> there is no need to worry about adding the <b class="fragment "><i>script tag</i></b> for the
-                    <span class="fragment"><b>manifest</b>.</span> The plugin adds a <b class="fragment "><i>reference</i></b> to <span class="fragment"><code>index.html</code>.</span>
+                <p class="fragment">
+                    Because my <b class="fragment">webpack configuration</b> is using the <span class="fragment"><code>HtmlWebpackPlugin</code>,</span> there is no need to worry about adding the <b class="fragment"><i>script tag</i></b> for the
+                    <span class="fragment"><b>manifest</b>.</span> The plugin adds a <b class="fragment"><i>reference</i></b> to <span class="fragment"><code>index.html</code>.</span>
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>HtmlWebpackPlugin</h3>
-                <pre class="fragment "><code data-trim>
+                <pre class="fragment"><code data-trim>
                     plugins: [
                         new HtmlWebpackPlugin({
                             template: 'src/index.html',
@@ -2529,21 +2531,21 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
             <section data-background="#ffc600">
                 <h3>HtmlWebpackPlugin Configuration</h3>
                 <p><b>favicon</b></p>
-                <p class="fragment ">
+                <p class="fragment">
                     gives the given <code class="fragment">favicon path</code> to the <span class="fragment"><b>output html</b>.</span>
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>HtmlWebpackPlugin Configuration</h3>
                 <p><b>styles</b></p>
-                <p class="fragment ">
+                <p class="fragment">
                     gives the given <code class="fragment">styles path</code> to the <span class="fragment"><b>output html</b>.</span>
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>HtmlWebpackPlugin Configuration</h3>
                 <p><b>inject</b></p>
-                <p class="fragment ">
+                <p class="fragment">
                     <b class="fragment"><i>default</i></b> is set to <span class="fragment"><code>true</code>.</span> I always like to make sure that my <span class="fragment"><b>JS <i>assets</i></b></span> are <b class="fragment">placed</b> at the
                     <b class="fragment"><i>bottom</i></b> of the <span class="fragment"><code>body</code> element,</span> so I use
                     <span class="fragment"><code>true</code>.</span> You can check out <i class="fragment">other options</i> in the <b class="fragment">HtmlWebpackPlugin</b>
@@ -2552,7 +2554,7 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
             </section>
             <section data-background="#ffc600">
                 <h3>Separating Concerns</h3>
-                <p class="fragment ">
+                <p class="fragment">
                     Separating <span class="fragment"><code>runtime</code> code</span> from <span class="fragment"><code>vendor</code> code</span> is the first step towards making sure that the <code class="fragment">vendor hash</code> does
                     <span class="fragment">not <b><i>change</i></b></span> with each <b class="fragment"><i>new</i> build</b> unless a <b class="fragment"><i>new</i> 3rd party plugin</b> is added.
                 </p>
@@ -2562,9 +2564,9 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 <p class="fragment">Using <code class="fragment">[contenthash]</code> instead of <code class="fragment">[chunkhash]</code> or <code class="fragment">[hash]</code> is another step towards making sure that the <b class="fragment">vendor <i>hash</i></b> does
                     <b class="fragment"><i>not</i> change</b> with <b class="fragment"><i>each</i> new build</b> <b><i>unless</i></b> a <b><i>new</i></b> <b class="fragment">3rd party plugin</b> is <span class="fragment"><b>added</b>.</span></p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>Resolving Order</h3>
-                <pre class="fragment "><code data-trim>
+                <pre class="fragment"><code data-trim>
 				[gQNZ] ./src/style/style.css 307 bytes {1} [built]
 				[lVK7] ./src/index.js 846 bytes {1} [built]
 				[olkN] ./src/store.js 354 bytes {1} [built]
@@ -2573,42 +2575,43 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
 				[z7yQ] ./src/logo.svg 3.52 kB {1} [built]
 				+ 2 hidden modules
 						</code></pre>
-                <p class="fragment ">
+                <p class="fragment">
                     However, this <span class="fragment"><code>bundle splitting</code></span> is not enough. Each time a
-                    <a class="fragment" href="https://interglobalmedia.github.io/react-workflow-presentation/#/52">new build</a> takes place, each <span class="fragment"><code>module.id</code></span> is <i class="fragment">incremented</i> based on
-                    <i class="fragment">resolving order</i> by <span class="fragment"><b><i>default</i></b>.</span> When the <i class="fragment">resolving order</i> is <span class="fragment"><b>changed</b>,</span> the <span class="fragment "><code>module.id</code></span>                    <span class="fragment"><b><i>changes</i></b>.</span>
+                    <a class="fragment" href="https://interglobalmedia.github.io/react-workflow-presentation/#/52" target="_blank" rel="noopener noreferrer">new build</a> takes place, each <span class="fragment"><code>module.id</code></span> is <i class="fragment">incremented</i>                    based on
+                    <i class="fragment">resolving order</i> by <span class="fragment"><b><i>default</i></b>.</span> When the <i class="fragment">resolving order</i> is <span class="fragment"><b>changed</b>,</span> the <span class="fragment"><code>module.id</code></span>                    <span class="fragment"><b><i>changes</i></b>.</span>
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>Blocking Change</h3>
                 <p>
                     So how can we prevent <span class="fragment">vendor's <code>[contenthash]</code></span> from changing? There are two <b><i>webpack</i></b> plugins that can get us there. One is the <span class="fragment
-                    "><code>NamedModulesPlugin</code>,</span> and the other is the <span class="fragment "><code>HashedModuleIdsPlugin</code>.</span>
+                    "><code>NamedModulesPlugin</code>,</span> and the other is the <span class="fragment"><code>HashedModuleIdsPlugin</code>.</span>
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>Named Modules Plugin</h3>
-                <pre class="fragment "><code data-trim>
+                <pre class="fragment"><code data-trim>
 				new webpack.NamedModulesPlugin(),
 				</code></pre>
-                <p class="fragment ">
-                    Uses the <span class="fragment "><code>path to the module</code></span> instead of a <span class="fragment "><code>numerical identifier.</code></span> It's useful in <span class="fragment "><code>development</code></span> because the
+                <p class="fragment">
+                    Uses the <span class="fragment"><code>path to the module</code></span> instead of a <span class="fragment"><code>numerical identifier.</code></span> It's useful in <span class="fragment"><code>development</code></span> because the
                     output is more readable, but it also takes a bit longer to run.
-                    <p class="fragment ">
+                    <p class="fragment">
                         <b>Update:</b> This now can be removed in <code>config/webpack.base.config.js</code> as it is a default in dev mode.
                     </p>
                 </p>
-                <aside class="notes ">
+                <aside class="notes">
                     Run a new build in Terminal to show that only bundle.js and runtime.js [chunkhashes] change. Then even remove the call to NamedModulesPlugin in webpack development config to show that vendor.js [chunkhash] changes when that happens. Then put it back.
                 </aside>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>HashedModuleIdsPlugin</h3>
-                <pre class="fragment "><code data-trim>
+                <pre class="fragment"><code data-trim>
 				new webpack.HashedModuleIdsPlugin(),
 				</code></pre>
-                <p class="fragment ">
-                    Recommended for <span class="fragment "><code>production</code></span> builds. It causes <span class="fragment "><code>hashes</code></span> to be based on the <span class="fragment "><code>relative path of the module,</code></span>                    generating a <span class="fragment "><code>4 character string</code></span> as the <span class="fragment "><code>module id.</code></span>
+                <p class="fragment">
+                    Recommended for <span class="fragment"><code>production</code></span> builds. It causes <span class="fragment"><code>hashes</code></span> to be based on the <span class="fragment"><code>relative path of the module,</code></span> generating
+                    a <span class="fragment"><code>4 character string</code></span> as the <span class="fragment"><code>module id.</code></span>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -2655,8 +2658,8 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
             </section>
             <section data-background="#ffc600">
                 <h3>Loaders</h3>
-                <p class="fragment ">
-                    <b>webpack</b> <span class="fragment "><code>loaders</code></span> transform your files into modules as they are added to your <span class="fragment "><code>dependency graph</code>.</span> <span class="fragment "><code>Loaders</code></span>                    have 2 main purposes:
+                <p class="fragment">
+                    <b>webpack</b> <span class="fragment"><code>loaders</code></span> transform your files into modules as they are added to your <span class="fragment"><code>dependency graph</code>.</span> <span class="fragment"><code>Loaders</code></span>                    have 2 main purposes:
                 </p>
                 <ul>
                     <li class="fragment">
@@ -2674,33 +2677,33 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
             </section>
             <section data-background="#ffc600">
                 <h3>MiniCssExtractPlugin</h3>
-                <blockquote class="fragment ">
+                <blockquote class="fragment">
                     The <b>webpack >= v4.0.0</b> 'support' for <b>extract-text-webpack-plugin</b> was moved to <b>mini-css-extract-plugin</b> as a more lightweight approach for <b>webpack >= v4.0.0</b> and <b>ETWP</b> entered
                     <b><i>maintenance mode</i></b>... - <a href="https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/743" target="_blank" rel="noopener noreferrer">Michael Ciniawsky, member, webpack-contrib</a>
                 </blockquote>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>MiniCssExtractPlugin</h3>
                 <p class="fragment">
-                    <b class="fragment"><i>Extracts</i></b> <b>CSS</b> into <b class="fragment ">separate</b> files. It creates a <b class="fragment ">CSS</b> file per <b class="fragment ">JS</b> file which contains <span class="fragment"><b>CSS</b>.</span>                    Great for
+                    <b class="fragment"><i>Extracts</i></b> <b>CSS</b> into <b class="fragment">separate</b> files. It creates a <b class="fragment">CSS</b> file per <b class="fragment">JS</b> file which contains <span class="fragment"><b>CSS</b>.</span>                    Great for
                     <b class="fragment">React</b> and <span class="fragment"><b>CSS Modules</b>!</span>
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>MiniCssExtractPlugin</h3>
-                <p class="fragment ">
-                    Supports <code class="fragment ">on-demand-loading</code> of <b class="fragment ">CSS</b> and <span class="fragment"><b>Source
+                <p class="fragment">
+                    Supports <code class="fragment">on-demand-loading</code> of <b class="fragment">CSS</b> and <span class="fragment"><b>Source
                         Maps</b>.</span>
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>vs ExtractTextWebpackPlugin</h3>
                 <ul>
-                    <li class="fragment ">Async loading</li>
-                    <li class="fragment ">No duplicate compilation (performance)</li>
-                    <li class="fragment ">Easier to use</li>
-                    <li class="fragment ">Specific to CSS</li>
-                    <li class="fragment ">Does NOT support HMR <b><i>yet</i></b></li>
+                    <li class="fragment">Async loading</li>
+                    <li class="fragment">No duplicate compilation (performance)</li>
+                    <li class="fragment">Easier to use</li>
+                    <li class="fragment">Specific to CSS</li>
+                    <li class="fragment">Does NOT support HMR <b><i>yet</i></b></li>
                 </ul>
             </section>
             <section data-background="#ffc600">
@@ -2709,9 +2712,9 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                     <b>first edition</b> of the <b>workflow</b>, you might remember that
                     <code>style-loader</code> <b><i>does</i></b> support <b>HMR</b>.</p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>MiniCssExtractPlugin</h3>
-                <pre class="fragment "><code data-trim>
+                <pre class="fragment"><code data-trim>
                     {
                         test: /\.(scss|sass|css)$/,
                         exclude: /node_modules/,
@@ -2732,33 +2735,33 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                     },
                 </code></pre>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>CSS test property</h3>
-                <pre class="fragment "><code data-trim>
+                <pre class="fragment"><code data-trim>
                     test: /\.(scss|sass|css)$/,
                 </code></pre>
-                <p class="fragment ">
+                <p class="fragment">
                     This <b>test property</b> includes <code>.scss</code>, <code>.sass</code>, and <code>.css</code> extensions, because I use <code>.scss</code> in my <b>React applications</b>. That <code>.scss</code> then has to be compiled into <code>.css</code>.
                     This is a much more efficient way of implementing the <b>test property</b>.
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>CSS exclude property</h3>
-                <pre class="fragment "><code data-trim>
+                <pre class="fragment"><code data-trim>
                             exclude: /node_modules/,
             				</code></pre>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>MiniCssExtractPlugin.loader</h3>
-                <p class="fragment ">How you call the MiniCssExtractLoader.</p>
+                <p class="fragment">How you call the MiniCssExtractLoader.</p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>CSS Loader and CSS Modules</h3>
-                <p class="fragment ">
+                <p class="fragment">
                     This <b>workflow</b> supports <b>CSS Modules</b>. In order to make that happen, we have to add the following <b>options</b> to our
                     <b>css-loader</b>:
                 </p>
-                <pre class="fragment "><code data-trim>
+                <pre class="fragment"><code data-trim>
                     loader: 'css-loader',
                     options: {
                         modules: true,
@@ -2794,56 +2797,56 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
             </section>
             <section data-background="#ffc600">
                 <h3>css hot loader</h3>
-                <p class="fragment ">
-                    Supports <span class="fragment "><code>hot module replacement</code></span> <span class="fragment "><code>(HMR)</code></span> for an <b>extracted css file</b>. <span class="fragment
-                    "><code>shepherdwind</code>,</span> the <b>creator</b> of <b>css-hot-loader</b>, came up with the idea because <span class="fragment "><code>style-loader</code>,</span> which also can achieve css hot reload, needs to <b>inject</b>                    a <b>style tag</b> into <b>index.html</b>. And this can happen <b><i>before</i></b> JS scripts are <b>loaded</b>, resuslting in a page with no styles.
+                <p class="fragment">
+                    Supports <span class="fragment"><code>hot module replacement</code></span> <span class="fragment"><code>(HMR)</code></span> for an <b>extracted css file</b>. <span class="fragment
+                    "><code>shepherdwind</code>,</span> the <b>creator</b> of <b>css-hot-loader</b>, came up with the idea because <span class="fragment"><code>style-loader</code>,</span> which also can achieve css hot reload, needs to <b>inject</b>                    a <b>style tag</b> into <b>index.html</b>. And this can happen <b><i>before</i></b> JS scripts are <b>loaded</b>, resuslting in a page with no styles.
                 </p>
-                <a class="fragment " href="https://github.com/shepherdwind/css-hot-loader ">css-hot-loader on Github</a>
-                <a class="fragment " href="https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/30 ">extract-text-webpack-plugin issue #30</a>
-                <a class="fragment " href="https://github.com/webpack-contrib/extract-text-webpack-plugin/pull/89 ">extract-text-webpack-plugin issue #89</a>
+                <a class="fragment" href="https://github.com/shepherdwind/css-hot-loader" target="_blank" rel="noopener noreferrer">css-hot-loader on Github</a>
+                <a class="fragment" href="https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/30" target="_blank" rel="noopener noreferrer">extract-text-webpack-plugin issue #30</a>
+                <a class="fragment" href="https://github.com/webpack-contrib/extract-text-webpack-plugin/pull/89" target="_blank" rel="noopener noreferrer">extract-text-webpack-plugin issue #89</a>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>css hot loader</h3>
-                <p class="fragment ">Does not play nice with the <b>MiniCssExtractPlugin</b>, so I have removed it from the workflow for now. Too bad. It is fantastic.</p>
+                <p class="fragment">Does not play nice with the <b>MiniCssExtractPlugin</b>, so I have removed it from the workflow for now. Too bad. It is fantastic.</p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>Hot Module Replacement</h3>
-                <p class="fragment ">
-                    <span class="fragment "><code>HMR</code></span> <span class="fragment "><code>exchanges,</code></span> <span class="fragment "><code>adds,</code></span> or <span class="fragment "><code>removes</code></span> modules while an app is
-                    <span class="fragment "><code>running,</code></span> without a <span class="fragment "><code>full reload</code>.</span> It can speed up <span class="fragment "><code>development</code></span> because:
+                <p class="fragment">
+                    <span class="fragment"><code>HMR</code></span> <span class="fragment"><code>exchanges,</code></span> <span class="fragment"><code>adds,</code></span> or <span class="fragment"><code>removes</code></span> modules while an app is
+                    <span class="fragment"><code>running,</code></span> without a <span class="fragment"><code>full reload</code>.</span> It can speed up <span class="fragment"><code>development</code></span> because:
                 </p>
                 <ul>
-                    <li class="fragment ">
+                    <li class="fragment">
                         Can retain app state which is lost during a full reload.
                     </li>
-                    <li class="fragment ">
+                    <li class="fragment">
                         Save valuable development time by only updating what has changed.
                     </li>
-                    <li class="fragment ">
+                    <li class="fragment">
                         Tweak styling faster.
                     </li>
                 </ul>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>[contenthash]</h3>
-                <p class="fragment ">
-                    <span class="fragment "><code>[contenthash]</code></span> returns a hash specific to content. It is available for the <span class="fragment "><code>extract-text-webpack-plugin</code></span> only, and is the most specific hash option
-                    available in <b>webpack</b>. And it's great to use with css files for <span class="fragment "><code>browser caching</code>.</span> The hash only changes when the <span class="fragment "><code>css</code></span> changes.
+                <p class="fragment">
+                    <span class="fragment"><code>[contenthash]</code></span> returns a hash specific to content. It is available for the <span class="fragment"><code>extract-text-webpack-plugin</code></span> only, and is the most specific hash option
+                    available in <b>webpack</b>. And it's great to use with css files for <span class="fragment"><code>browser caching</code>.</span> The hash only changes when the <span class="fragment"><code>css</code></span> changes.
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>[contenthash]</h3>
-                <p class="fragment ">Apparently, the <b>webpack</b> team has suggested using <code>[contenthash]</code>over <code>[hash]</code> for better long term caching with the <b>MiniCssExtractPlugin</b>. I'm willing to give it a try, as I already use <b>webpack</b>'s
+                <p class="fragment">Apparently, the <b>webpack</b> team has suggested using <code>[contenthash]</code>over <code>[hash]</code> for better long term caching with the <b>MiniCssExtractPlugin</b>. I'm willing to give it a try, as I already use <b>webpack</b>'s
                     new
                     <code>[contenthash]</code> for <b>JS</b> bundles and it works beautifully.</p>
-                <p class="fragment ">
+                <p class="fragment">
                     <ul>
-                        <li class="fragment ">
+                        <li class="fragment">
                             <a href="https://github.com/webpack/webpack.js.org/issues/2096" target="_blank" rel="noopener noreferrer">
                                 Use `[contenthash]` over `[hash]` and `[chunkhash]` for better long term caching #2096
                             </a>
                         </li>
-                        <li class="fragment ">
+                        <li class="fragment">
                             <a href="https://webpack.js.org/guides/caching/" target="_blank" rel="noopener noreferrer">
                                 (Webpack) Caching
                             </a>
@@ -2851,28 +2854,28 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                     </ul>
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>Plugins</h3>
-                <p class="fragment ">
-                    <span class="fragment "><code>Loaders</code></span> only execute a transform on a <span class="fragment "><code>per-file</code></span> basis. <span class="fragment "><code>Plugins</code></span> are most commonly used to perform actions
-                    and custom functionality on <span class="fragment "><code>"compilations "</code></span> or <span class="fragment "><code>"chunks "</code></span> of your bundled modules.
+                <p class="fragment">
+                    <span class="fragment"><code>Loaders</code></span> only execute a transform on a <span class="fragment"><code>per-file</code></span> basis. <span class="fragment"><code>Plugins</code></span> are most commonly used to perform actions
+                    and custom functionality on <span class="fragment"><code>"compilations "</code></span> or <span class="fragment"><code>"chunks "</code></span> of your bundled modules.
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>Require</h3>
-                <pre class="fragment "><code data-trim>
+                <pre class="fragment"><code data-trim>
 				const htmlWebpackPlugin = require('html-webpack-plugin');
 				plugins: [
 
 				]
 						</code></pre>
-                <p class="fragment ">
+                <p class="fragment">
                     In order to use a plugin, you have to <code>require</code> it.
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>Add</h3>
-                <pre class="fragment "><code data-trim>
+                <pre class="fragment"><code data-trim>
                 plugins: [
                     new HtmlWebpackPlugin({
                         template: 'src/index.html',
@@ -2882,19 +2885,19 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                     }),
                 ]
 				</code></pre>
-                <p class="fragment ">
+                <p class="fragment">
                     and then <code>add</code> it to the <code>plugins array</code>. And since you can use the same plugin many times in the same config for different purposes, you need to create an instance of it by calling it with <code>new</code>.
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>CRA approach</h3>
-                <p class="fragment ">
-                    And <span class="fragment "><b><i>CRA</i></b></span> takes the <span class="fragment "><code>scripts</code></span> approach. A lot like creating scripts for <span class="fragment "><b><i>Gulp</i></b></span> or <span class="fragment "><b><i>Grunt</i></b></span>                    tasks.
+                <p class="fragment">
+                    And <span class="fragment"><b><i>CRA</i></b></span> takes the <span class="fragment"><code>scripts</code></span> approach. A lot like creating scripts for <span class="fragment"><b><i>Gulp</i></b></span> or <span class="fragment"><b><i>Grunt</i></b></span>                    tasks.
                 </p>
             </section>
-            <section data-background="#ffc600 ">
+            <section data-background="#ffc600">
                 <h3>Custom NPM Scripts</h3>
-                <pre class="fragment "><code data-trim>
+                <pre class="fragment"><code data-trim>
                 "scripts": {
                     "test": "jest",
                     "lint": "eslint .",
@@ -2907,19 +2910,20 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                     "deploy": "gh-pages -d dist"
                 },
 				</code></pre>
-                <p class="fragment ">
-                    You can create <span class="fragment"><code>custom</code>,</span> aka <span class="fragment "><code>local</code>,</span> <span class="fragment "><code>npm scripts</code></span> in your <span class="fragment "><code>package.json</code></span>                    file. We went over most of these scripts. The rest were the same in the first edition of this workflow.
+                <p class="fragment">
+                    You can create <span class="fragment"><code>custom</code>,</span> aka <span class="fragment"><code>local</code>,</span> <span class="fragment"><code>npm scripts</code></span> in your <span class="fragment"><code>package.json</code></span>                    file. We went over most of these scripts. The rest were the same in the first edition of this workflow.
                 </p>
             </section>
             <section data-background="#ffc600">
                 <h3>clean script</h3>
-                <pre class="fragment "><code data-trim>
+                <pre class="fragment"><code data-trim>
 				script: {
 				  "clean ": "rimraf dist"
 				}
 				</code></pre>
-                <p class="fragment ">
-                    Is executed in Terminal by running <span class="fragment "><code>npm run clean</code>.</span> <span class="fragment "><code>rimraf</code></span> is an npm plugin which refers to the <span class="fragment "><code>rm -rf</code></span>                    comand. It cleans everything within the specified directory and all its subdirectories. It's much faster than the <span class="fragment "><code>clean-webpack-plugin</code>,</span> which does the same thing. Same as in the first edition.
+                <p class="fragment">
+                    Is executed in Terminal by running <span class="fragment"><code>npm run clean</code>.</span> <span class="fragment"><code>rimraf</code></span> is an npm plugin which refers to the <span class="fragment"><code>rm -rf</code></span> comand.
+                    It cleans everything within the specified directory and all its subdirectories. It's much faster than the <span class="fragment"><code>clean-webpack-plugin</code>,</span> which does the same thing. Same as in the first edition.
                 </p>
             </section>
             <section data-background="#ffc600">
