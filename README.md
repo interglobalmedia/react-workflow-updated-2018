@@ -14,13 +14,13 @@ If you feel that there are improvements that can be made to any of the documenta
 
 + About This Presentation: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/1" target="_blank" rel="noopener noreferrer">Slide 1</a>
 
-+ A Bit About Me: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/2" target="_blank" rel="noopener noreferrer">Slide 2]</a> - <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/4" target="_blank" rel="noopener noreferrer">Slide 4</a>
++ A Bit About Me: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/2" target="_blank" rel="noopener noreferrer">Slide 2</a> - <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/4" target="_blank" rel="noopener noreferrer">Slide 4</a>
 
 + Why Discuss React Workflows?: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/5" target="_blank" rel="noopener noreferrer">Slide 5</a> - <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/11" target="_blank" rel="noopener noreferrer">Slide 11</a>
 
 + Where Webpack Comes In: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/12" target="_blank" rel="noopener noreferrer">Slide 12</a> - <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/20" target="_blank" rel="noopener noreferrer">Slide 20</a>
 
-+ Custom React Workflows: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/21" target="_blank" rel="noopener noreferrer">Slide 21]</a> - <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/23" target="_blank" rel="noopener noreferrer">Slide 23</a>
++ Custom React Workflows: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/21" target="_blank" rel="noopener noreferrer">Slide 21</a> - <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/23" target="_blank" rel="noopener noreferrer">Slide 23</a>
 
 + package.json: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/24" target="_blank" rel="noopener noreferrer">Slide 24</a>
 
@@ -34,7 +34,7 @@ If you feel that there are improvements that can be made to any of the documenta
 
 + Configuring Babel 7: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/29" target="_blank" rel="noopener noreferrer">Slide 29</a> -  <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/31" target="_blank" rel="noopener noreferrer">Slide 31</a>
 
-+ Babel < 7 Presets: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/32" target="_blank" rel="noopener noreferrer">Slide 32]</a>
++ Babel < 7 Presets: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/32" target="_blank" rel="noopener noreferrer">Slide 32</a>
 
 + Babel 7 Presets: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/33" target="_blank" rel="noopener noreferrer">Slide 33</a> - <a hef="https://interglobalmedia.github.io/react-workflow-updated-2018/#/36" target="_blank" rel="noopener noreferrer">Slide 36</a>
 
