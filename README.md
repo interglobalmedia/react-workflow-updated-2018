@@ -58,14 +58,14 @@ If you feel that there are improvements that can be made to any of the documenta
         + .babelrc <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/33" target="_blank" rel="noopener noreferrer">Slide 33</a>
         + @babel/preset-env <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/34" target="_blank" rel="noopener noreferrer">Slide 34</a>
         @babel/preset-react <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/35" target="_blank" rel="noopener noreferrer">Slide 35</a>
-        + naming <a hef="https://interglobalmedia.github.io/react-workflow-updated-2018/#/36" target="_blank" rel="noopener noreferrer">Slide 36</a>
+        + naming <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/36" target="_blank" rel="noopener noreferrer">Slide 36</a>
 
     + Babel Plugins:
         + @babel/plugin-proposal-class-properties <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/37" target="_blank" rel="noopener noreferrer">Slide 37</a>
         + @babel/plugin-proposal-export-namespace-from <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/38" target="_blank" rel="noopener noreferrer">Slide 38</a>, <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/39" target="_blank" rel="noopener noreferrer" >Slide 39</a>, <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/40" target="_blank" rel="noopener noreferrer" >Slide 40</a>
         + @babel/plugin-proposal-throw-expressions <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/41" target="_blank" rel="noopener noreferrer" >Slide 41</a>
         + babel/plugin-syntax-dynamic-import <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/42" target="_blank" rel="noopener noreferrer" >Slide 42</a>
-        + config/webpack.base.config.js: 
+        + config/webpack.base.config.js:
             + JS$ rules <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/43" target="_blank" rel="noopener noreferrer" >Slide 43</a>
             + JS$ test property <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/44" target="_blank" rel="noopener noreferrer" >Slide 44</a>
             + JS$ exclude property <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/45" target="_blank" rel="noopener noreferrer" >Slide 45</a>
