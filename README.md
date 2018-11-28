@@ -1,6 +1,6 @@
 # React Workflow Without Create React App (CRA)
 
-## Updated November 23, 2018
+## Updated November 28, 2018
 
 ### Reflects changes to React 16.6.3, Babel 7, ESLint 5.9.0, and Webpack 4.3.0
 
