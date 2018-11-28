@@ -64,15 +64,15 @@ If you feel that there are improvements that can be made to any of the documenta
 + entry: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/63" target="_blank" rel="noopener noreferrer">Slide 63</a> - <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/64" target="_blank" rel="noopener noreferrer">Slide 64</a>
 
 + Configuring Webpack:
-    + + module.exports changed <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/65" target="_blank" rel="noopener noreferrer">Slide 65</a>
-    + + entry changed <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/66" target="_blank" rel="noopener noreferrer">Slide 66</a>
-    + + webpack-merge <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/67" target="_blank" rel="noopener noreferrer">Slide 67</a>
-    + + main <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/68" target="_blank" rel="noopener noreferrer">Slide 68</a>
-    + + main index.js <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/69" target="_blank" rel="noopener noreferrer">Slide 69</a>
-    + + core.js in index.js: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/70" target="_blank" rel="noopener noreferrer">Slide 70</a>
-    + + ReactDOM.render() <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/71" target="_blank" rel="noopener noreferrer">Slide 71</a>
-    + + Code/Bundle Splitting <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/72" target="_blank" rel="noopener noreferrer">Slide 72</a>
-    + + Browser Caching
+    + module.exports changed <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/65" target="_blank" rel="noopener noreferrer">Slide 65</a>
+    + entry changed <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/66" target="_blank" rel="noopener noreferrer">Slide 66</a>
+    + webpack-merge <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/67" target="_blank" rel="noopener noreferrer">Slide 67</a>
+    + main <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/68" target="_blank" rel="noopener noreferrer">Slide 68</a>
+    + main index.js <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/69" target="_blank" rel="noopener noreferrer">Slide 69</a>
+    + core.js in index.js: <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/70" target="_blank" rel="noopener noreferrer">Slide 70</a>
+    + ReactDOM.render() <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/71" target="_blank" rel="noopener noreferrer">Slide 71</a>
+    + Code/Bundle Splitting <a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/72" target="_blank" rel="noopener noreferrer">Slide 72</a>
+    + Browser Caching
 
 
 
