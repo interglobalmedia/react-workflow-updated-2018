@@ -1698,6 +1698,8 @@
                     I end up with a <b class="fragment">src</b> folder in
                     <b class="fragment">dist</b> containing this <span class="fragment"><b><i>file</i></b>.</span> However, I need to <b class="fragment"><i>add</i></b> it as the <b class="fragment">value</b> of <b class="fragment">favicon</b> in the
                     <b class="fragment">HtmlWebpackPlugin</b> <b class="fragment"><i>configuration</i></b> in order to <b class="fragment">inject</b> <code class="fragment">favicon.ico</code> into <span class="fragment"><code>index.html</code>.</span>
+                    <div class="fragment breaking-change">NOTE : I removed favicon.ico from src/ and moved it into static/. Please visit the README.md for a more detailed explanation!
+                    </div>
                 </p>
             </section>
             <section data-background="#ffc600">
@@ -3076,6 +3078,7 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
             touch: true,
             fragments: true,
             showNotes: false,
+            help: true,
             dependencies: [{
                 src: 'plugin/markdown/marked.js'
             }, {
