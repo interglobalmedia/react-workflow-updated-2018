@@ -808,7 +808,7 @@
                                 new CleanWebpackPlugin(['dist']),
                                 new HtmlWebpackPlugin({
                                     template: 'src/index.html',
-                                    favicon: 'src/favicon.ico',
+                                    favicon: 'src/favicon.ico', /* remove */
                                     styles: 'src/styles.css',
                                     inject: true
                                 }),
@@ -912,7 +912,7 @@
                                     new CleanWebpackPlugin(['dist']),
                                     new HtmlWebpackPlugin({
                                         template: 'src/index.html',
-                                        favicon: 'src/favicon.ico',
+                                        favicon: 'src/favicon.ico', /* remove */
                                         styles: 'src/styles.css',
                                         inject: true
                                     }),
@@ -1050,7 +1050,7 @@
                 import 'core-js/es6/set';
                 import App from './App';
                 import './styles.scss';
-                import './favicon.ico';
+                import './favicon.ico'; /* remove */
 				</code></pre>
                 <p class="fragment">
                     The <b class="fragment">files</b> which need to be <b class="fragment">included</b> in the <b class="fragment">bundled</b> file in <b class="fragment">output</b> have all been <b class="fragment">imported</b> into the
@@ -1696,9 +1696,10 @@
                     Also note
                     <code class="fragment">src/favicon.2cc0ddfd.ico</code> in <span class="fragment"><a href="https://interglobalmedia.github.io/react-workflow-updated-2018/#/60" target="_blank" rel="noopener noreferrer">slide 60</a>.</span> This is why
                     I end up with a <b class="fragment">src</b> folder in
-                    <b class="fragment">dist</b> containing this <span class="fragment"><b><i>file</i></b>.</span> However, I need to <b class="fragment"><i>add</i></b> it as the <b class="fragment">value</b> of <b class="fragment">favicon</b> in the
+                    <b class="fragment">dist</b> containing this <span class="fragment"><b><i>file</i></b>.</span> I need to <b class="fragment"><i>add</i></b> it as the <b class="fragment">value</b> of <b class="fragment">favicon</b> in the
                     <b class="fragment">HtmlWebpackPlugin</b> <b class="fragment"><i>configuration</i></b> in order to <b class="fragment">inject</b> <code class="fragment">favicon.ico</code> into <span class="fragment"><code>index.html</code>.</span>
-                </p>
+                    <div class="fragment" style="background: rgba(30, 144, 255, 0.4); color: red"><b><i>NOTE</i></b> : I <b><i>removed</i></b> <code>favicon.ico</code> from src/ and moved it into static/. Please visit the <a href="https://github.com/interglobalmedia/react-workflow-updated-2018" target="_blank" rel="noopener noreferrer">README.md</a>                        for a more detailed explanation!
+                    </div>
             </section>
             <section data-background="#ffc600">
                 <p>
@@ -2511,7 +2512,7 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                     plugins: [
                         new HtmlWebpackPlugin({
                             template: 'src/index.html',
-                            favicon: 'src/favicon.ico',
+                            favicon: 'src/favicon.ico', /* remove */
                             styles: 'src/styles.css',
                             inject: true
                         }),
@@ -2534,6 +2535,9 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 <p class="fragment">
                     gives the given <code class="fragment">favicon path</code> to the <span class="fragment"><b>output html</b>.</span>
                 </p>
+                <div class="fragment" style="background: rgba(30, 144, 255, 0.4); color: red"><b><i>NOTE</i></b> : I <b><i>removed</i></b>
+                    <code>favicon.ico</code> from src/ and moved it into static/. Please visit the <a href="https://github.com/interglobalmedia/react-workflow-updated-2018" target="_blank" rel="noopener noreferrer">README.md</a> for a more detailed explanation!
+                </div>
             </section>
             <section data-background="#ffc600">
                 <h3>HtmlWebpackPlugin Configuration</h3>
@@ -2880,7 +2884,7 @@ emitted</b> would <b class="fragment"><i>mostly</i></b> make sense. <span class=
                 plugins: [
                     new HtmlWebpackPlugin({
                         template: 'src/index.html',
-                        favicon: 'src/favicon.ico',
+                        favicon: 'src/favicon.ico', /* remove */
                         styles: 'src/styles.css',
                         inject: true
                     }),
