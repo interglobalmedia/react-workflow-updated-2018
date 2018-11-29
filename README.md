@@ -5,7 +5,7 @@
 ## Note on src/favicon.ico issue that comes up in the workflow: 
 I made a quick change to get rid of the src folder. Instead of injecting favicon.ico into index.html (which causes src/ to be copied into dist/), I placed favicon.ico into the root of static/. It then was copied into the root of dist where index.html resides. Result? No more src folder. Now you just have to manually add your favicon.ico link tag into index.html in src. That way it will copy over with the rest of index.html into dist.
 
-## How To Fix The src/favicon.ico issue in dist/:
+## How to fix the src/favicon.ico issue in dist/:
 + remove `favicon.ico` from the `src` folder
 + move `favicon.ico` into the root of `static/` in `src`
 + remove `import './favicon.ico';` from `index.js`
