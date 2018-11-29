@@ -56,7 +56,3 @@ div blockquote {
     border: 0;
     box-shadow: none;
 }
-
-div.breaking-change {
-    color: red;
-}
