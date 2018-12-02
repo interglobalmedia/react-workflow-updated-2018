@@ -5,6 +5,17 @@
 ## Note on src/favicon.ico issue that comes up in the workflow: 
 I made a quick change to get rid of the src folder. Instead of injecting favicon.ico into index.html (which causes src/ to be copied into dist/), I placed favicon.ico into the root of static/. It then was copied into the root of dist where index.html resides. Result? No more src folder. Now you just have to manually add your favicon.ico link tag into index.html in src. That way it will copy over with the rest of index.html into dist.
 
+## Note December 2, 2018 re importing images in React: 
+
+As some of you may know, I wrote an article on October 7, 2017, regarding importing images in React based on the first edition of my custom React workflow. But now I am on to the second edition, and the changes that took place with various dependencies also impacted the configuration/support of image imports. Last night I tried to import images in to a new React project utilizing configurations from the old workflow, but it caused my Jest tests to fail. NOT GOOD! I did end up updating my Jest configurations to provide support for image imports, and then wrote about those changes. Please visit either my [developer blog](http://www.mariadcampbell.com/2018/12/02/importing-images-in-react-2-0-jest-and-babel-7/) or [Medium.com](https://medium.com/@letsbsocial1/importing-images-in-react-2-0-jest-and-babel-7-7b0577b51232) to read the article:
+
+[Importing Images in React 2.0: Jest (and Babel 7) on my developer blog](http://www.mariadcampbell.com/2018/12/02/importing-images-in-react-2-0-jest-and-babel-7/)
+
+[Importing Images in React 2.0: Jest (and Babel 7) on Medium](https://medium.com/@letsbsocial1/importing-images-in-react-2-0-jest-and-babel-7-7b0577b51232)
+
+
+
+
 ## How to fix the src/favicon.ico issue in dist/:
 + remove `favicon.ico` from the `src` folder
 + move `favicon.ico` into the root of `static/` in `src`
