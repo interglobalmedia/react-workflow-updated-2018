@@ -7,11 +7,27 @@ I made a quick change to get rid of the src folder. Instead of injecting favicon
 
 ## Note December 2, 2018 re importing images in React: 
 
-As some of you may know, I wrote an article on October 7, 2017, regarding importing images in React based on the first edition of my custom React workflow. But now I am on to the second edition, and the changes that took place with various dependencies also impacted the configuration/support of image imports. Last night I tried to import images in to a new React project utilizing configurations from the old workflow, but it caused my Jest tests to fail. NOT GOOD! I did end up updating my Jest configurations to provide support for image imports, and then wrote about those changes. Please visit either my [developer blog](http://www.mariadcampbell.com/2018/12/02/importing-images-in-react-2-0-jest-and-babel-7/) or [Medium.com](https://medium.com/@letsbsocial1/importing-images-in-react-2-0-jest-and-babel-7-7b0577b51232) to read the article:
+As some of you may know, I wrote an article on October 7, 2017, regarding importing images in React based on the first edition of my custom React workflow. But now I am on to the second edition, and the changes that took place with various dependencies also impacted the configuration/support of image imports. Last night I tried to import images in to a new React project utilizing configurations from the old workflow, but it caused my Jest tests to fail. NOT GOOD! I did end up updating my Jest configurations to provide support for image imports, and then wrote about those changes. Please visit either my [developer blog](http://www.mariadcampbell.com) or [Medium.com](https://medium.com/@letsbsocial1) to read the articles:
+
+[My updated custom React workflow (2nd edition) is here on my developer blog](http://www.mariadcampbell.com/2018/11/29/my-updated-custom-react-workflow-2nd-edition-is-here/)
+
+[The Importance Of ESlint (And React) o  my developer blog](http://www.mariadcampbell.com/2018/11/19/the-importance-of-eslint-and-react/)
 
 [Importing Images in React 2.0: Jest (and Babel 7) on my developer blog](http://www.mariadcampbell.com/2018/12/02/importing-images-in-react-2-0-jest-and-babel-7/)
 
+[The Jest Side Effect on my developer blog](http://www.mariadcampbell.com/2018/12/03/the-jest-side-effect/)
+
+[The New Babel 7 Config on my developer blog](http://www.mariadcampbell.com/2018/12/03/the-new-babel-7-config/)
+
+[My updated custom React workflow (2nd Edition) is here on Medium](https://blog.hellojs.org/my-updated-custom-react-workflow-2nd-edition-is-here-54f924b12bf5)
+
+[The Importance Of EsLint (And React) on Medium](https://blog.hellojs.org/the-importance-of-eslint-and-react-cb0919a0807f)
+
 [Importing Images in React 2.0: Jest (and Babel 7) on Medium](https://medium.com/@letsbsocial1/importing-images-in-react-2-0-jest-and-babel-7-7b0577b51232)
+
+[The Jest Side Effect on Medium](https://medium.com/@letsbsocial1/the-jest-side-effect-926dc78f59d0)
+
+[The New Babel 7 Config on Medium](https://medium.com/@letsbsocial1/the-new-babel-7-config-35f8ff315725)
 
 
 
